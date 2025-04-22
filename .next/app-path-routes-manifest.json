@@ -1,0 +1,22 @@
+{
+  "/_not-found/page": "/_not-found",
+  "/favicon.ico/route": "/favicon.ico",
+  "/page": "/",
+  "/billing/page": "/billing",
+  "/account/page": "/account",
+  "/help/page": "/help",
+  "/finance/page": "/finance",
+  "/login/page": "/login",
+  "/project/page": "/project",
+  "/project/[slug]/page": "/project/[slug]",
+  "/server/page": "/server",
+  "/server/[slug]/page": "/server/[slug]",
+  "/server/create/page": "/server/create",
+  "/sshKeys/[slug]/page": "/sshKeys/[slug]",
+  "/forgot_pwd/page": "/forgot_pwd",
+  "/signup/page": "/signup",
+  "/sshKeys/page": "/sshKeys",
+  "/support/page": "/support",
+  "/support/create/page": "/support/create",
+  "/support/[slug]/page": "/support/[slug]"
+}
