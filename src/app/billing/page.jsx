@@ -3,6 +3,7 @@ import Link from "next/link";
 import React, { Fragment, useState, useEffect } from "react";
 import Image from "next/image";
 import axios from "axios";
+const assets = "/assets";
 
 function Billing() {
 
@@ -93,7 +94,7 @@ function Billing() {
         // Simulate loading
         const timer = setTimeout(() => {
             setIsLoading(false);
-        }, 3000);
+        }, 500);
         return () => clearTimeout(timer);
     }, []);
 
@@ -151,7 +152,7 @@ function Billing() {
                                                 <div className="d-flex align-items-center justify-content-between pt-4 pb-4">
                                                     <div className="h-70 w-70 d-flex-center b-r-15 bg-white">
                                                         {/* <i className="ph-bold  ph-ticket f-s-25 text-primary" /> */}
-                                                        <Image alt="balance" src="/assets/images/New/balance.png" width={50} height={50} />
+                                                        <Image alt="balance" src={`${assets}/images/New/balance.png`}  width={50} height={50} />
                                                     </div>
                                                     <div className="d-flex flex-column justify-content-between align-items-center">
                                                         <h5 className="f-s-16">Balance</h5>
@@ -378,7 +379,7 @@ function Billing() {
                                                                                             <div className="card-body">
                                                                                                 <div className="device-menu-item device-menu-item-new" draggable="false">
                                                                                                     <span className="device-menu-img device-menu-img-new h-60">
-                                                                                                        <Image alt="Windows" className="img-fluid" src="/assets/images/new/cryptomus.png" width={200} height={100} />
+                                                                                                        <Image alt="Windows" className="img-fluid" src={`${assets}/images/new/cryptomus.png`}  width={200} height={100} />
                                                                                                     </span>
                                                                                                     <div className="device-menu-content device-menu-content-new" >
                                                                                                         <h6 className="mb-0 txt-ellipsis-1">Cryptomus</h6>
@@ -387,17 +388,17 @@ function Billing() {
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
-                                                                                    </li>
-                                                                                </ul>
-                                                                            </div>
-                                                                            <div className="col-lg-12 col-xxl-4">
+                                                                                    </li>      
+                                                                                </ul> 
+                                                                            </div> 
+                                                                            <div className="col-lg-12 col-xxl-4"> 
                                                                                 <ul className="active-device-session  active-device-list" id="shareMenuRight">
                                                                                     <li>
                                                                                         <div className="card">
                                                                                             <div className="card-body">
                                                                                                 <div className="device-menu-item device-menu-item-new" draggable="false">
                                                                                                     <span className="device-menu-img device-menu-img-new h-60">
-                                                                                                        <Image alt="Windows" className="img-fluid" src="/assets/images/new/paypal.png" width={200} height={80} />
+                                                                                                        <Image alt="Windows" className="img-fluid" src={`${assets}/images/new/paypal.png`} width={200} height={80} />
                                                                                                     </span>
                                                                                                     <div className="device-menu-content device-menu-content-new" >
                                                                                                         <h6 className="mb-0 txt-ellipsis-1">PayPal</h6>
