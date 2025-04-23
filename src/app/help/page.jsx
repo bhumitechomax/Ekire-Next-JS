@@ -76,29 +76,29 @@ function Project() {
                                 <div className="col-lg-3">
                                     <ul className="nav nav-tabs app-tabs-secondary flex-column" id="v-bg" role="tablist">
                                         <li className="nav-item" role="presentation">
-                                            <button className="nav-link active w-100" id="v-payment-tab" data-bs-toggle="tab" data-bs-target="#v-payment-tab-pane" type="button" role="tab" aria-controls="v-payment-tab-pane" aria-selected="true"> <i className="ph ph-wallet pe-1 ps-1 pb-1 f-s-22 " />
+                                            <button className="nav-link active w-100 justify-content-start" id="v-payment-tab" data-bs-toggle="tab" data-bs-target="#v-payment-tab-pane" type="button" role="tab" aria-controls="v-payment-tab-pane" aria-selected="true"> <i className="ph ph-wallet pe-1 ps-1 pb-1 f-s-22 " />
                                                 Payments</button>
                                         </li>
                                         <li className="nav-item" role="presentation">
-                                            <button className="nav-link w-100" id="v-deploy-tab" data-bs-toggle="tab" data-bs-target="#v-deploy-tab-pane" type="button" role="tab" aria-controls="v-deploy-tab-pane" aria-selected="false"><i className="ph  ph-airplay pe-1 ps-1 pb-1 f-s-22 " />Deployment</button>
+                                            <button className="nav-link w-100 justify-content-start" id="v-deploy-tab" data-bs-toggle="tab" data-bs-target="#v-deploy-tab-pane" type="button" role="tab" aria-controls="v-deploy-tab-pane" aria-selected="false"><i className="ph  ph-airplay pe-1 ps-1 pb-1 f-s-22 " />Deployment</button>
                                         </li>
                                         <li className="nav-item" role="presentation">
-                                            <button className="nav-link w-100" id="v-backup-tab" data-bs-toggle="tab" data-bs-target="#v-backup-tab-pane" type="button" role="tab" aria-controls="v-backup-tab-pane" aria-selected="false"><i className="ph  ph-database pe-1 ps-1 pb-1 f-s-22" />Backups</button>
+                                            <button className="nav-link w-100 justify-content-start" id="v-backup-tab" data-bs-toggle="tab" data-bs-target="#v-backup-tab-pane" type="button" role="tab" aria-controls="v-backup-tab-pane" aria-selected="false"><i className="ph  ph-database pe-1 ps-1 pb-1 f-s-22" />Backups</button>
                                         </li>
                                         <li className="nav-item" role="presentation">
-                                            <button className="nav-link w-100" id="v-upgrad-tab" data-bs-toggle="tab" data-bs-target="#v-upgrad-tab-pane" type="button" role="tab" aria-controls="v-upgrad-tab-pane" aria-selected="false"><i className="ph  ph-arrow-line-down pe-1 ps-1 pb-1 f-s-22" />Upgrading</button>
+                                            <button className="nav-link w-100 justify-content-start" id="v-upgrad-tab" data-bs-toggle="tab" data-bs-target="#v-upgrad-tab-pane" type="button" role="tab" aria-controls="v-upgrad-tab-pane" aria-selected="false"><i className="ph  ph-arrow-line-down pe-1 ps-1 pb-1 f-s-22" />Upgrading</button>
                                         </li>
                                         <li className="nav-item" role="presentation">
-                                            <button className="nav-link w-100" id="v-reinstall-tab" data-bs-toggle="tab" data-bs-target="#v-reinstall-tab-pane" type="button" role="tab" aria-controls="v-reinstall-tab-pane" aria-selected="false"><i className="ph  ph-aperture pe-1 ps-1 pb-1 f-s-22" />Reinstallation </button>
+                                            <button className="nav-link w-100 justify-content-start" id="v-reinstall-tab" data-bs-toggle="tab" data-bs-target="#v-reinstall-tab-pane" type="button" role="tab" aria-controls="v-reinstall-tab-pane" aria-selected="false"><i className="ph  ph-aperture pe-1 ps-1 pb-1 f-s-22" />Reinstallation </button>
                                         </li>
                                         <li className="nav-item" role="presentation">
-                                            <button className="nav-link w-100" id="v-disks-tab" data-bs-toggle="tab" data-bs-target="#v-disks-tab-pane" type="button" role="tab" aria-controls="v-disks-tab-pane" aria-selected="false"><i className="ph  ph-floppy-disk pe-1 ps-1 pb-1 f-s-22" />Disks  </button>
+                                            <button className="nav-link w-100 justify-content-start" id="v-disks-tab" data-bs-toggle="tab" data-bs-target="#v-disks-tab-pane" type="button" role="tab" aria-controls="v-disks-tab-pane" aria-selected="false"><i className="ph  ph-floppy-disk pe-1 ps-1 pb-1 f-s-22" />Disks  </button>
                                         </li>
                                         <li className="nav-item" role="presentation">
-                                            <button className="nav-link w-100" id="v-ips-tab" data-bs-toggle="tab" data-bs-target="#v-ips-tab-pane" type="button" role="tab" aria-controls="v-ips-tab-pane" aria-selected="false"><i className="ph  ph-globe pe-1 ps-1 pb-1 f-s-22" />Additional IPs  </button>
+                                            <button className="nav-link w-100 justify-content-start" id="v-ips-tab" data-bs-toggle="tab" data-bs-target="#v-ips-tab-pane" type="button" role="tab" aria-controls="v-ips-tab-pane" aria-selected="false"><i className="ph  ph-globe pe-1 ps-1 pb-1 f-s-22" />Additional IPs  </button>
                                         </li>
                                         <li className="nav-item" role="presentation">
-                                            <button className="nav-link w-100" id="v-snapshot-tab" data-bs-toggle="tab" data-bs-target="#v-snapshot-tab-pane" type="button" role="tab" aria-controls="v-snapshot-tab-pane" aria-selected="false"><i className="ph ph-bounding-box pe-1 ps-1 pb-1 f-s-22" />snapshots  </button>
+                                            <button className="nav-link w-100 justify-content-start" id="v-snapshot-tab" data-bs-toggle="tab" data-bs-target="#v-snapshot-tab-pane" type="button" role="tab" aria-controls="v-snapshot-tab-pane" aria-selected="false"><i className="ph ph-bounding-box pe-1 ps-1 pb-1 f-s-22" />snapshots  </button>
                                         </li>
                                     </ul>
                                 </div>

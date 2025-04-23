@@ -2,7 +2,9 @@
   "/_not-found/page": "app/_not-found/page.js",
   "/billing/page": "app/billing/page.js",
   "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/help/page": "app/help/page.js",
   "/page": "app/page.js",
   "/project/[slug]/page": "app/project/[slug]/page.js",
-  "/project/page": "app/project/page.js"
+  "/project/page": "app/project/page.js",
+  "/server/page": "app/server/page.js"
 }
