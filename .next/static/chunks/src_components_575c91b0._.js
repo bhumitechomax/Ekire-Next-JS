@@ -535,37 +535,31 @@ const Header = ()=>{
             __turbopack_context__.r("[project]/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js [app-client] (ecmascript, async loader)")(__turbopack_context__.i);
         }
     }["Header.useEffect"], []);
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
-        "Header.useEffect": ()=>{
-            const themeToggleBtn = document.querySelector(".header-dark");
-            const sunLogo = document.querySelector(".sun-logo");
-            const moonLogo = document.querySelector(".moon-logo");
-            const handleThemeToggle = {
-                "Header.useEffect.handleThemeToggle": ()=>{
-                    sunLogo?.classList.toggle("sun");
-                    moonLogo?.classList.toggle("moon");
-                    const isDark = document.body.classList.contains("dark");
-                    if (isDark) {
-                        document.body.classList.remove("dark");
-                        document.body.classList.add("light");
-                        localStorage.setItem("theme-mode", "light");
-                    } else {
-                        document.body.classList.remove("light");
-                        document.body.classList.add("dark");
-                        localStorage.setItem("theme-mode", "dark");
-                    }
-                }
-            }["Header.useEffect.handleThemeToggle"];
-            // Attach click event
-            themeToggleBtn?.addEventListener("click", handleThemeToggle);
-            // Cleanup
-            return ({
-                "Header.useEffect": ()=>{
-                    themeToggleBtn?.removeEventListener("click", handleThemeToggle);
-                }
-            })["Header.useEffect"];
-        }
-    }["Header.useEffect"], []);
+    // useEffect(() => {
+    //     const themeToggleBtn = document.querySelector(".header-dark");
+    //     const sunLogo = document.querySelector(".sun-logo");
+    //     const moonLogo = document.querySelector(".moon-logo");
+    //     const handleThemeToggle = () => {
+    //       sunLogo?.classList.toggle("sun");
+    //       moonLogo?.classList.toggle("moon");
+    //       const isDark = document.body.classList.contains("dark");
+    //       if (isDark) {
+    //         document.body.classList.remove("dark");
+    //         document.body.classList.add("light");
+    //         localStorage.setItem("theme-mode", "light");
+    //       } else {
+    //         document.body.classList.remove("light");
+    //         document.body.classList.add("dark");
+    //         localStorage.setItem("theme-mode", "dark");
+    //       }
+    //     };
+    //     // Attach click event
+    //     themeToggleBtn?.addEventListener("click", handleThemeToggle);
+    //     // Cleanup
+    //     return () => {
+    //       themeToggleBtn?.removeEventListener("click", handleThemeToggle);
+    //     };
+    //   }, []);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("header", {
@@ -2791,7 +2785,7 @@ const Header = ()=>{
         }, this)
     }, void 0, false);
 };
-_s(Header, "3ubReDTFssvu4DHeldAg55cW/CI=");
+_s(Header, "OD7bBpZva5O2jO+Puf00hKivP7c=");
 _c = Header;
 const __TURBOPACK__default__export__ = Header;
 var _c;

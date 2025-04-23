@@ -9,38 +9,38 @@ const Header = () => {
         import('bootstrap/dist/js/bootstrap.bundle.min.js');
     }, []);
 
-    useEffect(() => {
-        const themeToggleBtn = document.querySelector(".header-dark");
-        const sunLogo = document.querySelector(".sun-logo");
-        const moonLogo = document.querySelector(".moon-logo");
+    // useEffect(() => {
+    //     const themeToggleBtn = document.querySelector(".header-dark");
+    //     const sunLogo = document.querySelector(".sun-logo");
+    //     const moonLogo = document.querySelector(".moon-logo");
     
-        const handleThemeToggle = () => {
-          sunLogo?.classList.toggle("sun");
-          moonLogo?.classList.toggle("moon");
+    //     const handleThemeToggle = () => {
+    //       sunLogo?.classList.toggle("sun");
+    //       moonLogo?.classList.toggle("moon");
     
-          const isDark = document.body.classList.contains("dark");
+    //       const isDark = document.body.classList.contains("dark");
     
-          if (isDark) {
-            document.body.classList.remove("dark");
-            document.body.classList.add("light");
-            localStorage.setItem("theme-mode", "light");
-          } else {
-            document.body.classList.remove("light");
-            document.body.classList.add("dark");
-            localStorage.setItem("theme-mode", "dark");
-          }
-        };
+    //       if (isDark) {
+    //         document.body.classList.remove("dark");
+    //         document.body.classList.add("light");
+    //         localStorage.setItem("theme-mode", "light");
+    //       } else {
+    //         document.body.classList.remove("light");
+    //         document.body.classList.add("dark");
+    //         localStorage.setItem("theme-mode", "dark");
+    //       }
+    //     };
     
-        // Attach click event
-        themeToggleBtn?.addEventListener("click", handleThemeToggle);
+    //     // Attach click event
+    //     themeToggleBtn?.addEventListener("click", handleThemeToggle);
     
         
     
-        // Cleanup
-        return () => {
-          themeToggleBtn?.removeEventListener("click", handleThemeToggle);
-        };
-      }, []);
+    //     // Cleanup
+    //     return () => {
+    //       themeToggleBtn?.removeEventListener("click", handleThemeToggle);
+    //     };
+    //   }, []);
 
     return (
         <>

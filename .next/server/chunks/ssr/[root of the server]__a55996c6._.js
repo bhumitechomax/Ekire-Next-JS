@@ -557,31 +557,31 @@ const Header = ()=>{
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
         __turbopack_context__.r("[project]/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js [app-ssr] (ecmascript, async loader)")(__turbopack_context__.i);
     }, []);
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
-        const themeToggleBtn = document.querySelector(".header-dark");
-        const sunLogo = document.querySelector(".sun-logo");
-        const moonLogo = document.querySelector(".moon-logo");
-        const handleThemeToggle = ()=>{
-            sunLogo?.classList.toggle("sun");
-            moonLogo?.classList.toggle("moon");
-            const isDark = document.body.classList.contains("dark");
-            if (isDark) {
-                document.body.classList.remove("dark");
-                document.body.classList.add("light");
-                localStorage.setItem("theme-mode", "light");
-            } else {
-                document.body.classList.remove("light");
-                document.body.classList.add("dark");
-                localStorage.setItem("theme-mode", "dark");
-            }
-        };
-        // Attach click event
-        themeToggleBtn?.addEventListener("click", handleThemeToggle);
-        // Cleanup
-        return ()=>{
-            themeToggleBtn?.removeEventListener("click", handleThemeToggle);
-        };
-    }, []);
+    // useEffect(() => {
+    //     const themeToggleBtn = document.querySelector(".header-dark");
+    //     const sunLogo = document.querySelector(".sun-logo");
+    //     const moonLogo = document.querySelector(".moon-logo");
+    //     const handleThemeToggle = () => {
+    //       sunLogo?.classList.toggle("sun");
+    //       moonLogo?.classList.toggle("moon");
+    //       const isDark = document.body.classList.contains("dark");
+    //       if (isDark) {
+    //         document.body.classList.remove("dark");
+    //         document.body.classList.add("light");
+    //         localStorage.setItem("theme-mode", "light");
+    //       } else {
+    //         document.body.classList.remove("light");
+    //         document.body.classList.add("dark");
+    //         localStorage.setItem("theme-mode", "dark");
+    //       }
+    //     };
+    //     // Attach click event
+    //     themeToggleBtn?.addEventListener("click", handleThemeToggle);
+    //     // Cleanup
+    //     return () => {
+    //       themeToggleBtn?.removeEventListener("click", handleThemeToggle);
+    //     };
+    //   }, []);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("header", {

@@ -2,11 +2,16 @@
   "app": {
     "[project]/src/app/_not-found/page": [],
     "[project]/src/app/billing/page": [],
+    "[project]/src/app/finance/page": [],
     "[project]/src/app/help/page": [],
     "[project]/src/app/page": [],
     "[project]/src/app/project/[slug]/page": [],
     "[project]/src/app/project/page": [],
-    "[project]/src/app/server/page": []
+    "[project]/src/app/server/[slug]/page": [],
+    "[project]/src/app/server/create/page": [],
+    "[project]/src/app/server/page": [],
+    "[project]/src/app/sshKeys/page": [],
+    "[project]/src/app/support/page": []
   },
   "appUsingSizeAdjust": false,
   "pages": {},

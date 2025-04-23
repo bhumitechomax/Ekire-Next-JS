@@ -32,6 +32,7 @@ let leftsideLimit = -100;
 let navbarSize;
 let containerWidth;
 let maxNavbarLimit;
+// let SimpleBar;
 
 function setUpHorizontalHeader() {
   navbarSize = navBar.width();
@@ -149,9 +150,7 @@ window.addEventListener("resize", () => {
 });
 
 
-// >>-- 06 Sidebar scroll js --<<
-var myElement = document.getElementById('app-simple-bar');
-new SimpleBar(myElement, { autoHide: true });
+
 
 // Sidebar active class js
 $(function () {
