@@ -1,28 +1,27 @@
 "use client";
 
-// import { useEffect, useState } from "react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-// import $ from "jquery";  
+import $ from "jquery";  
 
 export default function PageWrapper({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  // const [prevPath, setPrevPath] = useState<string | null>(pathname);
+  const [prevPath, setPrevPath] = useState<string | null>(pathname);
 
   useEffect(() => {
 
-    // if (pathname && prevPath !== pathname) {
-    //   window.location.reload();
-    //   setPrevPath(pathname);
-    // }
-    // $(document).ready(function () {
-    //   $(".loader-wrapper").fadeOut("fast", function () {
-    //     $(this).remove(); 
-    //   });
-    // });
+    if (pathname && prevPath !== pathname) {
+      window.location.reload();
+      setPrevPath(pathname);
+    }
+    $(document).ready(function () {
+      $(".loader-wrapper").fadeOut("fast", function () {
+        $(this).remove(); // Remove loader after fade out
+      });
+    });
 
     // $(document).ready(function() {
     //   $(".loader-wrapper").fadeOut("slow", function () {

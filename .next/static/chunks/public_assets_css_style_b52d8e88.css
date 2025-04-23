@@ -34890,7 +34890,7 @@ input[type="range"]::-webkit-slider-thumb {
   border-bottom: 1px solid rgba(var(--secondary), .4);
   color: rgba(var(--dark), 1);
   font-weight: 600;
-  padding: .5rem .75rem;
+  padding: 1rem;
   text-transform: capitalize;
 }
 
@@ -60583,6 +60583,22 @@ input[type="date"].custom-date-input::-webkit-calendar-picker-indicator {
   border-top: 4px solid #007bff;
   border-radius: 50%;
   animation: .8s linear infinite spin;
+}
+
+.task-container.slider {
+  max-height: 400px;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.task-container.slider:hover {
+  cursor: pointer;
+}
+
+.task-container.slider::-webkit-scrollbar {
+  display: none;
 }
 
 @keyframes spin {

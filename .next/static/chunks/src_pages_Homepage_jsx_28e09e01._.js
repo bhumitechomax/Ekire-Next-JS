@@ -56,6 +56,43 @@ const Homepage = ()=>{
             }
         }
     }["Homepage.useEffect"], []);
+    // vertical slider
+    const containerRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "Homepage.useEffect": ()=>{
+            const container = containerRef.current;
+            let scrollInterval;
+            if (container) {
+                const scrollStep = 1;
+                const scrollDelay = 15;
+                const startScrolling = {
+                    "Homepage.useEffect.startScrolling": ()=>{
+                        scrollInterval = setInterval({
+                            "Homepage.useEffect.startScrolling": ()=>{
+                                container.scrollTop += scrollStep;
+                                if (container.scrollTop >= container.scrollHeight / 2) {
+                                    container.scrollTop = 0;
+                                }
+                            }
+                        }["Homepage.useEffect.startScrolling"], scrollDelay);
+                    }
+                }["Homepage.useEffect.startScrolling"];
+                startScrolling();
+                const stopScrolling = {
+                    "Homepage.useEffect.stopScrolling": ()=>clearInterval(scrollInterval)
+                }["Homepage.useEffect.stopScrolling"];
+                container.addEventListener("mouseenter", stopScrolling);
+                container.addEventListener("mouseleave", startScrolling);
+                return ({
+                    "Homepage.useEffect": ()=>{
+                        stopScrolling();
+                        container.removeEventListener("mouseenter", stopScrolling);
+                        container.removeEventListener("mouseleave", startScrolling);
+                    }
+                })["Homepage.useEffect"];
+            }
+        }
+    }["Homepage.useEffect"], []);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("main", {
             children: [
@@ -74,15 +111,15 @@ const Homepage = ()=>{
                                             className: "f-s-20 me-2"
                                         }, void 0, false, {
                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                            lineNumber: 63,
-                                            columnNumber: 37
+                                            lineNumber: 100,
+                                            columnNumber: 29
                                         }, this),
                                         "Add your payment details to enable automatic payments for invoices and service charges"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                    lineNumber: 62,
-                                    columnNumber: 33
+                                    lineNumber: 99,
+                                    columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                     "aria-label": "Close",
@@ -91,14 +128,14 @@ const Homepage = ()=>{
                                     type: "button"
                                 }, void 0, false, {
                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                    lineNumber: 66,
-                                    columnNumber: 33
+                                    lineNumber: 103,
+                                    columnNumber: 25
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/pages/Homepage.jsx",
-                            lineNumber: 61,
-                            columnNumber: 29
+                            lineNumber: 98,
+                            columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "alert alert-primary alert-dismissible  d-flex align-items-center justify-content-between mt-3 cookies-alert",
@@ -113,15 +150,15 @@ const Homepage = ()=>{
                                             src: "../assets/images/icons/cookie-.png"
                                         }, void 0, false, {
                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                            lineNumber: 70,
-                                            columnNumber: 37
+                                            lineNumber: 107,
+                                            columnNumber: 29
                                         }, this),
                                         "We have Cookies! We use it to ensure you get the best experience on our website and service"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                    lineNumber: 69,
-                                    columnNumber: 33
+                                    lineNumber: 106,
+                                    columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                     "aria-label": "Close",
@@ -130,14 +167,14 @@ const Homepage = ()=>{
                                     type: "button"
                                 }, void 0, false, {
                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                    lineNumber: 73,
-                                    columnNumber: 33
+                                    lineNumber: 110,
+                                    columnNumber: 25
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/pages/Homepage.jsx",
-                            lineNumber: 68,
-                            columnNumber: 29
+                            lineNumber: 105,
+                            columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "alert alert-light-border-danger alert-dismissible  d-flex align-items-center justify-content-between mt-3 cookies-alert",
@@ -151,15 +188,15 @@ const Homepage = ()=>{
                                             className: "f-s-20 me-2"
                                         }, void 0, false, {
                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                            lineNumber: 77,
-                                            columnNumber: 37
+                                            lineNumber: 114,
+                                            columnNumber: 29
                                         }, this),
                                         "Add your payment details to enable automatic payments for invoices and service charges"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                    lineNumber: 76,
-                                    columnNumber: 33
+                                    lineNumber: 113,
+                                    columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                     "aria-label": "Close",
@@ -168,14 +205,14 @@ const Homepage = ()=>{
                                     type: "button"
                                 }, void 0, false, {
                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                    lineNumber: 80,
-                                    columnNumber: 33
+                                    lineNumber: 117,
+                                    columnNumber: 25
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/pages/Homepage.jsx",
-                            lineNumber: 75,
-                            columnNumber: 29
+                            lineNumber: 112,
+                            columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "row",
@@ -200,8 +237,8 @@ const Homepage = ()=>{
                                                                         children: "Active Servers"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                                        lineNumber: 91,
-                                                                        columnNumber: 57
+                                                                        lineNumber: 128,
+                                                                        columnNumber: 49
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                         className: "clock-box",
@@ -211,19 +248,19 @@ const Homepage = ()=>{
                                                                             src: "../assets/images/New/Animation.gif"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                                                            lineNumber: 98,
-                                                                            columnNumber: 61
+                                                                            lineNumber: 135,
+                                                                            columnNumber: 53
                                                                         }, this)
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                                        lineNumber: 92,
-                                                                        columnNumber: 57
+                                                                        lineNumber: 129,
+                                                                        columnNumber: 49
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                lineNumber: 90,
-                                                                columnNumber: 53
+                                                                lineNumber: 127,
+                                                                columnNumber: 45
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                 children: [
@@ -234,13 +271,13 @@ const Homepage = ()=>{
                                                                             children: "435"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                                                            lineNumber: 103,
-                                                                            columnNumber: 61
+                                                                            lineNumber: 140,
+                                                                            columnNumber: 53
                                                                         }, this)
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                                        lineNumber: 102,
-                                                                        columnNumber: 57
+                                                                        lineNumber: 139,
+                                                                        columnNumber: 49
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                         className: "progress-labels mg-t-40",
@@ -250,30 +287,30 @@ const Homepage = ()=>{
                                                                                 children: "Productive"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                lineNumber: 106,
-                                                                                columnNumber: 61
+                                                                                lineNumber: 143,
+                                                                                columnNumber: 53
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                                 className: "text-info",
                                                                                 children: "Middle"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                lineNumber: 107,
-                                                                                columnNumber: 61
+                                                                                lineNumber: 144,
+                                                                                columnNumber: 53
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                                 className: "text-info",
                                                                                 children: "Idle"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                lineNumber: 108,
-                                                                                columnNumber: 61
+                                                                                lineNumber: 145,
+                                                                                columnNumber: 53
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                                        lineNumber: 105,
-                                                                        columnNumber: 57
+                                                                        lineNumber: 142,
+                                                                        columnNumber: 49
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                         className: "custom-progress-container info-progress",
@@ -282,50 +319,50 @@ const Homepage = ()=>{
                                                                                 className: "progress-bar productive"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                lineNumber: 111,
-                                                                                columnNumber: 61
+                                                                                lineNumber: 148,
+                                                                                columnNumber: 53
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                                 className: "progress-bar middle"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                lineNumber: 112,
-                                                                                columnNumber: 61
+                                                                                lineNumber: 149,
+                                                                                columnNumber: 53
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                                 className: "progress-bar idle"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                lineNumber: 113,
-                                                                                columnNumber: 61
+                                                                                lineNumber: 150,
+                                                                                columnNumber: 53
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                                        lineNumber: 110,
-                                                                        columnNumber: 57
+                                                                        lineNumber: 147,
+                                                                        columnNumber: 49
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                lineNumber: 101,
-                                                                columnNumber: 53
+                                                                lineNumber: 138,
+                                                                columnNumber: 45
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                        lineNumber: 89,
-                                                        columnNumber: 49
+                                                        lineNumber: 126,
+                                                        columnNumber: 41
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                    lineNumber: 88,
-                                                    columnNumber: 45
+                                                    lineNumber: 125,
+                                                    columnNumber: 37
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                lineNumber: 87,
-                                                columnNumber: 41
+                                                lineNumber: 124,
+                                                columnNumber: 33
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 className: "col-sm-6",
@@ -341,13 +378,13 @@ const Homepage = ()=>{
                                                                     children: "Available Balance"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                                    lineNumber: 123,
-                                                                    columnNumber: 57
+                                                                    lineNumber: 160,
+                                                                    columnNumber: 49
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                lineNumber: 122,
-                                                                columnNumber: 53
+                                                                lineNumber: 159,
+                                                                columnNumber: 45
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                 className: "my-4",
@@ -356,13 +393,13 @@ const Homepage = ()=>{
                                                                     children: "34.62K"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                                    lineNumber: 126,
-                                                                    columnNumber: 57
+                                                                    lineNumber: 163,
+                                                                    columnNumber: 49
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                lineNumber: 125,
-                                                                columnNumber: 53
+                                                                lineNumber: 162,
+                                                                columnNumber: 45
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                 className: "d-flex align-items-center justify-content-between pt-2",
@@ -373,38 +410,38 @@ const Homepage = ()=>{
                                                                         src: "../assets/images/New/coin.png"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                                        lineNumber: 129,
-                                                                        columnNumber: 57
+                                                                        lineNumber: 166,
+                                                                        columnNumber: 49
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                         className: "badge bg-white-300 text-info-dark ms-2 ",
                                                                         children: "🔥 1H left"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                                        lineNumber: 130,
-                                                                        columnNumber: 57
+                                                                        lineNumber: 167,
+                                                                        columnNumber: 49
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                lineNumber: 128,
-                                                                columnNumber: 53
+                                                                lineNumber: 165,
+                                                                columnNumber: 45
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                        lineNumber: 121,
-                                                        columnNumber: 49
+                                                        lineNumber: 158,
+                                                        columnNumber: 41
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                    lineNumber: 120,
-                                                    columnNumber: 45
+                                                    lineNumber: 157,
+                                                    columnNumber: 37
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                lineNumber: 119,
-                                                columnNumber: 41
+                                                lineNumber: 156,
+                                                columnNumber: 33
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 className: "col-sm-6",
@@ -420,13 +457,13 @@ const Homepage = ()=>{
                                                                     children: "Open Tickets"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                                    lineNumber: 139,
-                                                                    columnNumber: 57
+                                                                    lineNumber: 176,
+                                                                    columnNumber: 49
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                lineNumber: 138,
-                                                                columnNumber: 53
+                                                                lineNumber: 175,
+                                                                columnNumber: 45
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                 children: [
@@ -435,8 +472,8 @@ const Homepage = ()=>{
                                                                         children: "14"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                                        lineNumber: 142,
-                                                                        columnNumber: 57
+                                                                        lineNumber: 179,
+                                                                        columnNumber: 49
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
                                                                         className: "avatar-group justify-content-start ",
@@ -451,13 +488,13 @@ const Homepage = ()=>{
                                                                                     src: "../assets/images/avtar/4.png"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                    lineNumber: 145,
-                                                                                    columnNumber: 65
+                                                                                    lineNumber: 182,
+                                                                                    columnNumber: 57
                                                                                 }, this)
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                lineNumber: 144,
-                                                                                columnNumber: 61
+                                                                                lineNumber: 181,
+                                                                                columnNumber: 53
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
                                                                                 className: "h-35 w-35 d-flex-center b-r-50 overflow-hidden text-bg-success b-2-light",
@@ -469,13 +506,13 @@ const Homepage = ()=>{
                                                                                     src: "../assets/images/avtar/5.png"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                    lineNumber: 148,
-                                                                                    columnNumber: 65
+                                                                                    lineNumber: 185,
+                                                                                    columnNumber: 57
                                                                                 }, this)
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                lineNumber: 147,
-                                                                                columnNumber: 61
+                                                                                lineNumber: 184,
+                                                                                columnNumber: 53
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
                                                                                 className: "h-35 w-35 d-flex-center b-r-50 overflow-hidden text-bg-danger b-2-light",
@@ -487,13 +524,13 @@ const Homepage = ()=>{
                                                                                     src: "../assets/images/avtar/6.png"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                    lineNumber: 151,
-                                                                                    columnNumber: 65
+                                                                                    lineNumber: 188,
+                                                                                    columnNumber: 57
                                                                                 }, this)
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                lineNumber: 150,
-                                                                                columnNumber: 61
+                                                                                lineNumber: 187,
+                                                                                columnNumber: 53
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
                                                                                 className: "text-bg-secondary h-35 w-35 d-flex-center b-r-50",
@@ -502,47 +539,47 @@ const Homepage = ()=>{
                                                                                 children: "10+"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                lineNumber: 153,
-                                                                                columnNumber: 61
+                                                                                lineNumber: 190,
+                                                                                columnNumber: 53
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                                        lineNumber: 143,
-                                                                        columnNumber: 57
+                                                                        lineNumber: 180,
+                                                                        columnNumber: 49
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                lineNumber: 141,
-                                                                columnNumber: 53
+                                                                lineNumber: 178,
+                                                                columnNumber: 45
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                        lineNumber: 137,
-                                                        columnNumber: 49
+                                                        lineNumber: 174,
+                                                        columnNumber: 41
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                    lineNumber: 136,
-                                                    columnNumber: 45
+                                                    lineNumber: 173,
+                                                    columnNumber: 37
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                lineNumber: 135,
-                                                columnNumber: 41
+                                                lineNumber: 172,
+                                                columnNumber: 33
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                        lineNumber: 85,
-                                        columnNumber: 37
+                                        lineNumber: 122,
+                                        columnNumber: 29
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                    lineNumber: 84,
-                                    columnNumber: 33
+                                    lineNumber: 121,
+                                    columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "col-md-6 col-xxl-4",
@@ -559,33 +596,33 @@ const Homepage = ()=>{
                                                         id: "projectExpense"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                        lineNumber: 173,
-                                                        columnNumber: 53
+                                                        lineNumber: 210,
+                                                        columnNumber: 45
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                    lineNumber: 172,
-                                                    columnNumber: 49
+                                                    lineNumber: 209,
+                                                    columnNumber: 41
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                lineNumber: 171,
-                                                columnNumber: 45
+                                                lineNumber: 208,
+                                                columnNumber: 37
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                            lineNumber: 170,
-                                            columnNumber: 41
+                                            lineNumber: 207,
+                                            columnNumber: 33
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                        lineNumber: 164,
-                                        columnNumber: 37
+                                        lineNumber: 201,
+                                        columnNumber: 29
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                    lineNumber: 163,
-                                    columnNumber: 33
+                                    lineNumber: 200,
+                                    columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "col-md-6 col-xxl-4 ",
@@ -606,28 +643,28 @@ const Homepage = ()=>{
                                                                     children: "Effortlessly."
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                                    lineNumber: 183,
-                                                                    columnNumber: 90
+                                                                    lineNumber: 220,
+                                                                    columnNumber: 82
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                                            lineNumber: 183,
-                                                            columnNumber: 49
+                                                            lineNumber: 220,
+                                                            columnNumber: 41
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                             className: "f-s-14 text-dark pb-0 txt-ellipsis-2",
                                                             children: "Connect your team's tools and unlock a unified view of every project's progress, deadlines, and team contributions."
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                                            lineNumber: 185,
-                                                            columnNumber: 49
+                                                            lineNumber: 222,
+                                                            columnNumber: 41
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                    lineNumber: 182,
-                                                    columnNumber: 45
+                                                    lineNumber: 219,
+                                                    columnNumber: 37
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "connect-chat-box",
@@ -641,8 +678,8 @@ const Homepage = ()=>{
                                                                     src: "../assets/images/dashboard/project/avatar.png"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                                    lineNumber: 192,
-                                                                    columnNumber: 53
+                                                                    lineNumber: 229,
+                                                                    columnNumber: 45
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
                                                                     alt: "logo",
@@ -650,22 +687,22 @@ const Homepage = ()=>{
                                                                     src: "../assets/images/dashboard/project/dribbble.png"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                                    lineNumber: 193,
-                                                                    columnNumber: 53
+                                                                    lineNumber: 230,
+                                                                    columnNumber: 45
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                                            lineNumber: 191,
-                                                            columnNumber: 49
+                                                            lineNumber: 228,
+                                                            columnNumber: 41
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
                                                             alt: "img",
                                                             src: "../assets/images/dashboard/project/chat.png"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                                            lineNumber: 195,
-                                                            columnNumber: 49
+                                                            lineNumber: 232,
+                                                            columnNumber: 41
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
                                                             alt: "logo",
@@ -673,30 +710,30 @@ const Homepage = ()=>{
                                                             src: "../assets/images/dashboard/project/slack.png"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                                            lineNumber: 196,
-                                                            columnNumber: 49
+                                                            lineNumber: 233,
+                                                            columnNumber: 41
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                    lineNumber: 190,
-                                                    columnNumber: 45
+                                                    lineNumber: 227,
+                                                    columnNumber: 37
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                            lineNumber: 181,
-                                            columnNumber: 41
+                                            lineNumber: 218,
+                                            columnNumber: 33
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                        lineNumber: 180,
-                                        columnNumber: 37
+                                        lineNumber: 217,
+                                        columnNumber: 29
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                    lineNumber: 179,
-                                    columnNumber: 33
+                                    lineNumber: 216,
+                                    columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "col-lg-7 col-xxl-6 order-1-md",
@@ -707,13 +744,13 @@ const Homepage = ()=>{
                                                 children: "Active services"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                lineNumber: 203,
-                                                columnNumber: 41
+                                                lineNumber: 240,
+                                                columnNumber: 33
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                            lineNumber: 202,
-                                            columnNumber: 37
+                                            lineNumber: 239,
+                                            columnNumber: 29
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "card",
@@ -732,47 +769,47 @@ const Homepage = ()=>{
                                                                             children: "Date"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                                                            lineNumber: 211,
-                                                                            columnNumber: 61
+                                                                            lineNumber: 248,
+                                                                            columnNumber: 53
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
                                                                             children: "IP"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                                                            lineNumber: 212,
-                                                                            columnNumber: 61
+                                                                            lineNumber: 249,
+                                                                            columnNumber: 53
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
                                                                             children: "OS"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                                                            lineNumber: 213,
-                                                                            columnNumber: 61
+                                                                            lineNumber: 250,
+                                                                            columnNumber: 53
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
                                                                             children: "Country"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                                                            lineNumber: 214,
-                                                                            columnNumber: 61
+                                                                            lineNumber: 251,
+                                                                            columnNumber: 53
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
                                                                             children: "Status"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                                                            lineNumber: 215,
-                                                                            columnNumber: 61
+                                                                            lineNumber: 252,
+                                                                            columnNumber: 53
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                                    lineNumber: 210,
-                                                                    columnNumber: 57
+                                                                    lineNumber: 247,
+                                                                    columnNumber: 49
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                lineNumber: 209,
-                                                                columnNumber: 53
+                                                                lineNumber: 246,
+                                                                columnNumber: 45
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
                                                                 children: [
@@ -782,29 +819,29 @@ const Homepage = ()=>{
                                                                                 children: "9/22/2024"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                lineNumber: 220,
-                                                                                columnNumber: 61
+                                                                                lineNumber: 257,
+                                                                                columnNumber: 53
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                                                 children: "192.168.1.1"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                lineNumber: 221,
-                                                                                columnNumber: 61
+                                                                                lineNumber: 258,
+                                                                                columnNumber: 53
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                                                 children: "macOS"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                lineNumber: 222,
-                                                                                columnNumber: 61
+                                                                                lineNumber: 259,
+                                                                                columnNumber: 53
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                                                 children: "Canada"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                lineNumber: 223,
-                                                                                columnNumber: 61
+                                                                                lineNumber: 260,
+                                                                                columnNumber: 53
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -812,19 +849,19 @@ const Homepage = ()=>{
                                                                                     children: "success "
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                    lineNumber: 224,
-                                                                                    columnNumber: 65
+                                                                                    lineNumber: 261,
+                                                                                    columnNumber: 57
                                                                                 }, this)
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                lineNumber: 224,
-                                                                                columnNumber: 61
+                                                                                lineNumber: 261,
+                                                                                columnNumber: 53
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                                        lineNumber: 219,
-                                                                        columnNumber: 57
+                                                                        lineNumber: 256,
+                                                                        columnNumber: 49
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
                                                                         children: [
@@ -832,29 +869,29 @@ const Homepage = ()=>{
                                                                                 children: "9/19/2024"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                lineNumber: 227,
-                                                                                columnNumber: 61
+                                                                                lineNumber: 264,
+                                                                                columnNumber: 53
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                                                 children: "192.168.1.4"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                lineNumber: 228,
-                                                                                columnNumber: 61
+                                                                                lineNumber: 265,
+                                                                                columnNumber: 53
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                                                 children: "Windows 11"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                lineNumber: 229,
-                                                                                columnNumber: 61
+                                                                                lineNumber: 266,
+                                                                                columnNumber: 53
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                                                 children: "UK"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                lineNumber: 230,
-                                                                                columnNumber: 61
+                                                                                lineNumber: 267,
+                                                                                columnNumber: 53
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -862,52 +899,52 @@ const Homepage = ()=>{
                                                                                     children: "failed"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                    lineNumber: 231,
-                                                                                    columnNumber: 65
+                                                                                    lineNumber: 268,
+                                                                                    columnNumber: 57
                                                                                 }, this)
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                lineNumber: 231,
-                                                                                columnNumber: 61
+                                                                                lineNumber: 268,
+                                                                                columnNumber: 53
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                                        lineNumber: 226,
-                                                                        columnNumber: 57
+                                                                        lineNumber: 263,
+                                                                        columnNumber: 49
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                lineNumber: 218,
-                                                                columnNumber: 53
+                                                                lineNumber: 255,
+                                                                columnNumber: 45
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                        lineNumber: 208,
-                                                        columnNumber: 49
+                                                        lineNumber: 245,
+                                                        columnNumber: 41
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                    lineNumber: 207,
-                                                    columnNumber: 45
+                                                    lineNumber: 244,
+                                                    columnNumber: 37
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                lineNumber: 206,
-                                                columnNumber: 41
+                                                lineNumber: 243,
+                                                columnNumber: 33
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                            lineNumber: 205,
-                                            columnNumber: 37
+                                            lineNumber: 242,
+                                            columnNumber: 29
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                    lineNumber: 201,
-                                    columnNumber: 33
+                                    lineNumber: 238,
+                                    columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "col-md-6 col-xxl-3 ",
@@ -918,13 +955,13 @@ const Homepage = ()=>{
                                                 children: "Pending invoices & support tickets"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                lineNumber: 241,
-                                                columnNumber: 41
+                                                lineNumber: 278,
+                                                columnNumber: 33
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                            lineNumber: 240,
-                                            columnNumber: 37
+                                            lineNumber: 277,
+                                            columnNumber: 29
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "card",
@@ -942,27 +979,27 @@ const Homepage = ()=>{
                                                                         children: "support tickets"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                                        lineNumber: 248,
-                                                                        columnNumber: 57
+                                                                        lineNumber: 285,
+                                                                        columnNumber: 49
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                                    lineNumber: 247,
-                                                                    columnNumber: 53
+                                                                    lineNumber: 284,
+                                                                    columnNumber: 45
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                     className: "text-dark f-w-600 ms-2",
                                                                     children: "0"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                                    lineNumber: 250,
-                                                                    columnNumber: 53
+                                                                    lineNumber: 287,
+                                                                    columnNumber: 45
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                                            lineNumber: 246,
-                                                            columnNumber: 49
+                                                            lineNumber: 283,
+                                                            columnNumber: 41
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
                                                             className: "bg-primary-300",
@@ -973,49 +1010,49 @@ const Homepage = ()=>{
                                                                         children: "Pending invoices"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                                        lineNumber: 256,
-                                                                        columnNumber: 57
+                                                                        lineNumber: 293,
+                                                                        columnNumber: 49
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                                    lineNumber: 255,
-                                                                    columnNumber: 53
+                                                                    lineNumber: 292,
+                                                                    columnNumber: 45
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                     className: "text-dark f-w-600 ms-2",
                                                                     children: "0"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                                    lineNumber: 258,
-                                                                    columnNumber: 53
+                                                                    lineNumber: 295,
+                                                                    columnNumber: 45
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                                            lineNumber: 254,
-                                                            columnNumber: 49
+                                                            lineNumber: 291,
+                                                            columnNumber: 41
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                    lineNumber: 245,
-                                                    columnNumber: 45
+                                                    lineNumber: 282,
+                                                    columnNumber: 37
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                lineNumber: 244,
-                                                columnNumber: 41
+                                                lineNumber: 281,
+                                                columnNumber: 33
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                            lineNumber: 243,
-                                            columnNumber: 37
+                                            lineNumber: 280,
+                                            columnNumber: 29
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                    lineNumber: 239,
-                                    columnNumber: 33
+                                    lineNumber: 276,
+                                    columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "col-md-6 col-lg-5 col-xxl-3",
@@ -1026,13 +1063,13 @@ const Homepage = ()=>{
                                                 children: "News & Updates, Maintenance"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                lineNumber: 269,
-                                                columnNumber: 41
+                                                lineNumber: 306,
+                                                columnNumber: 33
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                            lineNumber: 268,
-                                            columnNumber: 37
+                                            lineNumber: 305,
+                                            columnNumber: 29
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "card",
@@ -1040,757 +1077,773 @@ const Homepage = ()=>{
                                                 className: "card-body",
                                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "task-container slider",
-                                                    children: [
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                            className: "card task-card bg-danger-300",
-                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                className: "card-body",
+                                                    ref: containerRef,
+                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        className: "scroll-wrapper",
+                                                        children: [
+                                                            ...Array(2)
+                                                        ].map((_, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                 children: [
-                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h6", {
-                                                                        className: "text-danger-dark txt-ellipsis-1",
-                                                                        children: "Finalize Project Proposal"
-                                                                    }, void 0, false, {
-                                                                        fileName: "[project]/src/pages/Homepage.jsx",
-                                                                        lineNumber: 276,
-                                                                        columnNumber: 57
-                                                                    }, this),
-                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
-                                                                        className: "avatar-group justify-content-start my-3",
-                                                                        children: [
-                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
-                                                                                className: "h-35 w-35 d-flex-center b-r-50 overflow-hidden bg-primary",
-                                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                                                                    alt: "avtar",
-                                                                                    className: "img-fluid",
-                                                                                    src: "../assets/images/avtar/4.png"
-                                                                                }, void 0, false, {
-                                                                                    fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                    lineNumber: 279,
-                                                                                    columnNumber: 65
-                                                                                }, this)
-                                                                            }, void 0, false, {
-                                                                                fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                lineNumber: 278,
-                                                                                columnNumber: 61
-                                                                            }, this),
-                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
-                                                                                className: "h-35 w-35 d-flex-center b-r-50 overflow-hidden bg-success",
-                                                                                "data-bs-title": "Lennon Briggs",
-                                                                                "data-bs-toggle": "tooltip",
-                                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                                                                    alt: "avtar",
-                                                                                    className: "img-fluid",
-                                                                                    src: "../assets/images/avtar/5.png"
-                                                                                }, void 0, false, {
-                                                                                    fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                    lineNumber: 282,
-                                                                                    columnNumber: 65
-                                                                                }, this)
-                                                                            }, void 0, false, {
-                                                                                fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                lineNumber: 281,
-                                                                                columnNumber: 61
-                                                                            }, this),
-                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
-                                                                                className: "h-35 w-35 d-flex-center b-r-50 overflow-hidden bg-danger",
-                                                                                "data-bs-title": "Maya Horton",
-                                                                                "data-bs-toggle": "tooltip",
-                                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                                                                    alt: "avtar",
-                                                                                    className: "img-fluid",
-                                                                                    src: "../assets/images/avtar/6.png"
-                                                                                }, void 0, false, {
-                                                                                    fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                    lineNumber: 285,
-                                                                                    columnNumber: 65
-                                                                                }, this)
-                                                                            }, void 0, false, {
-                                                                                fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                lineNumber: 284,
-                                                                                columnNumber: 61
-                                                                            }, this)
-                                                                        ]
-                                                                    }, void 0, true, {
-                                                                        fileName: "[project]/src/pages/Homepage.jsx",
-                                                                        lineNumber: 277,
-                                                                        columnNumber: 57
-                                                                    }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                        className: "d-flex justify-content-between align-items-center",
-                                                                        children: [
-                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                                "aria-valuemax": 100,
-                                                                                "aria-valuemin": 0,
-                                                                                "aria-valuenow": 25,
-                                                                                className: "progress w-100",
-                                                                                role: "progressbar",
-                                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                                    className: "progress-bar bg-danger-dark progress-bar-striped progress-bar-animated",
-                                                                                    style: {
-                                                                                        width: '68%'
-                                                                                    }
+                                                                        className: "card task-card bg-danger-300",
+                                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                            className: "card-body",
+                                                                            children: [
+                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h6", {
+                                                                                    className: "text-danger-dark txt-ellipsis-1",
+                                                                                    children: "Finalize Project Proposal"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                    lineNumber: 290,
-                                                                                    columnNumber: 65
+                                                                                    lineNumber: 316,
+                                                                                    columnNumber: 61
+                                                                                }, this),
+                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
+                                                                                    className: "avatar-group justify-content-start my-3",
+                                                                                    children: [
+                                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                                                            className: "h-35 w-35 d-flex-center b-r-50 overflow-hidden bg-primary",
+                                                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                                                                                                alt: "avtar",
+                                                                                                className: "img-fluid",
+                                                                                                src: "../assets/images/avtar/4.png"
+                                                                                            }, void 0, false, {
+                                                                                                fileName: "[project]/src/pages/Homepage.jsx",
+                                                                                                lineNumber: 319,
+                                                                                                columnNumber: 69
+                                                                                            }, this)
+                                                                                        }, void 0, false, {
+                                                                                            fileName: "[project]/src/pages/Homepage.jsx",
+                                                                                            lineNumber: 318,
+                                                                                            columnNumber: 65
+                                                                                        }, this),
+                                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                                                            className: "h-35 w-35 d-flex-center b-r-50 overflow-hidden bg-success",
+                                                                                            "data-bs-title": "Lennon Briggs",
+                                                                                            "data-bs-toggle": "tooltip",
+                                                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                                                                                                alt: "avtar",
+                                                                                                className: "img-fluid",
+                                                                                                src: "../assets/images/avtar/5.png"
+                                                                                            }, void 0, false, {
+                                                                                                fileName: "[project]/src/pages/Homepage.jsx",
+                                                                                                lineNumber: 322,
+                                                                                                columnNumber: 69
+                                                                                            }, this)
+                                                                                        }, void 0, false, {
+                                                                                            fileName: "[project]/src/pages/Homepage.jsx",
+                                                                                            lineNumber: 321,
+                                                                                            columnNumber: 65
+                                                                                        }, this),
+                                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                                                            className: "h-35 w-35 d-flex-center b-r-50 overflow-hidden bg-danger",
+                                                                                            "data-bs-title": "Maya Horton",
+                                                                                            "data-bs-toggle": "tooltip",
+                                                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                                                                                                alt: "avtar",
+                                                                                                className: "img-fluid",
+                                                                                                src: "../assets/images/avtar/6.png"
+                                                                                            }, void 0, false, {
+                                                                                                fileName: "[project]/src/pages/Homepage.jsx",
+                                                                                                lineNumber: 325,
+                                                                                                columnNumber: 69
+                                                                                            }, this)
+                                                                                        }, void 0, false, {
+                                                                                            fileName: "[project]/src/pages/Homepage.jsx",
+                                                                                            lineNumber: 324,
+                                                                                            columnNumber: 65
+                                                                                        }, this)
+                                                                                    ]
+                                                                                }, void 0, true, {
+                                                                                    fileName: "[project]/src/pages/Homepage.jsx",
+                                                                                    lineNumber: 317,
+                                                                                    columnNumber: 61
+                                                                                }, this),
+                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                                    className: "d-flex justify-content-between align-items-center",
+                                                                                    children: [
+                                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                                            "aria-valuemax": 100,
+                                                                                            "aria-valuemin": 0,
+                                                                                            "aria-valuenow": 25,
+                                                                                            className: "progress w-100",
+                                                                                            role: "progressbar",
+                                                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                                                className: "progress-bar bg-danger-dark progress-bar-striped progress-bar-animated",
+                                                                                                style: {
+                                                                                                    width: '68%'
+                                                                                                }
+                                                                                            }, void 0, false, {
+                                                                                                fileName: "[project]/src/pages/Homepage.jsx",
+                                                                                                lineNumber: 330,
+                                                                                                columnNumber: 69
+                                                                                            }, this)
+                                                                                        }, void 0, false, {
+                                                                                            fileName: "[project]/src/pages/Homepage.jsx",
+                                                                                            lineNumber: 329,
+                                                                                            columnNumber: 65
+                                                                                        }, this),
+                                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                            className: "badge bg-white-300 text-danger-dark ms-2 ",
+                                                                                            children: "+ 68%"
+                                                                                        }, void 0, false, {
+                                                                                            fileName: "[project]/src/pages/Homepage.jsx",
+                                                                                            lineNumber: 332,
+                                                                                            columnNumber: 65
+                                                                                        }, this)
+                                                                                    ]
+                                                                                }, void 0, true, {
+                                                                                    fileName: "[project]/src/pages/Homepage.jsx",
+                                                                                    lineNumber: 328,
+                                                                                    columnNumber: 61
                                                                                 }, this)
-                                                                            }, void 0, false, {
-                                                                                fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                lineNumber: 289,
-                                                                                columnNumber: 61
-                                                                            }, this),
-                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                                className: "badge bg-white-300 text-danger-dark ms-2 ",
-                                                                                children: "+ 68%"
-                                                                            }, void 0, false, {
-                                                                                fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                lineNumber: 292,
-                                                                                columnNumber: 61
-                                                                            }, this)
-                                                                        ]
-                                                                    }, void 0, true, {
-                                                                        fileName: "[project]/src/pages/Homepage.jsx",
-                                                                        lineNumber: 288,
-                                                                        columnNumber: 57
-                                                                    }, this)
-                                                                ]
-                                                            }, void 0, true, {
-                                                                fileName: "[project]/src/pages/Homepage.jsx",
-                                                                lineNumber: 275,
-                                                                columnNumber: 53
-                                                            }, this)
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/src/pages/Homepage.jsx",
-                                                            lineNumber: 274,
-                                                            columnNumber: 49
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                            className: "card",
-                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                className: "d-flex justify-content-between align-items-center rounded p-1 bg-primary-300",
-                                                                children: [
-                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                        className: "bg-primary h-35 w-35 d-flex-center rounded",
-                                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("i", {
-                                                                            className: "iconoir-group f-s-18"
-                                                                        }, void 0, false, {
+                                                                            ]
+                                                                        }, void 0, true, {
                                                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                                                            lineNumber: 299,
-                                                                            columnNumber: 61
+                                                                            lineNumber: 315,
+                                                                            columnNumber: 57
                                                                         }, this)
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                                        lineNumber: 298,
-                                                                        columnNumber: 57
-                                                                    }, this),
-                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h6", {
-                                                                        className: "mb-0 txt-ellipsis-1",
-                                                                        children: "Meeting"
-                                                                    }, void 0, false, {
-                                                                        fileName: "[project]/src/pages/Homepage.jsx",
-                                                                        lineNumber: 301,
-                                                                        columnNumber: 57
+                                                                        lineNumber: 314,
+                                                                        columnNumber: 53
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                        className: "d-flex gap-2",
-                                                                        children: [
-                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                                className: "w-35 h-35 bg-white-300 text-info-dark rounded p-2 d-flex-center",
-                                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("i", {
-                                                                                    className: "iconoir-more-horiz f-s-18"
+                                                                        className: "card",
+                                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                            className: "d-flex justify-content-between align-items-center rounded p-1 bg-primary-300",
+                                                                            children: [
+                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                    className: "bg-primary h-35 w-35 d-flex-center rounded",
+                                                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("i", {
+                                                                                        className: "iconoir-group f-s-18"
+                                                                                    }, void 0, false, {
+                                                                                        fileName: "[project]/src/pages/Homepage.jsx",
+                                                                                        lineNumber: 339,
+                                                                                        columnNumber: 65
+                                                                                    }, this)
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                    lineNumber: 303,
-                                                                                    columnNumber: 143
-                                                                                }, this)
-                                                                            }, void 0, false, {
-                                                                                fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                lineNumber: 303,
-                                                                                columnNumber: 61
-                                                                            }, this),
-                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                                className: "w-35 h-35 bg-white-300 text-info-dark rounded p-2 d-flex-center",
-                                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("i", {
-                                                                                    className: "iconoir-copy f-s-18"
-                                                                                }, void 0, false, {
-                                                                                    fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                    lineNumber: 305,
-                                                                                    columnNumber: 143
-                                                                                }, this)
-                                                                            }, void 0, false, {
-                                                                                fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                lineNumber: 305,
-                                                                                columnNumber: 61
-                                                                            }, this)
-                                                                        ]
-                                                                    }, void 0, true, {
-                                                                        fileName: "[project]/src/pages/Homepage.jsx",
-                                                                        lineNumber: 302,
-                                                                        columnNumber: 57
-                                                                    }, this)
-                                                                ]
-                                                            }, void 0, true, {
-                                                                fileName: "[project]/src/pages/Homepage.jsx",
-                                                                lineNumber: 297,
-                                                                columnNumber: 53
-                                                            }, this)
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/src/pages/Homepage.jsx",
-                                                            lineNumber: 296,
-                                                            columnNumber: 49
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                            className: "card task-card bg-warning-300",
-                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                className: "card-body",
-                                                                children: [
-                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h6", {
-                                                                        className: "text-warning-dark txt-ellipsis-1",
-                                                                        children: "Design Homepage Layout"
-                                                                    }, void 0, false, {
-                                                                        fileName: "[project]/src/pages/Homepage.jsx",
-                                                                        lineNumber: 312,
-                                                                        columnNumber: 57
-                                                                    }, this),
-                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
-                                                                        className: "avatar-group justify-content-start my-3",
-                                                                        children: [
-                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
-                                                                                className: "h-35 w-35 d-flex-center b-r-50 overflow-hidden bg-primary",
-                                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                                                                    alt: "avtar",
-                                                                                    className: "img-fluid",
-                                                                                    src: "../assets/images/avtar/3.png"
-                                                                                }, void 0, false, {
-                                                                                    fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                    lineNumber: 315,
-                                                                                    columnNumber: 65
-                                                                                }, this)
-                                                                            }, void 0, false, {
-                                                                                fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                lineNumber: 314,
-                                                                                columnNumber: 61
-                                                                            }, this),
-                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
-                                                                                className: "h-35 w-35 d-flex-center b-r-50 overflow-hidden bg-info",
-                                                                                "data-bs-title": "Sophia Turner",
-                                                                                "data-bs-toggle": "tooltip",
-                                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                                                                    alt: "avtar",
-                                                                                    className: "img-fluid",
-                                                                                    src: "../assets/images/avtar/7.png"
-                                                                                }, void 0, false, {
-                                                                                    fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                    lineNumber: 318,
-                                                                                    columnNumber: 65
-                                                                                }, this)
-                                                                            }, void 0, false, {
-                                                                                fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                lineNumber: 317,
-                                                                                columnNumber: 61
-                                                                            }, this),
-                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
-                                                                                className: "h-35 w-35 d-flex-center b-r-50 overflow-hidden bg-warning",
-                                                                                "data-bs-title": "Lucas Green",
-                                                                                "data-bs-toggle": "tooltip",
-                                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                                                                    alt: "avtar",
-                                                                                    className: "img-fluid",
-                                                                                    src: "../assets/images/avtar/8.png"
-                                                                                }, void 0, false, {
-                                                                                    fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                    lineNumber: 321,
-                                                                                    columnNumber: 65
-                                                                                }, this)
-                                                                            }, void 0, false, {
-                                                                                fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                lineNumber: 320,
-                                                                                columnNumber: 61
-                                                                            }, this)
-                                                                        ]
-                                                                    }, void 0, true, {
-                                                                        fileName: "[project]/src/pages/Homepage.jsx",
-                                                                        lineNumber: 313,
-                                                                        columnNumber: 57
-                                                                    }, this),
-                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                        className: "d-flex justify-content-between align-items-center",
-                                                                        children: [
-                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                                "aria-valuemax": 100,
-                                                                                "aria-valuemin": 0,
-                                                                                "aria-valuenow": 25,
-                                                                                className: "progress w-100",
-                                                                                role: "progressbar",
-                                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                                    className: "progress-bar bg-warning-dark progress-bar-striped progress-bar-animated",
-                                                                                    style: {
-                                                                                        width: '35%'
-                                                                                    }
-                                                                                }, void 0, false, {
-                                                                                    fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                    lineNumber: 326,
-                                                                                    columnNumber: 65
-                                                                                }, this)
-                                                                            }, void 0, false, {
-                                                                                fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                lineNumber: 325,
-                                                                                columnNumber: 61
-                                                                            }, this),
-                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                                className: "badge bg-white-400 text-secondary-dark ms-2",
-                                                                                children: "+ 35%"
-                                                                            }, void 0, false, {
-                                                                                fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                lineNumber: 328,
-                                                                                columnNumber: 61
-                                                                            }, this)
-                                                                        ]
-                                                                    }, void 0, true, {
-                                                                        fileName: "[project]/src/pages/Homepage.jsx",
-                                                                        lineNumber: 324,
-                                                                        columnNumber: 57
-                                                                    }, this)
-                                                                ]
-                                                            }, void 0, true, {
-                                                                fileName: "[project]/src/pages/Homepage.jsx",
-                                                                lineNumber: 311,
-                                                                columnNumber: 53
-                                                            }, this)
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/src/pages/Homepage.jsx",
-                                                            lineNumber: 310,
-                                                            columnNumber: 49
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                            className: "card",
-                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                className: "d-flex justify-content-between align-items-center rounded p-1 bg-info-300",
-                                                                children: [
-                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                        className: "bg-info h-35 w-35 d-flex-center rounded",
-                                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("i", {
-                                                                            className: "iconoir-group f-s-18"
-                                                                        }, void 0, false, {
-                                                                            fileName: "[project]/src/pages/Homepage.jsx",
-                                                                            lineNumber: 335,
-                                                                            columnNumber: 61
-                                                                        }, this)
-                                                                    }, void 0, false, {
-                                                                        fileName: "[project]/src/pages/Homepage.jsx",
-                                                                        lineNumber: 334,
-                                                                        columnNumber: 57
-                                                                    }, this),
-                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h6", {
-                                                                        className: "mb-0 txt-ellipsis-1",
-                                                                        children: "Meeting"
-                                                                    }, void 0, false, {
-                                                                        fileName: "[project]/src/pages/Homepage.jsx",
-                                                                        lineNumber: 337,
-                                                                        columnNumber: 57
-                                                                    }, this),
-                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                        className: "d-flex gap-2",
-                                                                        children: [
-                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                                className: "w-35 h-35 bg-white-300 text-info-dark rounded p-2 d-flex-center",
-                                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("i", {
-                                                                                    className: "iconoir-more-horiz f-s-18"
-                                                                                }, void 0, false, {
-                                                                                    fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                    lineNumber: 339,
-                                                                                    columnNumber: 143
-                                                                                }, this)
-                                                                            }, void 0, false, {
-                                                                                fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                lineNumber: 339,
-                                                                                columnNumber: 61
-                                                                            }, this),
-                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                                className: "w-35 h-35 bg-white-300 text-info-dark rounded p-2 d-flex-center",
-                                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("i", {
-                                                                                    className: "iconoir-copy f-s-18"
+                                                                                    lineNumber: 338,
+                                                                                    columnNumber: 61
+                                                                                }, this),
+                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h6", {
+                                                                                    className: "mb-0 txt-ellipsis-1",
+                                                                                    children: "Meeting"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/pages/Homepage.jsx",
                                                                                     lineNumber: 341,
-                                                                                    columnNumber: 143
+                                                                                    columnNumber: 61
+                                                                                }, this),
+                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                                    className: "d-flex gap-2",
+                                                                                    children: [
+                                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                            className: "w-35 h-35 bg-white-300 text-info-dark rounded p-2 d-flex-center",
+                                                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("i", {
+                                                                                                className: "iconoir-more-horiz f-s-18"
+                                                                                            }, void 0, false, {
+                                                                                                fileName: "[project]/src/pages/Homepage.jsx",
+                                                                                                lineNumber: 343,
+                                                                                                columnNumber: 147
+                                                                                            }, this)
+                                                                                        }, void 0, false, {
+                                                                                            fileName: "[project]/src/pages/Homepage.jsx",
+                                                                                            lineNumber: 343,
+                                                                                            columnNumber: 65
+                                                                                        }, this),
+                                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                            className: "w-35 h-35 bg-white-300 text-info-dark rounded p-2 d-flex-center",
+                                                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("i", {
+                                                                                                className: "iconoir-copy f-s-18"
+                                                                                            }, void 0, false, {
+                                                                                                fileName: "[project]/src/pages/Homepage.jsx",
+                                                                                                lineNumber: 345,
+                                                                                                columnNumber: 147
+                                                                                            }, this)
+                                                                                        }, void 0, false, {
+                                                                                            fileName: "[project]/src/pages/Homepage.jsx",
+                                                                                            lineNumber: 345,
+                                                                                            columnNumber: 65
+                                                                                        }, this)
+                                                                                    ]
+                                                                                }, void 0, true, {
+                                                                                    fileName: "[project]/src/pages/Homepage.jsx",
+                                                                                    lineNumber: 342,
+                                                                                    columnNumber: 61
                                                                                 }, this)
-                                                                            }, void 0, false, {
-                                                                                fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                lineNumber: 341,
-                                                                                columnNumber: 61
-                                                                            }, this)
-                                                                        ]
-                                                                    }, void 0, true, {
-                                                                        fileName: "[project]/src/pages/Homepage.jsx",
-                                                                        lineNumber: 338,
-                                                                        columnNumber: 57
-                                                                    }, this)
-                                                                ]
-                                                            }, void 0, true, {
-                                                                fileName: "[project]/src/pages/Homepage.jsx",
-                                                                lineNumber: 333,
-                                                                columnNumber: 53
-                                                            }, this)
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/src/pages/Homepage.jsx",
-                                                            lineNumber: 332,
-                                                            columnNumber: 49
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                            className: "card",
-                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                className: "d-flex justify-content-between align-items-center rounded p-1 bg-success-300",
-                                                                children: [
-                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                        className: "bg-success h-35 w-35 d-flex-center rounded",
-                                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("i", {
-                                                                            className: "iconoir-group f-s-18"
-                                                                        }, void 0, false, {
+                                                                            ]
+                                                                        }, void 0, true, {
                                                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                                                            lineNumber: 349,
-                                                                            columnNumber: 61
+                                                                            lineNumber: 337,
+                                                                            columnNumber: 57
                                                                         }, this)
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                                        lineNumber: 348,
-                                                                        columnNumber: 57
-                                                                    }, this),
-                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h6", {
-                                                                        className: "mb-0 txt-ellipsis-1",
-                                                                        children: "Meeting"
-                                                                    }, void 0, false, {
-                                                                        fileName: "[project]/src/pages/Homepage.jsx",
-                                                                        lineNumber: 351,
-                                                                        columnNumber: 57
+                                                                        lineNumber: 336,
+                                                                        columnNumber: 53
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                        className: "d-flex gap-2",
-                                                                        children: [
-                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                                className: "w-35 h-35 bg-white-300 text-info-dark rounded p-2 d-flex-center",
-                                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("i", {
-                                                                                    className: "iconoir-more-horiz f-s-18"
+                                                                        className: "card task-card bg-warning-300",
+                                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                            className: "card-body",
+                                                                            children: [
+                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h6", {
+                                                                                    className: "text-warning-dark txt-ellipsis-1",
+                                                                                    children: "Design Homepage Layout"
                                                                                 }, void 0, false, {
+                                                                                    fileName: "[project]/src/pages/Homepage.jsx",
+                                                                                    lineNumber: 352,
+                                                                                    columnNumber: 61
+                                                                                }, this),
+                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
+                                                                                    className: "avatar-group justify-content-start my-3",
+                                                                                    children: [
+                                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                                                            className: "h-35 w-35 d-flex-center b-r-50 overflow-hidden bg-primary",
+                                                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                                                                                                alt: "avtar",
+                                                                                                className: "img-fluid",
+                                                                                                src: "../assets/images/avtar/3.png"
+                                                                                            }, void 0, false, {
+                                                                                                fileName: "[project]/src/pages/Homepage.jsx",
+                                                                                                lineNumber: 355,
+                                                                                                columnNumber: 69
+                                                                                            }, this)
+                                                                                        }, void 0, false, {
+                                                                                            fileName: "[project]/src/pages/Homepage.jsx",
+                                                                                            lineNumber: 354,
+                                                                                            columnNumber: 65
+                                                                                        }, this),
+                                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                                                            className: "h-35 w-35 d-flex-center b-r-50 overflow-hidden bg-info",
+                                                                                            "data-bs-title": "Sophia Turner",
+                                                                                            "data-bs-toggle": "tooltip",
+                                                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                                                                                                alt: "avtar",
+                                                                                                className: "img-fluid",
+                                                                                                src: "../assets/images/avtar/7.png"
+                                                                                            }, void 0, false, {
+                                                                                                fileName: "[project]/src/pages/Homepage.jsx",
+                                                                                                lineNumber: 358,
+                                                                                                columnNumber: 69
+                                                                                            }, this)
+                                                                                        }, void 0, false, {
+                                                                                            fileName: "[project]/src/pages/Homepage.jsx",
+                                                                                            lineNumber: 357,
+                                                                                            columnNumber: 65
+                                                                                        }, this),
+                                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                                                            className: "h-35 w-35 d-flex-center b-r-50 overflow-hidden bg-warning",
+                                                                                            "data-bs-title": "Lucas Green",
+                                                                                            "data-bs-toggle": "tooltip",
+                                                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                                                                                                alt: "avtar",
+                                                                                                className: "img-fluid",
+                                                                                                src: "../assets/images/avtar/8.png"
+                                                                                            }, void 0, false, {
+                                                                                                fileName: "[project]/src/pages/Homepage.jsx",
+                                                                                                lineNumber: 361,
+                                                                                                columnNumber: 69
+                                                                                            }, this)
+                                                                                        }, void 0, false, {
+                                                                                            fileName: "[project]/src/pages/Homepage.jsx",
+                                                                                            lineNumber: 360,
+                                                                                            columnNumber: 65
+                                                                                        }, this)
+                                                                                    ]
+                                                                                }, void 0, true, {
                                                                                     fileName: "[project]/src/pages/Homepage.jsx",
                                                                                     lineNumber: 353,
-                                                                                    columnNumber: 143
-                                                                                }, this)
-                                                                            }, void 0, false, {
-                                                                                fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                lineNumber: 353,
-                                                                                columnNumber: 61
-                                                                            }, this),
-                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                                className: "w-35 h-35 bg-white-300 text-info-dark rounded p-2 d-flex-center",
-                                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("i", {
-                                                                                    className: "iconoir-copy f-s-18"
-                                                                                }, void 0, false, {
+                                                                                    columnNumber: 61
+                                                                                }, this),
+                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                                    className: "d-flex justify-content-between align-items-center",
+                                                                                    children: [
+                                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                                            "aria-valuemax": 100,
+                                                                                            "aria-valuemin": 0,
+                                                                                            "aria-valuenow": 25,
+                                                                                            className: "progress w-100",
+                                                                                            role: "progressbar",
+                                                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                                                className: "progress-bar bg-warning-dark progress-bar-striped progress-bar-animated",
+                                                                                                style: {
+                                                                                                    width: '35%'
+                                                                                                }
+                                                                                            }, void 0, false, {
+                                                                                                fileName: "[project]/src/pages/Homepage.jsx",
+                                                                                                lineNumber: 366,
+                                                                                                columnNumber: 69
+                                                                                            }, this)
+                                                                                        }, void 0, false, {
+                                                                                            fileName: "[project]/src/pages/Homepage.jsx",
+                                                                                            lineNumber: 365,
+                                                                                            columnNumber: 65
+                                                                                        }, this),
+                                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                            className: "badge bg-white-400 text-secondary-dark ms-2",
+                                                                                            children: "+ 35%"
+                                                                                        }, void 0, false, {
+                                                                                            fileName: "[project]/src/pages/Homepage.jsx",
+                                                                                            lineNumber: 368,
+                                                                                            columnNumber: 65
+                                                                                        }, this)
+                                                                                    ]
+                                                                                }, void 0, true, {
                                                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                    lineNumber: 355,
-                                                                                    columnNumber: 143
+                                                                                    lineNumber: 364,
+                                                                                    columnNumber: 61
                                                                                 }, this)
-                                                                            }, void 0, false, {
-                                                                                fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                lineNumber: 355,
-                                                                                columnNumber: 61
-                                                                            }, this)
-                                                                        ]
-                                                                    }, void 0, true, {
-                                                                        fileName: "[project]/src/pages/Homepage.jsx",
-                                                                        lineNumber: 352,
-                                                                        columnNumber: 57
-                                                                    }, this)
-                                                                ]
-                                                            }, void 0, true, {
-                                                                fileName: "[project]/src/pages/Homepage.jsx",
-                                                                lineNumber: 347,
-                                                                columnNumber: 53
-                                                            }, this)
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/src/pages/Homepage.jsx",
-                                                            lineNumber: 346,
-                                                            columnNumber: 49
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                            className: "card task-card bg-info-300",
-                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                className: "card-body",
-                                                                children: [
-                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h6", {
-                                                                        className: "text-info-dark txt-ellipsis-1",
-                                                                        children: "Develop API Integration"
+                                                                            ]
+                                                                        }, void 0, true, {
+                                                                            fileName: "[project]/src/pages/Homepage.jsx",
+                                                                            lineNumber: 351,
+                                                                            columnNumber: 57
+                                                                        }, this)
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                                        lineNumber: 362,
-                                                                        columnNumber: 57
-                                                                    }, this),
-                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
-                                                                        className: "avatar-group justify-content-start my-3",
-                                                                        children: [
-                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
-                                                                                className: "h-35 w-35 d-flex-center b-r-50 overflow-hidden bg-info",
-                                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                                                                    alt: "avatar",
-                                                                                    className: "img-fluid",
-                                                                                    src: "../assets/images/avtar/4.png"
-                                                                                }, void 0, false, {
-                                                                                    fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                    lineNumber: 365,
-                                                                                    columnNumber: 65
-                                                                                }, this)
-                                                                            }, void 0, false, {
-                                                                                fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                lineNumber: 364,
-                                                                                columnNumber: 61
-                                                                            }, this),
-                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
-                                                                                className: "h-35 w-35 d-flex-center b-r-50 overflow-hidden bg-info",
-                                                                                "data-bs-title": "Michael Johnson",
-                                                                                "data-bs-toggle": "tooltip",
-                                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                                                                    alt: "avatar",
-                                                                                    className: "img-fluid",
-                                                                                    src: "../assets/images/avtar/6.png"
-                                                                                }, void 0, false, {
-                                                                                    fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                    lineNumber: 368,
-                                                                                    columnNumber: 65
-                                                                                }, this)
-                                                                            }, void 0, false, {
-                                                                                fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                lineNumber: 367,
-                                                                                columnNumber: 61
-                                                                            }, this),
-                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
-                                                                                className: "h-35 w-35 d-flex-center b-r-50 overflow-hidden bg-warning",
-                                                                                "data-bs-title": "Emily Brown",
-                                                                                "data-bs-toggle": "tooltip",
-                                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                                                                    alt: "avatar",
-                                                                                    className: "img-fluid",
-                                                                                    src: "../assets/images/avtar/5.png"
-                                                                                }, void 0, false, {
-                                                                                    fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                    lineNumber: 371,
-                                                                                    columnNumber: 65
-                                                                                }, this)
-                                                                            }, void 0, false, {
-                                                                                fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                lineNumber: 370,
-                                                                                columnNumber: 61
-                                                                            }, this)
-                                                                        ]
-                                                                    }, void 0, true, {
-                                                                        fileName: "[project]/src/pages/Homepage.jsx",
-                                                                        lineNumber: 363,
-                                                                        columnNumber: 57
+                                                                        lineNumber: 350,
+                                                                        columnNumber: 53
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                        className: "d-flex justify-content-between align-items-center",
-                                                                        children: [
-                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                                "aria-valuemax": 100,
-                                                                                "aria-valuemin": 0,
-                                                                                "aria-valuenow": 60,
-                                                                                className: "progress w-100",
-                                                                                role: "progressbar",
-                                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                                    className: "progress-bar bg-info-dark progress-bar-striped progress-bar-animated",
-                                                                                    style: {
-                                                                                        width: '60%'
-                                                                                    }
+                                                                        className: "card",
+                                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                            className: "d-flex justify-content-between align-items-center rounded p-1 bg-info-300",
+                                                                            children: [
+                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                    className: "bg-info h-35 w-35 d-flex-center rounded",
+                                                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("i", {
+                                                                                        className: "iconoir-group f-s-18"
+                                                                                    }, void 0, false, {
+                                                                                        fileName: "[project]/src/pages/Homepage.jsx",
+                                                                                        lineNumber: 375,
+                                                                                        columnNumber: 65
+                                                                                    }, this)
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                    lineNumber: 376,
-                                                                                    columnNumber: 65
+                                                                                    lineNumber: 374,
+                                                                                    columnNumber: 61
+                                                                                }, this),
+                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h6", {
+                                                                                    className: "mb-0 txt-ellipsis-1",
+                                                                                    children: "Meeting"
+                                                                                }, void 0, false, {
+                                                                                    fileName: "[project]/src/pages/Homepage.jsx",
+                                                                                    lineNumber: 377,
+                                                                                    columnNumber: 61
+                                                                                }, this),
+                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                                    className: "d-flex gap-2",
+                                                                                    children: [
+                                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                            className: "w-35 h-35 bg-white-300 text-info-dark rounded p-2 d-flex-center",
+                                                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("i", {
+                                                                                                className: "iconoir-more-horiz f-s-18"
+                                                                                            }, void 0, false, {
+                                                                                                fileName: "[project]/src/pages/Homepage.jsx",
+                                                                                                lineNumber: 379,
+                                                                                                columnNumber: 147
+                                                                                            }, this)
+                                                                                        }, void 0, false, {
+                                                                                            fileName: "[project]/src/pages/Homepage.jsx",
+                                                                                            lineNumber: 379,
+                                                                                            columnNumber: 65
+                                                                                        }, this),
+                                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                            className: "w-35 h-35 bg-white-300 text-info-dark rounded p-2 d-flex-center",
+                                                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("i", {
+                                                                                                className: "iconoir-copy f-s-18"
+                                                                                            }, void 0, false, {
+                                                                                                fileName: "[project]/src/pages/Homepage.jsx",
+                                                                                                lineNumber: 381,
+                                                                                                columnNumber: 147
+                                                                                            }, this)
+                                                                                        }, void 0, false, {
+                                                                                            fileName: "[project]/src/pages/Homepage.jsx",
+                                                                                            lineNumber: 381,
+                                                                                            columnNumber: 65
+                                                                                        }, this)
+                                                                                    ]
+                                                                                }, void 0, true, {
+                                                                                    fileName: "[project]/src/pages/Homepage.jsx",
+                                                                                    lineNumber: 378,
+                                                                                    columnNumber: 61
                                                                                 }, this)
-                                                                            }, void 0, false, {
-                                                                                fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                lineNumber: 375,
-                                                                                columnNumber: 61
-                                                                            }, this),
-                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                                className: "badge bg-white-400 text-secondary-dark ms-2",
-                                                                                children: "+ 60%"
-                                                                            }, void 0, false, {
-                                                                                fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                lineNumber: 378,
-                                                                                columnNumber: 61
-                                                                            }, this)
-                                                                        ]
-                                                                    }, void 0, true, {
-                                                                        fileName: "[project]/src/pages/Homepage.jsx",
-                                                                        lineNumber: 374,
-                                                                        columnNumber: 57
-                                                                    }, this)
-                                                                ]
-                                                            }, void 0, true, {
-                                                                fileName: "[project]/src/pages/Homepage.jsx",
-                                                                lineNumber: 361,
-                                                                columnNumber: 53
-                                                            }, this)
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/src/pages/Homepage.jsx",
-                                                            lineNumber: 360,
-                                                            columnNumber: 49
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                            className: "card task-card bg-success-300",
-                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                className: "card-body",
-                                                                children: [
-                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h6", {
-                                                                        className: "text-success-dark txt-ellipsis-1",
-                                                                        children: "Test User Feedback"
+                                                                            ]
+                                                                        }, void 0, true, {
+                                                                            fileName: "[project]/src/pages/Homepage.jsx",
+                                                                            lineNumber: 373,
+                                                                            columnNumber: 57
+                                                                        }, this)
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                                        lineNumber: 384,
-                                                                        columnNumber: 57
-                                                                    }, this),
-                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
-                                                                        className: "avatar-group justify-content-start my-3",
-                                                                        children: [
-                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
-                                                                                className: "h-35 w-35 d-flex-center b-r-50 overflow-hidden bg-primary",
-                                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                                                                    alt: "avatar",
-                                                                                    className: "img-fluid",
-                                                                                    src: "../assets/images/avtar/9.png"
-                                                                                }, void 0, false, {
-                                                                                    fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                    lineNumber: 387,
-                                                                                    columnNumber: 65
-                                                                                }, this)
-                                                                            }, void 0, false, {
-                                                                                fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                lineNumber: 386,
-                                                                                columnNumber: 61
-                                                                            }, this),
-                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
-                                                                                className: "h-35 w-35 d-flex-center b-r-50 overflow-hidden bg-info",
-                                                                                "data-bs-title": "Alice Smith",
-                                                                                "data-bs-toggle": "tooltip",
-                                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                                                                    alt: "avatar",
-                                                                                    className: "img-fluid",
-                                                                                    src: "../assets/images/avtar/10.png"
-                                                                                }, void 0, false, {
-                                                                                    fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                    lineNumber: 390,
-                                                                                    columnNumber: 65
-                                                                                }, this)
-                                                                            }, void 0, false, {
-                                                                                fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                lineNumber: 389,
-                                                                                columnNumber: 61
-                                                                            }, this),
-                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
-                                                                                className: "h-35 w-35 d-flex-center b-r-50 overflow-hidden bg-success",
-                                                                                "data-bs-title": "John Doe",
-                                                                                "data-bs-toggle": "tooltip",
-                                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                                                                    alt: "avatar",
-                                                                                    className: "img-fluid",
-                                                                                    src: "../assets/images/avtar/11.png"
-                                                                                }, void 0, false, {
-                                                                                    fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                    lineNumber: 393,
-                                                                                    columnNumber: 65
-                                                                                }, this)
-                                                                            }, void 0, false, {
-                                                                                fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                lineNumber: 392,
-                                                                                columnNumber: 61
-                                                                            }, this)
-                                                                        ]
-                                                                    }, void 0, true, {
-                                                                        fileName: "[project]/src/pages/Homepage.jsx",
-                                                                        lineNumber: 385,
-                                                                        columnNumber: 57
+                                                                        lineNumber: 372,
+                                                                        columnNumber: 53
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                        className: "d-flex justify-content-between align-items-center",
-                                                                        children: [
-                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                                "aria-valuemax": 100,
-                                                                                "aria-valuemin": 0,
-                                                                                "aria-valuenow": 80,
-                                                                                className: "progress w-100",
-                                                                                role: "progressbar",
-                                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                                    className: "progress-bar bg-success-dark progress-bar-striped progress-bar-animated",
-                                                                                    style: {
-                                                                                        width: '80%'
-                                                                                    }
+                                                                        className: "card",
+                                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                            className: "d-flex justify-content-between align-items-center rounded p-1 bg-success-300",
+                                                                            children: [
+                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                    className: "bg-success h-35 w-35 d-flex-center rounded",
+                                                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("i", {
+                                                                                        className: "iconoir-group f-s-18"
+                                                                                    }, void 0, false, {
+                                                                                        fileName: "[project]/src/pages/Homepage.jsx",
+                                                                                        lineNumber: 389,
+                                                                                        columnNumber: 65
+                                                                                    }, this)
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                    lineNumber: 398,
-                                                                                    columnNumber: 65
+                                                                                    lineNumber: 388,
+                                                                                    columnNumber: 61
+                                                                                }, this),
+                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h6", {
+                                                                                    className: "mb-0 txt-ellipsis-1",
+                                                                                    children: "Meeting"
+                                                                                }, void 0, false, {
+                                                                                    fileName: "[project]/src/pages/Homepage.jsx",
+                                                                                    lineNumber: 391,
+                                                                                    columnNumber: 61
+                                                                                }, this),
+                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                                    className: "d-flex gap-2",
+                                                                                    children: [
+                                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                            className: "w-35 h-35 bg-white-300 text-info-dark rounded p-2 d-flex-center",
+                                                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("i", {
+                                                                                                className: "iconoir-more-horiz f-s-18"
+                                                                                            }, void 0, false, {
+                                                                                                fileName: "[project]/src/pages/Homepage.jsx",
+                                                                                                lineNumber: 393,
+                                                                                                columnNumber: 147
+                                                                                            }, this)
+                                                                                        }, void 0, false, {
+                                                                                            fileName: "[project]/src/pages/Homepage.jsx",
+                                                                                            lineNumber: 393,
+                                                                                            columnNumber: 65
+                                                                                        }, this),
+                                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                            className: "w-35 h-35 bg-white-300 text-info-dark rounded p-2 d-flex-center",
+                                                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("i", {
+                                                                                                className: "iconoir-copy f-s-18"
+                                                                                            }, void 0, false, {
+                                                                                                fileName: "[project]/src/pages/Homepage.jsx",
+                                                                                                lineNumber: 395,
+                                                                                                columnNumber: 147
+                                                                                            }, this)
+                                                                                        }, void 0, false, {
+                                                                                            fileName: "[project]/src/pages/Homepage.jsx",
+                                                                                            lineNumber: 395,
+                                                                                            columnNumber: 65
+                                                                                        }, this)
+                                                                                    ]
+                                                                                }, void 0, true, {
+                                                                                    fileName: "[project]/src/pages/Homepage.jsx",
+                                                                                    lineNumber: 392,
+                                                                                    columnNumber: 61
                                                                                 }, this)
-                                                                            }, void 0, false, {
-                                                                                fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                lineNumber: 397,
-                                                                                columnNumber: 61
-                                                                            }, this),
-                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                                className: "badge bg-white-400 text-secondary-dark ms-2",
-                                                                                children: "+ 80%"
-                                                                            }, void 0, false, {
-                                                                                fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                lineNumber: 400,
-                                                                                columnNumber: 61
-                                                                            }, this)
-                                                                        ]
-                                                                    }, void 0, true, {
+                                                                            ]
+                                                                        }, void 0, true, {
+                                                                            fileName: "[project]/src/pages/Homepage.jsx",
+                                                                            lineNumber: 387,
+                                                                            columnNumber: 57
+                                                                        }, this)
+                                                                    }, void 0, false, {
                                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                                        lineNumber: 396,
-                                                                        columnNumber: 57
+                                                                        lineNumber: 386,
+                                                                        columnNumber: 53
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                        className: "card task-card bg-info-300",
+                                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                            className: "card-body",
+                                                                            children: [
+                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h6", {
+                                                                                    className: "text-info-dark txt-ellipsis-1",
+                                                                                    children: "Develop API Integration"
+                                                                                }, void 0, false, {
+                                                                                    fileName: "[project]/src/pages/Homepage.jsx",
+                                                                                    lineNumber: 402,
+                                                                                    columnNumber: 61
+                                                                                }, this),
+                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
+                                                                                    className: "avatar-group justify-content-start my-3",
+                                                                                    children: [
+                                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                                                            className: "h-35 w-35 d-flex-center b-r-50 overflow-hidden bg-info",
+                                                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                                                                                                alt: "avatar",
+                                                                                                className: "img-fluid",
+                                                                                                src: "../assets/images/avtar/4.png"
+                                                                                            }, void 0, false, {
+                                                                                                fileName: "[project]/src/pages/Homepage.jsx",
+                                                                                                lineNumber: 405,
+                                                                                                columnNumber: 69
+                                                                                            }, this)
+                                                                                        }, void 0, false, {
+                                                                                            fileName: "[project]/src/pages/Homepage.jsx",
+                                                                                            lineNumber: 404,
+                                                                                            columnNumber: 65
+                                                                                        }, this),
+                                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                                                            className: "h-35 w-35 d-flex-center b-r-50 overflow-hidden bg-info",
+                                                                                            "data-bs-title": "Michael Johnson",
+                                                                                            "data-bs-toggle": "tooltip",
+                                                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                                                                                                alt: "avatar",
+                                                                                                className: "img-fluid",
+                                                                                                src: "../assets/images/avtar/6.png"
+                                                                                            }, void 0, false, {
+                                                                                                fileName: "[project]/src/pages/Homepage.jsx",
+                                                                                                lineNumber: 408,
+                                                                                                columnNumber: 69
+                                                                                            }, this)
+                                                                                        }, void 0, false, {
+                                                                                            fileName: "[project]/src/pages/Homepage.jsx",
+                                                                                            lineNumber: 407,
+                                                                                            columnNumber: 65
+                                                                                        }, this),
+                                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                                                            className: "h-35 w-35 d-flex-center b-r-50 overflow-hidden bg-warning",
+                                                                                            "data-bs-title": "Emily Brown",
+                                                                                            "data-bs-toggle": "tooltip",
+                                                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                                                                                                alt: "avatar",
+                                                                                                className: "img-fluid",
+                                                                                                src: "../assets/images/avtar/5.png"
+                                                                                            }, void 0, false, {
+                                                                                                fileName: "[project]/src/pages/Homepage.jsx",
+                                                                                                lineNumber: 411,
+                                                                                                columnNumber: 69
+                                                                                            }, this)
+                                                                                        }, void 0, false, {
+                                                                                            fileName: "[project]/src/pages/Homepage.jsx",
+                                                                                            lineNumber: 410,
+                                                                                            columnNumber: 65
+                                                                                        }, this)
+                                                                                    ]
+                                                                                }, void 0, true, {
+                                                                                    fileName: "[project]/src/pages/Homepage.jsx",
+                                                                                    lineNumber: 403,
+                                                                                    columnNumber: 61
+                                                                                }, this),
+                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                                    className: "d-flex justify-content-between align-items-center",
+                                                                                    children: [
+                                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                                            "aria-valuemax": 100,
+                                                                                            "aria-valuemin": 0,
+                                                                                            "aria-valuenow": 60,
+                                                                                            className: "progress w-100",
+                                                                                            role: "progressbar",
+                                                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                                                className: "progress-bar bg-info-dark progress-bar-striped progress-bar-animated",
+                                                                                                style: {
+                                                                                                    width: '60%'
+                                                                                                }
+                                                                                            }, void 0, false, {
+                                                                                                fileName: "[project]/src/pages/Homepage.jsx",
+                                                                                                lineNumber: 416,
+                                                                                                columnNumber: 69
+                                                                                            }, this)
+                                                                                        }, void 0, false, {
+                                                                                            fileName: "[project]/src/pages/Homepage.jsx",
+                                                                                            lineNumber: 415,
+                                                                                            columnNumber: 65
+                                                                                        }, this),
+                                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                            className: "badge bg-white-400 text-secondary-dark ms-2",
+                                                                                            children: "+ 60%"
+                                                                                        }, void 0, false, {
+                                                                                            fileName: "[project]/src/pages/Homepage.jsx",
+                                                                                            lineNumber: 418,
+                                                                                            columnNumber: 65
+                                                                                        }, this)
+                                                                                    ]
+                                                                                }, void 0, true, {
+                                                                                    fileName: "[project]/src/pages/Homepage.jsx",
+                                                                                    lineNumber: 414,
+                                                                                    columnNumber: 61
+                                                                                }, this)
+                                                                            ]
+                                                                        }, void 0, true, {
+                                                                            fileName: "[project]/src/pages/Homepage.jsx",
+                                                                            lineNumber: 401,
+                                                                            columnNumber: 57
+                                                                        }, this)
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/src/pages/Homepage.jsx",
+                                                                        lineNumber: 400,
+                                                                        columnNumber: 53
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                        className: "card task-card bg-success-300",
+                                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                            className: "card-body",
+                                                                            children: [
+                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h6", {
+                                                                                    className: "text-success-dark txt-ellipsis-1",
+                                                                                    children: "Test User Feedback"
+                                                                                }, void 0, false, {
+                                                                                    fileName: "[project]/src/pages/Homepage.jsx",
+                                                                                    lineNumber: 424,
+                                                                                    columnNumber: 61
+                                                                                }, this),
+                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
+                                                                                    className: "avatar-group justify-content-start my-3",
+                                                                                    children: [
+                                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                                                            className: "h-35 w-35 d-flex-center b-r-50 overflow-hidden bg-primary",
+                                                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                                                                                                alt: "avatar",
+                                                                                                className: "img-fluid",
+                                                                                                src: "../assets/images/avtar/9.png"
+                                                                                            }, void 0, false, {
+                                                                                                fileName: "[project]/src/pages/Homepage.jsx",
+                                                                                                lineNumber: 427,
+                                                                                                columnNumber: 69
+                                                                                            }, this)
+                                                                                        }, void 0, false, {
+                                                                                            fileName: "[project]/src/pages/Homepage.jsx",
+                                                                                            lineNumber: 426,
+                                                                                            columnNumber: 65
+                                                                                        }, this),
+                                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                                                            className: "h-35 w-35 d-flex-center b-r-50 overflow-hidden bg-info",
+                                                                                            "data-bs-title": "Alice Smith",
+                                                                                            "data-bs-toggle": "tooltip",
+                                                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                                                                                                alt: "avatar",
+                                                                                                className: "img-fluid",
+                                                                                                src: "../assets/images/avtar/10.png"
+                                                                                            }, void 0, false, {
+                                                                                                fileName: "[project]/src/pages/Homepage.jsx",
+                                                                                                lineNumber: 430,
+                                                                                                columnNumber: 69
+                                                                                            }, this)
+                                                                                        }, void 0, false, {
+                                                                                            fileName: "[project]/src/pages/Homepage.jsx",
+                                                                                            lineNumber: 429,
+                                                                                            columnNumber: 65
+                                                                                        }, this),
+                                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                                                            className: "h-35 w-35 d-flex-center b-r-50 overflow-hidden bg-success",
+                                                                                            "data-bs-title": "John Doe",
+                                                                                            "data-bs-toggle": "tooltip",
+                                                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                                                                                                alt: "avatar",
+                                                                                                className: "img-fluid",
+                                                                                                src: "../assets/images/avtar/11.png"
+                                                                                            }, void 0, false, {
+                                                                                                fileName: "[project]/src/pages/Homepage.jsx",
+                                                                                                lineNumber: 433,
+                                                                                                columnNumber: 69
+                                                                                            }, this)
+                                                                                        }, void 0, false, {
+                                                                                            fileName: "[project]/src/pages/Homepage.jsx",
+                                                                                            lineNumber: 432,
+                                                                                            columnNumber: 65
+                                                                                        }, this)
+                                                                                    ]
+                                                                                }, void 0, true, {
+                                                                                    fileName: "[project]/src/pages/Homepage.jsx",
+                                                                                    lineNumber: 425,
+                                                                                    columnNumber: 61
+                                                                                }, this),
+                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                                    className: "d-flex justify-content-between align-items-center",
+                                                                                    children: [
+                                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                                            "aria-valuemax": 100,
+                                                                                            "aria-valuemin": 0,
+                                                                                            "aria-valuenow": 80,
+                                                                                            className: "progress w-100",
+                                                                                            role: "progressbar",
+                                                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                                                className: "progress-bar bg-success-dark progress-bar-striped progress-bar-animated",
+                                                                                                style: {
+                                                                                                    width: '80%'
+                                                                                                }
+                                                                                            }, void 0, false, {
+                                                                                                fileName: "[project]/src/pages/Homepage.jsx",
+                                                                                                lineNumber: 438,
+                                                                                                columnNumber: 69
+                                                                                            }, this)
+                                                                                        }, void 0, false, {
+                                                                                            fileName: "[project]/src/pages/Homepage.jsx",
+                                                                                            lineNumber: 437,
+                                                                                            columnNumber: 65
+                                                                                        }, this),
+                                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                            className: "badge bg-white-400 text-secondary-dark ms-2",
+                                                                                            children: "+ 80%"
+                                                                                        }, void 0, false, {
+                                                                                            fileName: "[project]/src/pages/Homepage.jsx",
+                                                                                            lineNumber: 440,
+                                                                                            columnNumber: 65
+                                                                                        }, this)
+                                                                                    ]
+                                                                                }, void 0, true, {
+                                                                                    fileName: "[project]/src/pages/Homepage.jsx",
+                                                                                    lineNumber: 436,
+                                                                                    columnNumber: 61
+                                                                                }, this)
+                                                                            ]
+                                                                        }, void 0, true, {
+                                                                            fileName: "[project]/src/pages/Homepage.jsx",
+                                                                            lineNumber: 423,
+                                                                            columnNumber: 57
+                                                                        }, this)
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/src/pages/Homepage.jsx",
+                                                                        lineNumber: 422,
+                                                                        columnNumber: 53
                                                                     }, this)
                                                                 ]
-                                                            }, void 0, true, {
+                                                            }, i, true, {
                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                lineNumber: 383,
-                                                                columnNumber: 53
-                                                            }, this)
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/src/pages/Homepage.jsx",
-                                                            lineNumber: 382,
-                                                            columnNumber: 49
-                                                        }, this)
-                                                    ]
-                                                }, void 0, true, {
+                                                                lineNumber: 313,
+                                                                columnNumber: 49
+                                                            }, this))
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/pages/Homepage.jsx",
+                                                        lineNumber: 311,
+                                                        columnNumber: 41
+                                                    }, this)
+                                                }, void 0, false, {
                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                    lineNumber: 273,
-                                                    columnNumber: 45
+                                                    lineNumber: 310,
+                                                    columnNumber: 37
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                lineNumber: 272,
-                                                columnNumber: 41
+                                                lineNumber: 309,
+                                                columnNumber: 33
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                            lineNumber: 271,
-                                            columnNumber: 37
+                                            lineNumber: 308,
+                                            columnNumber: 29
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                    lineNumber: 267,
-                                    columnNumber: 33
+                                    lineNumber: 304,
+                                    columnNumber: 25
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/pages/Homepage.jsx",
-                            lineNumber: 82,
-                            columnNumber: 29
+                            lineNumber: 119,
+                            columnNumber: 21
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/pages/Homepage.jsx",
-                    lineNumber: 60,
-                    columnNumber: 25
+                    lineNumber: 97,
+                    columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "modal",
@@ -1812,13 +1865,13 @@ const Homepage = ()=>{
                                                 "data-bs-dismiss": "modal"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                lineNumber: 419,
-                                                columnNumber: 45
+                                                lineNumber: 463,
+                                                columnNumber: 41
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                            lineNumber: 418,
-                                            columnNumber: 41
+                                            lineNumber: 462,
+                                            columnNumber: 37
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                                             className: "f-w-700 text-primary-dark mb-0",
@@ -1827,8 +1880,8 @@ const Homepage = ()=>{
                                                     children: "Welcome!"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                    lineNumber: 422,
-                                                    columnNumber: 45
+                                                    lineNumber: 466,
+                                                    columnNumber: 41
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
                                                     alt: "gif",
@@ -1836,14 +1889,14 @@ const Homepage = ()=>{
                                                     src: "../assets/images/dashboard/ecommerce-dashboard/celebration.gif"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                    lineNumber: 423,
-                                                    columnNumber: 45
+                                                    lineNumber: 467,
+                                                    columnNumber: 41
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                            lineNumber: 421,
-                                            columnNumber: 41
+                                            lineNumber: 465,
+                                            columnNumber: 37
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "modal-img-box",
@@ -1853,13 +1906,13 @@ const Homepage = ()=>{
                                                 src: "../assets/images/modals/welcome-1.png"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                lineNumber: 426,
-                                                columnNumber: 45
+                                                lineNumber: 470,
+                                                columnNumber: 41
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                            lineNumber: 425,
-                                            columnNumber: 41
+                                            lineNumber: 469,
+                                            columnNumber: 37
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "modal-btn mb-4",
@@ -1870,39 +1923,39 @@ const Homepage = ()=>{
                                                 children: "Get Started"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                lineNumber: 429,
-                                                columnNumber: 45
+                                                lineNumber: 473,
+                                                columnNumber: 41
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                            lineNumber: 428,
-                                            columnNumber: 41
+                                            lineNumber: 472,
+                                            columnNumber: 37
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                    lineNumber: 417,
-                                    columnNumber: 37
+                                    lineNumber: 461,
+                                    columnNumber: 33
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                lineNumber: 416,
-                                columnNumber: 33
+                                lineNumber: 460,
+                                columnNumber: 29
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/pages/Homepage.jsx",
-                            lineNumber: 415,
-                            columnNumber: 29
+                            lineNumber: 459,
+                            columnNumber: 25
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/pages/Homepage.jsx",
-                        lineNumber: 414,
-                        columnNumber: 25
+                        lineNumber: 458,
+                        columnNumber: 21
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/pages/Homepage.jsx",
-                    lineNumber: 413,
-                    columnNumber: 21
+                    lineNumber: 457,
+                    columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     "aria-hidden": "true",
@@ -1924,8 +1977,8 @@ const Homepage = ()=>{
                                             children: "Add Ticket"
                                         }, void 0, false, {
                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                            lineNumber: 443,
-                                            columnNumber: 37
+                                            lineNumber: 487,
+                                            columnNumber: 33
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                             "aria-label": "Close",
@@ -1934,14 +1987,14 @@ const Homepage = ()=>{
                                             type: "button"
                                         }, void 0, false, {
                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                            lineNumber: 444,
-                                            columnNumber: 37
+                                            lineNumber: 488,
+                                            columnNumber: 33
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                    lineNumber: 442,
-                                    columnNumber: 33
+                                    lineNumber: 486,
+                                    columnNumber: 29
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "modal-body",
@@ -1960,8 +2013,8 @@ const Homepage = ()=>{
                                                                 children: "Title"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                lineNumber: 451,
-                                                                columnNumber: 53
+                                                                lineNumber: 495,
+                                                                columnNumber: 49
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                                                 className: "form-control",
@@ -1970,19 +2023,19 @@ const Homepage = ()=>{
                                                                 type: "text"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                lineNumber: 452,
-                                                                columnNumber: 53
+                                                                lineNumber: 496,
+                                                                columnNumber: 49
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                        lineNumber: 450,
-                                                        columnNumber: 49
+                                                        lineNumber: 494,
+                                                        columnNumber: 45
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                    lineNumber: 449,
-                                                    columnNumber: 45
+                                                    lineNumber: 493,
+                                                    columnNumber: 41
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "col-12",
@@ -1994,8 +2047,8 @@ const Homepage = ()=>{
                                                                 children: "Client"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                lineNumber: 457,
-                                                                columnNumber: 53
+                                                                lineNumber: 501,
+                                                                columnNumber: 49
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                                                 className: "form-control",
@@ -2004,19 +2057,19 @@ const Homepage = ()=>{
                                                                 type: "text"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                lineNumber: 458,
-                                                                columnNumber: 53
+                                                                lineNumber: 502,
+                                                                columnNumber: 49
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                        lineNumber: 456,
-                                                        columnNumber: 49
+                                                        lineNumber: 500,
+                                                        columnNumber: 45
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                    lineNumber: 455,
-                                                    columnNumber: 45
+                                                    lineNumber: 499,
+                                                    columnNumber: 41
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "col-md-6",
@@ -2029,8 +2082,8 @@ const Homepage = ()=>{
                                                                 children: "Priority"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                lineNumber: 463,
-                                                                columnNumber: 53
+                                                                lineNumber: 507,
+                                                                columnNumber: 49
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
                                                                 className: "form-select",
@@ -2041,49 +2094,49 @@ const Homepage = ()=>{
                                                                         children: "Select Priority"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                                        lineNumber: 465,
-                                                                        columnNumber: 57
+                                                                        lineNumber: 509,
+                                                                        columnNumber: 53
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
                                                                         value: "Medium",
                                                                         children: "Medium"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                                        lineNumber: 466,
-                                                                        columnNumber: 57
+                                                                        lineNumber: 510,
+                                                                        columnNumber: 53
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
                                                                         value: "Lower",
                                                                         children: "Lower"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                                        lineNumber: 467,
-                                                                        columnNumber: 57
+                                                                        lineNumber: 511,
+                                                                        columnNumber: 53
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
                                                                         value: "High",
                                                                         children: "High"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                                        lineNumber: 468,
-                                                                        columnNumber: 57
+                                                                        lineNumber: 512,
+                                                                        columnNumber: 53
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                lineNumber: 464,
-                                                                columnNumber: 53
+                                                                lineNumber: 508,
+                                                                columnNumber: 49
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                        lineNumber: 462,
-                                                        columnNumber: 49
+                                                        lineNumber: 506,
+                                                        columnNumber: 45
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                    lineNumber: 461,
-                                                    columnNumber: 45
+                                                    lineNumber: 505,
+                                                    columnNumber: 41
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "col-md-6",
@@ -2096,8 +2149,8 @@ const Homepage = ()=>{
                                                                 children: "Status"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                lineNumber: 474,
-                                                                columnNumber: 53
+                                                                lineNumber: 518,
+                                                                columnNumber: 49
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
                                                                 className: "form-select",
@@ -2108,49 +2161,49 @@ const Homepage = ()=>{
                                                                         children: "Select Status"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                                        lineNumber: 476,
-                                                                        columnNumber: 57
+                                                                        lineNumber: 520,
+                                                                        columnNumber: 53
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
                                                                         value: "open",
                                                                         children: "open"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                                        lineNumber: 477,
-                                                                        columnNumber: 57
+                                                                        lineNumber: 521,
+                                                                        columnNumber: 53
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
                                                                         value: "inprogress",
                                                                         children: "inprogress"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                                        lineNumber: 478,
-                                                                        columnNumber: 57
+                                                                        lineNumber: 522,
+                                                                        columnNumber: 53
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
                                                                         value: "closed",
                                                                         children: "closed"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                                        lineNumber: 479,
-                                                                        columnNumber: 57
+                                                                        lineNumber: 523,
+                                                                        columnNumber: 53
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                lineNumber: 475,
-                                                                columnNumber: 53
+                                                                lineNumber: 519,
+                                                                columnNumber: 49
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                        lineNumber: 473,
-                                                        columnNumber: 49
+                                                        lineNumber: 517,
+                                                        columnNumber: 45
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                    lineNumber: 472,
-                                                    columnNumber: 45
+                                                    lineNumber: 516,
+                                                    columnNumber: 41
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "col-md-6",
@@ -2162,8 +2215,8 @@ const Homepage = ()=>{
                                                                 children: "Date"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                lineNumber: 485,
-                                                                columnNumber: 53
+                                                                lineNumber: 529,
+                                                                columnNumber: 49
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                                                 className: "form-control",
@@ -2172,19 +2225,19 @@ const Homepage = ()=>{
                                                                 type: "date"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                lineNumber: 486,
-                                                                columnNumber: 53
+                                                                lineNumber: 530,
+                                                                columnNumber: 49
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                        lineNumber: 484,
-                                                        columnNumber: 49
+                                                        lineNumber: 528,
+                                                        columnNumber: 45
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                    lineNumber: 483,
-                                                    columnNumber: 45
+                                                    lineNumber: 527,
+                                                    columnNumber: 41
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "col-md-6",
@@ -2196,8 +2249,8 @@ const Homepage = ()=>{
                                                                 children: "Due Date"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                lineNumber: 491,
-                                                                columnNumber: 53
+                                                                lineNumber: 535,
+                                                                columnNumber: 49
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                                                 className: "form-control",
@@ -2205,35 +2258,35 @@ const Homepage = ()=>{
                                                                 type: "date"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                lineNumber: 492,
-                                                                columnNumber: 53
+                                                                lineNumber: 536,
+                                                                columnNumber: 49
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                        lineNumber: 490,
-                                                        columnNumber: 49
+                                                        lineNumber: 534,
+                                                        columnNumber: 45
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                    lineNumber: 489,
-                                                    columnNumber: 45
+                                                    lineNumber: 533,
+                                                    columnNumber: 41
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                            lineNumber: 448,
-                                            columnNumber: 41
+                                            lineNumber: 492,
+                                            columnNumber: 37
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                        lineNumber: 447,
-                                        columnNumber: 37
+                                        lineNumber: 491,
+                                        columnNumber: 33
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                    lineNumber: 446,
-                                    columnNumber: 33
+                                    lineNumber: 490,
+                                    columnNumber: 29
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "modal-footer",
@@ -2245,8 +2298,8 @@ const Homepage = ()=>{
                                             children: "Close"
                                         }, void 0, false, {
                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                            lineNumber: 499,
-                                            columnNumber: 37
+                                            lineNumber: 543,
+                                            columnNumber: 33
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                             className: "btn btn-primary",
@@ -2255,44 +2308,44 @@ const Homepage = ()=>{
                                             children: "Save changes"
                                         }, void 0, false, {
                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                            lineNumber: 501,
-                                            columnNumber: 37
+                                            lineNumber: 545,
+                                            columnNumber: 33
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                    lineNumber: 498,
-                                    columnNumber: 33
+                                    lineNumber: 542,
+                                    columnNumber: 29
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/pages/Homepage.jsx",
-                            lineNumber: 441,
-                            columnNumber: 29
+                            lineNumber: 485,
+                            columnNumber: 25
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/pages/Homepage.jsx",
-                        lineNumber: 440,
-                        columnNumber: 25
+                        lineNumber: 484,
+                        columnNumber: 21
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/pages/Homepage.jsx",
-                    lineNumber: 439,
-                    columnNumber: 21
+                    lineNumber: 483,
+                    columnNumber: 17
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/src/pages/Homepage.jsx",
-            lineNumber: 56,
-            columnNumber: 17
+            lineNumber: 93,
+            columnNumber: 13
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/pages/Homepage.jsx",
-        lineNumber: 37,
+        lineNumber: 74,
         columnNumber: 9
     }, this);
 };
-_s(Homepage, "QmMObrvwCqfhPfVpIPABr9yxZgQ=");
+_s(Homepage, "O+77VRD+NYOdW0l7f1yIZ01or4w=");
 _c = Homepage;
 const __TURBOPACK__default__export__ = Homepage;
 var _c;
