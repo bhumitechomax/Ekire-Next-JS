@@ -85,7 +85,7 @@ function Finance() {
         // Simulate loading
         const timer = setTimeout(() => {
             setIsLoading(false);
-        }, 500);
+        }, 900);
         return () => clearTimeout(timer);
     }, []);
 
@@ -100,7 +100,7 @@ function Finance() {
                     <div
                         className="d-flex justify-content-center align-items-center position-fixed top-0 start-0 w-100 h-100"
                         style={{
-                            background: '#f6f6f6',
+                            background: 'var(--bodybg-color)',
                             zIndex: 1000,
                         }}
                     >
@@ -182,7 +182,7 @@ function Finance() {
                                                     <div className="row align-items-center">
                                                         <div className="col-sm-8">
                                                             <h5 className="text-primary f-w-600">Profile Setup</h5>
-                                                            <p className="account-discription text-secondary f-s-16 mt-2 mb-0">your account is valuable to hackers. to make 2-step verification very secure, use your phone's built-in security key</p>
+                                                            <p className="account-discription text-dark f-s-16 mt-2 mb-0">your account is valuable to hackers. to make 2-step verification very secure, use your phone's built-in security key</p>
                                                         </div>
                                                         <div className="col-sm-4 account-security-img">
                                                             <img alt="" className="w-150" src="../assets/images/setting-app/account.png" />

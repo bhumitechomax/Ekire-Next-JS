@@ -1,6 +1,7 @@
 {
   "app": {
     "[project]/src/app/_not-found/page": [],
+    "[project]/src/app/account/page": [],
     "[project]/src/app/billing/page": [],
     "[project]/src/app/finance/page": [],
     "[project]/src/app/help/page": [],

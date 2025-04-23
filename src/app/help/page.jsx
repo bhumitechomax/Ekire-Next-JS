@@ -13,7 +13,7 @@ function Project() {
                 // Simulate loading
                 const timer = setTimeout(() => {
                     setIsLoading(false);
-                }, 500);
+                }, 900);
                 return () => clearTimeout(timer);
             }, []);
     return (

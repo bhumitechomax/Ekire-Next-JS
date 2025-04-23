@@ -21,7 +21,7 @@ function Server() {
         // Simulate loading
         const timer = setTimeout(() => {
             setIsLoading(false);
-        }, 500);
+        }, 900);
         return () => clearTimeout(timer);
     }, []);
 
@@ -49,7 +49,7 @@ function Server() {
                     <div
                         className="d-flex justify-content-center align-items-center position-fixed top-0 start-0 w-100 h-100"
                         style={{
-                            background: '#f6f6f6',
+                            background: 'var(--bodybg-color)',
                             zIndex: 1000,
                         }}
                     >
