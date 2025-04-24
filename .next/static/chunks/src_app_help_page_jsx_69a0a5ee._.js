@@ -28,7 +28,7 @@ function Project() {
                 "Project.useEffect.timer": ()=>{
                     setIsLoading(false);
                 }
-            }["Project.useEffect.timer"], 500);
+            }["Project.useEffect.timer"], 900);
             return ({
                 "Project.useEffect": ()=>clearTimeout(timer)
             })["Project.useEffect"];

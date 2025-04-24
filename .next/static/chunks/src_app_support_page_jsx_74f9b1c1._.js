@@ -36,7 +36,7 @@ function Support() {
                 "Support.useEffect.timer": ()=>{
                     setIsLoading(false);
                 }
-            }["Support.useEffect.timer"], 1000);
+            }["Support.useEffect.timer"], 900);
             return ({
                 "Support.useEffect": ()=>clearTimeout(timer)
             })["Support.useEffect"];
@@ -62,7 +62,7 @@ function Support() {
                 isLoading && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "d-flex justify-content-center align-items-center position-fixed top-0 start-0 w-100 h-100",
                     style: {
-                        background: '#f6f6f6',
+                        background: 'var(--bodybg-color)',
                         zIndex: 1000
                     },
                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -194,7 +194,7 @@ function Support() {
                                                 className: `tabs-content ${activeTab === 1 ? "active" : ""}`,
                                                 id: "tab-1",
                                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: "card",
+                                                    className: "card p-l-r-30",
                                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                         className: "card-body p-0",
                                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -207,38 +207,46 @@ function Support() {
                                                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
                                                                             children: [
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                                                                    children: "title"
+                                                                                    width: 10,
+                                                                                    children: "Sr no."
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/app/support/page.jsx",
                                                                                     lineNumber: 99,
                                                                                     columnNumber: 61
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                                                                    children: "date"
+                                                                                    children: "title"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/app/support/page.jsx",
                                                                                     lineNumber: 100,
                                                                                     columnNumber: 61
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                                                                    children: "last reply"
+                                                                                    children: "date"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/app/support/page.jsx",
                                                                                     lineNumber: 101,
                                                                                     columnNumber: 61
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                                                                    children: "status"
+                                                                                    children: "last reply"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/app/support/page.jsx",
                                                                                     lineNumber: 102,
                                                                                     columnNumber: 61
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                                                                    children: "action"
+                                                                                    children: "status"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/app/support/page.jsx",
                                                                                     lineNumber: 103,
+                                                                                    columnNumber: 61
+                                                                                }, this),
+                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                                                                    children: "action"
+                                                                                }, void 0, false, {
+                                                                                    fileName: "[project]/src/app/support/page.jsx",
+                                                                                    lineNumber: 104,
                                                                                     columnNumber: 61
                                                                                 }, this)
                                                                             ]
@@ -256,31 +264,38 @@ function Support() {
                                                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
                                                                             children: [
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                                                    children: "Unable to access my account"
-                                                                                }, void 0, false, {
-                                                                                    fileName: "[project]/src/app/support/page.jsx",
-                                                                                    lineNumber: 108,
-                                                                                    columnNumber: 61
-                                                                                }, this),
-                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                                                    children: "9/20/2024"
+                                                                                    children: "1"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/app/support/page.jsx",
                                                                                     lineNumber: 109,
                                                                                     columnNumber: 61
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                                                    children: "Ekire Support"
+                                                                                    children: "Unable to access my account"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/app/support/page.jsx",
                                                                                     lineNumber: 110,
                                                                                     columnNumber: 61
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                                                    children: "Open"
+                                                                                    children: "9/20/2024"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/app/support/page.jsx",
                                                                                     lineNumber: 111,
+                                                                                    columnNumber: 61
+                                                                                }, this),
+                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                                    children: "Ekire Support"
+                                                                                }, void 0, false, {
+                                                                                    fileName: "[project]/src/app/support/page.jsx",
+                                                                                    lineNumber: 112,
+                                                                                    columnNumber: 61
+                                                                                }, this),
+                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                                    children: "Open"
+                                                                                }, void 0, false, {
+                                                                                    fileName: "[project]/src/app/support/page.jsx",
+                                                                                    lineNumber: 113,
                                                                                     columnNumber: 61
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -288,41 +303,41 @@ function Support() {
                                                                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                                                                                         href: `/support/${Support}`,
                                                                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                                            className: "badge bg-xl-light-info text-info d-flex gap-2 ",
+                                                                                            className: "badge text-white bg-info d-flex gap-2 ",
                                                                                             children: [
                                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("i", {
                                                                                                     className: "ph-duotone ph-eye f-s-18"
                                                                                                 }, void 0, false, {
                                                                                                     fileName: "[project]/src/app/support/page.jsx",
-                                                                                                    lineNumber: 112,
-                                                                                                    columnNumber: 184
+                                                                                                    lineNumber: 114,
+                                                                                                    columnNumber: 176
                                                                                                 }, this),
                                                                                                 " View "
                                                                                             ]
                                                                                         }, void 0, true, {
                                                                                             fileName: "[project]/src/app/support/page.jsx",
-                                                                                            lineNumber: 112,
+                                                                                            lineNumber: 114,
                                                                                             columnNumber: 119
                                                                                         }, this)
                                                                                     }, void 0, false, {
                                                                                         fileName: "[project]/src/app/support/page.jsx",
-                                                                                        lineNumber: 112,
+                                                                                        lineNumber: 114,
                                                                                         columnNumber: 84
                                                                                     }, this)
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/app/support/page.jsx",
-                                                                                    lineNumber: 112,
+                                                                                    lineNumber: 114,
                                                                                     columnNumber: 61
                                                                                 }, this)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/src/app/support/page.jsx",
-                                                                            lineNumber: 107,
+                                                                            lineNumber: 108,
                                                                             columnNumber: 57
                                                                         }, this)
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/app/support/page.jsx",
-                                                                        lineNumber: 106,
+                                                                        lineNumber: 107,
                                                                         columnNumber: 53
                                                                     }, this)
                                                                 ]

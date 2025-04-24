@@ -29,7 +29,7 @@ export default function Navbar () {
                                 </a>
                                 <ul className="collapse" id="dashboard">
                                     <li><Link href="/">Dashboard</Link></li>
-                                    <li><Link href="/customize">Design your own dashbaord</Link></li>
+                                    <li><Link href="/design">Design your own dashbaord</Link></li>
                                 </ul>
                             </li>
                             <li className="no-sub">

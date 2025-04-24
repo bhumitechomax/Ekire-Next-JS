@@ -35,6 +35,8 @@ const ClientScripts = () => {
             <Script rel="preload" src="/assets/js/animated_icon.js" strategy="afterInteractive" />
             <Script rel="preload" src="/assets/vendor/phosphor/phosphor.js" strategy="lazyOnload" />
             <Script rel="preload" src="/assets/vendor/slick/slick.min.js" strategy="lazyOnload" />
+            <Script rel="preload" src="/assets/vendor/nouislider/nouislider.min.js" strategy="lazyOnload" />
+            <Script rel="preload" src="/assets/vendor/nouislider/wNumb.min.js" strategy="lazyOnload" />
 
             {/* ✅ Filepond */}
             <Script rel="preload" src="/assets/vendor/filepond/file-encode.min.js" strategy="lazyOnload" />
@@ -62,6 +64,8 @@ const ClientScripts = () => {
             <Script rel="preload" src="/assets/vendor/prism/prism.min.js" strategy="lazyOnload" />
             <Script rel="preload" src="/assets/js/flag_icons.js" strategy="lazyOnload" />
             <Script rel="preload" src="/assets/js/touchspin.js" strategy="lazyOnload" />
+            <Script rel="preload" src="/assets/js/range_slider.js" strategy="lazyOnload" />
+            
 
             {/* ✅ Project Scripts */}
             

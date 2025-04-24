@@ -90,12 +90,13 @@ function Support() {
 
                             <div className="content-wrapper" id="card-container">
                                 <div className={`tabs-content ${activeTab === 1 ? "active" : ""}`} id="tab-1">
-                                    <div className="card">
+                                    <div className="card p-l-r-30">
                                         <div className="card-body p-0">
                                             <div className="app-datatable-default overflow-auto">
                                                 <table className="datatable display app-data-table default-data-table" id="example">
                                                     <thead>
                                                         <tr>
+                                                            <th width={10}>Sr no.</th>
                                                             <th>title</th>
                                                             <th>date</th>
                                                             <th>last reply</th>
@@ -105,11 +106,12 @@ function Support() {
                                                     </thead>
                                                     <tbody>
                                                         <tr>
+                                                            <td>1</td>
                                                             <td>Unable to access my account</td>
                                                             <td>9/20/2024</td>
                                                             <td>Ekire Support</td>
                                                             <td>Open</td>
-                                                            <td className="d-flex"><Link href={`/support/${Support}`}><span className="badge bg-xl-light-info text-info d-flex gap-2 "><i className="ph-duotone ph-eye f-s-18"/> View </span></Link></td>
+                                                            <td className="d-flex"><Link href={`/support/${Support}`}><span className="badge text-white bg-info d-flex gap-2 "><i className="ph-duotone ph-eye f-s-18"/> View </span></Link></td>
                                                         </tr>
                                                     </tbody>
                                                 </table>

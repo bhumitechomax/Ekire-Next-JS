@@ -64,7 +64,9 @@ function Server() {
                         {/* Breadcrumb start */}
                         <div className="row m-1">
                             <div className="col-12 d-flex justify-content-between">
-                                <h4 className="main-title">Servers</h4>
+                                <div>
+                                    <h4 className="main-title">Servers</h4>
+                                </div>
                                 <div className="text-end">
                                     <button className="btn btn-primary h-45 icon-btn m-2" onClick={handleCreateClick} >
                                         <i className="iconoir-open-new-window f-s-18" />  Create New Server
@@ -79,12 +81,13 @@ function Server() {
                             <div className="col-12">
 
                                 <div className="content-wrapper" id="card-container">
-                                    <div className="card">
+                                    <div className="card p-l-r-30">
                                         <div className="card-body p-0">
                                             <div className="app-datatable-default overflow-auto">
                                                 <table className="datatable display app-data-table default-data-table" id="example">
                                                     <thead>
                                                         <tr>
+                                                            <th width={10}>Sr no.</th>
                                                             <th>server name</th>
                                                             <th>status</th>
                                                             <th>ip address</th>
@@ -94,6 +97,7 @@ function Server() {
                                                     </thead>
                                                     <tbody>
                                                         <tr role="button" onClick={() => handleRowClick('server-alpha')}>
+                                                            <td >1</td>
                                                             <td>Server Alpha</td>
                                                             <td><span className="badge bg-success-subtle text-success text-uppercase">Running</span></td>
                                                             <td>193.38.248.207</td>
@@ -101,6 +105,7 @@ function Server() {
                                                             <td>$10</td>
                                                         </tr>
                                                         <tr>
+                                                            <td>2</td>
                                                             <td>Server Beta</td>
                                                             <td><span className="badge bg-success-subtle text-success text-uppercase">Running</span></td>
                                                             <td>192.168.0.101</td>

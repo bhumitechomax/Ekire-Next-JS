@@ -150,9 +150,9 @@ function Billing() {
                                             <div className="card-body">
                                                 <i className="ph-bold  ph-circle circle-bg-img" />
                                                 <div className="d-flex align-items-center justify-content-between pt-4 pb-4">
-                                                    <div className="h-70 w-70 d-flex-center b-r-15 bg-white">
-                                                        {/* <i className="ph-bold  ph-ticket f-s-25 text-primary" /> */}
-                                                        <Image alt="balance" src={`${assets}/images/New/balance.png`}  width={50} height={50} />
+                                                    <div className="h-50 w-50 d-flex-center b-r-15 bg-white">
+                                                        <i className="ph-bold  ph-ticket f-s-25 text-primary " />
+                                                        {/* <Image alt="balance" src={`${assets}/images/New/balance.png`}  width={50} height={50} /> */}
                                                     </div>
                                                     <div className="d-flex flex-column justify-content-between align-items-center">
                                                         <h5 className="f-s-16">Balance</h5>
@@ -239,7 +239,7 @@ function Billing() {
 
                                 <div className="content-wrapper" id="card-container">
                                     <div className={`tabs-content ${activeTab === 1 ? "active" : ""}`} id="tab-1">
-                                        <div className="card">
+                                        <div className="card p-l-r-30">
                                             <div className="card-header">
                                                 <ul className="nav nav-tabs app-tabs-primary order-tabs d-flex justify-content-start border-0 mb-0 pb-0" id="Outline" role="tablist">
                                                     <li className="nav-item" role="presentation">

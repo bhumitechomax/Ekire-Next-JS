@@ -1,9 +1,42 @@
 "use client";
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import Link from "next/link";
 
 
-function Login() {
+function SignUp() {
+    const [formData, setFormData] = useState({
+        firstName: '',
+        lastName: '',
+        email: '',
+        password: '',
+        telephone: ''
+      });
+      const handleChange = (e) => {
+        setFormData({
+          ...formData,
+          [e.target.name]: e.target.value
+        });
+      };
+    
+      const handleSubmit = async (e) => {
+        e.preventDefault();
+        console.log('Form Data:', formData);
+    
+        // Example POST request (Uncomment if you have a backend to send this to)
+        const res = await fetch('http://staging.ekire.net/api/auth/register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData)
+        });
+        if (res.ok) {
+            alert('Registration successful!');
+          } else {
+            alert('Something went wrong. Please try again.');
+          }
+    
+        const result = await res.json();
+        console.log(result);
+      };
 
     return (
         <Fragment>
@@ -35,7 +68,7 @@ function Login() {
                                 </div>
                                 <div className="col-lg-6 form-contentbox">
                                     <div className="form-container">
-                                        <form className="app-form rounded-control">
+                                        <form className="app-form rounded-control" onSubmit={handleSubmit}>
                                             <div className="row">
                                                 <div className="col-12">
                                                     <div className="mb-5 text-center text-lg-start">
@@ -46,31 +79,31 @@ function Login() {
                                                 <div className="col-md-6 col-12">
                                                     <div className="mb-3">
                                                         <label className="form-label" htmlFor="firstName">First Name</label>
-                                                        <input className="form-control" name="firstName" id="firstName" placeholder="Enter Your First name" required type="text" />
+                                                        <input className="form-control"  onChange={handleChange} name="firstName" id="firstName" placeholder="Enter Your First name" required type="text" />
                                                     </div>
                                                 </div>
                                                 <div className="col-md-6 col-12">
                                                     <div className="mb-3">
                                                         <label className="form-label" htmlFor="lastName">Last Name</label>
-                                                        <input className="form-control" name="lastName" id="lastName" placeholder="Enter Your Last name" required type="text" />
+                                                        <input className="form-control"  onChange={handleChange} name="lastName" id="lastName" placeholder="Enter Your Last name" required type="text" />
                                                     </div>
                                                 </div>
                                                 <div className="col-12">
                                                     <div className="mb-3">
                                                         <label className="form-label" htmlFor="email">Email</label>
-                                                        <input className="form-control" name="email" id="email" placeholder="Enter Your Email" required type="email" />
+                                                        <input className="form-control"   onChange={handleChange} name="email" id="email" placeholder="Enter Your Email" required type="email" />
                                                     </div>
                                                 </div>
                                                 <div className="col-md-6">
                                                     <div className="mb-3">
                                                         <label className="form-label" htmlFor="password">Password</label>
-                                                        <input className="form-control" name="password" id="password" placeholder="Enter Your Password" required type="password" />
+                                                        <input className="form-control" name="password"  onChange={handleChange} id="password" placeholder="Enter Your Password" required type="password" />
                                                     </div>
                                                 </div>
                                                 <div className="col-md-6">
                                                     <div className="mb-3">
                                                         <label className="form-label" htmlFor="telephone">Telephone</label>
-                                                        <input className="form-control" name="telephone" id="telephone" placeholder="Enter Your telephone" required type="tel" />
+                                                        <input className="form-control" name="telephone"  onChange={handleChange} id="telephone" placeholder="Enter Your telephone" required type="tel" />
                                                     </div>
                                                 </div>
                                                 <div className="col-12">
@@ -85,8 +118,8 @@ function Login() {
                                                 </div>
                                                 <div className="col-12">
                                                     <div className="mb-3">
-                                                        <a className="btn btn-light-white w-100" href="/" role="button">Sign
-                                                            Up</a>
+                                                        <button className="btn btn-light-white w-100" type="submit" role="button">Sign
+                                                            Up</button>
                                                     </div>
                                                 </div>
                                                 <div className="col-12">
@@ -112,4 +145,4 @@ function Login() {
         </Fragment>
     );
 }
-export default Login;
+export default SignUp;

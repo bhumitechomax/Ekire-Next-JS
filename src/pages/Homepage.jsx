@@ -239,10 +239,10 @@ const Homepage = () => {
                             <div className="p-3">
                                 <h5>Active services</h5>
                             </div>
-                            <div className="card">
+                            <div className="card p-l-r-30">
                                 <div className="card-body p-0">
                                     <div className="app-datatable-default overflow-auto">
-                                        <table className=" display app-data-table default-data-table" id="example">
+                                        <table className=" display app-data-table default-data-table " id="example">
                                             <thead>
                                                 <tr>
                                                     <th>Date</th>

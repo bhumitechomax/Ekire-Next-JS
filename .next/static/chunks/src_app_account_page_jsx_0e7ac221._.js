@@ -111,7 +111,7 @@ function Finance() {
                 "Finance.useEffect.timer": ()=>{
                     setIsLoading(false);
                 }
-            }["Finance.useEffect.timer"], 500);
+            }["Finance.useEffect.timer"], 900);
             return ({
                 "Finance.useEffect": ()=>clearTimeout(timer)
             })["Finance.useEffect"];

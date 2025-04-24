@@ -4,6 +4,7 @@
   --font-title-color: #1c3264;
   --body-color: #f9f9f9;
   --bodybg-color: #f6f6f6;
+  --bodybg-modal-color: #3939398f;
   --font-secondary-color: #22242c;
   --font-light-color: #a0a0b0;
   --grid_color: #90a4f636;
@@ -109,6 +110,7 @@ nav.dark-sidebar, body[class="ltr dark"] {
   --white: #fff;
   --black: #dce2f0;
   --bodybg-color: #272b3e;
+  --bodybg-modal-color: #3939398f;
   --bs-body-bg: #202335;
   --font-color: #fff;
   --box-shadow: 0 .2rem 1rem #333644;

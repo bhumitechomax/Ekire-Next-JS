@@ -40,11 +40,26 @@ function Create() {
                 <div className="container-fluid">
                     {/* Breadcrumb start */}
                     <div className="row m-1">
-                        <div className="col-12 d-flex justify-content-between">
-                            <h4 className="main-title">Create Support Ticket </h4>
+                            <div className="col-12">
+                                <h4 className="main-title">Create Support Ticket </h4>
+                                <ul className="app-line-breadcrumbs mb-3">
+                                    <li>
+                                        <a className="f-s-14 f-w-500" href="/support">
+                                            <span>
+                                                <i className="ph-duotone  ph-table f-s-16" /> Support
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li className="active">
+                                        <a className="f-s-14 f-w-500" href="#">Create Support Ticket</a>
+                                    </li>
+                                </ul>
+
+                            </div>
                         </div>
-                    </div>
                     {/* Breadcrumb end */}
+
+                    
 
                     {/* Projects start */}
                     <div className="row">

@@ -11,7 +11,11 @@
     "[project]/src/app/server/[slug]/page": [],
     "[project]/src/app/server/create/page": [],
     "[project]/src/app/server/page": [],
+    "[project]/src/app/signup/page": [],
+    "[project]/src/app/sshKeys/[slug]/page": [],
     "[project]/src/app/sshKeys/page": [],
+    "[project]/src/app/support/[slug]/page": [],
+    "[project]/src/app/support/create/page": [],
     "[project]/src/app/support/page": []
   },
   "appUsingSizeAdjust": false,

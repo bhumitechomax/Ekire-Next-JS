@@ -63,11 +63,14 @@ function Project() {
                     <div className="container-fluid">
                         {/* Breadcrumb start */}
                         <div className="row m-1">
-                            <div className="col-12 ">
-                                <h4 className="main-title">Projects</h4>
+                            <div className="col-12">
+                                <h4 className="main-title">Projects </h4>
+
                             </div>
                         </div>
                         {/* Breadcrumb end */}
+
+                        
 
                         {/* Projects start */}
                         <div className="row">
@@ -89,7 +92,7 @@ function Project() {
                                         </li>
                                         <li className="ms-auto d-flex">
                                             <div className="text-end">
-                                                <button className="btn btn-dark-11 h-45 icon-btn m-2" data-bs-target="#projectCard1" data-bs-toggle="modal">
+                                                <button className="btn text-dark h-45 icon-btn m-2" data-bs-target="#projectCard1" data-bs-toggle="modal">
                                                     <i className="ti ti-plus f-s-18" /> Join a Project
                                                 </button>
                                             </div>
@@ -105,12 +108,13 @@ function Project() {
 
                                 <div className="content-wrapper" id="card-container">
                                     <div className={`tabs-content ${activeTab === 1 ? "active" : ""}`} id="tab-1">
-                                        <div className="card">
+                                        <div className="card p-l-r-30">
                                             <div className="card-body p-0">
                                                 <div className="app-datatable-default overflow-auto">
                                                     <table className="datatable display app-data-table default-data-table" id="example">
                                                         <thead>
                                                             <tr>
+                                                                <th width={10}>Sr no.</th>
                                                                 <th>Date</th>
                                                                 <th>IP</th>
                                                                 <th>OS</th>
@@ -120,18 +124,20 @@ function Project() {
                                                         </thead>
                                                         <tbody>
                                                             <tr>
+                                                                <td>1</td>
                                                                 <td>9/22/2024</td>
                                                                 <td>192.168.1.1</td>
                                                                 <td>macOS</td>
                                                                 <td>Canada</td>
-                                                                <td className="d-flex"><Link href={`/project/${projects}`}><span className="badge text-light-success d-flex gap-2 "><i className="ph-duotone ph-eye f-s-18" /> View </span></Link></td>
+                                                                <td className="d-flex"><Link href={`/project/${projects}`}><span className="badge text-white bg-success d-flex gap-2 "><i className="ph-duotone ph-eye f-s-18" /> View </span></Link></td>
                                                             </tr>
                                                             <tr>
+                                                                <td>2</td>
                                                                 <td>9/19/2024</td>
                                                                 <td>192.168.1.4</td>
                                                                 <td>Windows 11</td>
                                                                 <td>UK</td>
-                                                                <td className="d-flex"><Link href={`/project/${projects}`}><span className="badge text-light-success d-flex gap-2 "><i className="ph-duotone ph-eye f-s-18" /> View </span></Link></td>
+                                                                <td className="d-flex"><Link href={`/project/${projects}`}><span className="badge text-white bg-success d-flex gap-2 "><i className="ph-duotone ph-eye f-s-18" /> View </span></Link></td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -141,12 +147,13 @@ function Project() {
                                     </div>
 
                                     <div className={`tabs-content ${activeTab === 2 ? "active" : ""}`} id="tab-2">
-                                        <div className="card">
+                                        <div className="card p-l-r-30">
                                             <div className="card-body p-0">
                                                 <div className="app-datatable-default overflow-auto">
                                                     <table className="datatable display app-data-table default-data-table" id="example1">
                                                         <thead>
                                                             <tr>
+                                                                <th>Sr no.</th>
                                                                 <th>name</th>
                                                                 <th>created at</th>
                                                                 <th>members count</th>
@@ -156,18 +163,20 @@ function Project() {
                                                         </thead>
                                                         <tbody>
                                                             <tr>
+                                                                <td>1</td>
                                                                 <td>My New Project50</td>
                                                                 <td>2024-11-29</td>
                                                                 <td>1</td>
                                                                 <td>0</td>
-                                                                <td className="d-flex"><Link href=""><span className="badge text-light-success d-flex gap-2 "><i className="ph-duotone ph-eye f-s-18" /> View </span></Link></td>
+                                                                <td className="d-flex"><Link href=""><span className="badge text-white bg-secondary d-flex gap-2 "><i className="ph-duotone ph-eye f-s-18" /> View </span></Link></td>
                                                             </tr>
                                                             <tr>
+                                                                <td>2</td>
                                                                 <td>Dr. Burnice Larson</td>
                                                                 <td>2024-12-24</td>
                                                                 <td>5</td>
                                                                 <td>0</td>
-                                                                <td className="d-flex"><Link href=""><span className="badge text-light-success d-flex gap-2 "><i className="ph-duotone ph-eye f-s-18" /> View </span></Link></td>
+                                                                <td className="d-flex"><Link href=""><span className="badge text-white bg-secondary d-flex gap-2 "><i className="ph-duotone ph-eye f-s-18" /> View </span></Link></td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -207,7 +216,7 @@ function Project() {
                                 </div>
                                 <div className="modal-footer">
                                     <button className="btn btn-secondary" data-bs-dismiss="modal" type="button">Cancel</button>
-                                    <button className="btn btn-primary" id="addCard" type="button">Submit</button>
+                                    <button className="btn btn-primary" id="addCard" type="button" data-bs-dismiss="modal">Submit</button>
                                 </div>
                             </div>
                         </div>
@@ -235,7 +244,7 @@ function Project() {
                                 </div>
                                 <div className="modal-footer">
                                     <button className="btn btn-secondary" data-bs-dismiss="modal" type="button">Cancel</button>
-                                    <button className="btn btn-primary" id="addCard" type="button">Submit</button>
+                                    <button className="btn btn-primary" id="addCard" type="submit" data-bs-dismiss="modal">Submit</button>
                                 </div>
                             </div>
                         </div>

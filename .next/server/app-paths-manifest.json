@@ -11,6 +11,10 @@
   "/server/[slug]/page": "app/server/[slug]/page.js",
   "/server/create/page": "app/server/create/page.js",
   "/server/page": "app/server/page.js",
+  "/signup/page": "app/signup/page.js",
+  "/sshKeys/[slug]/page": "app/sshKeys/[slug]/page.js",
   "/sshKeys/page": "app/sshKeys/page.js",
+  "/support/[slug]/page": "app/support/[slug]/page.js",
+  "/support/create/page": "app/support/create/page.js",
   "/support/page": "app/support/page.js"
 }

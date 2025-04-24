@@ -197,7 +197,7 @@ function Billing() {
         // Simulate loading
         const timer = setTimeout(()=>{
             setIsLoading(false);
-        }, 500);
+        }, 900);
         return ()=>clearTimeout(timer);
     }, []);
     // to load datatable
@@ -220,7 +220,7 @@ function Billing() {
                 isLoading && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "d-flex justify-content-center align-items-center position-absolute start-0 w-100 h-100",
                     style: {
-                        background: '#f6f6f6',
+                        background: 'var(--bodybg-color)',
                         zIndex: 1000
                     },
                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -299,15 +299,12 @@ function Billing() {
                                                                 className: "d-flex align-items-center justify-content-between pt-4 pb-4",
                                                                 children: [
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                        className: "h-70 w-70 d-flex-center b-r-15 bg-white",
-                                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
-                                                                            alt: "balance",
-                                                                            src: `${assets}/images/New/balance.png`,
-                                                                            width: 50,
-                                                                            height: 50
+                                                                        className: "h-50 w-50 d-flex-center b-r-15 bg-white",
+                                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("i", {
+                                                                            className: "ph-bold  ph-ticket f-s-25 text-primary "
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/app/billing/page.jsx",
-                                                                            lineNumber: 155,
+                                                                            lineNumber: 154,
                                                                             columnNumber: 57
                                                                         }, this)
                                                                     }, void 0, false, {
@@ -716,7 +713,7 @@ function Billing() {
                                                     className: `tabs-content ${activeTab === 1 ? "active" : ""}`,
                                                     id: "tab-1",
                                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                        className: "card",
+                                                        className: "card p-l-r-30",
                                                         children: [
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                 className: "card-header",

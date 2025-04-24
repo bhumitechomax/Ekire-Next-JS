@@ -59,6 +59,70 @@ function Create() {
         return () => clearTimeout(timer);
     }, []);
 
+    // modal for disk
+    const handleCheckboxChange = (e) => {
+        if (e.target.checked) {
+            const modal = new bootstrap.Modal(document.getElementById('projectCard1'));
+            modal.show();
+        }
+    };
+
+    // range
+    // const [value, setValue] = useState(10);
+    // const sliderRef = useRef(null);
+    // const tooltipRef = useRef(null);
+
+    // const min = 10;
+    // const max = 10240;
+
+    // const handleSliderChange = (e) => {
+    //     const newValue = parseInt(e.target.value);
+    //     setValue(newValue);
+
+    //     // Move the tooltip with the slider thumb
+    //     const slider = sliderRef.current;
+    //     const tooltip = tooltipRef.current;
+
+    //     if (slider && tooltip) {
+    //         const sliderWidth = slider.offsetWidth;
+    //         const percent = (newValue - min) / (max - min);
+    //         const thumbOffset = percent * (sliderWidth - 16); 
+    //         tooltip.style.left = `${thumbOffset}px`;
+    //     }
+    // };
+
+    // useEffect(() => {
+    //     handleSliderChange({ target: { value } }); // Initial positioning
+    // }, []);
+
+    const [count, setCount] = useState(1);
+    const [price, setPrice] = useState(5); // Default price for 1 GB
+
+    const updatePrice = (value) => {
+        if (value >= 1 && value <= 5) {
+            setPrice(5);
+        } else if (value >= 6 && value <= 10) {
+            setPrice(10);
+        } else if (value > 10 && value <= 50) {
+            setPrice(20);
+        } else {
+            setPrice(30); // Adjust as needed
+        }
+    };
+
+    const increment = () => {
+        const newValue = count + 1;
+        setCount(newValue);
+        updatePrice(newValue);
+    };
+
+    const decrement = () => {
+        if (count > 1) {
+            const newValue = count - 1;
+            setCount(newValue);
+            updatePrice(newValue);
+        }
+    };
 
     return (
         <Fragment>
@@ -81,8 +145,21 @@ function Create() {
                     <div className="container-fluid">
                         {/* Breadcrumb start */}
                         <div className="row m-1">
-                            <div className="col-12 d-flex justify-content-between">
+                            <div className="col-12">
                                 <h4 className="main-title">Create New Server  </h4>
+                                <ul className="app-line-breadcrumbs mb-3">
+                                    <li>
+                                        <a className="f-s-14 f-w-500" href="/server">
+                                            <span>
+                                                <i className="ph-duotone  ph-table f-s-16" /> Server
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li className="active">
+                                        <a className="f-s-14 f-w-500" href="#">Create New Server</a>
+                                    </li>
+                                </ul>
+
                             </div>
                         </div>
                         {/* Breadcrumb end */}
@@ -191,6 +268,18 @@ function Create() {
                                                                                 </div>
                                                                             </div>
                                                                         </div>
+                                                                        <form className="app-form row g-3 needs-validation" noValidate>
+                                                                            {selectedOS === 'Ubuntu' && (
+                                                                                <div className="Ubuntu">
+                                                                                    <select className="form-select" id="ubuntuVersion" required>
+                                                                                        <option>18.04</option>
+                                                                                        <option>20.04</option>
+                                                                                        <option>22.04</option>
+                                                                                    </select>
+                                                                                    <div className="invalid-feedback">Please select a valid version.</div>
+                                                                                </div>
+                                                                            )}
+                                                                        </form>
                                                                     </div>
                                                                     <div className="col-md-6 col-xl-3 p-3">
                                                                         <div className="simple-pricing-card card" onClick={() => handleOSClick('Windows')} style={{ cursor: 'pointer' }}>
@@ -203,6 +292,17 @@ function Create() {
                                                                                 </div>
                                                                             </div>
                                                                         </div>
+                                                                        <form className="app-form row g-3 needs-validation" noValidate>
+                                                                            {selectedOS === 'Windows' && (
+                                                                                <div className="Windows">
+                                                                                    <select className="form-select" id="windowsVersion" required>
+                                                                                        <option>2019</option>
+                                                                                        <option>2022</option>
+                                                                                    </select>
+                                                                                    <div className="invalid-feedback">Please select a valid state.</div>
+                                                                                </div>
+                                                                            )}
+                                                                        </form>
                                                                     </div>
                                                                     <div className="col-md-6 col-xl-3 p-3">
                                                                         <div className="simple-pricing-card card" onClick={() => handleOSClick('Linux')} style={{ cursor: 'pointer' }}>
@@ -215,6 +315,20 @@ function Create() {
                                                                                 </div>
                                                                             </div>
                                                                         </div>
+                                                                        <form className="app-form row g-3 needs-validation" noValidate>
+                                                                            {selectedOS === 'Linux' && (
+                                                                                <div className="Linux">
+                                                                                    <select className="form-select" id="linuxVersion" required>
+                                                                                        <option>8.4</option>
+                                                                                        <option>8.7</option>
+                                                                                        <option>9.0</option>
+                                                                                        <option>9.1</option>
+                                                                                        <option>9.2</option>
+                                                                                    </select>
+                                                                                    <div className="invalid-feedback">Please select a valid state.</div>
+                                                                                </div>
+                                                                            )}
+                                                                        </form>
                                                                     </div>
                                                                     <div className="col-md-6 col-xl-3 p-3">
                                                                         <div className="simple-pricing-card card" onClick={() => handleOSClick('CentOS')} style={{ cursor: 'pointer' }}>
@@ -227,6 +341,19 @@ function Create() {
                                                                                 </div>
                                                                             </div>
                                                                         </div>
+                                                                        <form className="app-form row g-3 needs-validation" noValidate>
+                                                                            {selectedOS === 'CentOS' && (
+                                                                                <div className="CentOS">
+                                                                                    <select className="form-select" id="centOSVersion" required>
+                                                                                        <option>7</option>
+                                                                                        <option>8</option>
+                                                                                        <option>8 Stream</option>
+                                                                                        <option>9 Stream</option>
+                                                                                    </select>
+                                                                                    <div className="invalid-feedback">Please select a valid state.</div>
+                                                                                </div>
+                                                                            )}
+                                                                        </form>
                                                                     </div>
                                                                     <div className="col-md-6 col-xl-3 p-3">
                                                                         <div className="simple-pricing-card card" onClick={() => handleOSClick('Debian')} style={{ cursor: 'pointer' }}>
@@ -239,6 +366,19 @@ function Create() {
                                                                                 </div>
                                                                             </div>
                                                                         </div>
+                                                                        <form className="app-form row g-3 needs-validation" noValidate>
+                                                                            {selectedOS === 'Debian' && (
+                                                                                <div className="Debian">
+                                                                                    <select className="form-select" id="debianVersion" required>
+                                                                                        <option>9</option>
+                                                                                        <option>10</option>
+                                                                                        <option>11</option>
+                                                                                        <option>12</option>
+                                                                                    </select>
+                                                                                    <div className="invalid-feedback">Please select a valid state.</div>
+                                                                                </div>
+                                                                            )}
+                                                                        </form>
                                                                     </div>
                                                                     <div className="col-md-6 col-xl-3 p-3">
                                                                         <div className="simple-pricing-card card" onClick={() => handleOSClick('Rocky')} style={{ cursor: 'pointer' }}>
@@ -251,74 +391,9 @@ function Create() {
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div className="row">
-                                                                    <div className="col-lg-4">
-                                                                        <form className="app-form rounded-control row g-3 needs-validation" noValidate>
-                                                                            {selectedOS === 'Ubuntu' && (
-                                                                                <div className="Ubuntu mt-4">
-                                                                                    <label className="form-label" htmlFor="ubuntuVersion">
-                                                                                        Ubuntu Version
-                                                                                    </label>
-                                                                                    <select className="form-select" id="ubuntuVersion" required>
-                                                                                        <option>18.04</option>
-                                                                                        <option>20.04</option>
-                                                                                        <option>22.04</option>
-                                                                                    </select>
-                                                                                    <div className="invalid-feedback">Please select a valid version.</div>
-                                                                                </div>
-                                                                            )}
-                                                                            {selectedOS === 'Windows' && (
-                                                                                <div className="Windows mt-4">
-                                                                                    <label className="form-label" htmlFor="windowsVersion">Windows Version</label>
-                                                                                    <select className="form-select" id="windowsVersion" required>
-                                                                                        <option>2019</option>
-                                                                                        <option>2022</option>
-                                                                                    </select>
-                                                                                    <div className="invalid-feedback">Please select a valid state.</div>
-                                                                                </div>
-                                                                            )}
-                                                                            {selectedOS === 'Linux' && (
-                                                                                <div className="Windows mt-4">
-                                                                                    <label className="form-label" htmlFor="linuxVersion">Alma Linux Version</label>
-                                                                                    <select className="form-select" id="linuxVersion" required>
-                                                                                        <option>8.4</option>
-                                                                                        <option>8.7</option>
-                                                                                        <option>9.0</option>
-                                                                                        <option>9.1</option>
-                                                                                        <option>9.2</option>
-                                                                                    </select>
-                                                                                    <div className="invalid-feedback">Please select a valid state.</div>
-                                                                                </div>
-                                                                            )}
-                                                                            {selectedOS === 'CentOS' && (
-                                                                                <div className="Windows mt-4">
-                                                                                    <label className="form-label" htmlFor="centOSVersion">CentOS Version</label>
-                                                                                    <select className="form-select" id="centOSVersion" required>
-                                                                                        <option>7</option>
-                                                                                        <option>8</option>
-                                                                                        <option>8 Stream</option>
-                                                                                        <option>9 Stream</option>
-                                                                                    </select>
-                                                                                    <div className="invalid-feedback">Please select a valid state.</div>
-                                                                                </div>
-                                                                            )}
-                                                                            {selectedOS === 'Debian' && (
-                                                                                <div className="Windows mt-4">
-                                                                                    <label className="form-label" htmlFor="debianVersion">Debian Version</label>
-                                                                                    <select className="form-select" id="debianVersion" required>
-                                                                                        <option>9</option>
-                                                                                        <option>10</option>
-                                                                                        <option>11</option>
-                                                                                        <option>12</option>
-                                                                                    </select>
-                                                                                    <div className="invalid-feedback">Please select a valid state.</div>
-                                                                                </div>
-                                                                            )}
+                                                                        <form className="app-form row g-3 needs-validation" noValidate>
                                                                             {selectedOS === 'Rocky' && (
-                                                                                <div className="Windows mt-4">
-                                                                                    <label className="form-label" htmlFor="rockyVersion">Rocky Linux Version</label>
+                                                                                <div className="Rocky">
                                                                                     <select className="form-select" id="rockyVersion" required>
                                                                                         <option>8.4</option>
                                                                                         <option>9</option>
@@ -344,10 +419,23 @@ function Create() {
                                                                                     <h5 className="mb-3">Plesk</h5>
                                                                                 </div>
                                                                                 <div className="simple-price-body text-center mb-3">
-                                                                                    <Image alt="Plesk" className="img-fluid" src="/assets/images/new/Plesk.png" width={64} height={64} />
+                                                                                    <Image alt="Plesk" className="img-fluid" src="/assets/images/new/plesk-logo.png" width={64} height={64} />
                                                                                 </div>
                                                                             </div>
                                                                         </div>
+                                                                        <form className="app-form row g-3 needs-validation" noValidate>
+                                                                            {selectedOS === 'Plesk' && (
+                                                                                <div className="Plesk">
+                                                                                    <select className="form-select" id="pleskVersion" required>
+                                                                                        <option disabled defaultValue>Select a Plesk Version</option>
+                                                                                        <option>AlmaLinux</option>
+                                                                                        <option>CentOS 7</option>
+                                                                                        <option>Windows 2022</option>
+                                                                                    </select>
+                                                                                    <div className="invalid-feedback">Please select a valid version.</div>
+                                                                                </div>
+                                                                            )}
+                                                                        </form>
                                                                     </div>
                                                                     <div className="col-md-6 col-xl-3 p-3">
                                                                         <div className="simple-pricing-card card" onClick={() => handleOSClick('cPanel')} style={{ cursor: 'pointer' }}>
@@ -360,6 +448,19 @@ function Create() {
                                                                                 </div>
                                                                             </div>
                                                                         </div>
+                                                                        <form className="app-form row g-3 needs-validation" noValidate>
+                                                                            {selectedOS === 'cPanel' && (
+                                                                                <div className="cPanel">
+                                                                                    <select className="form-select" id="cPanelVersion" required>
+                                                                                        <option disabled defaultValue>Select a cPanel Version</option>
+                                                                                        <option>Ubuntu 20.04</option>
+                                                                                        <option>CloudLinux</option>
+                                                                                        <option>AlmaLinux 8</option>
+                                                                                    </select>
+                                                                                    <div className="invalid-feedback">Please select a valid state.</div>
+                                                                                </div>
+                                                                            )}
+                                                                        </form>
                                                                     </div>
                                                                     <div className="col-md-6 col-xl-3 p-3">
                                                                         <div className="simple-pricing-card card" onClick={() => handleOSClick('Wordpress')} style={{ cursor: 'pointer' }}>
@@ -368,10 +469,21 @@ function Create() {
                                                                                     <h5 className="mb-3">Wordpress</h5>
                                                                                 </div>
                                                                                 <div className="simple-price-body text-center">
-                                                                                    <Image alt="Wordpress" className="img-fluid" src="/assets/images/new/Wordpress.png" width={45} height={64} />
+                                                                                    <Image alt="Wordpress" className="img-fluid" src="/assets/images/new/wordpress.png" width={45} height={55} />
                                                                                 </div>
                                                                             </div>
                                                                         </div>
+                                                                        <form className="app-form row g-3 needs-validation" noValidate>
+                                                                            {selectedOS === 'Wordpress' && (
+                                                                                <div className="Wordpress">
+                                                                                    <select className="form-select" id="WordpressVersion" required>
+                                                                                        <option disabled defaultValue>Select a Wordpress Version</option>
+                                                                                        <option>Ubuntu 20.04</option>
+                                                                                    </select>
+                                                                                    <div className="invalid-feedback">Please select a valid state.</div>
+                                                                                </div>
+                                                                            )}
+                                                                        </form>
                                                                     </div>
                                                                     <div className="col-md-6 col-xl-3 p-3">
                                                                         <div className="simple-pricing-card card" onClick={() => handleOSClick('NGINX')} style={{ cursor: 'pointer' }}>
@@ -380,10 +492,21 @@ function Create() {
                                                                                     <h5 className="mb-3">NGINX </h5>
                                                                                 </div>
                                                                                 <div className="simple-price-body text-center">
-                                                                                    <Image alt="NGINX" className="img-fluid" src="/assets/images/new/NGINX.png" width={45} height={64} />
+                                                                                    <Image alt="NGINX" className="img-fluid" src="/assets/images/new/nginx.png" width={45} height={64} />
                                                                                 </div>
                                                                             </div>
                                                                         </div>
+                                                                        <form className="app-form row g-3 needs-validation" noValidate>
+                                                                            {selectedOS === 'NGINX' && (
+                                                                                <div className="NGINX">
+                                                                                    <select className="form-select" id="nginxVersion" required>
+                                                                                        <option disabled defaultValue>Select a NGINX Version</option>
+                                                                                        <option>Ubuntu</option>
+                                                                                    </select>
+                                                                                    <div className="invalid-feedback">Please select a valid state.</div>
+                                                                                </div>
+                                                                            )}
+                                                                        </form>
                                                                     </div>
                                                                     <div className="col-md-6 col-xl-3 p-3">
                                                                         <div className="simple-pricing-card card" onClick={() => handleOSClick('OpenVPN')} style={{ cursor: 'pointer' }}>
@@ -396,6 +519,17 @@ function Create() {
                                                                                 </div>
                                                                             </div>
                                                                         </div>
+                                                                        <form className="app-form row g-3 needs-validation" noValidate>
+                                                                            {selectedOS === 'OpenVPN' && (
+                                                                                <div className="OpenVPN">
+                                                                                    <select className="form-select" id="openVPNVersion" required>
+                                                                                        <option disabled defaultValue>Select a OpenVPN Version</option>
+                                                                                        <option>Ubuntu</option>
+                                                                                    </select>
+                                                                                    <div className="invalid-feedback">Please select a valid state.</div>
+                                                                                </div>
+                                                                            )}
+                                                                        </form>
                                                                     </div>
                                                                     <div className="col-md-6 col-xl-3 p-3">
                                                                         <div className="simple-pricing-card card" onClick={() => handleOSClick('MariaDB')} style={{ cursor: 'pointer' }}>
@@ -404,10 +538,21 @@ function Create() {
                                                                                     <h5 className="mb-3">MariaDB </h5>
                                                                                 </div>
                                                                                 <div className="simple-price-body text-center">
-                                                                                    <Image alt="MariaDB" className="img-fluid" src="/assets/images/new/MariaDB.png" width={45} height={64} />
+                                                                                    <Image alt="MariaDB" className="img-fluid" src="/assets/images/new/mariadb.png" width={65} height={64} />
                                                                                 </div>
                                                                             </div>
                                                                         </div>
+                                                                        <form className="app-form row g-3 needs-validation" noValidate>
+                                                                            {selectedOS === 'MariaDB' && (
+                                                                                <div className="MariaDB">
+                                                                                    <select className="form-select" id="mariaDBVersion" required>
+                                                                                        <option disabled defaultValue>Select a MariaDB Version</option>
+                                                                                        <option>Ubuntu</option>
+                                                                                    </select>
+                                                                                    <div className="invalid-feedback">Please select a valid state.</div>
+                                                                                </div>
+                                                                            )}
+                                                                        </form>
                                                                     </div>
                                                                     <div className="col-md-6 col-xl-3 p-3">
                                                                         <div className="simple-pricing-card card" onClick={() => handleOSClick('NextCloud')} style={{ cursor: 'pointer' }}>
@@ -420,80 +565,9 @@ function Create() {
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div className="row">
-                                                                    <div className="col-lg-4">
-                                                                        <form className="app-form rounded-control row g-3 needs-validation" noValidate>
-                                                                            {selectedOS === 'Plesk' && (
-                                                                                <div className="Plesk mt-4">
-                                                                                    <label className="form-label" htmlFor="pleskVersion">
-                                                                                        Plesk Version
-                                                                                    </label>
-                                                                                    <select className="form-select" id="pleskVersion" required>
-                                                                                        <option disabled defaultValue>Select a Plesk Version</option>
-                                                                                        <option>AlmaLinux</option>
-                                                                                        <option>CentOS 7</option>
-                                                                                        <option>Windows 2022</option>
-                                                                                    </select>
-                                                                                    <div className="invalid-feedback">Please select a valid version.</div>
-                                                                                </div>
-                                                                            )}
-                                                                            {selectedOS === 'cPanel' && (
-                                                                                <div className="cPanel mt-4">
-                                                                                    <label className="form-label" htmlFor="cPanelVersion">cPanel Version</label>
-                                                                                    <select className="form-select" id="cPanelVersion" required>
-                                                                                        <option disabled defaultValue>Select a cPanel Version</option>
-                                                                                        <option>Ubuntu 20.04</option>
-                                                                                        <option>CloudLinux</option>
-                                                                                        <option>AlmaLinux 8</option>
-                                                                                    </select>
-                                                                                    <div className="invalid-feedback">Please select a valid state.</div>
-                                                                                </div>
-                                                                            )}
-                                                                            {selectedOS === 'Wordpress' && (
-                                                                                <div className="Wordpress mt-4">
-                                                                                    <label className="form-label" htmlFor="WordpressVersion">Wordpress Version</label>
-                                                                                    <select className="form-select" id="WordpressVersion" required>
-                                                                                        <option disabled defaultValue>Select a Wordpress Version</option>
-                                                                                        <option>Ubuntu 20.04</option>
-                                                                                    </select>
-                                                                                    <div className="invalid-feedback">Please select a valid state.</div>
-                                                                                </div>
-                                                                            )}
-                                                                            {selectedOS === 'NGINX' && (
-                                                                                <div className="NGINX mt-4">
-                                                                                    <label className="form-label" htmlFor="nginxVersion">NGINX Version</label>
-                                                                                    <select className="form-select" id="nginxVersion" required>
-                                                                                        <option disabled defaultValue>Select a NGINX Version</option>
-                                                                                        <option>Ubuntu</option>
-                                                                                    </select>
-                                                                                    <div className="invalid-feedback">Please select a valid state.</div>
-                                                                                </div>
-                                                                            )}
-                                                                            {selectedOS === 'OpenVPN' && (
-                                                                                <div className="OpenVPN mt-4">
-                                                                                    <label className="form-label" htmlFor="openVPNVersion">OpenVPN Version</label>
-                                                                                    <select className="form-select" id="openVPNVersion" required>
-                                                                                        <option disabled defaultValue>Select a OpenVPN Version</option>
-                                                                                        <option>Ubuntu</option>
-                                                                                    </select>
-                                                                                    <div className="invalid-feedback">Please select a valid state.</div>
-                                                                                </div>
-                                                                            )}
-                                                                            {selectedOS === 'MariaDB' && (
-                                                                                <div className="MariaDB mt-4">
-                                                                                    <label className="form-label" htmlFor="mariaDBVersion">MariaDB Version</label>
-                                                                                    <select className="form-select" id="mariaDBVersion" required>
-                                                                                        <option disabled defaultValue>Select a MariaDB Version</option>
-                                                                                        <option>Ubuntu</option>
-                                                                                    </select>
-                                                                                    <div className="invalid-feedback">Please select a valid state.</div>
-                                                                                </div>
-                                                                            )}
+                                                                        <form className="app-form row g-3 needs-validation" noValidate>
                                                                             {selectedOS === 'NextCloud' && (
-                                                                                <div className="NextCloud mt-4">
-                                                                                    <label className="form-label" htmlFor="nextCloudVersion">NextCloud Version</label>
+                                                                                <div className="NextCloud">
                                                                                     <select className="form-select" id="nextCloudVersion" required>
                                                                                         <option disabled defaultValue>Select a NextCloud Version</option>
                                                                                         <option>Ubuntu</option>
@@ -947,18 +1021,83 @@ function Create() {
                                                             <h5 className="p-0 mb-4">Additional Disk</h5>
                                                             <div className="row checkbox-div">
                                                                 <div className="col-12">
-                                                                    <div className="form-check d-flex align-items-center gap-3">
-                                                                        <div>
-                                                                            <input className="form-check-input" id="invalidCheck2" required type="checkbox" defaultValue />
-                                                                        </div>
-                                                                        <div>
-                                                                            <label className="form-check-label f-s-18" htmlFor="invalidCheck2">
-                                                                                Need more disk space? Add a volume with no manual setup.
-                                                                            </label>
-                                                                            <p className="form-check-label-p">Block storage volumes add extra disk space. We automatically format and mount your volume so it’s available as soon as your Droplet is, and you can move volumes seamlessly between Droplets at any time. Think of it like a flash drive for your VM.</p>
+                                                                    <>
+                                                                        <div className="form-check d-flex align-items-center gap-3">
+                                                                            <div>
+                                                                                <input
+                                                                                    className="form-check-input"
+                                                                                    id="invalidCheck2"
+                                                                                    required
+                                                                                    type="checkbox"
+                                                                                    onChange={handleCheckboxChange}
+                                                                                />
+                                                                            </div>
+                                                                            <div>
+                                                                                <label className="form-check-label f-s-18" htmlFor="invalidCheck2">
+                                                                                    Need more disk space? Add a volume with no manual setup.
+                                                                                </label>
+                                                                                <p className="form-check-label-p">
+                                                                                    Block storage volumes add extra disk space. We automatically format and mount your volume so it’s available as soon as your Droplet is, and you can move volumes seamlessly between Droplets at any time. Think of it like a flash drive for your VM.
+                                                                                </p>
+                                                                            </div>
                                                                         </div>
 
-                                                                    </div>
+                                                                        {/* MODAL */}
+
+
+
+                                                                        <div aria-hidden="true" aria-labelledby="projectCardLabel" className="modal fade" id="projectCard2" tabIndex={-1}>
+                                                                            <div className="modal-dialog modal-fullscreen-lg-down modal-dialog-centered">
+                                                                                <div className="modal-content">
+                                                                                    <div className="modal-header">
+                                                                                        <h5 className="modal-title">Create Volume</h5>
+                                                                                        <button aria-label="Close" className="btn-close m-0 fs-5" data-bs-dismiss="modal" type="button" />
+                                                                                    </div>
+                                                                                    <div className="modal-body">
+                                                                                        <div className="row align-items-center justify-content-center">
+                                                                                            <div className="col-lg-5 text-center align-self-center">
+                                                                                                <img alt="" className="img-fluid b-r-10" src="../assets/images/new/cloud.png" />
+                                                                                            </div>
+                                                                                            <div className="col-lg-6 ps-4">
+                                                                                                <div className="simplespin">
+                                                                                                    <a className="circle-btn decrement" role="button">-</a>
+                                                                                                    <input className="app-small-touchspin count" type="text" defaultValue={1} />
+                                                                                                    <a className="circle-btn increment" role="button">+</a>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            {/* <div className="col-12">
+                                                                                                <div className="slider-container">
+                                                                                                    <label className="form-label f-s-16 text-secondary mb-3">Tooltip Slider</label>
+                                                                                                    <div className="slider-wrapper">
+                                                                                                        <input
+                                                                                                            type="range"
+                                                                                                            ref={sliderRef}
+                                                                                                            min={min}
+                                                                                                            max={max}
+                                                                                                            value={value}
+                                                                                                            onChange={handleSliderChange}
+                                                                                                            className="range-slider"
+                                                                                                        />
+                                                                                                        <div
+                                                                                                            ref={tooltipRef}
+                                                                                                            className="slider-tooltip"
+                                                                                                        >
+                                                                                                            {value} GB
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div> */}
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div className="modal-footer">
+                                                                                        <button className="btn btn-light-primary" type="button">Save changes</button>
+                                                                                        <button className="btn btn-light-secondary" data-bs-dismiss="modal" type="button">Close
+                                                                                        </button>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -1249,7 +1388,55 @@ function Create() {
 
 
                     </div>
-
+                    <div aria-hidden="true" aria-labelledby="projectCardLabel" className="ltr dark modal fade" id="projectCard1" tabIndex={-1} >
+                        <div className="modal-dialog">
+                            <div className="modal-content">
+                                <div className="modal-header">
+                                    <div className="d-flex align-items-center gap-2">
+                                        <h1 className="modal-title fs-5" id="projectCardLabel">Create Volume </h1>
+                                        <iconify-icon icon="line-md:document-add" className="f-s-22" style={{ color: "#198754" }} />
+                                    </div>
+                                    <button aria-label="Close" className="btn-close" data-bs-dismiss="modal" type="button" />
+                                </div>
+                                <div className="modal-body">
+                                    <div className="row align-items-center justify-content-center">
+                                        <div className="col-lg-5 text-center align-self-center">
+                                            <img alt="" className="img-fluid b-r-10" src="../assets/images/new/cloud.png" />
+                                        </div>
+                                        <div className="col-lg-6 ps-4 ">
+                                            <div className="d-flex align-items-center gap-3">
+                                                <div className="simplespin d-flex align-items-center gap-2">
+                                                    <a className="circle-btn decrement" role="button" onClick={decrement}>-</a>
+                                                    <input className="app-small-touchspin count f-s-19" type="text" value={count} readOnly />
+                                                    <a className="circle-btn increment" role="button" onClick={increment}>+</a>
+                                                </div>
+                                                <p className="f-s-18 m-0">GB</p>
+                                            </div>
+                                            <div>
+                                                <p className="f-s-18 text-primary fw-bold m-0"> ${price} /mo</p>
+                                            </div>
+                                        </div>
+                                        <form className="app-form mt-3">
+                                            <div className="mb-3">
+                                                <div className="input-group">
+                                                    <input aria-describedby="inputGroupPrepend2" className="form-control" id="validationDefaultUsername" placeholder="Volume Name" required="" type="text" />
+                                                </div>
+                                            </div>
+                                            <div className="mb-3">
+                                                <div className="input-group">
+                                                    <input aria-describedby="inputGroupPrepend2" className="form-control" id="validationDefaultUsername" placeholder="Add Location" required="" type="text" />
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div className="modal-footer">
+                                    <button className="btn btn-secondary" data-bs-dismiss="modal" type="button">Cancel</button>
+                                    <button className="btn btn-primary" id="addCard" type="button" data-bs-dismiss="modal">Buy</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </main>
             </div>
         </Fragment>

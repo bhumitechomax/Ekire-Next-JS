@@ -19,6 +19,8 @@ import "../../public/assets/vendor/tabler-icons/tabler-icons.css";
 import "../../public/assets/vendor/datatable/jquery.dataTables.min.css";
 import "../../public/assets/vendor/flag-icons-master/flag-icon.css";
 import "../../public/assets/vendor/prism/prism.min.css";
+import "../../public/assets/vendor/nouislider/nouislider.min.css";
+
 
 import "./globals.css";
 import PageWrapper from "@/components/PageWrapper";
@@ -32,7 +34,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link rel="preconnect" href="https://fonts.gstatic.com" />
             </Head>
-            <body>
+            <body >
                 <PageWrapper>
                     {children}
                     <ClientScripts />

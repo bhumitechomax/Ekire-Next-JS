@@ -29,7 +29,7 @@ function SshKeys() {
                 "SshKeys.useEffect.timer": ()=>{
                     setIsLoading(false);
                 }
-            }["SshKeys.useEffect.timer"], 500);
+            }["SshKeys.useEffect.timer"], 900);
             return ({
                 "SshKeys.useEffect": ()=>clearTimeout(timer)
             })["SshKeys.useEffect"];
@@ -55,7 +55,7 @@ function SshKeys() {
                 isLoading && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "d-flex justify-content-center align-items-center position-absolute top-0 start-0 w-100 h-100",
                     style: {
-                        background: '#f6f6f6',
+                        background: 'var(--bodybg-color)',
                         zIndex: 1000
                     },
                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -92,13 +92,19 @@ function SshKeys() {
                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "col-12 d-flex justify-content-between",
                                     children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
-                                            className: "main-title",
-                                            children: "My SSH Keys"
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
+                                                className: "main-title",
+                                                children: "My SSH Keys"
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/app/sshKeys/page.jsx",
+                                                lineNumber: 59,
+                                                columnNumber: 37
+                                            }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/sshKeys/page.jsx",
                                             lineNumber: 58,
-                                            columnNumber: 29
+                                            columnNumber: 33
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "text-end",
@@ -111,31 +117,31 @@ function SshKeys() {
                                                         className: "iconoir-open-new-window f-s-18"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/sshKeys/page.jsx",
-                                                        lineNumber: 61,
-                                                        columnNumber: 37
+                                                        lineNumber: 64,
+                                                        columnNumber: 41
                                                     }, this),
                                                     "  New SSH Key"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/sshKeys/page.jsx",
-                                                lineNumber: 60,
-                                                columnNumber: 33
+                                                lineNumber: 63,
+                                                columnNumber: 37
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/sshKeys/page.jsx",
-                                            lineNumber: 59,
-                                            columnNumber: 29
+                                            lineNumber: 62,
+                                            columnNumber: 33
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/sshKeys/page.jsx",
                                     lineNumber: 57,
-                                    columnNumber: 25
+                                    columnNumber: 29
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/app/sshKeys/page.jsx",
                                 lineNumber: 56,
-                                columnNumber: 21
+                                columnNumber: 25
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "row",
@@ -145,7 +151,7 @@ function SshKeys() {
                                         className: "content-wrapper",
                                         id: "card-container",
                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: "card",
+                                            className: "card p-l-r-30",
                                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 className: "card-body p-0",
                                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -158,197 +164,219 @@ function SshKeys() {
                                                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
                                                                     children: [
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                                                            width: 10,
+                                                                            children: "Sr no."
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/src/app/sshKeys/page.jsx",
+                                                                            lineNumber: 83,
+                                                                            columnNumber: 61
+                                                                        }, this),
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
                                                                             children: "name"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/app/sshKeys/page.jsx",
-                                                                            lineNumber: 79,
-                                                                            columnNumber: 57
+                                                                            lineNumber: 84,
+                                                                            columnNumber: 61
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
                                                                             children: "created at"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/app/sshKeys/page.jsx",
-                                                                            lineNumber: 80,
-                                                                            columnNumber: 57
+                                                                            lineNumber: 85,
+                                                                            columnNumber: 61
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
                                                                             children: "action"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/app/sshKeys/page.jsx",
-                                                                            lineNumber: 81,
-                                                                            columnNumber: 57
+                                                                            lineNumber: 86,
+                                                                            columnNumber: 61
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/app/sshKeys/page.jsx",
-                                                                    lineNumber: 78,
-                                                                    columnNumber: 53
+                                                                    lineNumber: 82,
+                                                                    columnNumber: 57
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/sshKeys/page.jsx",
-                                                                lineNumber: 77,
-                                                                columnNumber: 49
+                                                                lineNumber: 81,
+                                                                columnNumber: 53
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
                                                                 children: [
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
                                                                         children: [
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                                children: "1"
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/src/app/sshKeys/page.jsx",
+                                                                                lineNumber: 91,
+                                                                                columnNumber: 61
+                                                                            }, this),
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                                                 children: "firstkey"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/app/sshKeys/page.jsx",
-                                                                                lineNumber: 86,
-                                                                                columnNumber: 57
+                                                                                lineNumber: 92,
+                                                                                columnNumber: 61
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                                                 children: "2024-11-17"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/app/sshKeys/page.jsx",
-                                                                                lineNumber: 87,
-                                                                                columnNumber: 57
+                                                                                lineNumber: 93,
+                                                                                columnNumber: 61
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                                                 className: "d-flex",
                                                                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                                                                                     href: `/sshKeys/${sshKeys}`,
                                                                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                                        className: "badge text-light-success d-flex gap-2 ",
+                                                                                        className: "badge text-white bg-success d-flex gap-2 ",
                                                                                         children: [
                                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("i", {
                                                                                                 className: "ph-duotone ph-eye f-s-18"
                                                                                             }, void 0, false, {
                                                                                                 fileName: "[project]/src/app/sshKeys/page.jsx",
-                                                                                                lineNumber: 88,
-                                                                                                columnNumber: 172
+                                                                                                lineNumber: 94,
+                                                                                                columnNumber: 179
                                                                                             }, this),
                                                                                             " View "
                                                                                         ]
                                                                                     }, void 0, true, {
                                                                                         fileName: "[project]/src/app/sshKeys/page.jsx",
-                                                                                        lineNumber: 88,
-                                                                                        columnNumber: 115
+                                                                                        lineNumber: 94,
+                                                                                        columnNumber: 119
                                                                                     }, this)
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/app/sshKeys/page.jsx",
-                                                                                    lineNumber: 88,
-                                                                                    columnNumber: 80
+                                                                                    lineNumber: 94,
+                                                                                    columnNumber: 84
                                                                                 }, this)
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/app/sshKeys/page.jsx",
-                                                                                lineNumber: 88,
-                                                                                columnNumber: 57
-                                                                            }, this)
-                                                                        ]
-                                                                    }, void 0, true, {
-                                                                        fileName: "[project]/src/app/sshKeys/page.jsx",
-                                                                        lineNumber: 85,
-                                                                        columnNumber: 53
-                                                                    }, this),
-                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
-                                                                        children: [
-                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                                                children: "2nd key"
-                                                                            }, void 0, false, {
-                                                                                fileName: "[project]/src/app/sshKeys/page.jsx",
-                                                                                lineNumber: 91,
-                                                                                columnNumber: 57
-                                                                            }, this),
-                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                                                children: "2024-11-28"
-                                                                            }, void 0, false, {
-                                                                                fileName: "[project]/src/app/sshKeys/page.jsx",
-                                                                                lineNumber: 92,
-                                                                                columnNumber: 57
-                                                                            }, this),
-                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                                                className: "d-flex",
-                                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                                                                                    href: "",
-                                                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                                        className: "badge text-light-success d-flex gap-2 ",
-                                                                                        children: [
-                                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("i", {
-                                                                                                className: "ph-duotone ph-eye f-s-18"
-                                                                                            }, void 0, false, {
-                                                                                                fileName: "[project]/src/app/sshKeys/page.jsx",
-                                                                                                lineNumber: 93,
-                                                                                                columnNumber: 151
-                                                                                            }, this),
-                                                                                            " View "
-                                                                                        ]
-                                                                                    }, void 0, true, {
-                                                                                        fileName: "[project]/src/app/sshKeys/page.jsx",
-                                                                                        lineNumber: 93,
-                                                                                        columnNumber: 94
-                                                                                    }, this)
-                                                                                }, void 0, false, {
-                                                                                    fileName: "[project]/src/app/sshKeys/page.jsx",
-                                                                                    lineNumber: 93,
-                                                                                    columnNumber: 80
-                                                                                }, this)
-                                                                            }, void 0, false, {
-                                                                                fileName: "[project]/src/app/sshKeys/page.jsx",
-                                                                                lineNumber: 93,
-                                                                                columnNumber: 57
+                                                                                lineNumber: 94,
+                                                                                columnNumber: 61
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/app/sshKeys/page.jsx",
                                                                         lineNumber: 90,
-                                                                        columnNumber: 53
+                                                                        columnNumber: 57
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                                        children: [
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                                children: "2"
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/src/app/sshKeys/page.jsx",
+                                                                                lineNumber: 97,
+                                                                                columnNumber: 61
+                                                                            }, this),
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                                children: "2nd key"
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/src/app/sshKeys/page.jsx",
+                                                                                lineNumber: 98,
+                                                                                columnNumber: 61
+                                                                            }, this),
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                                children: "2024-11-28"
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/src/app/sshKeys/page.jsx",
+                                                                                lineNumber: 99,
+                                                                                columnNumber: 61
+                                                                            }, this),
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                                className: "d-flex",
+                                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                                                                                    href: `/sshKeys/${sshKeys}`,
+                                                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                        className: "badge text-white bg-success d-flex gap-2 ",
+                                                                                        children: [
+                                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("i", {
+                                                                                                className: "ph-duotone ph-eye f-s-18"
+                                                                                            }, void 0, false, {
+                                                                                                fileName: "[project]/src/app/sshKeys/page.jsx",
+                                                                                                lineNumber: 100,
+                                                                                                columnNumber: 179
+                                                                                            }, this),
+                                                                                            " View "
+                                                                                        ]
+                                                                                    }, void 0, true, {
+                                                                                        fileName: "[project]/src/app/sshKeys/page.jsx",
+                                                                                        lineNumber: 100,
+                                                                                        columnNumber: 119
+                                                                                    }, this)
+                                                                                }, void 0, false, {
+                                                                                    fileName: "[project]/src/app/sshKeys/page.jsx",
+                                                                                    lineNumber: 100,
+                                                                                    columnNumber: 84
+                                                                                }, this)
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/src/app/sshKeys/page.jsx",
+                                                                                lineNumber: 100,
+                                                                                columnNumber: 61
+                                                                            }, this)
+                                                                        ]
+                                                                    }, void 0, true, {
+                                                                        fileName: "[project]/src/app/sshKeys/page.jsx",
+                                                                        lineNumber: 96,
+                                                                        columnNumber: 57
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/app/sshKeys/page.jsx",
-                                                                lineNumber: 84,
-                                                                columnNumber: 49
+                                                                lineNumber: 89,
+                                                                columnNumber: 53
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/app/sshKeys/page.jsx",
-                                                        lineNumber: 76,
-                                                        columnNumber: 45
+                                                        lineNumber: 80,
+                                                        columnNumber: 49
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/sshKeys/page.jsx",
-                                                    lineNumber: 75,
-                                                    columnNumber: 41
+                                                    lineNumber: 79,
+                                                    columnNumber: 45
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/sshKeys/page.jsx",
-                                                lineNumber: 74,
-                                                columnNumber: 37
+                                                lineNumber: 78,
+                                                columnNumber: 41
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/sshKeys/page.jsx",
-                                            lineNumber: 73,
-                                            columnNumber: 33
+                                            lineNumber: 77,
+                                            columnNumber: 37
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/sshKeys/page.jsx",
-                                        lineNumber: 72,
-                                        columnNumber: 29
+                                        lineNumber: 76,
+                                        columnNumber: 33
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/sshKeys/page.jsx",
-                                    lineNumber: 70,
-                                    columnNumber: 25
+                                    lineNumber: 74,
+                                    columnNumber: 29
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/app/sshKeys/page.jsx",
-                                lineNumber: 69,
-                                columnNumber: 21
+                                lineNumber: 73,
+                                columnNumber: 25
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/sshKeys/page.jsx",
                         lineNumber: 54,
-                        columnNumber: 17
+                        columnNumber: 21
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/app/sshKeys/page.jsx",
                     lineNumber: 53,
-                    columnNumber: 13
+                    columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     "aria-hidden": "true",
@@ -373,22 +401,22 @@ function SshKeys() {
                                                     children: "Add SSH Key "
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/sshKeys/page.jsx",
-                                                    lineNumber: 115,
-                                                    columnNumber: 33
+                                                    lineNumber: 122,
+                                                    columnNumber: 37
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("iconify-icon", {
                                                     icon: "line-md:plus-circle",
                                                     className: "animeted-plus-circle f-s-22"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/sshKeys/page.jsx",
-                                                    lineNumber: 116,
-                                                    columnNumber: 33
+                                                    lineNumber: 123,
+                                                    columnNumber: 37
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/sshKeys/page.jsx",
-                                            lineNumber: 114,
-                                            columnNumber: 29
+                                            lineNumber: 121,
+                                            columnNumber: 33
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                             "aria-label": "Close",
@@ -397,14 +425,14 @@ function SshKeys() {
                                             type: "button"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/sshKeys/page.jsx",
-                                            lineNumber: 119,
-                                            columnNumber: 29
+                                            lineNumber: 126,
+                                            columnNumber: 33
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/sshKeys/page.jsx",
-                                    lineNumber: 113,
-                                    columnNumber: 25
+                                    lineNumber: 120,
+                                    columnNumber: 29
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "modal-body",
@@ -420,8 +448,8 @@ function SshKeys() {
                                                         children: "Name"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/sshKeys/page.jsx",
-                                                        lineNumber: 124,
-                                                        columnNumber: 37
+                                                        lineNumber: 131,
+                                                        columnNumber: 41
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                                         className: "form-control",
@@ -431,14 +459,14 @@ function SshKeys() {
                                                         required: true
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/sshKeys/page.jsx",
-                                                        lineNumber: 125,
-                                                        columnNumber: 37
+                                                        lineNumber: 132,
+                                                        columnNumber: 41
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/sshKeys/page.jsx",
-                                                lineNumber: 123,
-                                                columnNumber: 33
+                                                lineNumber: 130,
+                                                columnNumber: 37
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 className: "col-12",
@@ -449,8 +477,8 @@ function SshKeys() {
                                                         children: "SSH Key"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/sshKeys/page.jsx",
-                                                        lineNumber: 128,
-                                                        columnNumber: 37
+                                                        lineNumber: 135,
+                                                        columnNumber: 41
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("textarea", {
                                                         className: "form-control",
@@ -460,25 +488,25 @@ function SshKeys() {
                                                         required: true
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/sshKeys/page.jsx",
-                                                        lineNumber: 129,
-                                                        columnNumber: 37
+                                                        lineNumber: 136,
+                                                        columnNumber: 41
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/sshKeys/page.jsx",
-                                                lineNumber: 127,
-                                                columnNumber: 33
+                                                lineNumber: 134,
+                                                columnNumber: 37
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/sshKeys/page.jsx",
-                                        lineNumber: 122,
-                                        columnNumber: 29
+                                        lineNumber: 129,
+                                        columnNumber: 33
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/sshKeys/page.jsx",
-                                    lineNumber: 121,
-                                    columnNumber: 25
+                                    lineNumber: 128,
+                                    columnNumber: 29
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "modal-footer",
@@ -490,8 +518,8 @@ function SshKeys() {
                                             children: "Cancel"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/sshKeys/page.jsx",
-                                            lineNumber: 134,
-                                            columnNumber: 29
+                                            lineNumber: 141,
+                                            columnNumber: 33
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                             className: "btn btn-primary",
@@ -500,30 +528,30 @@ function SshKeys() {
                                             children: "Submit"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/sshKeys/page.jsx",
-                                            lineNumber: 135,
-                                            columnNumber: 29
+                                            lineNumber: 142,
+                                            columnNumber: 33
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/sshKeys/page.jsx",
-                                    lineNumber: 133,
-                                    columnNumber: 25
+                                    lineNumber: 140,
+                                    columnNumber: 29
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/sshKeys/page.jsx",
-                            lineNumber: 112,
-                            columnNumber: 21
+                            lineNumber: 119,
+                            columnNumber: 25
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/app/sshKeys/page.jsx",
-                        lineNumber: 111,
-                        columnNumber: 17
+                        lineNumber: 118,
+                        columnNumber: 21
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/app/sshKeys/page.jsx",
-                    lineNumber: 110,
-                    columnNumber: 13
+                    lineNumber: 117,
+                    columnNumber: 17
                 }, this)
             ]
         }, void 0, true, {

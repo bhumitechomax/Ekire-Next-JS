@@ -66,8 +66,21 @@ function Manage() {
                     <div className="container-fluid">
                         {/* Breadcrumb start */}
                         <div className="row m-1">
-                            <div className="col-12 d-flex justify-content-between">
+                            <div className="col-12">
                                 <h4 className="main-title">Manage Server {slug} </h4>
+                                <ul className="app-line-breadcrumbs mb-3">
+                                    <li>
+                                        <a className="f-s-14 f-w-500" href="/server">
+                                            <span>
+                                                <i className="ph-duotone  ph-table f-s-16" /> Server
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li className="active">
+                                        <a className="f-s-14 f-w-500" href="#">Manage Server {slug}</a>
+                                    </li>
+                                </ul>
+
                             </div>
                         </div>
                         {/* Breadcrumb end */}
@@ -362,6 +375,11 @@ function Manage() {
                                                                 <label className="form-label" htmlFor="validationDefault01">Change Hostname</label>
                                                                 <input className="form-control" id="validationDefault01" placeholder="New Hostname" required type="text" />
                                                             </div>
+                                                        </form>
+                                                    </div>
+
+                                                    <div className="card-body" >
+                                                        <form className="app-form rounded-control  row g-3" style={{ padding: "5px 15px" }}>
                                                             <div className="col-md-4">
                                                                 <label htmlFor="" className="form-label">Change Server Password</label>
                                                                 <div className="input-group mb-3">
@@ -382,6 +400,11 @@ function Manage() {
                                                                     </span>
                                                                 </div>
                                                             </div>
+                                                        </form>
+                                                    </div>
+
+                                                    <div className="card-body" >
+                                                        <form className="app-form rounded-control  row g-3" style={{ padding: "5px 15px" }}>
 
                                                             <div className="col-md-4">
                                                                 <label className="form-label" htmlFor="validationDefaultUsername">Change RDNS</label>
