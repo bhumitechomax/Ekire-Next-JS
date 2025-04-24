@@ -153,7 +153,6 @@ function Project() {
                                                     <table className="datatable display app-data-table default-data-table" id="example1">
                                                         <thead>
                                                             <tr>
-                                                                <th>Sr no.</th>
                                                                 <th>name</th>
                                                                 <th>created at</th>
                                                                 <th>members count</th>
@@ -163,7 +162,6 @@ function Project() {
                                                         </thead>
                                                         <tbody>
                                                             <tr>
-                                                                <td>1</td>
                                                                 <td>My New Project50</td>
                                                                 <td>2024-11-29</td>
                                                                 <td>1</td>
@@ -171,7 +169,6 @@ function Project() {
                                                                 <td className="d-flex"><Link href=""><span className="badge text-white bg-secondary d-flex gap-2 "><i className="ph-duotone ph-eye f-s-18" /> View </span></Link></td>
                                                             </tr>
                                                             <tr>
-                                                                <td>2</td>
                                                                 <td>Dr. Burnice Larson</td>
                                                                 <td>2024-12-24</td>
                                                                 <td>5</td>
