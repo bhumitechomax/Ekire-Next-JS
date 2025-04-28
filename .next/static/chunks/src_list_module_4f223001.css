@@ -1,0 +1,175 @@
+/* [project]/src/list.module.css [app-client] (css) */
+.list-module__fETMhW__container {
+  font-family: sans-serif;
+  padding: 20px;
+}
+
+.list-module__fETMhW__heading {
+  margin-bottom: 15px;
+}
+
+.list-module__fETMhW__addButton {
+  background-color: #4caf50;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+
+.list-module__fETMhW__addButton:hover {
+  background-color: #45a049;
+}
+
+.list-module__fETMhW__dataall {
+  border-radius: 5px;
+  padding: 20px;
+  border: 1px dashed rgba(var(--light), .8) !important;
+}
+
+.list-module__fETMhW__dataTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  padding: 0;
+  font-family: var(--font-Montserrat);
+}
+
+.list-module__fETMhW__dataTable th, .list-module__fETMhW__dataTable td {
+  border: none;
+  color: rgba(var(--dark), 1);
+  padding: .8rem;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.list-module__fETMhW__dataTable th {
+  color: rgba(var(--dark), 1);
+  font-weight: 700;
+  padding: 1rem;
+  text-transform: capitalize;
+  font-size: 17px;
+  border: none !important;
+}
+
+.list-module__fETMhW__dataTable tbody tr:nth-child(odd) {
+  background-color: rgba(var(--light), .2);
+}
+
+.list-module__fETMhW__dataTable tbody tr:nth-child(2n) {
+  background-color: #fff0;
+}
+
+.list-module__fETMhW__deleteButton {
+  background-color: #f44336;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.list-module__fETMhW__deleteButton:hover {
+  background-color: #d32f2f;
+}
+
+.list-module__fETMhW__modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #00000080;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.list-module__fETMhW__modalContent {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  width: 80%;
+  max-width: 500px;
+}
+
+.list-module__fETMhW__modalHeading {
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: var(--bg);
+}
+
+.list-module__fETMhW__formGroup {
+  margin-bottom: 15px;
+}
+
+.list-module__fETMhW__formGroup label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: var(--bg);
+}
+
+.list-module__fETMhW__formGroup input[type="text"], .list-module__fETMhW__formGroup input[type="email"], .list-module__fETMhW__formGroup input[type="date"], .list-module__fETMhW__formGroup select {
+  width: calc(100% - 12px);
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.list-module__fETMhW__submitButton, .list-module__fETMhW__cancelButton {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.list-module__fETMhW__submitButton {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.list-module__fETMhW__submitButton:hover {
+  background-color: #0056b3;
+}
+
+.list-module__fETMhW__cancelButton {
+  background-color: #6c757d;
+  color: #fff;
+}
+
+.list-module__fETMhW__cancelButton:hover {
+  background-color: #545b62;
+}
+
+.list-module__fETMhW__pagination {
+  display: flex;
+  justify-content: end;
+  margin-top: 20px;
+}
+
+.list-module__fETMhW__pagination button {
+  padding: 8px 12px;
+  margin: 0 5px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.list-module__fETMhW__pagination button.list-module__fETMhW__active {
+  background: rgba(var(--primary), 1);
+  border: 1px dashed rgba(var(--dark), .2);
+  background-color: rgba(var(--primary), 1) !important;
+  color: rgba(var(--white), 1) !important;
+}
+
+.list-module__fETMhW__pagination button:hover {
+  background-color: #eee;
+}
+
+
+/*# sourceMappingURL=src_list_module_4f223001.css.map*/

@@ -13,6 +13,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navi
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/client/app-dir/link.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/image.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$nouislider$2f$dist$2f$nouislider$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/nouislider/dist/nouislider.mjs [app-client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
 "use client";
@@ -20,7 +21,8 @@ var _s = __turbopack_context__.k.signature();
 ;
 ;
 ;
-// import 'bootstrap/dist/css/bootstrap.min.css';
+;
+;
 function ViewPage() {
     _s();
     const [activeTab, setActiveTab] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(1);
@@ -41,6 +43,7 @@ function ViewPage() {
             })["ViewPage.useEffect"];
         }
     }["ViewPage.useEffect"], []);
+    // for add member in table
     const [members, setMembers] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([
         {
             id: 1,
@@ -106,12 +109,119 @@ function ViewPage() {
         createdAt: '',
         status: 'Status'
     });
+    const [searchQuery, setSearchQuery] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])('');
     // State to keep track of the next available ID
     const [nextId, setNextId] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(members.length + 1);
-    // Effect to import Bootstrap JavaScript (runs on client-side)
+    // Pagination state
+    const [currentPage, setCurrentPage] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(1);
+    const [itemsPerPage, setItemsPerPage] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(5);
+    const [pageNumbers, setPageNumbers] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
+    const [showModal, setShowModal] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false); // Add state to control modal visibility
+    const tableRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
+    const listInstance = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
+    const sliderRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "ViewPage.useEffect": ()=>{
-            __turbopack_context__.r("[project]/node_modules/bootstrap/dist/js/bootstrap.bundle.js [app-client] (ecmascript, async loader)")(__turbopack_context__.i);
+            __turbopack_context__.r("[project]/node_modules/bootstrap/dist/js/bootstrap.bundle.js [app-client] (ecmascript, async loader)")(__turbopack_context__.i).then({
+                "ViewPage.useEffect": ()=>{
+                    console.log('Bootstrap bundle loaded.');
+                }
+            }["ViewPage.useEffect"]).catch({
+                "ViewPage.useEffect": (error)=>{
+                    console.error('Error loading Bootstrap bundle:', error);
+                }
+            }["ViewPage.useEffect"]);
+        }
+    }["ViewPage.useEffect"], []);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "ViewPage.useEffect": ()=>{
+            const calculatedPageNumbers = [];
+            for(let i = 1; i <= Math.ceil(members.length / itemsPerPage); i++){
+                calculatedPageNumbers.push(i);
+            }
+            setPageNumbers(calculatedPageNumbers);
+        }
+    }["ViewPage.useEffect"], [
+        members,
+        itemsPerPage
+    ]);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "ViewPage.useEffect": ()=>{
+            const loadListJs = {
+                "ViewPage.useEffect.loadListJs": async ()=>{
+                    try {
+                        //Dynamically load the scripts
+                        const script3 = document.createElement('script');
+                        script3.src = '../assets/vendor/listJs/list.min.js';
+                        script3.async = true;
+                        document.body.appendChild(script3);
+                        script3.onload = ({
+                            "ViewPage.useEffect.loadListJs": ()=>{
+                                // Initialize List.js
+                                if (tableRef.current) {
+                                    listInstance.current = new List(tableRef.current.id, {
+                                        valueNames: [
+                                            'name',
+                                            'email',
+                                            'createdAt',
+                                            'status'
+                                        ]
+                                    });
+                                }
+                            }
+                        })["ViewPage.useEffect.loadListJs"];
+                        //Cleanup
+                        return ({
+                            "ViewPage.useEffect.loadListJs": ()=>{
+                                if (script3.parentNode) script3.parentNode.removeChild(script3);
+                                if (listInstance.current) {
+                                    listInstance.current.destroy();
+                                }
+                            }
+                        })["ViewPage.useEffect.loadListJs"];
+                    } catch (error) {
+                        console.error('Failed to load List.js:', error);
+                    }
+                }
+            }["ViewPage.useEffect.loadListJs"];
+            loadListJs();
+        }
+    }["ViewPage.useEffect"], [
+        members
+    ]);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "ViewPage.useEffect": ()=>{
+            // Initialize noUiSlider
+            const sliderElement = document.getElementById('price-slider');
+            if (sliderElement && !sliderRef.current) {
+                sliderRef.current = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$nouislider$2f$dist$2f$nouislider$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].create(sliderElement, {
+                    start: [
+                        20,
+                        80
+                    ],
+                    connect: true,
+                    range: {
+                        'min': 0,
+                        'max': 100
+                    }
+                });
+                sliderRef.current.on('update', {
+                    "ViewPage.useEffect": function(values, handle) {
+                        const min = Math.round(values[0]);
+                        const max = Math.round(values[1]);
+                        console.log(`Min: ${min}, Max: ${max}`);
+                    // You can update your filtering logic here based on the slider values
+                    }
+                }["ViewPage.useEffect"]);
+            }
+            return ({
+                "ViewPage.useEffect": ()=>{
+                    if (sliderRef.current) {
+                        sliderRef.current.destroy();
+                        sliderRef.current = null;
+                    }
+                }
+            })["ViewPage.useEffect"];
         }
     }["ViewPage.useEffect"], []);
     // Handles changes in the input fields of the add member modal
@@ -122,17 +232,17 @@ function ViewPage() {
                 [id.replace('-field', '')]: value
             }));
     };
-    // Handles the submission of the add member form
-    const handleAddMember = async (e)=>{
+    const handleAddMember = (e)=>{
         e.preventDefault();
         if (newMember.name && newMember.email && newMember.createdAt && newMember.status !== 'Status') {
-            setMembers([
+            const newMembersArray = [
                 ...members,
                 {
                     ...newMember,
                     id: nextId
                 }
-            ]);
+            ];
+            setMembers(newMembersArray);
             setNextId(nextId + 1);
             setNewMember({
                 name: '',
@@ -140,27 +250,41 @@ function ViewPage() {
                 createdAt: '',
                 status: 'Status'
             });
-            // Close the modal programmatically after a short delay
-            setTimeout(()=>{
-                const modalElement = document.getElementById('exampleModal');
-                if (modalElement) {
-                    const modalInstance = bootstrap.Modal.getInstance(modalElement);
-                    if (modalInstance) {
-                        modalInstance.hide();
-                    } else {
-                        console.error("Bootstrap modal instance not found.");
-                    }
-                } else {
-                    console.error("Modal element with ID 'exampleModal' not found.");
+            setCurrentPage(1);
+            setPageNumbers(Array.from({
+                length: Math.ceil(newMembersArray.length / itemsPerPage)
+            }, (_, i)=>i + 1));
+            setShowModal(false);
+            const modalElement = document.getElementById('exampleModal');
+            if (modalElement) {
+                const modalInstance = bootstrap.Modal.getInstance(modalElement);
+                if (modalInstance) {
+                    modalInstance.hide();
                 }
-            }, 100);
+            }
         } else {
             alert('Please fill in all the fields and select a status.');
         }
     };
     // Handles the deletion of a member
     const handleDeleteMember = (idToDelete)=>{
-        setMembers(members.filter((member)=>member.id !== idToDelete));
+        const updatedMembers = members.filter((member)=>member.id !== idToDelete);
+        setMembers(updatedMembers);
+        setPageNumbers(Array.from({
+            length: Math.ceil(updatedMembers.length / itemsPerPage)
+        }, (_, i)=>i + 1));
+    };
+    // Logic to get current members for the page
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const currentMembers = members.slice(indexOfFirstItem, indexOfLastItem);
+    // Logic to handle page changes
+    const paginate = (pageNumber)=>setCurrentPage(pageNumber);
+    const handleSearch = (e)=>{
+        setSearchQuery(e.target.value);
+        if (listInstance.current) {
+            listInstance.current.search(e.target.value);
+        }
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -180,17 +304,17 @@ function ViewPage() {
                             children: "Loading..."
                         }, void 0, false, {
                             fileName: "[project]/src/app/project/[slug]/page.jsx",
-                            lineNumber: 103,
+                            lineNumber: 207,
                             columnNumber: 29
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/app/project/[slug]/page.jsx",
-                        lineNumber: 102,
+                        lineNumber: 206,
                         columnNumber: 25
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/app/project/[slug]/page.jsx",
-                    lineNumber: 95,
+                    lineNumber: 199,
                     columnNumber: 21
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("main", {
@@ -211,7 +335,7 @@ function ViewPage() {
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                            lineNumber: 112,
+                                            lineNumber: 216,
                                             columnNumber: 33
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
@@ -227,24 +351,24 @@ function ViewPage() {
                                                                     className: "ph-duotone  ph-table f-s-16"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                    lineNumber: 117,
+                                                                    lineNumber: 221,
                                                                     columnNumber: 49
                                                                 }, this),
                                                                 " Projects"
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                            lineNumber: 116,
+                                                            lineNumber: 220,
                                                             columnNumber: 45
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                        lineNumber: 115,
+                                                        lineNumber: 219,
                                                         columnNumber: 41
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                    lineNumber: 114,
+                                                    lineNumber: 218,
                                                     columnNumber: 37
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
@@ -255,29 +379,29 @@ function ViewPage() {
                                                         children: "Magdalena Wisozk"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                        lineNumber: 122,
+                                                        lineNumber: 226,
                                                         columnNumber: 41
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                    lineNumber: 121,
+                                                    lineNumber: 225,
                                                     columnNumber: 37
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                            lineNumber: 113,
+                                            lineNumber: 217,
                                             columnNumber: 33
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                    lineNumber: 111,
+                                    lineNumber: 215,
                                     columnNumber: 29
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                lineNumber: 110,
+                                lineNumber: 214,
                                 columnNumber: 25
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -298,14 +422,14 @@ function ViewPage() {
                                                                 className: "ph-bold ph-hard-drives f-s-18"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                lineNumber: 137,
+                                                                lineNumber: 242,
                                                                 columnNumber: 45
                                                             }, this),
                                                             " Servers"
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                        lineNumber: 134,
+                                                        lineNumber: 239,
                                                         columnNumber: 41
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
@@ -316,25 +440,25 @@ function ViewPage() {
                                                                 className: "ph-bold  ph-users f-s-18"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                lineNumber: 142,
+                                                                lineNumber: 247,
                                                                 columnNumber: 45
                                                             }, this),
                                                             " Members"
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                        lineNumber: 139,
+                                                        lineNumber: 244,
                                                         columnNumber: 41
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                lineNumber: 133,
+                                                lineNumber: 238,
                                                 columnNumber: 37
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                            lineNumber: 132,
+                                            lineNumber: 237,
                                             columnNumber: 33
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -353,7 +477,7 @@ function ViewPage() {
                                                                         children: "Project Servers"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                        lineNumber: 151,
+                                                                        lineNumber: 256,
                                                                         columnNumber: 49
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -367,25 +491,25 @@ function ViewPage() {
                                                                                     className: "ph ph-circles-three-plus f-s-18"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                                    lineNumber: 154,
+                                                                                    lineNumber: 259,
                                                                                     columnNumber: 57
                                                                                 }, this),
                                                                                 "  Add New"
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                            lineNumber: 153,
+                                                                            lineNumber: 258,
                                                                             columnNumber: 53
                                                                         }, this)
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                        lineNumber: 152,
+                                                                        lineNumber: 257,
                                                                         columnNumber: 49
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                lineNumber: 150,
+                                                                lineNumber: 255,
                                                                 columnNumber: 45
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -399,28 +523,28 @@ function ViewPage() {
                                                                         alt: "nodata"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                        lineNumber: 160,
+                                                                        lineNumber: 265,
                                                                         columnNumber: 53
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                    lineNumber: 159,
+                                                                    lineNumber: 264,
                                                                     columnNumber: 49
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                lineNumber: 158,
+                                                                lineNumber: 263,
                                                                 columnNumber: 45
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                        lineNumber: 149,
+                                                        lineNumber: 254,
                                                         columnNumber: 41
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                    lineNumber: 148,
+                                                    lineNumber: 253,
                                                     columnNumber: 37
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -435,18 +559,19 @@ function ViewPage() {
                                                                     children: "Member's List"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                    lineNumber: 171,
+                                                                    lineNumber: 276,
                                                                     columnNumber: 49
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                lineNumber: 170,
+                                                                lineNumber: 275,
                                                                 columnNumber: 45
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                 className: "card-body p-0",
                                                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                     id: "myTable",
+                                                                    ref: tableRef,
                                                                     children: [
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                             className: "list-table-header d-flex justify-content-sm-between mb-3",
@@ -456,11 +581,12 @@ function ViewPage() {
                                                                                     "data-bs-target": "#exampleModal",
                                                                                     "data-bs-toggle": "modal",
                                                                                     type: "button",
+                                                                                    onClick: ()=>setShowModal(true),
                                                                                     children: "Add"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                                    lineNumber: 177,
-                                                                                    columnNumber: 57
+                                                                                    lineNumber: 281,
+                                                                                    columnNumber: 17
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                                     "aria-hidden": "true",
@@ -468,6 +594,10 @@ function ViewPage() {
                                                                                     className: "modal",
                                                                                     id: "exampleModal",
                                                                                     tabIndex: -1,
+                                                                                    className: `modal ${showModal ? 'show' : ''}`,
+                                                                                    style: {
+                                                                                        display: showModal ? 'block' : 'none'
+                                                                                    },
                                                                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                                         className: "modal-dialog",
                                                                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -482,24 +612,25 @@ function ViewPage() {
                                                                                                             children: "Add Employee"
                                                                                                         }, void 0, false, {
                                                                                                             fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                                                            lineNumber: 186,
-                                                                                                            columnNumber: 73
+                                                                                                            lineNumber: 290,
+                                                                                                            columnNumber: 33
                                                                                                         }, this),
                                                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                                                                                             "aria-label": "Close",
                                                                                                             className: "btn-close m-0",
                                                                                                             "data-bs-dismiss": "modal",
-                                                                                                            type: "button"
+                                                                                                            type: "button",
+                                                                                                            onClick: ()=>setShowModal(false)
                                                                                                         }, void 0, false, {
                                                                                                             fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                                                            lineNumber: 187,
-                                                                                                            columnNumber: 73
+                                                                                                            lineNumber: 291,
+                                                                                                            columnNumber: 33
                                                                                                         }, this)
                                                                                                     ]
                                                                                                 }, void 0, true, {
                                                                                                     fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                                                    lineNumber: 185,
-                                                                                                    columnNumber: 69
+                                                                                                    lineNumber: 289,
+                                                                                                    columnNumber: 29
                                                                                                 }, this),
                                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
                                                                                                     id: "add_employee_form",
@@ -516,8 +647,8 @@ function ViewPage() {
                                                                                                                             children: "Name :"
                                                                                                                         }, void 0, false, {
                                                                                                                             fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                                                                            lineNumber: 192,
-                                                                                                                            columnNumber: 81
+                                                                                                                            lineNumber: 296,
+                                                                                                                            columnNumber: 41
                                                                                                                         }, this),
                                                                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                                                                                                             className: "form-control",
@@ -529,14 +660,14 @@ function ViewPage() {
                                                                                                                             onChange: handleInputChange
                                                                                                                         }, void 0, false, {
                                                                                                                             fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                                                                            lineNumber: 193,
-                                                                                                                            columnNumber: 81
+                                                                                                                            lineNumber: 297,
+                                                                                                                            columnNumber: 41
                                                                                                                         }, this)
                                                                                                                     ]
                                                                                                                 }, void 0, true, {
                                                                                                                     fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                                                                    lineNumber: 191,
-                                                                                                                    columnNumber: 77
+                                                                                                                    lineNumber: 295,
+                                                                                                                    columnNumber: 37
                                                                                                                 }, this),
                                                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                                                                     className: "mb-3",
@@ -546,8 +677,8 @@ function ViewPage() {
                                                                                                                             children: "Email :"
                                                                                                                         }, void 0, false, {
                                                                                                                             fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                                                                            lineNumber: 196,
-                                                                                                                            columnNumber: 81
+                                                                                                                            lineNumber: 300,
+                                                                                                                            columnNumber: 41
                                                                                                                         }, this),
                                                                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                                                                                                             className: "form-control",
@@ -559,14 +690,14 @@ function ViewPage() {
                                                                                                                             onChange: handleInputChange
                                                                                                                         }, void 0, false, {
                                                                                                                             fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                                                                            lineNumber: 197,
-                                                                                                                            columnNumber: 81
+                                                                                                                            lineNumber: 301,
+                                                                                                                            columnNumber: 41
                                                                                                                         }, this)
                                                                                                                     ]
                                                                                                                 }, void 0, true, {
                                                                                                                     fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                                                                    lineNumber: 195,
-                                                                                                                    columnNumber: 77
+                                                                                                                    lineNumber: 299,
+                                                                                                                    columnNumber: 37
                                                                                                                 }, this),
                                                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                                                                     className: "mb-3",
@@ -576,8 +707,8 @@ function ViewPage() {
                                                                                                                             children: "Created At :"
                                                                                                                         }, void 0, false, {
                                                                                                                             fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                                                                            lineNumber: 200,
-                                                                                                                            columnNumber: 81
+                                                                                                                            lineNumber: 304,
+                                                                                                                            columnNumber: 41
                                                                                                                         }, this),
                                                                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                                                                                                             className: "form-control",
@@ -588,14 +719,14 @@ function ViewPage() {
                                                                                                                             onChange: handleInputChange
                                                                                                                         }, void 0, false, {
                                                                                                                             fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                                                                            lineNumber: 201,
-                                                                                                                            columnNumber: 81
+                                                                                                                            lineNumber: 305,
+                                                                                                                            columnNumber: 41
                                                                                                                         }, this)
                                                                                                                     ]
                                                                                                                 }, void 0, true, {
                                                                                                                     fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                                                                    lineNumber: 199,
-                                                                                                                    columnNumber: 77
+                                                                                                                    lineNumber: 303,
+                                                                                                                    columnNumber: 37
                                                                                                                 }, this),
                                                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                                                                     className: "mb-3",
@@ -605,8 +736,8 @@ function ViewPage() {
                                                                                                                             children: "Status :"
                                                                                                                         }, void 0, false, {
                                                                                                                             fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                                                                            lineNumber: 204,
-                                                                                                                            columnNumber: 81
+                                                                                                                            lineNumber: 308,
+                                                                                                                            columnNumber: 41
                                                                                                                         }, this),
                                                                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
                                                                                                                             "aria-label": "Default select example",
@@ -620,42 +751,42 @@ function ViewPage() {
                                                                                                                                     children: "Status"
                                                                                                                                 }, void 0, false, {
                                                                                                                                     fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                                                                                    lineNumber: 206,
-                                                                                                                                    columnNumber: 85
+                                                                                                                                    lineNumber: 310,
+                                                                                                                                    columnNumber: 45
                                                                                                                                 }, this),
                                                                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
                                                                                                                                     value: "Active",
                                                                                                                                     children: "Active"
                                                                                                                                 }, void 0, false, {
                                                                                                                                     fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                                                                                    lineNumber: 207,
-                                                                                                                                    columnNumber: 85
+                                                                                                                                    lineNumber: 311,
+                                                                                                                                    columnNumber: 45
                                                                                                                                 }, this),
                                                                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
                                                                                                                                     value: "Block",
                                                                                                                                     children: "Block"
                                                                                                                                 }, void 0, false, {
                                                                                                                                     fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                                                                                    lineNumber: 208,
-                                                                                                                                    columnNumber: 85
+                                                                                                                                    lineNumber: 312,
+                                                                                                                                    columnNumber: 45
                                                                                                                                 }, this)
                                                                                                                             ]
                                                                                                                         }, void 0, true, {
                                                                                                                             fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                                                                            lineNumber: 205,
-                                                                                                                            columnNumber: 81
+                                                                                                                            lineNumber: 309,
+                                                                                                                            columnNumber: 41
                                                                                                                         }, this)
                                                                                                                     ]
                                                                                                                 }, void 0, true, {
                                                                                                                     fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                                                                    lineNumber: 203,
-                                                                                                                    columnNumber: 77
+                                                                                                                    lineNumber: 307,
+                                                                                                                    columnNumber: 37
                                                                                                                 }, this)
                                                                                                             ]
                                                                                                         }, void 0, true, {
                                                                                                             fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                                                            lineNumber: 190,
-                                                                                                            columnNumber: 73
+                                                                                                            lineNumber: 294,
+                                                                                                            columnNumber: 33
                                                                                                         }, this),
                                                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                                                             className: "modal-footer add",
@@ -664,11 +795,12 @@ function ViewPage() {
                                                                                                                     className: "btn btn-secondary",
                                                                                                                     "data-bs-dismiss": "modal",
                                                                                                                     type: "button",
+                                                                                                                    onClick: ()=>setShowModal(false),
                                                                                                                     children: "Close"
                                                                                                                 }, void 0, false, {
                                                                                                                     fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                                                                    lineNumber: 213,
-                                                                                                                    columnNumber: 77
+                                                                                                                    lineNumber: 317,
+                                                                                                                    columnNumber: 37
                                                                                                                 }, this),
                                                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                                                                                                     className: "btn btn-primary",
@@ -677,8 +809,8 @@ function ViewPage() {
                                                                                                                     children: "Add"
                                                                                                                 }, void 0, false, {
                                                                                                                     fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                                                                    lineNumber: 214,
-                                                                                                                    columnNumber: 77
+                                                                                                                    lineNumber: 318,
+                                                                                                                    columnNumber: 37
                                                                                                                 }, this),
                                                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                                                                                                     className: "btn btn-success b-r-22",
@@ -689,36 +821,36 @@ function ViewPage() {
                                                                                                                     children: "Edit"
                                                                                                                 }, void 0, false, {
                                                                                                                     fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                                                                    lineNumber: 215,
-                                                                                                                    columnNumber: 77
+                                                                                                                    lineNumber: 319,
+                                                                                                                    columnNumber: 37
                                                                                                                 }, this)
                                                                                                             ]
                                                                                                         }, void 0, true, {
                                                                                                             fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                                                            lineNumber: 212,
-                                                                                                            columnNumber: 73
+                                                                                                            lineNumber: 316,
+                                                                                                            columnNumber: 33
                                                                                                         }, this)
                                                                                                     ]
                                                                                                 }, void 0, true, {
                                                                                                     fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                                                    lineNumber: 189,
-                                                                                                    columnNumber: 69
+                                                                                                    lineNumber: 293,
+                                                                                                    columnNumber: 29
                                                                                                 }, this)
                                                                                             ]
                                                                                         }, void 0, true, {
                                                                                             fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                                            lineNumber: 184,
-                                                                                            columnNumber: 65
+                                                                                            lineNumber: 288,
+                                                                                            columnNumber: 25
                                                                                         }, this)
                                                                                     }, void 0, false, {
                                                                                         fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                                        lineNumber: 183,
-                                                                                        columnNumber: 61
+                                                                                        lineNumber: 287,
+                                                                                        columnNumber: 21
                                                                                     }, this)
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                                    lineNumber: 182,
-                                                                                    columnNumber: 57
+                                                                                    lineNumber: 286,
+                                                                                    columnNumber: 17
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
                                                                                     action: "#",
@@ -730,40 +862,89 @@ function ViewPage() {
                                                                                                 "aria-label": "Search",
                                                                                                 className: "form-control search b-r-22",
                                                                                                 placeholder: "Search...",
-                                                                                                type: "search"
+                                                                                                type: "search",
+                                                                                                value: searchQuery,
+                                                                                                onChange: handleSearch
                                                                                             }, void 0, false, {
                                                                                                 fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                                                lineNumber: 225,
-                                                                                                columnNumber: 65
+                                                                                                lineNumber: 329,
+                                                                                                columnNumber: 25
                                                                                             }, this),
                                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("i", {
                                                                                                 className: "ti ti-search text-dark"
                                                                                             }, void 0, false, {
                                                                                                 fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                                                lineNumber: 226,
-                                                                                                columnNumber: 65
+                                                                                                lineNumber: 337,
+                                                                                                columnNumber: 25
                                                                                             }, this)
                                                                                         ]
                                                                                     }, void 0, true, {
                                                                                         fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                                        lineNumber: 224,
-                                                                                        columnNumber: 61
+                                                                                        lineNumber: 328,
+                                                                                        columnNumber: 21
                                                                                     }, this)
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                                    lineNumber: 223,
-                                                                                    columnNumber: 57
+                                                                                    lineNumber: 327,
+                                                                                    columnNumber: 17
                                                                                 }, this)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                            lineNumber: 176,
-                                                                            columnNumber: 53
+                                                                            lineNumber: 280,
+                                                                            columnNumber: 13
+                                                                        }, this),
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                            className: "mb-4",
+                                                                            children: [
+                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
+                                                                                    className: "form-label",
+                                                                                    children: "Price Range:"
+                                                                                }, void 0, false, {
+                                                                                    fileName: "[project]/src/app/project/[slug]/page.jsx",
+                                                                                    lineNumber: 343,
+                                                                                    columnNumber: 17
+                                                                                }, this),
+                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                                    id: "price-slider"
+                                                                                }, void 0, false, {
+                                                                                    fileName: "[project]/src/app/project/[slug]/page.jsx",
+                                                                                    lineNumber: 344,
+                                                                                    columnNumber: 17
+                                                                                }, this),
+                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                                    className: "d-flex justify-content-between mt-2",
+                                                                                    children: [
+                                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                            id: "price-min"
+                                                                                        }, void 0, false, {
+                                                                                            fileName: "[project]/src/app/project/[slug]/page.jsx",
+                                                                                            lineNumber: 346,
+                                                                                            columnNumber: 21
+                                                                                        }, this),
+                                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                            id: "price-max"
+                                                                                        }, void 0, false, {
+                                                                                            fileName: "[project]/src/app/project/[slug]/page.jsx",
+                                                                                            lineNumber: 347,
+                                                                                            columnNumber: 21
+                                                                                        }, this)
+                                                                                    ]
+                                                                                }, void 0, true, {
+                                                                                    fileName: "[project]/src/app/project/[slug]/page.jsx",
+                                                                                    lineNumber: 345,
+                                                                                    columnNumber: 17
+                                                                                }, this)
+                                                                            ]
+                                                                        }, void 0, true, {
+                                                                            fileName: "[project]/src/app/project/[slug]/page.jsx",
+                                                                            lineNumber: 342,
+                                                                            columnNumber: 13
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                             className: "overflow-auto app-scroll",
                                                                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("table", {
-                                                                                className: "table  table-bottom-border  list-table-data align-middle mb-0",
+                                                                                className: "table  table-bottom-border  list-table-data align-middle mb-0",
                                                                                 children: [
                                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("thead", {
                                                                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -772,25 +953,25 @@ function ViewPage() {
                                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
                                                                                                     className: "ps-2 ms-0",
                                                                                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                                                                                        className: "form-check-input  checkAll mt-0 ms-2",
+                                                                                                        className: "form-check-input  checkAll mt-0 ms-2",
                                                                                                         name: "checkAll",
                                                                                                         type: "checkbox"
                                                                                                     }, void 0, false, {
                                                                                                         fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                                                        lineNumber: 237,
-                                                                                                        columnNumber: 73
+                                                                                                        lineNumber: 357,
+                                                                                                        columnNumber: 33
                                                                                                     }, this)
                                                                                                 }, void 0, false, {
                                                                                                     fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                                                    lineNumber: 236,
-                                                                                                    columnNumber: 69
+                                                                                                    lineNumber: 356,
+                                                                                                    columnNumber: 29
                                                                                                 }, this),
                                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
                                                                                                     children: "ID"
                                                                                                 }, void 0, false, {
                                                                                                     fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                                                    lineNumber: 239,
-                                                                                                    columnNumber: 69
+                                                                                                    lineNumber: 359,
+                                                                                                    columnNumber: 29
                                                                                                 }, this),
                                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
                                                                                                     className: "sort",
@@ -799,8 +980,8 @@ function ViewPage() {
                                                                                                     children: "Name"
                                                                                                 }, void 0, false, {
                                                                                                     fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                                                    lineNumber: 240,
-                                                                                                    columnNumber: 69
+                                                                                                    lineNumber: 360,
+                                                                                                    columnNumber: 29
                                                                                                 }, this),
                                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
                                                                                                     className: "sort",
@@ -809,8 +990,8 @@ function ViewPage() {
                                                                                                     children: "Email"
                                                                                                 }, void 0, false, {
                                                                                                     fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                                                    lineNumber: 241,
-                                                                                                    columnNumber: 69
+                                                                                                    lineNumber: 361,
+                                                                                                    columnNumber: 29
                                                                                                 }, this),
                                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
                                                                                                     className: "sort",
@@ -819,8 +1000,18 @@ function ViewPage() {
                                                                                                     children: "Created At"
                                                                                                 }, void 0, false, {
                                                                                                     fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                                                    lineNumber: 242,
-                                                                                                    columnNumber: 69
+                                                                                                    lineNumber: 362,
+                                                                                                    columnNumber: 29
+                                                                                                }, this),
+                                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                                                                                    className: "sort",
+                                                                                                    "data-sort": "status",
+                                                                                                    scope: "col",
+                                                                                                    children: "Status"
+                                                                                                }, void 0, false, {
+                                                                                                    fileName: "[project]/src/app/project/[slug]/page.jsx",
+                                                                                                    lineNumber: 363,
+                                                                                                    columnNumber: 29
                                                                                                 }, this),
                                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
                                                                                                     className: "sort",
@@ -829,24 +1020,24 @@ function ViewPage() {
                                                                                                     children: "Action"
                                                                                                 }, void 0, false, {
                                                                                                     fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                                                    lineNumber: 243,
-                                                                                                    columnNumber: 69
+                                                                                                    lineNumber: 364,
+                                                                                                    columnNumber: 29
                                                                                                 }, this)
                                                                                             ]
                                                                                         }, void 0, true, {
                                                                                             fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                                            lineNumber: 235,
-                                                                                            columnNumber: 65
+                                                                                            lineNumber: 355,
+                                                                                            columnNumber: 25
                                                                                         }, this)
                                                                                     }, void 0, false, {
                                                                                         fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                                        lineNumber: 234,
-                                                                                        columnNumber: 61
+                                                                                        lineNumber: 354,
+                                                                                        columnNumber: 21
                                                                                     }, this),
                                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
                                                                                         className: "list",
                                                                                         id: "t-data",
-                                                                                        children: members.map((member)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                                                        children: currentMembers.map((member)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
                                                                                                 children: [
                                                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
                                                                                                         scope: "row",
@@ -856,45 +1047,57 @@ function ViewPage() {
                                                                                                             type: "checkbox"
                                                                                                         }, void 0, false, {
                                                                                                             fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                                                            lineNumber: 249,
-                                                                                                            columnNumber: 89
+                                                                                                            lineNumber: 370,
+                                                                                                            columnNumber: 49
                                                                                                         }, this)
                                                                                                     }, void 0, false, {
                                                                                                         fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                                                        lineNumber: 249,
-                                                                                                        columnNumber: 73
+                                                                                                        lineNumber: 370,
+                                                                                                        columnNumber: 33
                                                                                                     }, this),
                                                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                                                                        className: "id",
                                                                                                         children: member.id
                                                                                                     }, void 0, false, {
                                                                                                         fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                                                        lineNumber: 250,
-                                                                                                        columnNumber: 73
+                                                                                                        lineNumber: 371,
+                                                                                                        columnNumber: 33
                                                                                                     }, this),
                                                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                                                                         className: "name",
                                                                                                         children: member.name
                                                                                                     }, void 0, false, {
                                                                                                         fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                                                        lineNumber: 251,
-                                                                                                        columnNumber: 73
+                                                                                                        lineNumber: 372,
+                                                                                                        columnNumber: 33
                                                                                                     }, this),
                                                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                                                                        className: "email",
                                                                                                         children: member.email
                                                                                                     }, void 0, false, {
                                                                                                         fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                                                        lineNumber: 252,
-                                                                                                        columnNumber: 73
+                                                                                                        lineNumber: 373,
+                                                                                                        columnNumber: 33
                                                                                                     }, this),
                                                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                                                                        className: "createdAt",
                                                                                                         children: member.createdAt
                                                                                                     }, void 0, false, {
                                                                                                         fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                                                        lineNumber: 253,
-                                                                                                        columnNumber: 73
+                                                                                                        lineNumber: 374,
+                                                                                                        columnNumber: 33
+                                                                                                    }, this),
+                                                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                                                        className: "status",
+                                                                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                                            className: `badge bg-${member.status === 'Active' ? 'success' : 'danger'}-subtle text-${member.status === 'Active' ? 'success' : 'danger'} text-uppercase`,
+                                                                                                            children: member.status
+                                                                                                        }, void 0, false, {
+                                                                                                            fileName: "[project]/src/app/project/[slug]/page.jsx",
+                                                                                                            lineNumber: 376,
+                                                                                                            columnNumber: 37
+                                                                                                        }, this)
+                                                                                                    }, void 0, false, {
+                                                                                                        fileName: "[project]/src/app/project/[slug]/page.jsx",
+                                                                                                        lineNumber: 375,
+                                                                                                        columnNumber: 33
                                                                                                     }, this),
                                                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                                                                         className: "remove",
@@ -906,105 +1109,121 @@ function ViewPage() {
                                                                                                                     className: "ph-fill  ph-trash f-s-22"
                                                                                                                 }, void 0, false, {
                                                                                                                     fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                                                                    lineNumber: 256,
-                                                                                                                    columnNumber: 77
+                                                                                                                    lineNumber: 382,
+                                                                                                                    columnNumber: 41
                                                                                                                 }, this),
                                                                                                                 "  Remove"
                                                                                                             ]
                                                                                                         }, void 0, true, {
                                                                                                             fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                                                            lineNumber: 255,
-                                                                                                            columnNumber: 77
+                                                                                                            lineNumber: 381,
+                                                                                                            columnNumber: 37
                                                                                                         }, this)
                                                                                                     }, void 0, false, {
                                                                                                         fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                                                        lineNumber: 254,
-                                                                                                        columnNumber: 73
+                                                                                                        lineNumber: 380,
+                                                                                                        columnNumber: 33
                                                                                                     }, this)
                                                                                                 ]
                                                                                             }, member.id, true, {
                                                                                                 fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                                                lineNumber: 248,
-                                                                                                columnNumber: 69
+                                                                                                lineNumber: 369,
+                                                                                                columnNumber: 29
                                                                                             }, this))
                                                                                     }, void 0, false, {
                                                                                         fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                                        lineNumber: 246,
-                                                                                        columnNumber: 61
+                                                                                        lineNumber: 367,
+                                                                                        columnNumber: 21
                                                                                     }, this)
                                                                                 ]
                                                                             }, void 0, true, {
                                                                                 fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                                lineNumber: 233,
-                                                                                columnNumber: 57
+                                                                                lineNumber: 353,
+                                                                                columnNumber: 17
                                                                             }, this)
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                            lineNumber: 232,
-                                                                            columnNumber: 53
+                                                                            lineNumber: 352,
+                                                                            columnNumber: 13
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                             className: "list-pagination",
                                                                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
-                                                                                className: "pagination"
+                                                                                className: "pagination",
+                                                                                children: pageNumbers.map((number)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                                                        className: `page-item ${currentPage === number ? 'active' : ''}`,
+                                                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                                                            onClick: ()=>paginate(number),
+                                                                                            className: "page-link",
+                                                                                            children: number
+                                                                                        }, void 0, false, {
+                                                                                            fileName: "[project]/src/app/project/[slug]/page.jsx",
+                                                                                            lineNumber: 396,
+                                                                                            columnNumber: 29
+                                                                                        }, this)
+                                                                                    }, number, false, {
+                                                                                        fileName: "[project]/src/app/project/[slug]/page.jsx",
+                                                                                        lineNumber: 395,
+                                                                                        columnNumber: 25
+                                                                                    }, this))
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                                lineNumber: 267,
-                                                                                columnNumber: 57
+                                                                                lineNumber: 393,
+                                                                                columnNumber: 17
                                                                             }, this)
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                            lineNumber: 266,
-                                                                            columnNumber: 53
+                                                                            lineNumber: 392,
+                                                                            columnNumber: 13
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                    lineNumber: 174,
-                                                                    columnNumber: 49
+                                                                    lineNumber: 279,
+                                                                    columnNumber: 45
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                                lineNumber: 173,
+                                                                lineNumber: 278,
                                                                 columnNumber: 45
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                        lineNumber: 169,
+                                                        lineNumber: 274,
                                                         columnNumber: 41
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                    lineNumber: 166,
+                                                    lineNumber: 271,
                                                     columnNumber: 37
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                            lineNumber: 147,
+                                            lineNumber: 252,
                                             columnNumber: 33
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                    lineNumber: 131,
+                                    lineNumber: 236,
                                     columnNumber: 29
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                lineNumber: 130,
+                                lineNumber: 235,
                                 columnNumber: 25
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/project/[slug]/page.jsx",
-                        lineNumber: 108,
+                        lineNumber: 212,
                         columnNumber: 21
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/app/project/[slug]/page.jsx",
-                    lineNumber: 107,
+                    lineNumber: 211,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1030,7 +1249,7 @@ function ViewPage() {
                                                     children: "Add new server to project "
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                    lineNumber: 286,
+                                                    lineNumber: 667,
                                                     columnNumber: 37
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("iconify-icon", {
@@ -1038,13 +1257,13 @@ function ViewPage() {
                                                     className: "animated-box-multiple-transition f-s-22"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                    lineNumber: 287,
+                                                    lineNumber: 668,
                                                     columnNumber: 37
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                            lineNumber: 285,
+                                            lineNumber: 666,
                                             columnNumber: 33
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1054,13 +1273,13 @@ function ViewPage() {
                                             type: "button"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                            lineNumber: 289,
+                                            lineNumber: 670,
                                             columnNumber: 33
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                    lineNumber: 284,
+                                    lineNumber: 665,
                                     columnNumber: 29
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1079,12 +1298,12 @@ function ViewPage() {
                                                             className: "ph-fill  ph-copy"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                            lineNumber: 295,
+                                                            lineNumber: 676,
                                                             columnNumber: 104
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                        lineNumber: 295,
+                                                        lineNumber: 676,
                                                         columnNumber: 45
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1096,28 +1315,28 @@ function ViewPage() {
                                                         type: "text"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                        lineNumber: 296,
+                                                        lineNumber: 677,
                                                         columnNumber: 45
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                                lineNumber: 294,
+                                                lineNumber: 675,
                                                 columnNumber: 41
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                            lineNumber: 293,
+                                            lineNumber: 674,
                                             columnNumber: 37
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                        lineNumber: 292,
+                                        lineNumber: 673,
                                         columnNumber: 33
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                    lineNumber: 291,
+                                    lineNumber: 672,
                                     columnNumber: 29
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1130,7 +1349,7 @@ function ViewPage() {
                                             children: "Cancel"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                            lineNumber: 302,
+                                            lineNumber: 683,
                                             columnNumber: 33
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1141,44 +1360,44 @@ function ViewPage() {
                                             children: "Submit"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                            lineNumber: 303,
+                                            lineNumber: 684,
                                             columnNumber: 33
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/project/[slug]/page.jsx",
-                                    lineNumber: 301,
+                                    lineNumber: 682,
                                     columnNumber: 29
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/project/[slug]/page.jsx",
-                            lineNumber: 283,
+                            lineNumber: 664,
                             columnNumber: 25
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/app/project/[slug]/page.jsx",
-                        lineNumber: 282,
+                        lineNumber: 663,
                         columnNumber: 21
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/app/project/[slug]/page.jsx",
-                    lineNumber: 281,
+                    lineNumber: 662,
                     columnNumber: 17
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/src/app/project/[slug]/page.jsx",
-            lineNumber: 92,
+            lineNumber: 196,
             columnNumber: 13
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/app/project/[slug]/page.jsx",
-        lineNumber: 91,
+        lineNumber: 195,
         columnNumber: 9
     }, this);
 }
-_s(ViewPage, "wY1xVvWX1c+TBUni2M4ZZsH1frw=", false, function() {
+_s(ViewPage, "bzxo8e7mut3L3qN7EJKDu5muxRQ=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useParams"]
     ];

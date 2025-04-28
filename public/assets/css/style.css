@@ -42060,8 +42060,8 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    border: 1px solid var(--border_color);
-    padding: 0.9rem .75rem;
+    border: 1px dashed var(--border_color);
+    padding: 1rem 1.25rem;
     border-radius: var(--bs-border-radius);
     margin-bottom: 15px;
     cursor: pointer;
