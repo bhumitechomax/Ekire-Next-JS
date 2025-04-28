@@ -109,12 +109,12 @@ function Finance() {
                                                                                             </span>
                                                                                             <div className="device-menu-content">
                                                                                                 <h1 className="mb-0 txt-ellipsis-1">$45.54K</h1>
-                                                                                                <h6 className="mb-0 txt-ellipsis-1 text-secondary">Available Balance</h6>
+                                                                                                <h6 className="mb-0 txt-ellipsis-1 text-white">Available Balance</h6>
                                                                                             </div>
                                                                                         </div>
                                                                                         <div className="">
                                                                                             <div className="text-end">
-                                                                                                <button className="btn btn-dark-11 h-45 icon-btn m-2" data-bs-target="#projectCard1" data-bs-toggle="modal">
+                                                                                                <button className="btn text-dark-11 h-45 icon-btn m-2" data-bs-target="#projectCard1" data-bs-toggle="modal">
                                                                                                     <i className="ti ti-plus f-s-18" /> Top Up
                                                                                                 </button>
                                                                                             </div>
@@ -161,7 +161,7 @@ function Finance() {
                                                                 <td>1</td>
                                                                 <td>0</td>
                                                                 <td className="d-flex">
-                                                                    <span className="badge text-light-success d-flex gap-2">
+                                                                    <span className="badge bg-success text-white d-flex gap-2">
                                                                         <i className="ph-duotone ph-eye f-s-18" /> View
                                                                     </span>
                                                                 </td>
@@ -173,7 +173,7 @@ function Finance() {
                                                                 <td>5</td>
                                                                 <td>0</td>
                                                                 <td className="d-flex">
-                                                                    <span className="badge text-light-success d-flex gap-2">
+                                                                    <span className="badge bg-success text-white d-flex gap-2">
                                                                         <i className="ph-duotone ph-eye f-s-18" /> View
                                                                     </span>
                                                                 </td>

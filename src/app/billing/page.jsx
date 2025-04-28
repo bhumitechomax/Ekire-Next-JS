@@ -150,7 +150,7 @@ function Billing() {
                                             <div className="card-body">
                                                 <i className="ph-bold  ph-circle circle-bg-img" />
                                                 <div className="d-flex align-items-center justify-content-between pt-4 pb-4">
-                                                    <div className="h-50 w-50 d-flex-center b-r-15 bg-white">
+                                                    <div className="h-50 w-50 d-flex-center b-r-15 " style={{ backgroundColor: "#fff" }}>
                                                         <i className="ph-bold  ph-ticket f-s-25 text-primary " />
                                                         {/* <Image alt="balance" src={`${assets}/images/New/balance.png`}  width={50} height={50} /> */}
                                                     </div>
@@ -167,7 +167,7 @@ function Billing() {
                                             <div className="card-body">
                                                 <i className="ph-bold  ph-circle circle-bg-img" />
                                                 <div className="d-flex align-items-center justify-content-between pt-2 pb-2">
-                                                    <div className="h-50 w-50 d-flex-center b-r-15 bg-white mb-3">
+                                                    <div className="h-50 w-50 d-flex-center b-r-15 mb-3" style={{ backgroundColor: "#fff" }}>
                                                         <i className="ph-bold  ph-clock-countdown f-s-25 text-info" />
                                                     </div>
 
@@ -185,7 +185,7 @@ function Billing() {
                                             <div className="card-body">
                                                 <i className="ph-bold  ph-circle circle-bg-img" />
                                                 <div className="d-flex align-items-center justify-content-between pt-2 pb-2">
-                                                    <div className="h-50 w-50 d-flex-center b-r-15 bg-white mb-3">
+                                                    <div className="h-50 w-50 d-flex-center b-r-15 mb-3" style={{ backgroundColor: "#fff" }}>
                                                         <i className="ph-bold  ph-file-cloud f-s-25 text-success" />
                                                     </div>
 
@@ -203,7 +203,7 @@ function Billing() {
                                             <div className="card-body">
                                                 <i className="ph-bold  ph-circle circle-bg-img" />
                                                 <div className="d-flex align-items-center justify-content-between pt-2 pb-2">
-                                                    <div className="h-50 w-50 d-flex-center b-r-15 bg-white mb-3">
+                                                    <div className="h-50 w-50 d-flex-center b-r-15 mb-3" style={{ backgroundColor: "#fff" }}>
                                                         <i className="ph-bold  ph-file-x f-s-25 text-warning" />
                                                     </div>
 

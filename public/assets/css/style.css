@@ -38889,6 +38889,7 @@
   .app-datatable-default .dataTables_wrapper .dataTables_filter input {
     padding: 0.4rem 0.75rem;
     border: 1px dotted rgba(var(--secondary), 0.4) !important;
+    color: var(--bs-body-color);
   }
   
   .app-datatable-default .dataTables_wrapper .dataTables_filter input:focus-visible {

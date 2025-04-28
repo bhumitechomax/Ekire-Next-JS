@@ -35016,6 +35016,7 @@ table.dataTable.no-footer {
 
 .app-datatable-default .dataTables_wrapper .dataTables_filter input {
   padding: .4rem .75rem;
+  color: var(--bs-body-color);
   border: 1px dotted rgba(var(--secondary), .4) !important;
 }
 

@@ -299,7 +299,10 @@ function Billing() {
                                                                 className: "d-flex align-items-center justify-content-between pt-4 pb-4",
                                                                 children: [
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                        className: "h-50 w-50 d-flex-center b-r-15 bg-white",
+                                                                        className: "h-50 w-50 d-flex-center b-r-15 ",
+                                                                        style: {
+                                                                            backgroundColor: "#fff"
+                                                                        },
                                                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("i", {
                                                                             className: "ph-bold  ph-ticket f-s-25 text-primary "
                                                                         }, void 0, false, {
@@ -378,6 +381,9 @@ function Billing() {
                                                                 children: [
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                         className: "h-50 w-50 d-flex-center b-r-15 bg-white mb-3",
+                                                                        style: {
+                                                                            backgroundColor: "#fff"
+                                                                        },
                                                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("i", {
                                                                             className: "ph-bold  ph-clock-countdown f-s-25 text-info"
                                                                         }, void 0, false, {
@@ -462,7 +468,10 @@ function Billing() {
                                                                 className: "d-flex align-items-center justify-content-between pt-2 pb-2",
                                                                 children: [
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                        className: "h-50 w-50 d-flex-center b-r-15 bg-white mb-3",
+                                                                        className: "h-50 w-50 d-flex-center b-r-15 mb-3",
+                                                                        style: {
+                                                                            backgroundColor: "#fff"
+                                                                        },
                                                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("i", {
                                                                             className: "ph-bold  ph-file-cloud f-s-25 text-success"
                                                                         }, void 0, false, {
@@ -547,7 +556,10 @@ function Billing() {
                                                                 className: "d-flex align-items-center justify-content-between pt-2 pb-2",
                                                                 children: [
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                        className: "h-50 w-50 d-flex-center b-r-15 bg-white mb-3",
+                                                                        className: "h-50 w-50 d-flex-center b-r-15 mb-3",
+                                                                        style: {
+                                                                            backgroundColor: "#fff"
+                                                                        },
                                                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("i", {
                                                                             className: "ph-bold  ph-file-x f-s-25 text-warning"
                                                                         }, void 0, false, {
