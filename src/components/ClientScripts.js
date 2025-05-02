@@ -69,9 +69,12 @@ const ClientScripts = () => {
 
             {/* ✅ Project Scripts */}
             
-            
+            <Script rel="preload" src="/assets/js/chat.js" strategy="lazyOnload" />
+            <Script rel="preload" src="/assets/js/area_charts.js" strategy="lazyOnload" />
+            <Script rel="preload" src="/assets/js/slick.js" strategy="lazyOnload" />
             <Script rel="preload" src="/assets/js/project_dashboard.js" strategy="lazyOnload" />
             <Script rel="preload" src="/assets/js/script.js" strategy="lazyOnload" />
+            
             <Script rel="preload" src="/assets/js/customizer.js" strategy="lazyOnload" />
 
         </>

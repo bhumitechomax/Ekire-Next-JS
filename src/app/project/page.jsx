@@ -14,14 +14,14 @@ function Project() {
 
 
     // auto load
-        const [isLoading, setIsLoading] = useState(true);
-        useEffect(() => {
-            // Simulate loading
-            const timer = setTimeout(() => {
-                setIsLoading(false);
-            }, 900);
-            return () => clearTimeout(timer);
-        }, []);
+    const [isLoading, setIsLoading] = useState(true);
+    useEffect(() => {
+        // Simulate loading
+        const timer = setTimeout(() => {
+            setIsLoading(false);
+        }, 900);
+        return () => clearTimeout(timer);
+    }, []);
 
     // to load datatable
     // useEffect(() => {
@@ -29,7 +29,7 @@ function Project() {
     //       const tables = $(".datatable").map(function () {
     //         return $(this).DataTable();
     //       });
-      
+
     //       return () => {
     //         tables.each(function () {
     //           this.destroy();
@@ -37,8 +37,8 @@ function Project() {
     //       };
     //     }
     // }, []);
-      
-      
+
+
 
     return (
         <Fragment>
@@ -59,25 +59,37 @@ function Project() {
                 )}
 
                 {/* Always rendered page content */}
-                <main className={`page-content px-4 py-4 ${isLoading ? 'pointer-events-none' : ''}`} style={{ opacity: isLoading ? 0.5 : 1 }}>
+                <main className={`page-content  ${isLoading ? 'pointer-events-none' : ''}`} style={{ opacity: isLoading ? 0.5 : 1 }}>
                     <div className="container-fluid">
                         {/* Breadcrumb start */}
                         <div className="row m-1">
-                            <div className="col-12">
+                            <div className="col-12 merge-title p-0">
                                 <h4 className="main-title">Projects </h4>
+                                <div className="d-flex overflow-auto">
+                                    <div className="text-end">
+                                        <button className="btn text-dark h-45 icon-btn m-2" data-bs-target="#projectCard1" data-bs-toggle="modal">
+                                            <i className="ti ti-plus f-s-18" /> Join a Project
+                                        </button>
+                                    </div>
+                                    <div className="text-end">
+                                        <button className="btn btn-primary h-45 icon-btn m-2" data-bs-target="#projectCard2" data-bs-toggle="modal">
+                                            <i className="iconoir-open-new-window f-s-18" />  Create New Project
+                                        </button>
+                                    </div>
+                                </div>
 
                             </div>
                         </div>
                         {/* Breadcrumb end */}
 
-                        
+
 
                         {/* Projects start */}
                         <div className="row">
                             <div className="col-12">
 
                                 <div className="tab-wrapper mb-3">
-                                    <ul className="tabs">
+                                    <ul className="tabs overflow-auto">
                                         <li
                                             className={`tab-link ${activeTab === 1 ? "active" : ""}`}
                                             onClick={() => setActiveTab(1)}
@@ -89,18 +101,6 @@ function Project() {
                                             onClick={() => setActiveTab(2)}
                                         >
                                             <i className="ph-fill ph-list-bullets f-s-18" /> Collaborative Projects
-                                        </li>
-                                        <li className="ms-auto d-flex">
-                                            <div className="text-end">
-                                                <button className="btn text-dark h-45 icon-btn m-2" data-bs-target="#projectCard1" data-bs-toggle="modal">
-                                                    <i className="ti ti-plus f-s-18" /> Join a Project
-                                                </button>
-                                            </div>
-                                            <div className="text-end">
-                                                <button className="btn btn-primary h-45 icon-btn m-2" data-bs-target="#projectCard2" data-bs-toggle="modal">
-                                                    <i className="iconoir-open-new-window f-s-18" />  Create New Project
-                                                </button>
-                                            </div>
                                         </li>
 
                                     </ul>
@@ -125,7 +125,7 @@ function Project() {
                                                         <tbody>
                                                             <tr>
                                                                 <td>1</td>
-                                                                <td>9/22/2024</td>
+                                                                <td>Feb 22nd, 2024</td>
                                                                 <td>192.168.1.1</td>
                                                                 <td>macOS</td>
                                                                 <td>Canada</td>
@@ -133,7 +133,7 @@ function Project() {
                                                             </tr>
                                                             <tr>
                                                                 <td>2</td>
-                                                                <td>9/19/2024</td>
+                                                                <td>Feb 22nd, 2024</td>
                                                                 <td>192.168.1.4</td>
                                                                 <td>Windows 11</td>
                                                                 <td>UK</td>
@@ -153,26 +153,26 @@ function Project() {
                                                     <table className="datatable display app-data-table default-data-table" id="example1">
                                                         <thead>
                                                             <tr>
+                                                                <th style={{ width: '20px' }}>transiction ID</th>
                                                                 <th>name</th>
                                                                 <th>created at</th>
-                                                                <th>members count</th>
-                                                                <th>servers count</th>
+                                                                <th>transiction detail</th>
                                                                 <th>action</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
                                                             <tr>
-                                                                <td>My New Project50</td>
-                                                                <td>2024-11-29</td>
                                                                 <td>1</td>
-                                                                <td>0</td>
+                                                                <td>My New Project50</td>
+                                                                <td>Feb 22nd, 2024</td>
+                                                                <td>your details</td>
                                                                 <td className="d-flex"><Link href=""><span className="badge text-white bg-secondary d-flex gap-2 "><i className="ph-duotone ph-eye f-s-18" /> View </span></Link></td>
                                                             </tr>
                                                             <tr>
-                                                                <td>Dr. Burnice Larson</td>
-                                                                <td>2024-12-24</td>
                                                                 <td>5</td>
-                                                                <td>0</td>
+                                                                <td>Dr. Burnice Larson</td>
+                                                                <td>Feb 22nd, 2024</td>
+                                                                <td>your details</td>
                                                                 <td className="d-flex"><Link href=""><span className="badge text-white bg-secondary d-flex gap-2 "><i className="ph-duotone ph-eye f-s-18" /> View </span></Link></td>
                                                             </tr>
                                                         </tbody>

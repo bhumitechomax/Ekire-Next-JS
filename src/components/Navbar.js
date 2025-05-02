@@ -71,7 +71,12 @@ export default function Navbar () {
                             </li>
                             <li className="no-sub">
                                 <Link href="/support">
-                                    <i className="iconoir-multi-bubble" /> Support
+                                    <i className="ph ph-chat-centered-text" /> Support
+                                </Link>
+                            </li>
+                            <li className="no-sub">
+                                <Link href="/chat">
+                                    <i className="iconoir-multi-bubble" /> Chat Now
                                 </Link>
                             </li>
                             <li className="no-sub">
@@ -88,7 +93,7 @@ export default function Navbar () {
                                     <i className="iconoir-user" /> Accounts
                                 </Link>
                             </li>
-                            <li className="no-sub">
+                            {/* <li className="no-sub">
                                 <Link href="/login">
                                     <i className="iconoir-user" /> LogIn
                                 </Link>
@@ -97,7 +102,7 @@ export default function Navbar () {
                                 <Link href="/signup">
                                     <i className="iconoir-user" /> Sign Up
                                 </Link>
-                            </li>
+                            </li> */}
                         </ul>
                     </div>
                     <div className="menu-navs">

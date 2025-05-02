@@ -24309,6 +24309,7 @@ button:focus:not(:focus-visible) {
   font-weight: 600;
   color: rgba(var(--dark), .75);
   padding: 5px 15px;
+  padding-left: 0;
 }
 
 .card .card-header p, .card .card-footer p {
@@ -34896,6 +34897,7 @@ table.dataTable.no-footer {
   padding: 1rem;
   text-transform: capitalize;
   font-size: 17px;
+  white-space: pre;
 }
 
 .app-datatable-default .dataTables_wrapper table thead th.sorting:before, .app-datatable-default .dataTables_wrapper table thead th.sorting:after {
@@ -35079,35 +35081,11 @@ table.dataTable.no-footer {
 }
 
 .default-data-table thead tr th:first-child {
+  min-width: 100px;
+}
+
+.default-data-table thead tr th {
   min-width: 150px;
-}
-
-.default-data-table thead tr th:nth-child(3) {
-  min-width: 100px;
-}
-
-.default-data-table thead tr th:nth-child(5) {
-  min-width: 100px;
-}
-
-.default-data-table thead tr th:nth-child(7) {
-  min-width: 100px;
-}
-
-.row-border-table thead tr th:first-child {
-  min-width: 150px;
-}
-
-.row-border-table thead tr th:nth-child(2) {
-  min-width: 200px;
-}
-
-.row-border-table thead tr th:nth-child(3) {
-  min-width: 100px;
-}
-
-.row-border-table thead tr th:nth-child(5) {
-  min-width: 100px;
 }
 
 .row-callback-datatable thead tr th:first-child {
@@ -43056,10 +43034,6 @@ table.dataTable.no-footer {
 
 .chat-container-box .col-lg-8, .chat-container-box .col-lg-4 {
   padding: 0;
-}
-
-.chat-container-box .col-lg-8 .card, .chat-container-box .col-lg-4 .card {
-  border-radius: 0 !important;
 }
 
 .chat-container-content-box {
@@ -51542,6 +51516,7 @@ table.dataTable.no-footer {
   cursor: pointer;
   border-bottom: 2px solid #0000;
   letter-spacing: 1px;
+  white-space: pre;
   transition: border .3s ease-in-out;
 }
 
@@ -52851,7 +52826,7 @@ table.dataTable.no-footer {
 .tracker-history-list {
   overflow: auto;
   position: relative;
-  height: 305px;
+  height: auto;
 }
 
 .tracker-history-list li {
@@ -53003,7 +52978,7 @@ table.dataTable.no-footer {
 }
 
 .core-teams-card h2 {
-  font-size: calc(.617284vw + 33.1481px);
+  font-size: calc(.925926vw + 53.0864px);
 }
 
 .core-teams-card:before {
@@ -60715,6 +60690,75 @@ table.dataTable.row-border tbody th, table.dataTable.row-border tbody td, table.
   border-top: 1px solid #0000 !important;
 }
 
+.slide-slick img {
+  height: 380px;
+  width: 100%;
+}
+
+.slick-dots {
+  position: absolute;
+  bottom: 16px;
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-align: center;
+}
+
+.image-overlay-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.gradient-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(#161c2400 0%, #161c24a3 55%);
+  border-radius: .5rem;
+  z-index: 1;
+}
+
+.text-overlay {
+  position: absolute;
+  bottom: 40px;
+  left: 20px;
+  z-index: 2;
+  color: var(--bodybg-color);
+}
+
+.text-overlay .tag {
+  display: inline-block;
+  background-color: var(--bs-code-color);
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: .8rem;
+  margin-bottom: 5px;
+}
+
+.text-overlay .headline {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--bodybg-color);
+}
+
+.carousel-caption h5 {
+  color: var(--body-color);
+}
+
+.equal-card-memberlist {
+  padding: 30px;
+}
+
+.merge-title {
+  display: flex;
+  justify-content: space-between;
+}
+
 @keyframes spin {
   to {
     transform: rotate(360deg);
@@ -60810,6 +60854,14 @@ table.dataTable.row-border tbody th, table.dataTable.row-border tbody td, table.
 
   .my-cpu-tab .nav-item {
     width: 100%;
+  }
+
+  .equal-card-memberlist {
+    padding: 20px 0;
+  }
+
+  .merge-title {
+    flex-direction: column;
   }
 }
 

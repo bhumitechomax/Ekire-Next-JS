@@ -45,81 +45,41 @@ const MemberListTable = ()=>{
             id: 1,
             name: 'Alice Smith',
             email: 'alice.smith@example.com',
-            createdAt: '2025-04-20',
+            createdAt: 'Feb 22nd, 2024',
             status: 'Active'
         },
         {
             id: 2,
             name: 'Bob Johnson',
             email: 'bob.johnson@example.com',
-            createdAt: '2025-04-21',
+            createdAt: 'Feb 22nd, 2024',
             status: 'Inactive'
         },
         {
             id: 3,
             name: 'Charlie Brown',
             email: 'charlie.brown@example.com',
-            createdAt: '2025-04-22',
+            createdAt: 'Feb 22nd, 2024',
             status: 'Pending'
         },
         {
             id: 4,
             name: 'Diana Lee',
             email: 'diana.lee@example.com',
-            createdAt: '2025-04-23',
+            createdAt: 'Feb 22nd, 2024',
             status: 'Active'
         },
         {
             id: 5,
             name: 'Ethan Williams',
             email: 'ethan.williams@example.com',
-            createdAt: '2025-04-24',
+            createdAt: 'Feb 22nd, 2024',
             status: 'Active'
-        },
-        {
-            id: 6,
-            name: 'Fiona Green',
-            email: 'fiona.green@example.com',
-            createdAt: '2025-04-25',
-            status: 'Inactive'
-        },
-        {
-            id: 7,
-            name: 'George Harris',
-            email: 'george.harris@example.com',
-            createdAt: '2025-04-26',
-            status: 'Pending'
-        },
-        {
-            id: 8,
-            name: 'Hannah Clark',
-            email: 'hannah.clark@example.com',
-            createdAt: '2025-04-27',
-            status: 'Active'
-        },
-        {
-            id: 9,
-            name: 'Ian Lewis',
-            email: 'ian.lewis@example.com',
-            createdAt: '2025-04-28',
-            status: 'Active'
-        },
-        {
-            id: 10,
-            name: 'Jane Miller',
-            email: 'jane.miller@example.com',
-            createdAt: '2025-04-19',
-            status: 'Inactive'
         }
     ]);
     const [currentPage, setCurrentPage] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(1);
-    const [showModal, setShowModal] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false); // State to control modal visibility
-    const [newMember, setNewMember] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])({
-        name: '',
-        email: '',
-        createdAt: new Date().toISOString().split('T')[0],
-        status: 'Status'
-    });
+    const [showModal, setShowModal] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [newMemberEmail, setNewMemberEmail] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])('');
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
     const currentMembers = members.slice(indexOfFirstItem, indexOfLastItem);
@@ -127,40 +87,45 @@ const MemberListTable = ()=>{
     const paginate = (pageNumber)=>setCurrentPage(pageNumber);
     const openModal = ()=>setShowModal(true);
     const closeModal = ()=>setShowModal(false);
-    const handleInputChange = (e)=>{
-        const { name, value } = e.target;
-        setNewMember((prevMember)=>({
-                ...prevMember,
-                [name]: value
-            }));
-    };
     const handleAddMember = (e)=>{
         e.preventDefault();
-        if (newMember.status === 'Status') {
-            alert('Please select a valid status.');
+        if (!newMemberEmail.trim()) {
+            alert('Please enter an email.');
             return;
         }
         const nextId = members.length > 0 ? Math.max(...members.map((m)=>m.id)) + 1 : 1;
-        setMembers((prevMembers)=>[
-                ...prevMembers,
-                {
-                    id: nextId,
-                    ...newMember
-                }
+        const newMember = {
+            id: nextId,
+            email: newMemberEmail,
+            name: generateNameFromEmail(newMemberEmail),
+            createdAt: formatDate(new Date()),
+            status: 'Active'
+        };
+        setMembers((prev)=>[
+                ...prev,
+                newMember
             ]);
+        setNewMemberEmail('');
         closeModal();
-        setNewMember({
-            name: '',
-            email: '',
-            createdAt: new Date().toISOString().split('T')[0],
-            status: 'Status'
-        });
     };
     const dropMember = (id)=>{
         setMembers((prevMembers)=>prevMembers.filter((member)=>member.id !== id));
     };
+    const generateNameFromEmail = (email)=>{
+        const username = email.split('@')[0];
+        return username.replace(/[\W_]+/g, ' ') // replace non-word characters
+        .split(' ').map((w)=>w.charAt(0).toUpperCase() + w.slice(1)) // capitalize
+        .join(' ');
+    };
+    const formatDate = (date)=>{
+        return date.toLocaleDateString('en-US', {
+            month: 'short',
+            day: 'numeric',
+            year: 'numeric'
+        });
+    };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "card p-30 equal-card ",
+        className: "card equal-card ",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "card-header ps-0",
@@ -171,7 +136,7 @@ const MemberListTable = ()=>{
                             children: "Members List"
                         }, void 0, false, {
                             fileName: "[project]/src/app/MemberListTable.tsx",
-                            lineNumber: 86,
+                            lineNumber: 83,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -183,30 +148,30 @@ const MemberListTable = ()=>{
                                         className: "ph-bold  ph-plus f-s-18 "
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/MemberListTable.tsx",
-                                        lineNumber: 89,
+                                        lineNumber: 86,
                                         columnNumber: 29
                                     }, this),
                                     "  Add Member"
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/MemberListTable.tsx",
-                                lineNumber: 88,
+                                lineNumber: 85,
                                 columnNumber: 25
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/app/MemberListTable.tsx",
-                            lineNumber: 87,
+                            lineNumber: 84,
                             columnNumber: 21
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/MemberListTable.tsx",
-                    lineNumber: 85,
+                    lineNumber: 82,
                     columnNumber: 17
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/app/MemberListTable.tsx",
-                lineNumber: 84,
+                lineNumber: 81,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -237,7 +202,7 @@ const MemberListTable = ()=>{
                                                     children: "Add Employee"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/MemberListTable.tsx",
-                                                    lineNumber: 105,
+                                                    lineNumber: 102,
                                                     columnNumber: 37
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -248,13 +213,13 @@ const MemberListTable = ()=>{
                                                     onClick: closeModal
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/MemberListTable.tsx",
-                                                    lineNumber: 106,
+                                                    lineNumber: 103,
                                                     columnNumber: 37
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/MemberListTable.tsx",
-                                            lineNumber: 104,
+                                            lineNumber: 101,
                                             columnNumber: 33
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
@@ -263,166 +228,40 @@ const MemberListTable = ()=>{
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "modal-body",
-                                                    children: [
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                            className: "mb-3",
-                                                            children: [
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                                                                    className: "form-label",
-                                                                    children: "Name :"
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/src/app/MemberListTable.tsx",
-                                                                    lineNumber: 111,
-                                                                    columnNumber: 45
-                                                                }, this),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                                                    className: "form-control",
-                                                                    id: "name-field",
-                                                                    placeholder: "Name",
-                                                                    required: true,
-                                                                    type: "text",
-                                                                    name: "name",
-                                                                    value: newMember.name,
-                                                                    onChange: handleInputChange
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/src/app/MemberListTable.tsx",
-                                                                    lineNumber: 112,
-                                                                    columnNumber: 45
-                                                                }, this)
-                                                            ]
-                                                        }, void 0, true, {
-                                                            fileName: "[project]/src/app/MemberListTable.tsx",
-                                                            lineNumber: 110,
-                                                            columnNumber: 41
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                            className: "mb-3",
-                                                            children: [
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                                                                    className: "form-label",
-                                                                    children: "Email :"
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/src/app/MemberListTable.tsx",
-                                                                    lineNumber: 115,
-                                                                    columnNumber: 45
-                                                                }, this),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                                                    className: "form-control",
-                                                                    id: "email-field",
-                                                                    placeholder: "Email",
-                                                                    required: true,
-                                                                    type: "email",
-                                                                    name: "email",
-                                                                    value: newMember.email,
-                                                                    onChange: handleInputChange
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/src/app/MemberListTable.tsx",
-                                                                    lineNumber: 116,
-                                                                    columnNumber: 45
-                                                                }, this)
-                                                            ]
-                                                        }, void 0, true, {
-                                                            fileName: "[project]/src/app/MemberListTable.tsx",
-                                                            lineNumber: 114,
-                                                            columnNumber: 41
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                            className: "mb-3",
-                                                            children: [
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                                                                    className: "form-label",
-                                                                    children: "Created At :"
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/src/app/MemberListTable.tsx",
-                                                                    lineNumber: 119,
-                                                                    columnNumber: 45
-                                                                }, this),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                                                    className: "form-control",
-                                                                    id: "createdAt-field",
-                                                                    required: true,
-                                                                    type: "date",
-                                                                    name: "createdAt",
-                                                                    value: newMember.createdAt,
-                                                                    onChange: handleInputChange
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/src/app/MemberListTable.tsx",
-                                                                    lineNumber: 120,
-                                                                    columnNumber: 45
-                                                                }, this)
-                                                            ]
-                                                        }, void 0, true, {
-                                                            fileName: "[project]/src/app/MemberListTable.tsx",
-                                                            lineNumber: 118,
-                                                            columnNumber: 41
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                            className: "mb-3",
-                                                            children: [
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                                                                    className: "form-label",
-                                                                    children: "Status :"
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/src/app/MemberListTable.tsx",
-                                                                    lineNumber: 123,
-                                                                    columnNumber: 45
-                                                                }, this),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
-                                                                    "aria-label": "Default select example",
-                                                                    className: "form-select",
-                                                                    id: "status-field",
-                                                                    name: "status",
-                                                                    value: newMember.status,
-                                                                    onChange: handleInputChange,
-                                                                    children: [
-                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
-                                                                            value: "Status",
-                                                                            children: "Status"
-                                                                        }, void 0, false, {
-                                                                            fileName: "[project]/src/app/MemberListTable.tsx",
-                                                                            lineNumber: 125,
-                                                                            columnNumber: 49
-                                                                        }, this),
-                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
-                                                                            value: "Active",
-                                                                            children: "Active"
-                                                                        }, void 0, false, {
-                                                                            fileName: "[project]/src/app/MemberListTable.tsx",
-                                                                            lineNumber: 126,
-                                                                            columnNumber: 49
-                                                                        }, this),
-                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
-                                                                            value: "Block",
-                                                                            children: "Block"
-                                                                        }, void 0, false, {
-                                                                            fileName: "[project]/src/app/MemberListTable.tsx",
-                                                                            lineNumber: 127,
-                                                                            columnNumber: 49
-                                                                        }, this),
-                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
-                                                                            value: "Pending",
-                                                                            children: "Pending"
-                                                                        }, void 0, false, {
-                                                                            fileName: "[project]/src/app/MemberListTable.tsx",
-                                                                            lineNumber: 128,
-                                                                            columnNumber: 49
-                                                                        }, this)
-                                                                    ]
-                                                                }, void 0, true, {
-                                                                    fileName: "[project]/src/app/MemberListTable.tsx",
-                                                                    lineNumber: 124,
-                                                                    columnNumber: 45
-                                                                }, this)
-                                                            ]
-                                                        }, void 0, true, {
-                                                            fileName: "[project]/src/app/MemberListTable.tsx",
-                                                            lineNumber: 122,
-                                                            columnNumber: 41
-                                                        }, this)
-                                                    ]
-                                                }, void 0, true, {
+                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        className: "mb-3",
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
+                                                                className: "form-label",
+                                                                children: "Email :"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/app/MemberListTable.tsx",
+                                                                lineNumber: 108,
+                                                                columnNumber: 45
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                                                className: "form-control",
+                                                                id: "email-field",
+                                                                placeholder: "Email",
+                                                                required: true,
+                                                                type: "email",
+                                                                name: "email",
+                                                                value: newMemberEmail,
+                                                                onChange: (e)=>setNewMemberEmail(e.target.value)
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/app/MemberListTable.tsx",
+                                                                lineNumber: 109,
+                                                                columnNumber: 45
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/src/app/MemberListTable.tsx",
+                                                        lineNumber: 107,
+                                                        columnNumber: 41
+                                                    }, this)
+                                                }, void 0, false, {
                                                     fileName: "[project]/src/app/MemberListTable.tsx",
-                                                    lineNumber: 109,
+                                                    lineNumber: 106,
                                                     columnNumber: 37
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -430,13 +269,12 @@ const MemberListTable = ()=>{
                                                     children: [
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                                             className: "btn btn-secondary",
-                                                            "data-bs-dismiss": "modal",
                                                             type: "button",
                                                             onClick: closeModal,
                                                             children: "Close"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/MemberListTable.tsx",
-                                                            lineNumber: 133,
+                                                            lineNumber: 122,
                                                             columnNumber: 41
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -446,233 +284,228 @@ const MemberListTable = ()=>{
                                                             children: "Add"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/MemberListTable.tsx",
-                                                            lineNumber: 134,
-                                                            columnNumber: 41
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                                            className: "btn btn-success b-r-22",
-                                                            id: "edit-btn",
-                                                            style: {
-                                                                display: 'none'
-                                                            },
-                                                            children: "Edit"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/src/app/MemberListTable.tsx",
-                                                            lineNumber: 135,
+                                                            lineNumber: 123,
                                                             columnNumber: 41
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/app/MemberListTable.tsx",
-                                                    lineNumber: 132,
+                                                    lineNumber: 121,
                                                     columnNumber: 37
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/MemberListTable.tsx",
-                                            lineNumber: 108,
+                                            lineNumber: 105,
                                             columnNumber: 33
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/MemberListTable.tsx",
-                                    lineNumber: 103,
+                                    lineNumber: 100,
                                     columnNumber: 29
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/app/MemberListTable.tsx",
-                                lineNumber: 102,
+                                lineNumber: 99,
                                 columnNumber: 25
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/app/MemberListTable.tsx",
-                            lineNumber: 101,
+                            lineNumber: 98,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$list$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].dataall,
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("table", {
-                                    className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$list$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].dataTable,
-                                    children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("thead", {
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
-                                                children: [
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                                        children: "ID"
-                                                    }, void 0, false, {
+                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "app-datatable-default overflow-auto",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("table", {
+                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$list$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].dataTable,
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("thead", {
+                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                                            children: "ID"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/app/MemberListTable.tsx",
+                                                            lineNumber: 136,
+                                                            columnNumber: 37
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                                            children: "Name"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/app/MemberListTable.tsx",
+                                                            lineNumber: 137,
+                                                            columnNumber: 37
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                                            children: "Email"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/app/MemberListTable.tsx",
+                                                            lineNumber: 138,
+                                                            columnNumber: 37
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                                            children: "Created At"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/app/MemberListTable.tsx",
+                                                            lineNumber: 139,
+                                                            columnNumber: 37
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                                            children: "Status"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/app/MemberListTable.tsx",
+                                                            lineNumber: 140,
+                                                            columnNumber: 37
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                                            children: "Actions"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/app/MemberListTable.tsx",
+                                                            lineNumber: 141,
+                                                            columnNumber: 37
+                                                        }, this)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/src/app/MemberListTable.tsx",
+                                                    lineNumber: 135,
+                                                    columnNumber: 33
+                                                }, this)
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/app/MemberListTable.tsx",
+                                                lineNumber: 134,
+                                                columnNumber: 29
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
+                                                children: currentMembers.map((member)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                children: member.id
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/app/MemberListTable.tsx",
+                                                                lineNumber: 147,
+                                                                columnNumber: 41
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                children: member.name
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/app/MemberListTable.tsx",
+                                                                lineNumber: 148,
+                                                                columnNumber: 41
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                children: member.email
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/app/MemberListTable.tsx",
+                                                                lineNumber: 149,
+                                                                columnNumber: 41
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                children: member.createdAt
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/app/MemberListTable.tsx",
+                                                                lineNumber: 150,
+                                                                columnNumber: 41
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                children: member.status
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/app/MemberListTable.tsx",
+                                                                lineNumber: 151,
+                                                                columnNumber: 41
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                                    className: "btn remove-item-btn btn-md btn-danger-light b-r-22 d-flex gap-1",
+                                                                    onClick: ()=>dropMember(member.id),
+                                                                    children: [
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("i", {
+                                                                            className: "ph-fill  ph-trash f-s-22"
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/src/app/MemberListTable.tsx",
+                                                                            lineNumber: 154,
+                                                                            columnNumber: 49
+                                                                        }, this),
+                                                                        " Delete"
+                                                                    ]
+                                                                }, void 0, true, {
+                                                                    fileName: "[project]/src/app/MemberListTable.tsx",
+                                                                    lineNumber: 153,
+                                                                    columnNumber: 45
+                                                                }, this)
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/app/MemberListTable.tsx",
+                                                                lineNumber: 152,
+                                                                columnNumber: 41
+                                                            }, this)
+                                                        ]
+                                                    }, member.id, true, {
                                                         fileName: "[project]/src/app/MemberListTable.tsx",
                                                         lineNumber: 146,
                                                         columnNumber: 37
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                                        children: "Name"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/src/app/MemberListTable.tsx",
-                                                        lineNumber: 147,
-                                                        columnNumber: 37
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                                        children: "Email"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/src/app/MemberListTable.tsx",
-                                                        lineNumber: 148,
-                                                        columnNumber: 37
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                                        children: "Created At"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/src/app/MemberListTable.tsx",
-                                                        lineNumber: 149,
-                                                        columnNumber: 37
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                                        children: "Status"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/src/app/MemberListTable.tsx",
-                                                        lineNumber: 150,
-                                                        columnNumber: 37
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                                        children: "Actions"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/src/app/MemberListTable.tsx",
-                                                        lineNumber: 151,
-                                                        columnNumber: 37
-                                                    }, this)
-                                                ]
-                                            }, void 0, true, {
+                                                    }, this))
+                                            }, void 0, false, {
                                                 fileName: "[project]/src/app/MemberListTable.tsx",
-                                                lineNumber: 145,
-                                                columnNumber: 33
+                                                lineNumber: 144,
+                                                columnNumber: 29
                                             }, this)
-                                        }, void 0, false, {
-                                            fileName: "[project]/src/app/MemberListTable.tsx",
-                                            lineNumber: 144,
-                                            columnNumber: 29
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
-                                            children: currentMembers.map((member)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
-                                                    children: [
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                            children: member.id
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/src/app/MemberListTable.tsx",
-                                                            lineNumber: 157,
-                                                            columnNumber: 41
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                            children: member.name
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/src/app/MemberListTable.tsx",
-                                                            lineNumber: 158,
-                                                            columnNumber: 41
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                            children: member.email
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/src/app/MemberListTable.tsx",
-                                                            lineNumber: 159,
-                                                            columnNumber: 41
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                            children: member.createdAt
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/src/app/MemberListTable.tsx",
-                                                            lineNumber: 160,
-                                                            columnNumber: 41
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                            children: member.status
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/src/app/MemberListTable.tsx",
-                                                            lineNumber: 161,
-                                                            columnNumber: 41
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                                                className: "btn remove-item-btn btn-md btn-danger-light b-r-22 d-flex gap-1",
-                                                                onClick: ()=>dropMember(member.id),
-                                                                children: [
-                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("i", {
-                                                                        className: "ph-fill  ph-trash f-s-22"
-                                                                    }, void 0, false, {
-                                                                        fileName: "[project]/src/app/MemberListTable.tsx",
-                                                                        lineNumber: 164,
-                                                                        columnNumber: 49
-                                                                    }, this),
-                                                                    " Delete"
-                                                                ]
-                                                            }, void 0, true, {
-                                                                fileName: "[project]/src/app/MemberListTable.tsx",
-                                                                lineNumber: 163,
-                                                                columnNumber: 45
-                                                            }, this)
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/src/app/MemberListTable.tsx",
-                                                            lineNumber: 162,
-                                                            columnNumber: 41
-                                                        }, this)
-                                                    ]
-                                                }, member.id, true, {
-                                                    fileName: "[project]/src/app/MemberListTable.tsx",
-                                                    lineNumber: 156,
-                                                    columnNumber: 37
-                                                }, this))
-                                        }, void 0, false, {
-                                            fileName: "[project]/src/app/MemberListTable.tsx",
-                                            lineNumber: 154,
-                                            columnNumber: 29
-                                        }, this)
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "[project]/src/app/MemberListTable.tsx",
-                                    lineNumber: 143,
-                                    columnNumber: 25
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$list$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].pagination,
-                                    children: Array.from({
-                                        length: totalPages
-                                    }, (_, index)=>index + 1).map((number)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                            onClick: ()=>paginate(number),
-                                            className: currentPage === number ? __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$list$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].active : '',
-                                            children: number
-                                        }, number, false, {
-                                            fileName: "[project]/src/app/MemberListTable.tsx",
-                                            lineNumber: 174,
-                                            columnNumber: 33
-                                        }, this))
-                                }, void 0, false, {
-                                    fileName: "[project]/src/app/MemberListTable.tsx",
-                                    lineNumber: 172,
-                                    columnNumber: 25
-                                }, this)
-                            ]
-                        }, void 0, true, {
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/src/app/MemberListTable.tsx",
+                                        lineNumber: 133,
+                                        columnNumber: 29
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$list$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].pagination,
+                                        children: Array.from({
+                                            length: totalPages
+                                        }, (_, index)=>index + 1).map((number)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                onClick: ()=>paginate(number),
+                                                className: currentPage === number ? __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$list$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].active : '',
+                                                children: number
+                                            }, number, false, {
+                                                fileName: "[project]/src/app/MemberListTable.tsx",
+                                                lineNumber: 163,
+                                                columnNumber: 33
+                                            }, this))
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/app/MemberListTable.tsx",
+                                        lineNumber: 161,
+                                        columnNumber: 25
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/app/MemberListTable.tsx",
+                                lineNumber: 132,
+                                columnNumber: 25
+                            }, this)
+                        }, void 0, false, {
                             fileName: "[project]/src/app/MemberListTable.tsx",
-                            lineNumber: 142,
+                            lineNumber: 131,
                             columnNumber: 21
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/MemberListTable.tsx",
-                    lineNumber: 96,
+                    lineNumber: 93,
                     columnNumber: 17
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/app/MemberListTable.tsx",
-                lineNumber: 95,
+                lineNumber: 92,
                 columnNumber: 13
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/app/MemberListTable.tsx",
-        lineNumber: 83,
+        lineNumber: 80,
         columnNumber: 9
     }, this);
 };
-_s(MemberListTable, "Ts977ja+QsAxJoWPgChrlsgXYnE=");
+_s(MemberListTable, "MdX7iT+Mt04zNtbuzr9TeghSW1I=");
 _c = MemberListTable;
 const __TURBOPACK__default__export__ = MemberListTable;
 var _c;

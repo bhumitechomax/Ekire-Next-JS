@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 7, "column": 0}, "map": {"version":3,"sources":["file://C%3A/xampp/htdocs/next-project-EKIRE/src/app/login/layout.jsx"],"sourcesContent":["const Layout = async ({ children }) => {\r\n    return <>{ children }</>;\r\n};\r\n\r\nexport default Layout;"],"names":[],"mappings":";;;;;AAAA,MAAM,SAAS,OAAO,EAAE,QAAQ,EAAE;IAC9B,qBAAO;kBAAI;;AACf;uCAEe","debugId":null}}]
+}

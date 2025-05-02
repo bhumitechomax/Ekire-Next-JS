@@ -141,7 +141,7 @@ function Create() {
                         </div>
                     </div>
                 )}
-                <main className={`page-content px-4 py-4 ${isLoading ? 'pointer-events-none' : ''}`} style={{ opacity: isLoading ? 0.5 : 1 }}>
+                <main className={`page-content ${isLoading ? 'pointer-events-none' : ''}`} style={{ opacity: isLoading ? 0.5 : 1 }}>
                     <div className="container-fluid">
                         {/* Breadcrumb start */}
                         <div className="row m-1">
@@ -236,7 +236,7 @@ function Create() {
                                             <div className="col-12">
 
                                                 <div className="tab-wrapper ms-3 me-3 mb-3">
-                                                    <ul className="tabs">
+                                                    <ul className="tabs overflow-auto">
                                                         <li
                                                             className={`tab-link ${activeTab === 1 ? "active" : ""}`}
                                                             onClick={() => setActiveTab(1)}

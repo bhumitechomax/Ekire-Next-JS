@@ -2244,24 +2244,29 @@ body[text="large-text"] {
   }
 
   .tab-wrapper .tabs {
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-between;
     background-color: #0000;
     box-shadow: none;
     gap: .5rem;
+    display: flex;
+    padding: 7px 0;
+    border-radius: 10px;
   }
 
   .tab-wrapper .tabs .tab-link {
     font-size: 14px;
     border: none;
-    border-radius: inherit;
+    border-radius: 0;
     text-align: center;
-    border: 1px solid rgba(var(--secondary), .4);
+    padding: 10px;
+    border-bottom: 1px solid rgba(var(--secondary), .4);
+    margin-left: 7px !important;
   }
 
   .tab-wrapper .tabs .tab-link.active {
-    background-color: rgba(var(--primary), 1);
-    color: rgba(var(--white), 1);
+    background-color: #8c76f000;
+    color: rgba(var(--primary), 1);
   }
 
   .board-item-content {

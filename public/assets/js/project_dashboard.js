@@ -29,7 +29,7 @@ var options = {
         { name: 'Expense', data: [10, 25, 15, 25, 20, 45] }
     ],
     chart: {
-        height: 240,
+        height: 380,
         type: 'line',
         dropShadow: {
             enabled: true,
@@ -66,7 +66,7 @@ var options = {
     legend: { show: false },
     tooltip: { x: { show: false }, style: { fontSize: '16px', fontFamily: '"Outfit", sans-serif' } },
     responsive: [
-        { breakpoint: 1399, options: { chart: { height: 220 } } },
+        { breakpoint: 1399, options: { chart: { height: 380 } } },
         { breakpoint: 567, options: { yaxis: { show: false } } }
     ]
 };

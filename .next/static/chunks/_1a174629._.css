@@ -55183,7 +55183,7 @@ textarea.form-control-lg {
   --font-title-color: #1c3264;
   --body-color: #f9f9f9;
   --bodybg-color: #f6f6f6;
-  --bodybg-modal-color: #00000069;
+  --bodybg-modal-color: #3939398f;
   --font-secondary-color: #22242c;
   --font-light-color: #a0a0b0;
   --grid_color: #90a4f636;
@@ -55289,7 +55289,7 @@ nav.dark-sidebar, body[class="ltr dark"] {
   --white: #fff;
   --black: #dce2f0;
   --bodybg-color: #272b3e;
-  --bodybg-modal-color: #00000069;
+  --bodybg-modal-color: #3939398f;
   --bs-body-bg: #202335;
   --font-color: #fff;
   --box-shadow: 0 .2rem 1rem #333644;
@@ -57423,11 +57423,14 @@ body[text="large-text"] {
   }
 
   .tab-wrapper .tabs {
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-between;
     background-color: #0000;
     box-shadow: none;
     gap: .5rem;
+    display: flex;
+    padding: 7px 0;
+    border-radius: 10px;
   }
 
   .tab-wrapper .tabs .tab-link {
@@ -57435,6 +57438,7 @@ body[text="large-text"] {
     border: none;
     border-radius: inherit;
     text-align: center;
+    margin-right: 15px;
     border: 1px solid rgba(var(--secondary), .4);
   }
 

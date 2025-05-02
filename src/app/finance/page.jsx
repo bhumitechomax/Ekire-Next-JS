@@ -37,10 +37,10 @@ function Finance() {
     return (
         <Fragment>
             <div className="position-relative">
-                {/* Overlay loader */}
-                {isLoading && (
+               {/* Overlay loader */}
+               {isLoading && (
                     <div
-                        className="d-flex justify-content-center align-items-center position-absolute start-0 w-100 h-100"
+                        className="d-flex justify-content-center align-items-center position-absolute top-0 start-0 w-100 h-100"
                         style={{
                             background: 'var(--bodybg-color)',
                             zIndex: 1000,
@@ -51,7 +51,7 @@ function Finance() {
                         </div>
                     </div>
                 )}
-                <main>
+                <main className={`page-content  ${isLoading ? 'pointer-events-none' : ''}`} style={{ opacity: isLoading ? 0.5 : 1 }}>
                     <div className="container-fluid">
                         {/* Breadcrumb start */}
                         <div className="row m-1">
@@ -66,7 +66,7 @@ function Finance() {
                             <div className="col-12">
 
                                 <div className="tab-wrapper mb-3">
-                                    <ul className="tabs">
+                                    <ul className="tabs overflow-auto">
                                         <li
                                             className={`tab-link ${activeTab === 1 ? "active" : ""}`}
                                             onClick={() => setActiveTab(1)}
@@ -102,7 +102,7 @@ function Finance() {
                                                                         <ul className="active-device-session active-device-list" id="shareMenuLeft">
                                                                             <li>
                                                                                 <div className="card share-menu-active">
-                                                                                    <div className="card-body d-flex gap-5">
+                                                                                    <div className="card-body merge-title gap-5">
                                                                                         <div className="device-menu-item " draggable="false">
                                                                                             <span className="device-menu-img">
                                                                                                 <i className="iconoir-card-wallet f-s-40 text-primary" />
@@ -157,7 +157,7 @@ function Finance() {
                                                             <tr>
                                                                 <td>1</td>
                                                                 <td>My New Project50</td>
-                                                                <td>2024-11-29</td>
+                                                                <td>Feb 22nd, 2024</td>
                                                                 <td>1</td>
                                                                 <td>0</td>
                                                                 <td className="d-flex">
@@ -169,7 +169,7 @@ function Finance() {
                                                             <tr>
                                                                 <td>2</td>
                                                                 <td>Dr. Burnice Larson</td>
-                                                                <td>2024-12-24</td>
+                                                                <td>Feb 22nd, 2024</td>
                                                                 <td>5</td>
                                                                 <td>0</td>
                                                                 <td className="d-flex">

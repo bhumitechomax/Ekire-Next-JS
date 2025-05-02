@@ -15,25 +15,16 @@ const itemsPerPage = 10;
 
 const MemberListTable: React.FC = () => {
     const [members, setMembers] = useState<Member[]>([
-        { id: 1, name: 'Alice Smith', email: 'alice.smith@example.com', createdAt: '2025-04-20', status: 'Active' },
-        { id: 2, name: 'Bob Johnson', email: 'bob.johnson@example.com', createdAt: '2025-04-21', status: 'Inactive' },
-        { id: 3, name: 'Charlie Brown', email: 'charlie.brown@example.com', createdAt: '2025-04-22', status: 'Pending' },
-        { id: 4, name: 'Diana Lee', email: 'diana.lee@example.com', createdAt: '2025-04-23', status: 'Active' },
-        { id: 5, name: 'Ethan Williams', email: 'ethan.williams@example.com', createdAt: '2025-04-24', status: 'Active' },
-        { id: 6, name: 'Fiona Green', email: 'fiona.green@example.com', createdAt: '2025-04-25', status: 'Inactive' },
-        { id: 7, name: 'George Harris', email: 'george.harris@example.com', createdAt: '2025-04-26', status: 'Pending' },
-        { id: 8, name: 'Hannah Clark', email: 'hannah.clark@example.com', createdAt: '2025-04-27', status: 'Active' },
-        { id: 9, name: 'Ian Lewis', email: 'ian.lewis@example.com', createdAt: '2025-04-28', status: 'Active' },
-        { id: 10, name: 'Jane Miller', email: 'jane.miller@example.com', createdAt: '2025-04-19', status: 'Inactive' },
+        { id: 1, name: 'Alice Smith', email: 'alice.smith@example.com', createdAt: 'Feb 22nd, 2024', status: 'Active' },
+        { id: 2, name: 'Bob Johnson', email: 'bob.johnson@example.com', createdAt: 'Feb 22nd, 2024', status: 'Inactive' },
+        { id: 3, name: 'Charlie Brown', email: 'charlie.brown@example.com', createdAt: 'Feb 22nd, 2024', status: 'Pending' },
+        { id: 4, name: 'Diana Lee', email: 'diana.lee@example.com', createdAt: 'Feb 22nd, 2024', status: 'Active' },
+        { id: 5, name: 'Ethan Williams', email: 'ethan.williams@example.com', createdAt: 'Feb 22nd, 2024', status: 'Active' },
     ]);
+
     const [currentPage, setCurrentPage] = useState(1);
-    const [showModal, setShowModal] = useState(false); // State to control modal visibility
-    const [newMember, setNewMember] = useState<Omit<Member, 'id'>>({
-        name: '',
-        email: '',
-        createdAt: new Date().toISOString().split('T')[0],
-        status: 'Status', // Initial value for the select
-    });
+    const [showModal, setShowModal] = useState(false);
+    const [newMemberEmail, setNewMemberEmail] = useState('');
 
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -42,45 +33,51 @@ const MemberListTable: React.FC = () => {
     const totalPages = Math.ceil(members.length / itemsPerPage);
 
     const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
-
     const openModal = () => setShowModal(true);
     const closeModal = () => setShowModal(false);
 
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-        const { name, value } = e.target;
-        setNewMember((prevMember) => ({
-            ...prevMember,
-            [name]: value,
-        }));
-    };
-
     const handleAddMember = (e: React.FormEvent) => {
         e.preventDefault();
-        if (newMember.status === 'Status') {
-            alert('Please select a valid status.');
+
+        if (!newMemberEmail.trim()) {
+            alert('Please enter an email.');
             return;
         }
+
         const nextId = members.length > 0 ? Math.max(...members.map((m) => m.id)) + 1 : 1;
-        setMembers((prevMembers) => [
-            ...prevMembers,
-            { id: nextId, ...newMember },
-        ]);
+
+        const newMember: Member = {
+            id: nextId,
+            email: newMemberEmail,
+            name: generateNameFromEmail(newMemberEmail),
+            createdAt: formatDate(new Date()),
+            status: 'Active',
+        };
+
+        setMembers((prev) => [...prev, newMember]);
+        setNewMemberEmail('');
         closeModal();
-        setNewMember({
-            name: '',
-            email: '',
-            createdAt: new Date().toISOString().split('T')[0],
-            status: 'Status',
-        });
     };
 
     const dropMember = (id: number) => {
         setMembers((prevMembers) => prevMembers.filter((member) => member.id !== id));
     };
 
+    const generateNameFromEmail = (email: string): string => {
+        const username = email.split('@')[0];
+        return username.replace(/[\W_]+/g, ' ') // replace non-word characters
+            .split(' ')
+            .map(w => w.charAt(0).toUpperCase() + w.slice(1)) // capitalize
+            .join(' ');
+    };
+
+    const formatDate = (date: Date): string => {
+        return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    };
+
     return (
 
-        <div className="card p-30 equal-card ">
+        <div className="card equal-card ">
             <div className="card-header ps-0">
                 <div className='d-flex justify-content-between'>
                     <h5>Members List</h5>
@@ -90,7 +87,7 @@ const MemberListTable: React.FC = () => {
                         </button>
                     </div>
                 </div>
-                
+
             </div>
             <div className="card-body p-0">
                 <div className={styles.container}>
@@ -108,39 +105,32 @@ const MemberListTable: React.FC = () => {
                                 <form id="add_employee_form" onSubmit={handleAddMember}>
                                     <div className="modal-body">
                                         <div className="mb-3">
-                                            <label className="form-label">Name :</label>
-                                            <input className="form-control" id="name-field" placeholder="Name" required type="text" name="name" value={newMember.name} onChange={handleInputChange} />
-                                        </div>
-                                        <div className="mb-3">
                                             <label className="form-label">Email :</label>
-                                            <input className="form-control" id="email-field" placeholder="Email" required type="email" name="email" value={newMember.email} onChange={handleInputChange} />
-                                        </div>
-                                        <div className="mb-3">
-                                            <label className="form-label">Created At :</label>
-                                            <input className="form-control" id="createdAt-field" required type="date" name="createdAt" value={newMember.createdAt} onChange={handleInputChange} />
-                                        </div>
-                                        <div className="mb-3">
-                                            <label className="form-label">Status :</label>
-                                            <select aria-label="Default select example" className="form-select" id="status-field" name="status" value={newMember.status} onChange={handleInputChange}>
-                                                <option value="Status">Status</option>
-                                                <option value="Active">Active</option>
-                                                <option value="Block">Block</option>
-                                                <option value="Pending">Pending</option>
-                                            </select>
+                                            <input
+                                                className="form-control"
+                                                id="email-field"
+                                                placeholder="Email"
+                                                required
+                                                type="email"
+                                                name="email"
+                                                value={newMemberEmail}
+                                                onChange={(e) => setNewMemberEmail(e.target.value)}
+                                            />
                                         </div>
                                     </div>
                                     <div className="modal-footer add">
-                                        <button className="btn btn-secondary" data-bs-dismiss="modal" type="button" onClick={closeModal}>Close</button>
+                                        <button className="btn btn-secondary" type="button" onClick={closeModal}>Close</button>
                                         <button className="btn btn-primary" id="add-btn" type="submit">Add</button>
-                                        <button className="btn btn-success b-r-22" id="edit-btn" style={{ display: 'none' }}>Edit</button>
                                     </div>
                                 </form>
+
                             </div>
                         </div>
                     </div>
 
                     <div className={styles.dataall}>
-                        <table className={styles.dataTable}>
+                        <div className="app-datatable-default overflow-auto">
+                            <table className={styles.dataTable}>
                             <thead>
                                 <tr>
                                     <th>ID</th>
@@ -168,7 +158,6 @@ const MemberListTable: React.FC = () => {
                                 ))}
                             </tbody>
                         </table>
-
                         <div className={styles.pagination}>
                             {Array.from({ length: totalPages }, (_, index) => index + 1).map((number) => (
                                 <button
@@ -180,8 +169,12 @@ const MemberListTable: React.FC = () => {
                                 </button>
                             ))}
                         </div>
+                        </div>
+                        
+
+                        
                     </div>
-                    
+
                 </div>
 
             </div>

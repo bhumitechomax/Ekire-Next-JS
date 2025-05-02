@@ -36,7 +36,7 @@ function Create() {
                         </div>
                     </div>
                 )}
-            <main className={`page-content px-4 py-4 ${isLoading ? 'pointer-events-none' : ''}`} style={{ opacity: isLoading ? 0.5 : 1 }}>
+            <main className={`page-content ${isLoading ? 'pointer-events-none' : ''}`} style={{ opacity: isLoading ? 0.5 : 1 }}>
                 <div className="container-fluid">
                     {/* Breadcrumb start */}
                     <div className="row m-1">

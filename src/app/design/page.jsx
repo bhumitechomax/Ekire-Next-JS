@@ -30,7 +30,7 @@ function Create() {
                         </div>
                     </div>
                 )}
-                <main className={`page-content px-4 py-4 ${isLoading ? 'pointer-events-none' : ''}`} style={{ opacity: isLoading ? 0.5 : 1 }}>
+                <main className={`page-content  ${isLoading ? 'pointer-events-none' : ''}`} style={{ opacity: isLoading ? 0.5 : 1 }}>
                     <div className="container-fluid">
                         {/* Breadcrumb start */}
                         <div className="row m-1">
@@ -51,12 +51,40 @@ function Create() {
                                             <div className="col-lg-12">
                                                 <div className="card security-card-content">
                                                     <div className="card-header">
+                                                        <h5>Add Name </h5>
+                                                    </div>
+                                                    <div className="card-body">
+                                                        <div className="form-selectgroup">
+                                                            <div className="row">
+                                                                <div className="col-lg-12 col-sm-6 col-xxl-4">
+                                                                    <form className="app-form">
+                                                                        <div className="mb-3">
+                                                                            <div className="input-group">
+                                                                                <input aria-describedby="inputGroupPrepend2" className="form-control" id="validationDefaultUsername" placeholder="Enter Name" required="" type="text" />
+                                                                            </div>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="card">
+                                    <div className="card-body p-0">
+                                        <div className="row">
+                                            <div className="col-lg-12">
+                                                <div className="card security-card-content">
+                                                    <div className="card-header">
                                                         <h5>Activity</h5>
                                                     </div>
                                                     <div className="card-body">
                                                         <div className="form-selectgroup">
                                                             <div className="row">
-                                                                <div className="col-lg-12 col-xxl-4">
+                                                                <div className="col-md-4 col-sm-6 col-xxl-4">
                                                                     <div className="select-item d-flex gap-2">
                                                                         <input className="form-check-input" id="inlineCheckbox1" type="checkbox" defaultValue="option1" />
                                                                         <label className="form-check-label" htmlFor="inlineCheckbox1">
@@ -68,7 +96,7 @@ function Create() {
                                                                         </label>
                                                                     </div>
                                                                 </div>
-                                                                <div className="col-lg-12 col-xxl-4">
+                                                                <div className="col-md-4 col-sm-6 col-xxl-4">
                                                                     <div className="select-item d-flex gap-2">
                                                                         <input className="form-check-input" id="inlineCheckbox2" type="checkbox" defaultValue="option2" />
                                                                         <label className="form-check-label" htmlFor="inlineCheckbox2">
@@ -80,7 +108,7 @@ function Create() {
                                                                         </label>
                                                                     </div>
                                                                 </div>
-                                                                <div className="col-lg-12 col-xxl-4">
+                                                                <div className="col-md-4 col-sm-6 col-xxl-4">
                                                                     <div className="select-item d-flex gap-2">
                                                                         <input className="form-check-input" id="inlineCheckbox3" type="checkbox" defaultValue="option3" />
                                                                         <label className="form-check-label" htmlFor="inlineCheckbox3">
@@ -112,7 +140,7 @@ function Create() {
                                                     <div className="card-body">
                                                         <div className="form-selectgroup">
                                                             <div className="row">
-                                                                <div className="col-lg-12 col-xxl-4">
+                                                                <div className="col-md-4 col-sm-6 col-xxl-4">
                                                                     <div className="select-item d-flex gap-2">
                                                                         <input className="form-check-input" id="inlineCheckbox7" type="checkbox" defaultValue="option7" />
                                                                         <label className="form-check-label" htmlFor="inlineCheckbox7">
@@ -144,7 +172,7 @@ function Create() {
                                                     <div className="card-body">
                                                         <div className="form-selectgroup">
                                                             <div className="row">
-                                                                <div className="col-lg-12 col-xxl-4">
+                                                                <div className="col-md-4 col-sm-6 col-xxl-4">
                                                                     <div className="select-item d-flex gap-2">
                                                                         <input className="form-check-input" id="inlineCheckbox4" type="checkbox" defaultValue="option4" />
                                                                         <label className="form-check-label" htmlFor="inlineCheckbox4">
@@ -156,7 +184,7 @@ function Create() {
                                                                         </label>
                                                                     </div>
                                                                 </div>
-                                                                <div className="col-lg-12 col-xxl-4">
+                                                                <div className="col-md-4 col-sm-6 col-xxl-4">
                                                                     <div className="select-item d-flex gap-2">
                                                                         <input className="form-check-input" id="inlineCheckbox5" type="checkbox" defaultValue="option5" />
                                                                         <label className="form-check-label" htmlFor="inlineCheckbox5">
@@ -168,7 +196,7 @@ function Create() {
                                                                         </label>
                                                                     </div>
                                                                 </div>
-                                                                <div className="col-lg-12 col-xxl-4">
+                                                                <div className="col-md-4 col-sm-6 col-xxl-4">
                                                                     <div className="select-item d-flex gap-2">
                                                                         <input className="form-check-input" id="inlineCheckbox6" type="checkbox" defaultValue="option6" />
                                                                         <label className="form-check-label" htmlFor="inlineCheckbox6">
@@ -200,7 +228,7 @@ function Create() {
                                                     <div className="card-body">
                                                         <div className="form-selectgroup">
                                                             <div className="row">
-                                                                <div className="col-lg-12 col-xxl-4">
+                                                                <div className="col-md-4 col-sm-6 col-xxl-4">
                                                                     <div className="select-item d-flex gap-2">
                                                                         <input className="form-check-input" id="inlineCheckbox8" type="checkbox" defaultValue="option8" />
                                                                         <label className="form-check-label" htmlFor="inlineCheckbox8">

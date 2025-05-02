@@ -33,7 +33,7 @@ function Project() {
                         </div>
                     </div>
                 )}
-            <main className={`page-content px-4 py-4 ${isLoading ? 'pointer-events-none' : ''}`} style={{ opacity: isLoading ? 0.5 : 1 }}>
+            <main className={`page-content ${isLoading ? 'pointer-events-none' : ''}`} style={{ opacity: isLoading ? 0.5 : 1 }}>
                 <div className="container-fluid">
                     {/* Breadcrumb start */}
                     <div className="row m-1">
@@ -73,7 +73,7 @@ function Project() {
                                 <h5>See your question below</h5>
                             </div>
                             <div className="card-body vertical-tab row">
-                                <div className="col-lg-3">
+                                <div className="col-xl-3 col-md-5">
                                     <ul className="nav nav-tabs app-tabs-secondary flex-column" id="v-bg" role="tablist">
                                         <li className="nav-item" role="presentation">
                                             <button className="nav-link active w-100 justify-content-start" id="v-payment-tab" data-bs-toggle="tab" data-bs-target="#v-payment-tab-pane" type="button" role="tab" aria-controls="v-payment-tab-pane" aria-selected="true"> <i className="ph ph-wallet pe-1 ps-1 pb-1 f-s-22 " />
@@ -103,7 +103,7 @@ function Project() {
                                     </ul>
                                 </div>
 
-                                <div className="tab-content col-lg-9" id="v-bgContent">
+                                <div className="tab-content col-xl-9 col-md-7" id="v-bgContent">
                                     <div className="tab-pane fade show active" id="v-payment-tab-pane" role="tabpanel" aria-labelledby="v-payment-tab" tabIndex={0}>
                                         <div className="accordion app-accordion accordion-light-secondary" id="accordionFlushExample">
                                             <div className="accordion-item">

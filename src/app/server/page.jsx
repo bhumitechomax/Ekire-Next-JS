@@ -59,11 +59,11 @@ function Server() {
                     </div>
                 )}
 
-                <main className={`page-content px-4 py-4 ${isLoading ? 'pointer-events-none' : ''}`} style={{ opacity: isLoading ? 0.5 : 1 }}>
+                <main className={`page-content  ${isLoading ? 'pointer-events-none' : ''}`} style={{ opacity: isLoading ? 0.5 : 1 }}>
                     <div className="container-fluid">
                         {/* Breadcrumb start */}
                         <div className="row m-1">
-                            <div className="col-12 d-flex justify-content-between">
+                            <div className="col-12 merge-title p-0">
                                 <div>
                                     <h4 className="main-title">Servers</h4>
                                 </div>
@@ -101,7 +101,7 @@ function Server() {
                                                             <td>Server Alpha</td>
                                                             <td><span className="badge bg-success-subtle text-success text-uppercase">Running</span></td>
                                                             <td>193.38.248.207</td>
-                                                            <td>9/25/2024</td>
+                                                            <td>Feb 22nd, 2024</td>
                                                             <td>$10</td>
                                                         </tr>
                                                         <tr>
@@ -109,7 +109,7 @@ function Server() {
                                                             <td>Server Beta</td>
                                                             <td><span className="badge bg-success-subtle text-success text-uppercase">Running</span></td>
                                                             <td>192.168.0.101</td>
-                                                            <td>9/20/2024</td>
+                                                            <td>Feb 22nd, 2024</td>
                                                             <td>$10</td>
                                                         </tr>
                                                     </tbody>

@@ -50,7 +50,7 @@ function SshKeys() {
                         </div>
                     </div>
                 )}
-                <main className={`page-content px-4 py-4 ${isLoading ? 'pointer-events-none' : ''}`} style={{ opacity: isLoading ? 0.5 : 1 }}>
+                <main className={`page-content  ${isLoading ? 'pointer-events-none' : ''}`} style={{ opacity: isLoading ? 0.5 : 1 }}>
                     <div className="container-fluid">
                         {/* Breadcrumb start */}
                         <div className="row m-1">
@@ -90,13 +90,13 @@ function SshKeys() {
                                                         <tr>
                                                             <td>1</td>
                                                             <td>firstkey</td>
-                                                            <td>2024-11-17</td>
+                                                            <td>Feb 22nd, 2024</td>
                                                             <td className="d-flex"><Link href={`/sshKeys/${sshKeys}`}><span className="badge text-white bg-success d-flex gap-2 "><i className="ph-duotone ph-eye f-s-18" /> View </span></Link></td>
                                                         </tr>
                                                         <tr>
                                                             <td>2</td>
                                                             <td>2nd key</td>
-                                                            <td>2024-11-28</td>
+                                                            <td>Feb 22nd, 2024</td>
                                                             <td className="d-flex"><Link href={`/sshKeys/${sshKeys}`}><span className="badge text-white bg-success d-flex gap-2 "><i className="ph-duotone ph-eye f-s-18" /> View </span></Link></td>
                                                         </tr>
                                                     </tbody>

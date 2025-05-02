@@ -62,7 +62,7 @@ function Manage() {
                         </div>
                     </div>
                 )}
-                <main className={`page-content px-4 py-4 ${isLoading ? 'pointer-events-none' : ''}`} style={{ opacity: isLoading ? 0.5 : 1 }}>
+                <main className={`page-content  ${isLoading ? 'pointer-events-none' : ''}`} style={{ opacity: isLoading ? 0.5 : 1 }}>
                     <div className="container-fluid">
                         {/* Breadcrumb start */}
                         <div className="row m-1">
@@ -90,7 +90,7 @@ function Manage() {
                             <div className="col-12">
 
                                 <div className="tab-wrapper mb-3">
-                                    <ul className="tabs">
+                                    <ul className="tabs overflow-auto">
                                         <li
                                             className={`tab-link ${activeTab === 1 ? "active" : ""}`}
                                             onClick={() => setActiveTab(1)}
@@ -196,7 +196,7 @@ function Manage() {
                                                         <h5>Server Details</h5>
                                                     </div>
                                                     <div className="row card-body">
-                                                        <div className="col-6 m-10-0">
+                                                        <div className="col-12 col-lg-6 m-10-0">
                                                             <div className="card-body card-body-style">
                                                                 <div className="d-flex justify-content-between align-items-center">
                                                                     <h6 className="mb-0">2vCPU</h6>
@@ -206,7 +206,7 @@ function Manage() {
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div className="col-6 m-10-0">
+                                                        <div className="col-12 col-lg-6 m-10-0">
                                                             <div className="card-body card-body-style">
                                                                 <div className="d-flex justify-content-between align-items-center">
                                                                     <h6 className="mb-0">100 GB</h6>
@@ -216,7 +216,7 @@ function Manage() {
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div className="col-6 m-10-0">
+                                                        <div className="col-12 col-lg-6 m-10-0">
                                                             <div className="card-body card-body-style">
                                                                 <div className="d-flex justify-content-between align-items-center">
                                                                     <h6 className="mb-0">4GB</h6>
@@ -226,7 +226,7 @@ function Manage() {
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div className="col-6 m-10-0">
+                                                        <div className="col-12 col-lg-6 m-10-0">
                                                             <div className="card-body card-body-style">
                                                                 <div className="d-flex justify-content-between align-items-center">
                                                                     <h6 className="mb-0">New York</h6>
@@ -236,7 +236,7 @@ function Manage() {
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div className="col-6 m-10-0">
+                                                        <div className="col-12 col-lg-6 m-10-0">
                                                             <div className="card-body card-body-style">
                                                                 <div className="d-flex justify-content-between align-items-center">
                                                                     <h6 className="mb-0">AMD Ryzen 7950x</h6>
@@ -246,7 +246,7 @@ function Manage() {
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div className="col-6 m-10-0">
+                                                        <div className="col-12 col-lg-6 m-10-0">
                                                             <div className="card-body card-body-style">
                                                                 <div className="d-flex justify-content-between align-items-center">
                                                                     <h6 className="mb-0">AlmaLinux</h6>
@@ -266,7 +266,7 @@ function Manage() {
                                                         <h5>Stastics</h5>
                                                     </div>
                                                     <div className="row card-body">
-                                                        <div className="col-3 m-10-0">
+                                                        <div className="col-12 col-xxl-3 col-lg-6 col-md-6 m-10-0">
                                                             <div className="card orders-provided-card border-card">
                                                                 <div className="card-body">
                                                                     <i className="ph-bold  ph-circle circle-bg-img" />
@@ -282,7 +282,7 @@ function Manage() {
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div className="col-3 m-10-0">
+                                                        <div className="col-12 col-xxl-3 col-lg-6 col-md-6 m-10-0">
                                                             <div className="card bg-primary-300 product-sold-card">
                                                                 <div className="card-body">
                                                                     <div className="d-flex align-items-center justify-content-between">
@@ -297,7 +297,7 @@ function Manage() {
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div className="col-3 m-10-0">
+                                                        <div className="col-12 col-xxl-3 col-lg-6 col-md-6 m-10-0">
                                                             <div className="card product-store-card border-card">
                                                                 <div className="card-body">
                                                                     <i className="ph-bold  ph-circle circle-bg-img" />
@@ -313,7 +313,7 @@ function Manage() {
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div className="col-3 m-10-0">
+                                                        <div className="col-12 col-xxl-3 col-lg-6 col-md-6 m-10-0">
                                                             <div className="card project-total-card">
                                                                 <div className="card-body">
                                                                     <div className="d-flex align-items-center justify-content-between">

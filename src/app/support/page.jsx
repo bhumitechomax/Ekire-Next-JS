@@ -58,12 +58,17 @@ function Support() {
                         </div>
                     </div>
                 )}
-            <main className={`page-content px-4 py-4 ${isLoading ? 'pointer-events-none' : ''}`} style={{ opacity: isLoading ? 0.5 : 1 }}>
+            <main className={`page-content ${isLoading ? 'pointer-events-none' : ''}`} style={{ opacity: isLoading ? 0.5 : 1 }}>
                 <div className="container-fluid">
                     {/* Breadcrumb start */}
                     <div className="row m-1">
                         <div className="col-12 d-flex justify-content-between">
                             <h4 className="main-title">Support</h4>
+                            <div className="text-end">
+                                        <button className="btn btn-primary h-45 icon-btn m-2" onClick={handleCreateClick} >
+                                            <i className="iconoir-open-new-window f-s-18" />  Create Support Ticket
+                                        </button>
+                                        </div>
                         </div>
                     </div>
                     {/* Breadcrumb end */}
@@ -73,18 +78,10 @@ function Support() {
                         <div className="col-12">
                             
                             <div className="tab-wrapper mb-3">
-                                <ul className="tabs">
+                                <ul className="tabs overflow-auto">
                                     <li className={`tab-link ${activeTab === 1 ? "active" : ""}`} onClick={() => setActiveTab(1)}>
-                                       <i className="ph-bold  ph-align-right f-s-18"/> My Projects
+                                       <i className="ph-bold  ph-align-right f-s-18"/> My Support Ticket
                                     </li>
-                                    <li className="ms-auto d-flex">
-                                        <div className="text-end">
-                                        <button className="btn btn-primary h-45 icon-btn m-2" onClick={handleCreateClick} >
-                                            <i className="iconoir-open-new-window f-s-18" />  Create New Server
-                                        </button>
-                                        </div>
-                                    </li>
-
                                 </ul>
                             </div>
 
@@ -97,6 +94,7 @@ function Support() {
                                                     <thead>
                                                         <tr>
                                                             <th width={10}>Sr no.</th>
+                                                            <th>Department</th>
                                                             <th>title</th>
                                                             <th>date</th>
                                                             <th>last reply</th>
@@ -107,8 +105,9 @@ function Support() {
                                                     <tbody>
                                                         <tr>
                                                             <td>1</td>
+                                                            <td>Server</td>
                                                             <td>Unable to access my account</td>
-                                                            <td>9/20/2024</td>
+                                                            <td>Feb 22nd, 2024</td>
                                                             <td>Ekire Support</td>
                                                             <td>Open</td>
                                                             <td className="d-flex"><Link href={`/support/${Support}`}><span className="badge text-white bg-info d-flex gap-2 "><i className="ph-duotone ph-eye f-s-18"/> View </span></Link></td>
