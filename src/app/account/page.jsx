@@ -5,7 +5,121 @@ import axios from "axios";
 
 
 function Finance() {
+   
+    const [formData, setFormData] = useState({
+        firstName: '',
+        lastName: '',
+        email: '',
+        telephone: '',
+        taxId: '',
+        country: '',
+        state: '',
+        city: '',
+        zip: '',
+        address: '',
+      });
+      const [selectedCountry, setSelectedCountry] = useState("");
+      const [selectedState, setSelectedState] = useState("");
+      const [selectedCity, setSelectedCity] = useState("");
+      const [error, setError] = useState([]);
+      const [success, setSuccess] = useState(null);
+      const [loading, setLoading] = useState(false);
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData((prev) => ({
+            ...prev,
+            [name]: value,
+        }));
+    };
+      useEffect(() => {
+          const token = localStorage.getItem('accessToken');
+        if (token) {
+            // console.log("Token found:", token);
+        const fetchslider = async () => {
+            console.log(`Bearer ${token}`)
+            setLoading(true);
+            try {
+                const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}/profile`, {
+                    method: "GET",
+                    headers: {
+                      "Content-Type": "application/json",
+                      Authorization: `Bearer ${localStorage.getItem("accessToken")}`, // Send the token
+                    },
+                  });
 
+
+                  const result = await response.json();
+                  const data = result.data; 
+                  console.log(data);
+                  setFormData({
+                      firstName: data.first_name || '',
+                      lastName: data.last_name || '',
+                      email: data.email || '',
+                      telephone: data.telephone || '',
+                      taxation_id: data.taxation_id || '',
+                      country: data.country || '',
+                      state: data.state || '',
+                      city: data.city || '',
+                      zipcode: data.zipcode || '',
+                      address: data.address || '',
+                  });
+                  console.log(formData);
+
+                  setSelectedCountry(data.country || '');
+                  setSelectedState(data.state || '');
+                  setSelectedCity(data.city || '');
+               
+            } catch (error) {
+                console.error("Error fetching cloud vps plan data:", error);
+              
+                //   setCloudVpsPlan(null);
+                //   setCloudVps(null);
+            } finally {
+             
+            setLoading(false);
+          }
+        };
+    
+        fetchslider();
+        // console.log("cloudvpsplan",cloudvpsplans);
+        // console.log("cloudvps",cloudvps);
+    }
+      }, []);
+
+      const handleSubmit = async (e) => {
+        e.preventDefault();
+        formData.city = selectedCity
+        formData.country = selectedCountry
+        formData.state = selectedState
+    
+        // Example POST request (Uncomment if you have a backend to send this to)
+        const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}/profile`, {
+          method: 'POST',
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("accessToken")}`, // Send the token
+          },
+          body: JSON.stringify(formData)
+        });
+
+        const result = await res.json();
+
+        if(res.ok && result.success) {
+            localStorage.setItem('accessToken', result.data.accessToken);
+            localStorage.setItem('user', JSON.stringify(result.data.user));
+
+            setSuccess(result.message);
+
+            window.location.href = '/';
+
+        }
+        else{
+            setError(result.errors);
+            console.log(error)
+        }
+        console.log(result);
+      };
+    
     useEffect(() => {
         const togglePassword = (inputId, iconClass) => {
             const input = document.getElementById(inputId);
@@ -36,13 +150,12 @@ function Finance() {
     const [states, setStates] = useState([]);
     const [cities, setCities] = useState([]);
 
-    const [selectedCountry, setSelectedCountry] = useState("");
-    const [selectedState, setSelectedState] = useState("");
+
 
     // Fetch countries
     useEffect(() => {
         axios
-            .get("https://countriesnow.space/api/v0.1/countries/positions")
+            .get(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}/countries`)
             .then((res) => {
                 const countryNames = res.data.data.map((c) => c.name);
                 setCountries(countryNames);
@@ -54,7 +167,7 @@ function Finance() {
         if (!selectedCountry) return;
 
         axios
-            .post("https://countriesnow.space/api/v0.1/countries/states", {
+            .post(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}/states`, {
                 country: selectedCountry,
             })
             .then((res) => {
@@ -194,37 +307,45 @@ function Finance() {
                                         <div className="card setting-profile-tab">
                                             <div className="card-body">
                                                 <div className="profile-tab profile-container">
-                                                    <form className="app-form">
+                                                    <form className="app-form" onSubmit={handleSubmit}>
+                                                        {success && (
+                                                            <div className="alert alert-success">{success}</div>
+                                                        )}
                                                         <h5 className="mb-2 text-dark f-w-600">User Info</h5>
                                                         <div className="row">
                                                             <div className="col-md-6">
                                                                 <div className="mb-3">
                                                                     <label className="form-label">First Name</label>
-                                                                    <input className="form-control" placeholder="Maria C. Eck" type="text" required />
+                                                                    <input className="form-control" value={formData.firstName || ''} onChange={handleInputChange} name="firstName" placeholder="Maria C. Eck" type="text" required />
+                                                                    {error.firstName && (<span className="alert alert-danger">{error.firstName}</span>)}
                                                                 </div>
                                                             </div>
                                                             <div className="col-md-6">
                                                                 <div className="mb-3">
                                                                     <label className="form-label">Last Name</label>
-                                                                    <input className="form-control" placeholder="Eck" type="text" required />
+                                                                    <input className="form-control" placeholder="Eck" value={formData.lastName || ''} name="lastName" onChange={handleInputChange} type="text" required />
+                                                                    {error.lastName && (<span className="alert alert-danger">{error.lastName}</span>)}
                                                                 </div>
                                                             </div>
                                                             <div className="col-md-6">
                                                                 <div className="mb-3">
                                                                     <label className="form-label">Email address</label>
-                                                                    <input className="form-control" placeholder="MariaCEck@teleworm.us" type="email" required />
+                                                                    <input className="form-control" placeholder="MariaCEck@teleworm.us" name="email" value={formData.email || ''} onChange={handleInputChange} type="email" required />
+                                                                    {error.email && (<span className="alert alert-danger">{error.email}</span>)}
                                                                 </div>
                                                             </div>
                                                             <div className="col-md-6">
                                                                 <div className="mb-3">
                                                                     <label className="form-label">Phone no</label>
-                                                                    <input className="form-control" placeholder="8899665522" type="tel" />
+                                                                    <input className="form-control" placeholder="8899665522" name="telephone" value={formData.telephone || ''} onChange={handleInputChange}  type="tel" />
+                                                                    {error.telephone && (<span className="alert alert-danger">{error.telephone}</span>)}
                                                                 </div>
                                                             </div>
                                                             <div className="col-md-6">
                                                                 <div className="mb-3">
                                                                     <label className="form-label">Taxation Id</label>
-                                                                    <input className="form-control" placeholder="test" type="text" />
+                                                                    <input className="form-control" placeholder="test" name="taxation_id" value={formData.taxation_id || ''} onChange={handleInputChange} type="text" />
+                                                                    {error.taxation_id && (<span className="alert alert-danger">{error.taxation_id}</span>)}
                                                                 </div>
                                                             </div>
                                                             <div className="col-12">
@@ -234,45 +355,50 @@ function Finance() {
 
                                                             <div className="col-md-6 mb-3">
                                                                 <label className="form-label" htmlFor="inputCountry">Country</label>
-                                                                <select id="inputCountry" className="form-select" value={selectedCountry} onChange={(e) => setSelectedCountry(e.target.value)}>
+                                                                <select id="inputCountry" name="country" className="form-select" value={selectedCountry || ''} onChange={(e) => setSelectedCountry(e.target.value)}>
                                                                     <option value="">Choose Country</option>
                                                                     {countries.map((country) => (
-                                                                        <option key={country}>{country}</option>
+                                                                        <option key={country.id} value={country.id}>{country.name}</option>
                                                                     ))}
                                                                 </select>
+                                                                {error.country && (<div className="alert alert-danger">{error.country}</div>)}
                                                             </div>
 
                                                             <div className="col-md-6 mb-3">
                                                                 <label className="form-label" htmlFor="inputState">State</label>
-                                                                <select id="inputState" className="form-select" value={selectedState} onChange={(e) => setSelectedState(e.target.value)}
+                                                                <select id="inputState" name="state"  className="form-select" value={selectedState || ''} onChange={(e) => setSelectedState(e.target.value)}
                                                                     disabled={!selectedCountry}>
                                                                     <option value="">Choose State</option>
                                                                     {states.map((state) => (
-                                                                        <option key={state}>{state}</option>
+                                                                        <option key={state} value={state.state_code}>{state}</option>
                                                                     ))}
                                                                 </select>
+                                                                {error.state && (<div className="alert alert-danger">{error.state}</div>)}
                                                             </div>
 
                                                             <div className="col-md-6 mb-3">
-                                                                <label className="form-label" htmlFor="inputCity">City</label>
-                                                                <select id="inputCity" className="form-select" disabled={!selectedState}>
+                                                                <label className="form-label"  htmlFor="inputCity">City</label>
+                                                                <select id="inputCity" name="city" className="form-select" value={selectedCity || ''} onChange={(e) => setSelectedCity(e.target.value)} disabled={!selectedState}>
                                                                     <option value="">Choose City</option>
                                                                     {cities.map((city) => (
-                                                                        <option key={city}>{city}</option>
+                                                                        <option key={city} value={city}>{city}</option>
                                                                     ))}
                                                                 </select>
+                                                                {error.city && (<div className="alert alert-danger">{error.city}</div>)}
                                                             </div>
 
                                                             <div className="col-md-6">
                                                                 <div className="mb-3">
                                                                     <label className="form-label" htmlFor="inputZip">Zip/Pin Code</label>
-                                                                    <input className="form-control" id="inputZip" placeholder="CT 06510" type="text" />
+                                                                    <input className="form-control" id="inputZip" name="zipcode" value={formData.zipcode || ''} onChange={handleInputChange}  placeholder="CT 06510" type="text" />
+                                                                    {error.zipcode && (<div className="alert alert-danger">{error.zipcode}</div>)}
                                                                 </div>
                                                             </div>
                                                             <div className="col-12">
                                                                 <div className="mb-3">
                                                                     <label className="form-label">Full Address</label>
-                                                                    <textarea className="form-control" placeholder="1098 Asylum Avenu New Haven, CT 06510" defaultValue={""} />
+                                                                    <textarea className="form-control" name="address" placeholder="1098 Asylum Avenu New Haven, CT 06510" defaultValue={formData.address || ''} onChange={handleInputChange} />
+                                                                    {error.address && (<div className="alert alert-danger">{error.address}</div>)}
                                                                 </div>
                                                             </div>
 
