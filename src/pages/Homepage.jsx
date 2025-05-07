@@ -1,6 +1,7 @@
 "use client";
 import React, { Fragment, useEffect, useState, useRef } from "react";
 // import Image from "next/image";
+import Slider from 'react-slick';
 
 import $ from "jquery";
 // import "datatables.net";
@@ -70,6 +71,19 @@ const Homepage = () => {
         }
     }, []);
 
+
+    const settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        fade: true,
+        autoplay: true,
+        autoplaySpeed: 3000,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: true,
+    };
+
     return (
         <Fragment>
 
@@ -96,21 +110,21 @@ const Homepage = () => {
 
                 <div className="container-fluid mt-3">
                     <div className="alert alert-light-border-primary alert-dismissible  d-flex align-items-center justify-content-between mt-3 cookies-alert" role="alert">
-                        <p className="mb-0 d-flex align-items-center">
+                        <p className="mb-0 d-flex align-items-center flex-row">
                             <iconify-icon icon="line-md:alert-circle-loop" className="f-s-20 me-2"></iconify-icon>
                             Add your payment details to enable automatic payments for invoices and service charges
                         </p>
                         <button aria-label="Close" className="btn-close text-white" data-bs-dismiss="alert" type="button" />
                     </div>
                     <div className="alert alert-primary alert-dismissible  d-flex align-items-center justify-content-between mt-3 cookies-alert" role="alert">
-                        <p className="mb-0 d-flex align-items-center">
+                        <p className="mb-0 d-flex align-items-center flex-row">
                             <img alt="image" className="w-20 h-20 me-2" src="../assets/images/icons/cookie-.png" />
                             We have Cookies! We use it to ensure you get the best experience on our website and service
                         </p>
                         <button aria-label="Close" className="btn-close text-white" data-bs-dismiss="alert" type="button" />
                     </div>
                     <div className="alert alert-light-border-danger alert-dismissible  d-flex align-items-center justify-content-between mt-3 cookies-alert" role="alert">
-                        <p className="mb-0 d-flex align-items-center">
+                        <p className="mb-0 d-flex align-items-center flex-row">
                             <iconify-icon icon="line-md:phone-add" className="f-s-20 me-2"></iconify-icon>
                             Add your payment details to enable automatic payments for invoices and service charges
                         </p>
@@ -118,20 +132,15 @@ const Homepage = () => {
                     </div>
                     <div className="row">
 
-                        <div className="col-lg-6 col-xxl-4">
+                        <div className="col-lg-12 col-xxl-12">
                             <div className="row">
 
-                                <div className="col-sm-6">
+                                <div className="col-xxl-4 col-lg-4">
                                     <div className="card project-total-card">
                                         <div className="card-body">
                                             <div className="d-flex position-relative">
                                                 <h5 className="text-dark txt-ellipsis-1">Active Servers</h5>
                                                 <div className="clock-box">
-                                                    {/* <div className="clock">
-                        <div className="hour" id="hour" />
-                        <div className="min" id="min" />
-                        <div className="sec" id="sec" />
-                    </div> */}
                                                     <img alt="avtar" className="img-fluid" src="../assets/images/New/Animation.gif" />
                                                 </div>
                                             </div>
@@ -153,41 +162,41 @@ const Homepage = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="col-sm-6">
+                                <div className="col-xxl-4 col-lg-4">
                                     <div className="card bg-info-300 project-details-card">
                                         <div className="card-body">
                                             <div className="d-flex gap-2">
                                                 <h5 className="text-dark txt-ellipsis-1">Available Balance</h5>
                                             </div>
                                             <div className="my-4">
-                                                <h5 className="f-w-600 text-info-dark txt-ellipsis-1">34.62K</h5>
+                                                <h3 className="f-w-600 text-info-dark txt-ellipsis-1">34.62K</h3>
                                             </div>
-                                            <div className="d-flex align-items-center justify-content-between pt-2">
+                                            <div className="d-flex align-items-center justify-content-between">
                                                 <img alt="avtar" className="img-fluid text-start" src="../assets/images/New/coin.png" />
                                                 <span className="badge bg-white-300 text-info-dark ms-2 ">🔥 1H left</span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div className="col-sm-6">
+                                <div className="col-xxl-4 col-lg-4">
                                     <div className="card core-teams-card">
                                         <div className="card-body">
                                             <div className="d-flex">
                                                 <h5 className="text-dark f-w-600 txt-ellipsis-1">Open Tickets</h5>
                                             </div>
-                                            <div>
+                                            <div className="d-flex justify-content-between align-items-end">
                                                 <h2 className="text-warning-dark my-4 d-inline-flex align-items-baseline">14</h2>
                                                 <ul className="avatar-group justify-content-start ">
-                                                    <li className="h-35 w-35 d-flex-center b-r-50 overflow-hidden text-bg-primary b-2-light" data-bs-title="Sabrina Torres" data-bs-toggle="tooltip">
+                                                    <li className="h-50 w-50 d-flex-center b-r-50 overflow-hidden text-bg-primary b-2-light" data-bs-title="Sabrina Torres" data-bs-toggle="tooltip">
                                                         <img alt="avtar" className="img-fluid" src="../assets/images/avtar/4.png" />
                                                     </li>
-                                                    <li className="h-35 w-35 d-flex-center b-r-50 overflow-hidden text-bg-success b-2-light" data-bs-title="Eva Bailey" data-bs-toggle="tooltip">
+                                                    <li className="h-50 w-50 d-flex-center b-r-50 overflow-hidden text-bg-success b-2-light" data-bs-title="Eva Bailey" data-bs-toggle="tooltip">
                                                         <img alt="avtar" className="img-fluid" src="../assets/images/avtar/5.png" />
                                                     </li>
-                                                    <li className="h-35 w-35 d-flex-center b-r-50 overflow-hidden text-bg-danger b-2-light" data-bs-title="Michael Hughes" data-bs-toggle="tooltip">
+                                                    <li className="h-50 w-50 d-flex-center b-r-50 overflow-hidden text-bg-danger b-2-light" data-bs-title="Michael Hughes" data-bs-toggle="tooltip">
                                                         <img alt="avtar" className="img-fluid" src="../assets/images/avtar/6.png" />
                                                     </li>
-                                                    <li className="text-bg-secondary h-35 w-35 d-flex-center b-r-50" data-bs-title="10 More" data-bs-toggle="tooltip">
+                                                    <li className="text-bg-secondary h-50 w-50 d-flex-center b-r-50" data-bs-title="10 More" data-bs-toggle="tooltip">
                                                         10+
                                                     </li>
                                                 </ul>
@@ -197,40 +206,50 @@ const Homepage = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-md-6 col-xxl-4">
-                            <div className="row">
-                                {/* <div className="col-12 mb-4">
-    <div>
-        <input className="file-uploader-box filelight file-light-info" data-allow-reorder="true" id="fileUploaderBox" multiple={true} type="file" />
-    </div>
-</div> */}
-                                <div className="col-12">
-                                    <div className="card ">
-                                        <div className="card-body">
-                                            <div className="project-expense" id="projectExpense" />
-                                        </div>
+                        <div className="col-md-12 col-xxl-8">
+                            <div className="card">
+                                <div className="card-body">
+                                    <div className="fade-s app-arrow">
+                                        <Slider {...settings}>
+                                            <div className="item slide-slick image-overlay-wrapper">
+                                                <img alt="image" className="img-fluid rounded" src="../assets/images/new/offer.png" />
+                                                <div className="gradient-overlay" />
+                                                <div className="text-overlay">
+                                                    <span className="tag">Special Offer</span>
+                                                    <h2 className="headline">🚀 Black Friday 2024 Promotion: Save Big on Cloud Servers! </h2>
+                                                </div>
+                                            </div>
+
+                                            <div className="item slide-slick image-overlay-wrapper">
+                                                <img alt="image" className="img-fluid rounded" src="../assets/images/new/promo.png" />
+                                                <div className="gradient-overlay" />
+                                                <div className="text-overlay">
+                                                    <span className="tag">Promo Code </span>
+                                                    <h2 className="headline">🎉 Don’t Miss Out – Apply Your Magic Code!</h2>
+                                                </div>
+                                            </div>
+
+                                            <div className="item slide-slick image-overlay-wrapper">
+                                                <img alt="image" className="img-fluid rounded" src="../assets/images/new/plan.png" />
+                                                <div className="gradient-overlay" />
+                                                <div className="text-overlay">
+                                                    <span className="tag">Plans Link</span>
+                                                    <h2 className="headline">💼 No Hidden Fees. Just Smart Choices.</h2>
+                                                </div>
+                                            </div>
+                                        </Slider>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div className="col-md-6 col-xxl-4 ">
-                            <div className="card project-connect-card">
-                                <div className="card-body pb-0">
-                                    <div className="text-center">
-                                        <h5 className=" mb-2 f-s-24">Get started <span className="text-primary f-w-700">Effortlessly.</span>
-                                        </h5>
-                                        <p className="f-s-14 text-dark pb-0 txt-ellipsis-2">
-                                            Connect your team's tools and unlock a unified view of every project's
-                                            progress, deadlines, and team contributions.
-                                        </p>
-                                    </div>
-                                    <div className="connect-chat-box">
-                                        <div className="avatar-connect-box">
-                                            <img alt="logo" className="avatar-connect-logo" src="../assets/images/dashboard/project/avatar.png" />
-                                            <img alt="logo" className="dribbble-connect-logo" src="../assets/images/dashboard/project/dribbble.png" />
+                        <div className="col-md-12 col-xxl-4">
+                            <div className="row">
+                                <div className="col-12">
+                                    <div className="card ">
+                                        <div className="card-body">
+                                            {/* <div className="project-expense" id="projectExpense" style={{ height: "26rem !important" }} /> */}
+                                            <div id="timeseries-chart"></div>
                                         </div>
-                                        <img alt="img" src="../assets/images/dashboard/project/chat.png" />
-                                        <img alt="logo" className="slack-logo animate__shakeY animate__animated animate__infinite animate__slower" src="../assets/images/dashboard/project/slack.png" />
                                     </div>
                                 </div>
                             </div>
@@ -245,6 +264,7 @@ const Homepage = () => {
                                         <table className=" display app-data-table default-data-table " id="example">
                                             <thead>
                                                 <tr>
+                                                    <th>Sr no</th>
                                                     <th>Date</th>
                                                     <th>IP</th>
                                                     <th>OS</th>
@@ -254,14 +274,16 @@ const Homepage = () => {
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td>9/22/2024</td>
+                                                    <td>1</td>
+                                                    <td>Feb 22nd, 2024</td>
                                                     <td>192.168.1.1</td>
                                                     <td>macOS</td>
                                                     <td>Canada</td>
                                                     <td><span className="badge text-light-success">success </span></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>9/19/2024</td>
+                                                    <td>2</td>
+                                                    <td>Feb 22nd, 2024</td>
                                                     <td>192.168.1.4</td>
                                                     <td>Windows 11</td>
                                                     <td>UK</td>

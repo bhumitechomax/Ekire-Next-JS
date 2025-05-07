@@ -2,26 +2,121 @@
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import React, { Fragment, useState, useEffect } from "react";
+import Cookies from "js-cookie";
+import { useRouter } from "next/navigation";
+
 
 
 function Project() {
-
+    const[formData, setFormData] = useState({
+        name:""
+    });
     const [activeTab, setActiveTab] = useState(1);
+    const [projects, setProjects] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
-    const projects = 1;
+    const [error, setError] = useState([]);
+    const [success, setSuccess] = useState(null);
+    const router = useRouter();
+
+
+    const project = 1;
 
     console.log(projects);
 
+      useEffect(() => {
+        const token = Cookies.get("accessToken");
+        if (token) {
+          // console.log("Token found:", token);
+          const UpdateProfile = async () => {
+            console.log(`Bearer ${token}`);
+            setIsLoading(true);
+            try {
+              const response = await fetch(
+                `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/projects`,
+                {
+                  method: "GET",
+                  headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`, // Send the token
+                  },
+                }
+              );
+    
+              const result = await response.json();
+              const data = result.data;
+              console.log(data);
+              setProjects(data.Projects);
+
+             
+              console.log("formData", formData);
+    
+           
+            } catch (error) {
+              console.error("Error fetching cloud vps plan data:", error);
+    
+            
+                setIsLoading(false);
+            }
+          };
+    
+          UpdateProfile();
+         
+        }
+      }, []);
+
+      const handleChange = (e) => {
+        setFormData({
+          ...formData,
+          [e.target.name]: e.target.value
+        });
+      };
+
+          const handleProject = async (e) => {
+              e.preventDefault();
+              console.log('Form Data:', formData);
+          
+              // Example POST request (Uncomment if you have a backend to send this to)
+              const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}/projects`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json',
+                'Authorization': `Bearer ${Cookies.get("accessToken")}` // Send the token
+                 },
+                body: JSON.stringify(formData)
+              });
+      
+              const result = await res.json();
+      
+              if(res.ok && result.success) {
+                  setSuccess(result.message);
+                  formData.name = ""; // Clear the input field after successful submission
+                  setFormData({ name: "" }); // Clear the input field after successful submission
+                  window.location.reload(); // Reload the page to see the new project
+                 }
+              else{
+                  setError(result.message);
+              }
+              console.log(result);
+            };
+      
+                 useEffect(() => {
+             const timer = setTimeout(() => {
+             
+               setSuccess('');
+               setError('');
+             }, 5000); // 5000 ms = 5 seconds
+           
+             return () => clearTimeout(timer); // cleanup on re-render
+           }, [ success, error]);
 
     // auto load
-        const [isLoading, setIsLoading] = useState(true);
-        useEffect(() => {
-            // Simulate loading
-            const timer = setTimeout(() => {
-                setIsLoading(false);
-            }, 900);
-            return () => clearTimeout(timer);
-        }, []);
+    useEffect(() => {
+        // Simulate loading
+        const timer = setTimeout(() => {
+            setIsLoading(false);
+        }, 900);
+        return () => clearTimeout(timer);
+    }, []);
 
     // to load datatable
     // useEffect(() => {
@@ -29,7 +124,7 @@ function Project() {
     //       const tables = $(".datatable").map(function () {
     //         return $(this).DataTable();
     //       });
-      
+
     //       return () => {
     //         tables.each(function () {
     //           this.destroy();
@@ -37,8 +132,8 @@ function Project() {
     //       };
     //     }
     // }, []);
-      
-      
+
+
 
     return (
         <Fragment>
@@ -59,25 +154,37 @@ function Project() {
                 )}
 
                 {/* Always rendered page content */}
-                <main className={`page-content px-4 py-4 ${isLoading ? 'pointer-events-none' : ''}`} style={{ opacity: isLoading ? 0.5 : 1 }}>
+                <main className={`page-content  ${isLoading ? 'pointer-events-none' : ''}`} style={{ opacity: isLoading ? 0.5 : 1 }}>
                     <div className="container-fluid">
                         {/* Breadcrumb start */}
                         <div className="row m-1">
-                            <div className="col-12">
+                            <div className="col-12 merge-title p-0">
                                 <h4 className="main-title">Projects </h4>
+                                <div className="d-flex overflow-auto">
+                                    <div className="text-end">
+                                        <button className="btn text-dark h-45 icon-btn m-2" data-bs-target="#projectCard1" data-bs-toggle="modal">
+                                            <i className="ti ti-plus f-s-18" /> Join a Project
+                                        </button>
+                                    </div>
+                                    <div className="text-end">
+                                        <button className="btn btn-primary h-45 icon-btn m-2" data-bs-target="#projectCard2" data-bs-toggle="modal">
+                                            <i className="iconoir-open-new-window f-s-18" />  Create New Project
+                                        </button>
+                                    </div>
+                                </div>
 
                             </div>
                         </div>
                         {/* Breadcrumb end */}
 
-                        
+
 
                         {/* Projects start */}
                         <div className="row">
                             <div className="col-12">
 
                                 <div className="tab-wrapper mb-3">
-                                    <ul className="tabs">
+                                    <ul className="tabs overflow-auto">
                                         <li
                                             className={`tab-link ${activeTab === 1 ? "active" : ""}`}
                                             onClick={() => setActiveTab(1)}
@@ -89,18 +196,6 @@ function Project() {
                                             onClick={() => setActiveTab(2)}
                                         >
                                             <i className="ph-fill ph-list-bullets f-s-18" /> Collaborative Projects
-                                        </li>
-                                        <li className="ms-auto d-flex">
-                                            <div className="text-end">
-                                                <button className="btn text-dark h-45 icon-btn m-2" data-bs-target="#projectCard1" data-bs-toggle="modal">
-                                                    <i className="ti ti-plus f-s-18" /> Join a Project
-                                                </button>
-                                            </div>
-                                            <div className="text-end">
-                                                <button className="btn btn-primary h-45 icon-btn m-2" data-bs-target="#projectCard2" data-bs-toggle="modal">
-                                                    <i className="iconoir-open-new-window f-s-18" />  Create New Project
-                                                </button>
-                                            </div>
                                         </li>
 
                                     </ul>
@@ -125,19 +220,19 @@ function Project() {
                                                         <tbody>
                                                             <tr>
                                                                 <td>1</td>
-                                                                <td>9/22/2024</td>
+                                                                <td>Feb 22nd, 2024</td>
                                                                 <td>192.168.1.1</td>
                                                                 <td>macOS</td>
                                                                 <td>Canada</td>
-                                                                <td className="d-flex"><Link href={`/project/${projects}`}><span className="badge text-white bg-success d-flex gap-2 "><i className="ph-duotone ph-eye f-s-18" /> View </span></Link></td>
+                                                                <td className="d-flex"><Link href={`/project/${project}`}><span className="badge text-white bg-success d-flex gap-2 "><i className="ph-duotone ph-eye f-s-18" /> View </span></Link></td>
                                                             </tr>
                                                             <tr>
                                                                 <td>2</td>
-                                                                <td>9/19/2024</td>
+                                                                <td>Feb 22nd, 2024</td>
                                                                 <td>192.168.1.4</td>
                                                                 <td>Windows 11</td>
                                                                 <td>UK</td>
-                                                                <td className="d-flex"><Link href={`/project/${projects}`}><span className="badge text-white bg-success d-flex gap-2 "><i className="ph-duotone ph-eye f-s-18" /> View </span></Link></td>
+                                                                <td className="d-flex"><Link href={`/project/${project}`}><span className="badge text-white bg-success d-flex gap-2 "><i className="ph-duotone ph-eye f-s-18" /> View </span></Link></td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -153,26 +248,26 @@ function Project() {
                                                     <table className="datatable display app-data-table default-data-table" id="example1">
                                                         <thead>
                                                             <tr>
+                                                                <th style={{ width: '20px' }}>transiction ID</th>
                                                                 <th>name</th>
                                                                 <th>created at</th>
-                                                                <th>members count</th>
-                                                                <th>servers count</th>
+                                                                <th>transiction detail</th>
                                                                 <th>action</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
                                                             <tr>
-                                                                <td>My New Project50</td>
-                                                                <td>2024-11-29</td>
                                                                 <td>1</td>
-                                                                <td>0</td>
+                                                                <td>My New Project50</td>
+                                                                <td>Feb 22nd, 2024</td>
+                                                                <td>your details</td>
                                                                 <td className="d-flex"><Link href=""><span className="badge text-white bg-secondary d-flex gap-2 "><i className="ph-duotone ph-eye f-s-18" /> View </span></Link></td>
                                                             </tr>
                                                             <tr>
-                                                                <td>Dr. Burnice Larson</td>
-                                                                <td>2024-12-24</td>
                                                                 <td>5</td>
-                                                                <td>0</td>
+                                                                <td>Dr. Burnice Larson</td>
+                                                                <td>Feb 22nd, 2024</td>
+                                                                <td>your details</td>
                                                                 <td className="d-flex"><Link href=""><span className="badge text-white bg-secondary d-flex gap-2 "><i className="ph-duotone ph-eye f-s-18" /> View </span></Link></td>
                                                             </tr>
                                                         </tbody>
@@ -229,20 +324,23 @@ function Project() {
                                     </div>
                                     <button aria-label="Close" className="btn-close" data-bs-dismiss="modal" type="button" />
                                 </div>
+                                    <form className="app-form" onSubmit={handleProject}>
                                 <div className="modal-body">
-                                    <form className="app-form">
+                                        {error && <div className="alert alert-danger">{error}</div>}
+                                        {success && <div className="alert alert-success">{success}</div>}
                                         <div className="mb-3">
                                             <div className="input-group">
                                                 <span className="input-group-text" id="inputGroupPrepend2"><i className="ph-fill  ph-copy" /></span>
-                                                <input aria-describedby="inputGroupPrepend2" className="form-control" id="validationDefaultUsername" placeholder="Enter New Project Name" required="" type="text" />
+                                                <input type="text" name="name" aria-describedby="inputGroupPrepend2" onChange={handleChange} className="form-control"  id="name" placeholder="Enter New Project Name" required />
+                                                {error.name && <div className="text-danger">{error.name}</div>}
                                             </div>
                                         </div>
-                                    </form>
                                 </div>
                                 <div className="modal-footer">
                                     <button className="btn btn-secondary" data-bs-dismiss="modal" type="button">Cancel</button>
-                                    <button className="btn btn-primary" id="addCard" type="submit" data-bs-dismiss="modal">Submit</button>
+                                    <button className="btn btn-primary" id="addCard" type="submit" >Submit</button>
                                 </div>
+                                    </form>
                             </div>
                         </div>
                     </div>

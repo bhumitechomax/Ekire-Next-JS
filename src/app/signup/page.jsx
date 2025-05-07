@@ -1,7 +1,7 @@
 "use client";
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import Link from "next/link";
-
+import Cookies from "js-cookie";
 
 function SignUp() {
     const [formData, setFormData] = useState({
@@ -11,6 +11,9 @@ function SignUp() {
         password: '',
         telephone: ''
       });
+
+const [error, setError] = useState([]);
+const [success, setSuccess] = useState(null);
       const handleChange = (e) => {
         setFormData({
           ...formData,
@@ -23,20 +26,38 @@ function SignUp() {
         console.log('Form Data:', formData);
     
         // Example POST request (Uncomment if you have a backend to send this to)
-        const res = await fetch('http://staging.ekire.net/api/auth/register', {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}/auth/register`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(formData)
         });
-        if (res.ok) {
-            alert('Registration successful!');
-          } else {
-            alert('Something went wrong. Please try again.');
-          }
-    
+
         const result = await res.json();
+
+        if(res.ok && result.success) {
+            Cookies.set('accessToken', result.data.accessToken, { expires: 7 });
+            Cookies.set('user', JSON.stringify(result.data.user), { expires: 7 });
+
+            setSuccess(result.message);
+
+            window.location.href = '/';
+
+        }
+        else{
+            setError(result.message);
+        }
         console.log(result);
       };
+
+      useEffect(() => {
+  const timer = setTimeout(() => {
+  
+    setSuccess('');
+    setError('');
+  }, 5000); // 5000 ms = 5 seconds
+
+  return () => clearTimeout(timer); // cleanup on re-render
+}, [ success, error]);
 
     return (
         <Fragment>
@@ -69,6 +90,7 @@ function SignUp() {
                                 <div className="col-lg-6 form-contentbox">
                                     <div className="form-container">
                                         <form className="app-form rounded-control" onSubmit={handleSubmit}>
+                                            {success && <div className="alert alert-success">{success}</div>}
                                             <div className="row">
                                                 <div className="col-12">
                                                     <div className="mb-5 text-center text-lg-start">
@@ -80,30 +102,45 @@ function SignUp() {
                                                     <div className="mb-3">
                                                         <label className="form-label" htmlFor="firstName">First Name</label>
                                                         <input className="form-control"  onChange={handleChange} name="firstName" id="firstName" placeholder="Enter Your First name" required type="text" />
+                                                        {error.firstName && (
+                                                            <div className="text-danger small">{error.firstName[0]}</div>
+                                                            )}      
                                                     </div>
                                                 </div>
                                                 <div className="col-md-6 col-12">
                                                     <div className="mb-3">
                                                         <label className="form-label" htmlFor="lastName">Last Name</label>
                                                         <input className="form-control"  onChange={handleChange} name="lastName" id="lastName" placeholder="Enter Your Last name" required type="text" />
+                                                        {error.lastName && (
+                                                            <div className="text-danger small">{error.lastName[0]}</div>
+                                                            )}
                                                     </div>
                                                 </div>
                                                 <div className="col-12">
                                                     <div className="mb-3">
                                                         <label className="form-label" htmlFor="email">Email</label>
                                                         <input className="form-control"   onChange={handleChange} name="email" id="email" placeholder="Enter Your Email" required type="email" />
+                                                        {error.email && (
+                                                            <div className="text-danger small">{error.email[0]}</div>
+                                                            )}
                                                     </div>
                                                 </div>
                                                 <div className="col-md-6">
                                                     <div className="mb-3">
                                                         <label className="form-label" htmlFor="password">Password</label>
                                                         <input className="form-control" name="password"  onChange={handleChange} id="password" placeholder="Enter Your Password" required type="password" />
+                                                        {error.password && (
+                                                            <div className="text-danger small">{error.password[0]}</div>
+                                                            )}
                                                     </div>
                                                 </div>
                                                 <div className="col-md-6">
                                                     <div className="mb-3">
                                                         <label className="form-label" htmlFor="telephone">Telephone</label>
                                                         <input className="form-control" name="telephone"  onChange={handleChange} id="telephone" placeholder="Enter Your telephone" required type="tel" />
+                                                        {error.telephone && (
+                                                            <div className="text-danger small">{error.telephone[0]}</div>
+                                                            )}
                                                     </div>
                                                 </div>
                                                 <div className="col-12">

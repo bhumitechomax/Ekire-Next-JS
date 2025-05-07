@@ -2,6 +2,10 @@
 import React, { Fragment, useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import Cookies from "js-cookie";
+import { signIn } from 'next-auth/react';
+
+
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -11,43 +15,60 @@ function Login() {
   const router = useRouter();
 
   const handleLogin = async (e) => {
-    e.preventDefault();
+    console.log(email, password);
+    // e.preventDefault();
 
     // Prepare the form data
-    const formData = {
-      email,
-      password,
-    };
-
-    try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}/auth/login`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+    // const formData = {
+    //   email,
+    //   password,
+    // };
+    // const handleSubmit = async (e) => {
+      e.preventDefault();
+     
+  
+      const result = await signIn('credentials', {
+        redirect: false,
+        email,
+        password,
       });
-      console.log(formData);
-
-      const result = await res.json();
-      console.log(result);
-
-      if (res.ok && result.success) {
-        // Store access token and user data in localStorage
-        localStorage.setItem("accessToken", result.data.accessToken);
-        localStorage.setItem("user", JSON.stringify(result.data.user));
-        localStorage.setItem("email", result.data.user.email);
-        setSuccess(result.message || "Login successful!");
-
-        router.push("/");
-
-        // Redirect to home page after successful login
-        // window.location.href = '/';
+      console.log(result , "result");
+      if (result.ok) {
+        router.push('/dashboard'); // 🔁 redirect after login
       } else {
-        setError(result.message || "Login failed, please try again.");
+        setError('Invalid credentials');
       }
-    } catch (error) {
-      console.error("Error:", error);
-      setError("Network error. Please try again.");
-    }
+    // };
+
+    // try {
+    //   const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}/auth/login`, {
+    //     method: "POST",
+    //     headers: { "Content-Type": "application/json" },
+    //     body: JSON.stringify(formData),
+    //   });
+    //   console.log(formData);
+
+    //   const result = await res.json();
+    //   console.log(result);
+
+    //   if (res.ok && result.success) {
+    //     // Store access token and user data in localStorage
+    //     Cookies.set("accessToken", result.data.accessToken, { expires: 7 }); // expires in 7 days
+    //     Cookies.set("user", JSON.stringify(result.data.user), { expires: 7 });
+    //     Cookies.set("email", result.data.user.email, { expires: 7 });
+    //     setSuccess(result.message || "Login successful!");
+
+    //     router.push("/");
+
+    //     // Redirect to home page after successful login
+    //     // window.location.href = '/';
+    //   } else {
+    //     setError(result.message || "Login failed, please try again.");
+    //   }
+    // } catch (error) {
+    //   console.error("Error:", error);
+    //   setError("Network error. Please try again.");
+    // }
   };
   useEffect(() => {
     if (error || success) {
