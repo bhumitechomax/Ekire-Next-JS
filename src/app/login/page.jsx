@@ -19,56 +19,56 @@ function Login() {
     // e.preventDefault();
 
     // Prepare the form data
-    // const formData = {
-    //   email,
-    //   password,
-    // };
-    // const handleSubmit = async (e) => {
+    const formData = {
+      email,
+      password,
+    };
+    const handleSubmit = async (e) => {
       e.preventDefault();
      
   
-      const result = await signIn('credentials', {
-        redirect: false,
-        email,
-        password,
+      // const result = await signIn('credentials', {
+      //   redirect: false,
+      //   email,
+      //   password,
+      // });
+      // console.log(result , "result");
+      // if (result.ok) {
+      //   router.push('/dashboard'); // 🔁 redirect after login
+      // } else {
+      //   setError('Invalid credentials');
+      // }
+    };
+
+    try {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}/auth/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
       });
-      console.log(result , "result");
-      if (result.ok) {
-        router.push('/dashboard'); // 🔁 redirect after login
+      console.log(formData);
+
+      const result = await res.json();
+      console.log(result);
+
+      if (res.ok && result.success) {
+        // Store access token and user data in localStorage
+        Cookies.set("accessToken", result.data.accessToken, { expires: 7 }); // expires in 7 days
+        Cookies.set("user", JSON.stringify(result.data.user), { expires: 7 });
+        Cookies.set("email", result.data.user.email, { expires: 7 });
+        setSuccess(result.message || "Login successful!");
+
+        router.push("/");
+
+        // Redirect to home page after successful login
+        // window.location.href = '/';
       } else {
-        setError('Invalid credentials');
+        setError(result.message || "Login failed, please try again.");
       }
-    // };
-
-    // try {
-    //   const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}/auth/login`, {
-    //     method: "POST",
-    //     headers: { "Content-Type": "application/json" },
-    //     body: JSON.stringify(formData),
-    //   });
-    //   console.log(formData);
-
-    //   const result = await res.json();
-    //   console.log(result);
-
-    //   if (res.ok && result.success) {
-    //     // Store access token and user data in localStorage
-    //     Cookies.set("accessToken", result.data.accessToken, { expires: 7 }); // expires in 7 days
-    //     Cookies.set("user", JSON.stringify(result.data.user), { expires: 7 });
-    //     Cookies.set("email", result.data.user.email, { expires: 7 });
-    //     setSuccess(result.message || "Login successful!");
-
-    //     router.push("/");
-
-    //     // Redirect to home page after successful login
-    //     // window.location.href = '/';
-    //   } else {
-    //     setError(result.message || "Login failed, please try again.");
-    //   }
-    // } catch (error) {
-    //   console.error("Error:", error);
-    //   setError("Network error. Please try again.");
-    // }
+    } catch (error) {
+      console.error("Error:", error);
+      setError("Network error. Please try again.");
+    }
   };
   useEffect(() => {
     if (error || success) {
