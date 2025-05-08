@@ -4,29 +4,32 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Cookies from "js-cookie";
+// import { useSession } from 'next-auth/react'
+// import { signOut } from 'next-auth/react'
+
+
 
 
 const Header = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userName, setUserName] = useState("");
-  const [userEmail, setUserEmail] = useState("");
-  const [loading , setLoading] = useState(true);
-  //   const [success, setSuccess] = useState(null);
-  //   const [user, setUser] = useState(null);
+  
+    // const [success, setSuccess] = useState(null);
+    // const [user, setUser] = useState(null);
+    const [userName, setUserName] = useState(null);
+    const [userEmail, setUserEmail] = useState(null);
   const router = useRouter();
+  // const { data: session, status } = useSession()
+  // if(status === "loading") {
+  //   console.log("first loading")
+  // }
+  // if(status === "unauthenticated") {
+  //   console.log("unauthenticated")
+  // }
+  // if(status === "authenticated") {
+    // console.log("authenticated")
 
-  useEffect(() => {
-    const user = Cookies.get('user');
-    const accessToken = Cookies.get('accessToken');
+  // }
+  
 
-    if (user && accessToken) {
-      setIsLoggedIn(true);
-      setLoading(false);
-    } else {
-      router.push('/login'); // Redirect to login if not logged in
-      
-    }
-  }, [router]);
 
 
 
@@ -40,6 +43,8 @@ const Header = () => {
       setUserEmail(user.email);
     }
   }, []);
+
+  // Using Custom API for logout
 
   const handleLogout = async () => {
     try {
@@ -77,6 +82,17 @@ const Header = () => {
       alert("Logout failed. Check console for details.");
     }
   };
+
+  // Using NextAuth for logout
+
+  // const handleLogout = async () => {
+  //   try {
+  //     await signOut({ callbackUrl: '/login' }) // optional: redirect after logout
+  //   } catch (error) {
+  //     console.error("Error during logout:", error)
+  //     alert("Logout failed. Check console for details.")
+  //   }
+  // }
 
   useEffect(() => {
     import("bootstrap/dist/js/bootstrap.bundle.min.js");
@@ -336,7 +352,9 @@ const Header = () => {
                             <div className="text-center mt-2">
                               <h6 className="mb-0">
                                 {" "}
-                                {userName ? userName : "Guest"}{" "}
+                               {/* {session?.user.name} */}
+                               {userName ? userName : "Guest"}
+                               
                                 <Image
                                   alt="instagram-check-mark"
                                   className="w-20 h-20"
@@ -347,7 +365,10 @@ const Header = () => {
                               </h6>
 
                               <p className="f-s-12 mb-0 text-secondary">
-                                {userEmail ? userEmail : "guest@gmail.com"}
+                                {/* {session?.user.email} */}
+                               {userEmail ? userEmail : 'guest@admin.com'}
+
+                                {}
                               </p>
                             </div>
                           </li>

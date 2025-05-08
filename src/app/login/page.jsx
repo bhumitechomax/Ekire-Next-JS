@@ -23,7 +23,7 @@ function Login() {
       email,
       password,
     };
-    const handleSubmit = async (e) => {
+    // const handleSubmit = async (e) => {
       e.preventDefault();
      
   
@@ -34,11 +34,11 @@ function Login() {
       // });
       // console.log(result , "result");
       // if (result.ok) {
-      //   router.push('/dashboard'); // 🔁 redirect after login
+      //   router.push('/'); // 🔁 redirect after login
       // } else {
       //   setError('Invalid credentials');
       // }
-    };
+    // };
 
     try {
       const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}/auth/login`, {

@@ -46,7 +46,7 @@ const handler = NextAuth({
 
           console.log("📦 Response data:", data);
 
-          if (res.ok && data?.success && data?.data?.accessToken && data?.data?.user) {
+          if (res.ok && data?.success) {
             return {
               id: data.data.user.id, // or any unique field like user ID
               name: `${data.data.user.firstName} ${data.data.user.lastName}`,
@@ -72,19 +72,24 @@ const handler = NextAuth({
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
+        console.log("🔑 JWT callback - user:", user);
         token.accessToken = user.accessToken;
         token.id = user.id;
+        token.email = user.email;
+        token.name = user.name;
       }
       return token;
     },
 
     async session({ session, token }) {
       session.user.id = token.id;
-      session.accessToken = token.accessToken;
+      session.user.accessToken = token.accessToken;
+      session.user.email = token.email;
+      session.user.name = token.name;
+      console.log("📦 Session callback - session:", session);
       return session;
     },
   },
-
   debug: true, // 🔍 Enable NextAuth debug logs
 });
 

@@ -1,4 +1,7 @@
+'use client'
+
 import Head from "next/head";
+import { SessionProvider } from "next-auth/react";
 
 import "../../public/assets/vendor/fontawesome/css/all.css";
 import "../../public/assets/vendor/ionio-icon/css/iconoir.css";
@@ -35,6 +38,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <link rel="preconnect" href="https://fonts.gstatic.com" />
             </Head>
             <body >
+            <SessionProvider>
                 <PageWrapper>
                     {children}
                     <ClientScripts />
@@ -43,6 +47,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     <Script src="../assets/vendor/listJs/list.min.js"/>
                     <Script src="../assets/js/list_js.js" />
                 </PageWrapper>
+            </SessionProvider>
             </body>
         </html>
     );
