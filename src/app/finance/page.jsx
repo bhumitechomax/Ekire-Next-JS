@@ -56,7 +56,7 @@ function Finance() {
                         {/* Breadcrumb start */}
                         <div className="row m-1">
                             <div className="col-12 ">
-                                <h4 className="main-title">Finance</h4>
+                                <h4 className="main-title">Balance</h4>
                             </div>
                         </div>
                         {/* Breadcrumb end */}
@@ -65,7 +65,7 @@ function Finance() {
                         <div className="row">
                             <div className="col-12">
 
-                                <div className="tab-wrapper mb-3">
+                                {/* <div className="tab-wrapper mb-3">
                                     <ul className="tabs overflow-auto">
                                         <li
                                             className={`tab-link ${activeTab === 1 ? "active" : ""}`}
@@ -84,11 +84,10 @@ function Finance() {
                                         </li>
 
                                     </ul>
-                                </div>
+                                </div> */}
 
                                 <div className="content-wrapper" id="card-container">
-                                    <div className={`tabs-content ${activeTab === 1 ? "active" : ""}`} id="tab-1">
-                                        <div className="card ">
+                                <div className="card ">
                                             <div className="card-body p-0">
                                                 <div className="row">
                                                     <div className="col-lg-12">
@@ -136,54 +135,6 @@ function Finance() {
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-
-                                    <div className={`tabs-content ${activeTab === 2 ? "active" : ""}`} id="tab-2">
-                                        <div className="card p-l-r-30">
-                                            <div className="card-body p-0">
-                                                <div className="app-datatable-default overflow-auto">
-                                                    <table className="datatable display app-data-table default-data-table" id="example1">
-                                                        <thead>
-                                                            <tr>
-                                                                <th width={10}>Sr no.</th>
-                                                                <th>name</th>
-                                                                <th>created at</th>
-                                                                <th>members count</th>
-                                                                <th>servers count</th>
-                                                                <th>action</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <td>1</td>
-                                                                <td>My New Project50</td>
-                                                                <td>Feb 22nd, 2024</td>
-                                                                <td>1</td>
-                                                                <td>0</td>
-                                                                <td className="d-flex">
-                                                                    <span className="badge bg-success text-white d-flex gap-2">
-                                                                        <i className="ph-duotone ph-eye f-s-18" /> View
-                                                                    </span>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>2</td>
-                                                                <td>Dr. Burnice Larson</td>
-                                                                <td>Feb 22nd, 2024</td>
-                                                                <td>5</td>
-                                                                <td>0</td>
-                                                                <td className="d-flex">
-                                                                    <span className="badge bg-success text-white d-flex gap-2">
-                                                                        <i className="ph-duotone ph-eye f-s-18" /> View
-                                                                    </span>
-                                                                </td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>

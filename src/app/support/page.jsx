@@ -14,7 +14,7 @@ function Support() {
     const router = useRouter();
 
     const handleCreateClick = () => {
-        router.push('/support/create');
+        router.push('/support/create_ticket');
     };
 
      // auto load

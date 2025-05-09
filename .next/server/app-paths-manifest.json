@@ -1,20 +1,19 @@
 {
   "/_not-found/page": "app/_not-found/page.js",
-  "/account/page": "app/account/page.js",
   "/billing/page": "app/billing/page.js",
-  "/chat/page": "app/chat/page.js",
-  "/design/page": "app/design/page.js",
   "/favicon.ico/route": "app/favicon.ico/route.js",
   "/finance/page": "app/finance/page.js",
-  "/help/page": "app/help/page.js",
+  "/finance/transactions/page": "app/finance/transactions/page.js",
   "/page": "app/page.js",
   "/project/[slug]/page": "app/project/[slug]/page.js",
   "/project/page": "app/project/page.js",
   "/server/[slug]/page": "app/server/[slug]/page.js",
   "/server/create/page": "app/server/create/page.js",
   "/server/page": "app/server/page.js",
+  "/sshKeys/[slug]/page": "app/sshKeys/[slug]/page.js",
   "/sshKeys/page": "app/sshKeys/page.js",
   "/support/[slug]/page": "app/support/[slug]/page.js",
   "/support/create/page": "app/support/create/page.js",
+  "/support/create_ticket/page": "app/support/create_ticket/page.js",
   "/support/page": "app/support/page.js"
 }
