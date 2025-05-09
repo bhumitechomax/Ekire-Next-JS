@@ -66260,7 +66260,7 @@ table.dataTable.row-border tbody th, table.dataTable.row-border tbody td, table.
   margin: 0;
   font-size: 1.5rem;
   font-weight: bold;
-  color: var(--bodybg-color);;
+  color: #fff;
 }
 
 .carousel-caption h5{
