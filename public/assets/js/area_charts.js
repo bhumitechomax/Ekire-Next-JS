@@ -204,6 +204,7 @@ var options = {
     type: 'area',
     stacked: false,
     height: 350,
+    colors: 'rgba(var(--dark), .75)',
     zoom: {
       enabled: false
     },
@@ -230,10 +231,11 @@ var options = {
       style: {
         fontSize: '14px',
         fontWeight: 500,
+        colors: 'rgba(var(--dark), .75)'
       },
       offsetX: 0,
       formatter: function(val) {
-        return (val / 1000000).toFixed(2); // Format as millions
+        return (val / 1000000).toFixed(2); 
       },
     },
     axisBorder: {
@@ -249,6 +251,7 @@ var options = {
       style: {
         fontSize: '14px',
         fontWeight: 500,
+        colors: 'rgba(var(--dark), .75)'
       }
     },
   },

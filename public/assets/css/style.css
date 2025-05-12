@@ -58303,7 +58303,7 @@
   }
   
   .core-teams-card h2 {
-    font-size: calc(55px + 10 * (150vw - 310px) / 1620);
+    font-size: calc(43px + 10 * (150vw - 310px) / 1620);
   }
   
   .core-teams-card:before {
@@ -66260,7 +66260,7 @@ table.dataTable.row-border tbody th, table.dataTable.row-border tbody td, table.
   margin: 0;
   font-size: 1.5rem;
   font-weight: bold;
-  color: var(--bodybg-color);;
+  color: #fff;
 }
 
 .carousel-caption h5{

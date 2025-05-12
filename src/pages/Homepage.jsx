@@ -148,32 +148,20 @@ const Homepage = () => {
                                                 <div className="d-flex">
                                                     <h2 className="text-info-dark ">435</h2>
                                                 </div>
-                                                <div className="progress-labels mg-t-40">
-                                                    <span className="text-info">Productive</span>
-                                                    <span className="text-info">Middle</span>
-                                                    <span className="text-info">Idle</span>
-                                                </div>
-                                                <div className="custom-progress-container info-progress">
-                                                    <div className="progress-bar productive" />
-                                                    <div className="progress-bar middle" />
-                                                    <div className="progress-bar idle" />
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="col-xxl-4 col-lg-4">
-                                    <div className="card bg-info-300 project-details-card">
+                                    <div className="card project-total-card bg-info-300 project-details-card border-0">
                                         <div className="card-body">
-                                            <div className="d-flex gap-2">
+                                            <div className="d-flex position-relative">
                                                 <h5 className="text-dark txt-ellipsis-1">Available Balance</h5>
                                             </div>
-                                            <div className="my-4">
-                                                <h3 className="f-w-600 text-info-dark txt-ellipsis-1">34.62K</h3>
-                                            </div>
-                                            <div className="d-flex align-items-center justify-content-between">
-                                                <img alt="avtar" className="img-fluid text-start" src="../assets/images/New/coin.png" />
-                                                <span className="badge bg-white-300 text-info-dark ms-2 ">🔥 1H left</span>
+                                            <div>
+                                                <div className="d-flex">
+                                                    <h2 className="text-info-dark mt-2">34.62K</h2>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -185,21 +173,7 @@ const Homepage = () => {
                                                 <h5 className="text-dark f-w-600 txt-ellipsis-1">Open Tickets</h5>
                                             </div>
                                             <div className="d-flex justify-content-between align-items-end">
-                                                <h2 className="text-warning-dark my-4 d-inline-flex align-items-baseline">14</h2>
-                                                <ul className="avatar-group justify-content-start ">
-                                                    <li className="h-50 w-50 d-flex-center b-r-50 overflow-hidden text-bg-primary b-2-light" data-bs-title="Sabrina Torres" data-bs-toggle="tooltip">
-                                                        <img alt="avtar" className="img-fluid" src="../assets/images/avtar/4.png" />
-                                                    </li>
-                                                    <li className="h-50 w-50 d-flex-center b-r-50 overflow-hidden text-bg-success b-2-light" data-bs-title="Eva Bailey" data-bs-toggle="tooltip">
-                                                        <img alt="avtar" className="img-fluid" src="../assets/images/avtar/5.png" />
-                                                    </li>
-                                                    <li className="h-50 w-50 d-flex-center b-r-50 overflow-hidden text-bg-danger b-2-light" data-bs-title="Michael Hughes" data-bs-toggle="tooltip">
-                                                        <img alt="avtar" className="img-fluid" src="../assets/images/avtar/6.png" />
-                                                    </li>
-                                                    <li className="text-bg-secondary h-50 w-50 d-flex-center b-r-50" data-bs-title="10 More" data-bs-toggle="tooltip">
-                                                        10+
-                                                    </li>
-                                                </ul>
+                                                <h2 className="text-warning-dark mb-0 ">14</h2>
                                             </div>
                                         </div>
                                     </div>
@@ -241,7 +215,7 @@ const Homepage = () => {
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>  
                         <div className="col-md-12 col-xxl-4">
                             <div className="row">
                                 <div className="col-12">

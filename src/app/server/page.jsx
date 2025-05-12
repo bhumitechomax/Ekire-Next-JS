@@ -67,11 +67,11 @@ function Server() {
                                 <div>
                                     <h4 className="main-title">Servers</h4>
                                 </div>
-                                <div className="text-end">
+                                {/* <div className="text-end">
                                     <button className="btn btn-primary h-45 icon-btn m-2" onClick={handleCreateClick} >
                                         <i className="iconoir-open-new-window f-s-18" />  Create New Server
                                     </button>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                         {/* Breadcrumb end */}
