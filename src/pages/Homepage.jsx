@@ -215,7 +215,7 @@ const Homepage = () => {
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>  
                         <div className="col-md-12 col-xxl-4">
                             <div className="row">
                                 <div className="col-12">
