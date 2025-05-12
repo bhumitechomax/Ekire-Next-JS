@@ -1,60 +1,15 @@
 "use client";
 import Link from "next/link";
 import React, { Fragment, useState, useEffect } from "react";
-import Cookies from "js-cookie";
 
 
 
-function Finance() {
-    const[wallet, setWallet] = useState([]);
+function Transactions() {
+
     const [activeTab, setActiveTab] = useState(1);
-
 
     // auto load
     const [isLoading, setIsLoading] = useState(true);
-
-    useEffect(() => {
-            const token = Cookies.get("accessToken");
-            if (token) {
-              // console.log("Token found:", token);
-              const Wallet = async () => {
-                console.log(`Bearer ${token}`);
-                setIsLoading(true);
-                try {
-                  const response = await fetch(
-                    `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/wallet-balance`,
-                    {
-                      method: "GET",
-                      headers: {
-                        "Content-Type": "application/json",
-                        Authorization: `Bearer ${token}`, // Send the token
-                      },
-                    }
-                  );
-        
-                  const result = await response.json();
-                  const data = result.data;
-                  console.log(data);
-                  setWallet(data.balance);
-    
-                 
-                  setIsLoading(false);
-                  console.log("formData", formData);
-        
-               
-                } catch (error) {
-                  console.error("Error fetching cloud vps plan data:", error);
-        
-                
-                    setIsLoading(false);
-                }
-              };
-        
-              Wallet();
-             
-            }
-          }, []);
-    
     useEffect(() => {
         // Simulate loading
         const timer = setTimeout(() => {
@@ -63,27 +18,12 @@ function Finance() {
         return () => clearTimeout(timer);
     }, []);
 
-    // to load datatable
-    // useEffect(() => {
-    //     if (typeof window !== "undefined") {
-    //         const tables = $(".datatable").map(function () {
-    //             return $(this).DataTable();
-    //         });
-
-    //         return () => {
-    //             tables.each(function () {
-    //                 this.destroy();
-    //             });
-    //         };
-    //     }
-    // }, []);
-
 
     return (
         <Fragment>
             <div className="position-relative">
-               {/* Overlay loader */}
-               {isLoading && (
+                {/* Overlay loader */}
+                {isLoading && (
                     <div
                         className="d-flex justify-content-center align-items-center position-absolute top-0 start-0 w-100 h-100"
                         style={{
@@ -101,7 +41,7 @@ function Finance() {
                         {/* Breadcrumb start */}
                         <div className="row m-1">
                             <div className="col-12 ">
-                                <h4 className="main-title">Balance</h4>
+                                <h4 className="main-title">Transactions</h4>
                             </div>
                         </div>
                         {/* Breadcrumb end */}
@@ -110,76 +50,121 @@ function Finance() {
                         <div className="row">
                             <div className="col-12">
 
-                                {/* <div className="tab-wrapper mb-3">
+                                <div className="tab-wrapper mb-3">
                                     <ul className="tabs overflow-auto">
                                         <li
                                             className={`tab-link ${activeTab === 1 ? "active" : ""}`}
                                             onClick={() => setActiveTab(1)}
                                         >
-                                            <i className="ph-bold  ph-align-right f-s-18" /> Balance
+                                            <i className="ph-bold  ph-align-right f-s-18" /> Financial Log
                                         </li>
                                         <li
                                             className={`tab-link ${activeTab === 2 ? "active" : ""}`}
                                             onClick={() => setActiveTab(2)}
                                         >
-                                            <i className="ph-fill ph-list-bullets f-s-18" /> Transactions
+                                            <i className="ph-fill ph-list-bullets f-s-18" /> Usage Log
                                         </li>
                                         <li className="ms-auto d-flex">
 
                                         </li>
 
                                     </ul>
-                                </div> */}
+                                </div>
 
                                 <div className="content-wrapper" id="card-container">
-                                <div className="card ">
+                                    <div className={`tabs-content ${activeTab === 1 ? "active" : ""}`} id="tab-1">
+                                        <div className="card p-l-r-30">
                                             <div className="card-body p-0">
-                                                <div className="row">
-                                                    <div className="col-lg-12">
-                                                        <div className="card security-card-content">
-                                                            <div className="card-header">
-                                                                {/* <h5>Region</h5> */}
-                                                            </div>
-                                                            <div className="card-body">
-                                                                <div className="row">
-                                                                    <div className="col-lg-12 col-xxl-6">
-                                                                        <ul className="active-device-session active-device-list" id="shareMenuLeft">
-                                                                            <li>
-                                                                                <div className="card share-menu-active">
-                                                                                    <div className="card-body merge-title gap-5">
-                                                                                        <div className="device-menu-item " draggable="false">
-                                                                                            <span className="device-menu-img">
-                                                                                                <i className="iconoir-card-wallet f-s-40 text-primary" />
-                                                                                            </span>
-                                                                                            <div className="device-menu-content">
-                                                                                                <h1 className="mb-0 txt-ellipsis-1">${wallet}</h1>
-                                                                                                <h6 className="mb-0 txt-ellipsis-1 text-white">Available Balance</h6>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div className="">
-                                                                                            <div className="text-end">
-                                                                                                <button className="btn text-dark-11 h-45 icon-btn m-2" data-bs-target="#projectCard1" data-bs-toggle="modal">
-                                                                                                    <i className="ti ti-plus f-s-18" /> Top Up
-                                                                                                </button>
-                                                                                            </div>
-                                                                                            <div className="text-end">
-                                                                                                <button className="btn btn-primary h-45 icon-btn m-2" data-bs-target="#projectCard2" data-bs-toggle="modal">
-                                                                                                    <i className="iconoir-gift f-s-18" />  Redeem Gift Code
-                                                                                                </button>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                <div className="app-datatable-default overflow-auto">
+                                                    <table className="datatable display app-data-table default-data-table" id="example1">
+                                                        <thead>
+                                                            <tr>
+                                                                <th width={10}>Sr no.</th>
+                                                                <th>name</th>
+                                                                <th>created at</th>
+                                                                <th>members count</th>
+                                                                <th>servers count</th>
+                                                                <th>action</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>1</td>
+                                                                <td>My New Project50</td>
+                                                                <td>Feb 22nd, 2024</td>
+                                                                <td>1</td>
+                                                                <td>0</td>
+                                                                <td className="d-flex">
+                                                                    <span className="badge bg-success text-white d-flex gap-2">
+                                                                        <i className="ph-duotone ph-eye f-s-18" /> View
+                                                                    </span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>2</td>
+                                                                <td>Dr. Burnice Larson</td>
+                                                                <td>Feb 22nd, 2024</td>
+                                                                <td>5</td>
+                                                                <td>0</td>
+                                                                <td className="d-flex">
+                                                                    <span className="badge bg-success text-white d-flex gap-2">
+                                                                        <i className="ph-duotone ph-eye f-s-18" /> View
+                                                                    </span>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
+
+                                    <div className={`tabs-content ${activeTab === 2 ? "active" : ""}`} id="tab-2">
+                                        <div className="card p-l-r-30">
+                                            <div className="card-body p-0">
+                                                <div className="app-datatable-default overflow-auto">
+                                                    <table className="datatable display app-data-table default-data-table" id="example3">
+                                                        <thead>
+                                                            <tr>
+                                                                <th width={10}>Sr no.</th>
+                                                                <th>name</th>
+                                                                <th>created at</th>
+                                                                <th>members count</th>
+                                                                <th>servers count</th>
+                                                                <th>action</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>1</td>
+                                                                <td>My New Project50</td>
+                                                                <td>Feb 22nd, 2024</td>
+                                                                <td>1</td>
+                                                                <td>0</td>
+                                                                <td className="d-flex">
+                                                                    <span className="badge bg-success text-white d-flex gap-2">
+                                                                        <i className="ph-duotone ph-eye f-s-18" /> View
+                                                                    </span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>2</td>
+                                                                <td>Dr. Burnice Larson</td>
+                                                                <td>Feb 22nd, 2024</td>
+                                                                <td>5</td>
+                                                                <td>0</td>
+                                                                <td className="d-flex">
+                                                                    <span className="badge bg-success text-white d-flex gap-2">
+                                                                        <i className="ph-duotone ph-eye f-s-18" /> View
+                                                                    </span>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -320,4 +305,4 @@ function Finance() {
         </Fragment>
     );
 }
-export default Finance;
+export default Transactions;

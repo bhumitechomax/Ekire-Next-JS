@@ -25,7 +25,6 @@ export default function Navbar () {
                                 <a aria-expanded="false" data-bs-toggle="collapse" href="#dashboard">
                                     <i className="iconoir-home-alt" />
                                     dashboard
-                                    <span className="badge text-primary-dark bg-primary-300  badge-notification ms-2">4</span>
                                 </a>
                                 <ul className="collapse" id="dashboard">
                                     <li><Link href="/">Dashboard</Link></li>
@@ -41,11 +40,21 @@ export default function Navbar () {
                             <li className="menu-title">
                                 <span>Infrastructure</span>
                             </li>
-                            <li className="no-sub">
+                            <li>
+                                <a aria-expanded="false" data-bs-toggle="collapse" href="#server">
+                                    <i className="iconoir-apple-shortcuts" />
+                                    Servers
+                                </a>
+                                <ul className="collapse" id="server">
+                                    <li><Link href="/server">Servers</Link></li>
+                                    <li><Link href="/server/create">Create New Server</Link></li>
+                                </ul>
+                            </li>
+                            {/* <li className="no-sub">
                                 <Link href="/server">
                                 <i className="iconoir-apple-shortcuts" /> Servers
                                 </Link>
-                            </li>
+                            </li> */}
                             <li className="no-sub">
                                 <Link href="/sshKeys">
                                     <i className="iconoir-keyframes-minus" /> SSH Keys
@@ -55,11 +64,21 @@ export default function Navbar () {
                             <li className="menu-title">
                                 <span>Billing & Finance</span>
                             </li>
-                            <li className="no-sub">
+                            <li>
+                                <a aria-expanded="false" data-bs-toggle="collapse" href="#finance">
+                                    <i className="iconoir-wallet" />
+                                    Finance
+                                </a>
+                                <ul className="collapse" id="finance">
+                                    <li><Link href="/finance">Balance</Link></li>
+                                    <li><Link href="/finance/transactions">Transactions</Link></li>
+                                </ul>
+                            </li>
+                            {/* <li className="no-sub">
                                 <Link href="/finance">
                                     <i className="iconoir-wallet" /> Finance
                                 </Link>
-                            </li>
+                            </li> */}
                             <li className="no-sub">
                                 <Link href="/billing">
                                     <i className="iconoir-wallet" /> Billing
