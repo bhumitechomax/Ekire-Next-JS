@@ -6,7 +6,12 @@ import React, { Fragment, useState, useEffect } from "react";
 
 function ViewPage() {
 
-    const { sshKeys } = useParams();
+    
+    const params = useParams();
+    const id = params.slug;
+
+
+    
 
     // auto load
     const [isLoading, setIsLoading] = useState(true);

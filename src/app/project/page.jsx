@@ -5,9 +5,6 @@ import Link from "next/link";
 import React, { Fragment, useState, useEffect, useRef } from "react";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
-import Script from "next/script";
-import 'datatables.net-dt/css/dataTables.dataTables.css';
-import $ from 'jquery';
 
 function Project() {
   const tableRef = useRef();
@@ -23,7 +20,7 @@ function Project() {
   const [success, setSuccess] = useState(null);
   const router = useRouter();
 
-  const project = 1;
+
 
   console.log(projects);
 
@@ -115,34 +112,10 @@ function Project() {
     return () => clearTimeout(timer);
   }, []);
 
-  // Initialize DataTable after the projects are fetched
-  // useEffect(() => {
-  //   // Initialize DataTable when the component is mounted
-  //   if (projects.length > 0) {
-  //     $(document).ready(function () {
-  //       $('#example').DataTable();
-  //     });
-  //   }
-
-  //   // Clean up on unmount
-  //   return () => {
-  //     if (typeof window !== "undefined") {
-  //       const dataTable = $('#example').DataTable();
-  //       if (dataTable) {
-  //         dataTable.destroy(true);
-  //       }
-  //     }
-  //   };
-  // }, [projects]);
 
   return (
     <Fragment>
-      <Head>
-        <link
-          rel="stylesheet"
-          href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css"
-        />
-      </Head>
+     
       <div className="position-relative">
         {/* Overlay loader */}
         {isLoading && (
