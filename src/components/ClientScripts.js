@@ -24,6 +24,9 @@ const ClientScripts = () => {
             {/* ✅ Bootstrap & others */}
             <Script rel="preload" src="/assets/vendor/bootstrap/bootstrap.bundle.min.js" strategy="afterInteractive" />
 
+            <Script rel="preload" src="/assets/js/slick.js" strategy="lazyOnload" />
+            <Script rel="preload" src="/assets/vendor/slick/slick.min.js" strategy="lazyOnload" />
+            
             {/* ✅ Vendor Scripts */}
             <Script rel="preload" src="/assets/vendor/simplebar/simplebar.js" strategy="" />
             <Script rel="preload" src="/assets/vendor/apexcharts/apexcharts.min.js" strategy="lazyOnload" />
@@ -34,7 +37,7 @@ const ClientScripts = () => {
             <Script rel="preload" src="/assets/vendor/animated_icon/iconify-icon.min.js" strategy="lazyOnload" />
             <Script rel="preload" src="/assets/js/animated_icon.js" strategy="afterInteractive" />
             <Script rel="preload" src="/assets/vendor/phosphor/phosphor.js" strategy="lazyOnload" />
-            <Script rel="preload" src="/assets/vendor/slick/slick.min.js" strategy="lazyOnload" />
+            
             <Script rel="preload" src="/assets/vendor/nouislider/nouislider.min.js" strategy="lazyOnload" />
             <Script rel="preload" src="/assets/vendor/nouislider/wNumb.min.js" strategy="lazyOnload" />
 
@@ -71,7 +74,7 @@ const ClientScripts = () => {
             
             <Script rel="preload" src="/assets/js/chat.js" strategy="lazyOnload" />
             <Script rel="preload" src="/assets/js/area_charts.js" strategy="lazyOnload" />
-            <Script rel="preload" src="/assets/js/slick.js" strategy="lazyOnload" />
+            
             <Script rel="preload" src="/assets/js/project_dashboard.js" strategy="lazyOnload" />
             <Script rel="preload" src="/assets/js/script.js" strategy="lazyOnload" />
             

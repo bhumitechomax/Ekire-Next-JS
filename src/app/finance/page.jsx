@@ -6,55 +6,91 @@ import Cookies from "js-cookie";
 
 
 function Finance() {
-    const[wallet, setWallet] = useState([]);
+    const [wallet, setWallet] = useState([]);
     const [activeTab, setActiveTab] = useState(1);
-
+    const [formData, setFormData] = useState({ amount: "" });
+    const [paymentMethod, setPaymentMethod] = useState("stripe"); // default to stripe
+    const [error, setError] = useState("");
+    const [success, setSuccess] = useState("");
 
     // auto load
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-            const token = Cookies.get("accessToken");
-            if (token) {
-              // console.log("Token found:", token);
-              const Wallet = async () => {
+        const token = Cookies.get("accessToken");
+        if (token) {
+            // console.log("Token found:", token);
+            const Wallet = async () => {
                 console.log(`Bearer ${token}`);
                 setIsLoading(true);
                 try {
-                  const response = await fetch(
-                    `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/wallet-balance`,
-                    {
-                      method: "GET",
-                      headers: {
-                        "Content-Type": "application/json",
-                        Authorization: `Bearer ${token}`, // Send the token
-                      },
-                    }
-                  );
-        
-                  const result = await response.json();
-                  const data = result.data;
-                  console.log(data);
-                  setWallet(data.balance);
-    
-                 
-                  setIsLoading(false);
-                  console.log("formData", formData);
-        
-               
+                    const response = await fetch(
+                        `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/wallet-balance`,
+                        {
+                            method: "GET",
+                            headers: {
+                                "Content-Type": "application/json",
+                                Authorization: `Bearer ${token}`, // Send the token
+                            },
+                        }
+                    );
+
+                    const result = await response.json();
+                    const data = result.data;
+                    console.log(data);
+                    setWallet(data.balance);
+
+                    setIsLoading(false);
+                    console.log("formData", formData);
+
                 } catch (error) {
-                  console.error("Error fetching cloud vps plan data:", error);
-        
-                
+                    console.error("Error fetching cloud vps plan data:", error);
                     setIsLoading(false);
                 }
-              };
-        
-              Wallet();
-             
+            };
+            Wallet();
+        }
+    }, []);
+
+   
+
+    const handleChange = (e) => {
+        setFormData({ ...formData, amount: e.target.value });
+    };
+
+    const handleProject = async () => {
+        if (paymentMethod !== "stripe") {
+            setError("Please select a payment method.");
+            return;
+        }
+
+        try {
+            const res = await fetch( `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/stripe-checkout`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${Cookies.get("accessToken")}`, // if required
+                },
+                body: JSON.stringify({ amount: formData.amount }),
+            });
+
+            const result = await res.json();
+            console.log("API Result:", result);
+
+            if (res.ok && result.success) {
+                setSuccess("Redirecting to Stripe...");
+                if (result.url) {
+                    window.location.href = result.url; // Stripe redirect
+                }
+            } else {
+                setError(result.message || "Payment failed.");
             }
-          }, []);
-    
+        } catch (err) {
+            console.error("Error:", err);
+            setError("Something went wrong. Please try again.");
+        }
+    };
+
     useEffect(() => {
         // Simulate loading
         const timer = setTimeout(() => {
@@ -82,8 +118,8 @@ function Finance() {
     return (
         <Fragment>
             <div className="position-relative">
-               {/* Overlay loader */}
-               {isLoading && (
+                {/* Overlay loader */}
+                {isLoading && (
                     <div
                         className="d-flex justify-content-center align-items-center position-absolute top-0 start-0 w-100 h-100"
                         style={{
@@ -132,47 +168,46 @@ function Finance() {
                                 </div> */}
 
                                 <div className="content-wrapper" id="card-container">
-                                <div className="card ">
-                                            <div className="card-body p-0">
-                                                <div className="row">
-                                                    <div className="col-lg-12">
-                                                        <div className="card security-card-content">
-                                                            <div className="card-header">
-                                                                {/* <h5>Region</h5> */}
-                                                            </div>
-                                                            <div className="card-body">
-                                                                <div className="row">
-                                                                    <div className="col-lg-12 col-xxl-6">
-                                                                        <ul className="active-device-session active-device-list" id="shareMenuLeft">
-                                                                            <li>
-                                                                                <div className="card share-menu-active">
-                                                                                    <div className="card-body merge-title gap-5">
-                                                                                        <div className="device-menu-item " draggable="false">
-                                                                                            <span className="device-menu-img">
-                                                                                                <i className="iconoir-card-wallet f-s-40 text-primary" />
-                                                                                            </span>
-                                                                                            <div className="device-menu-content">
-                                                                                                <h1 className="mb-0 txt-ellipsis-1">${wallet}</h1>
-                                                                                                <h6 className="mb-0 txt-ellipsis-1 text-white">Available Balance</h6>
-                                                                                            </div>
+                                    <div className="card ">
+                                        <div className="card-body p-0">
+                                            <div className="row">
+                                                <div className="col-lg-12">
+                                                    <div className="card security-card-content">
+                                                        <div className="card-header">
+                                                            {/* <h5>Region</h5> */}
+                                                        </div>
+                                                        <div className="card-body">
+                                                            <div className="row">
+                                                                <div className="col-lg-12 col-xxl-6">
+                                                                    <ul className="active-device-session active-device-list" id="shareMenuLeft">
+                                                                        <li>
+                                                                            <div className="card share-menu-active">
+                                                                                <div className="card-body merge-title gap-5">
+                                                                                    <div className="device-menu-item " draggable="false">
+                                                                                        <span className="device-menu-img">
+                                                                                            <i className="iconoir-card-wallet f-s-40 text-primary" />
+                                                                                        </span>
+                                                                                        <div className="device-menu-content">
+                                                                                            <h1 className="mb-0 txt-ellipsis-1">${wallet}</h1>
+                                                                                            <h6 className="mb-0 txt-ellipsis-1 text-white">Available Balance</h6>
                                                                                         </div>
-                                                                                        <div className="">
-                                                                                            <div className="text-end">
-                                                                                                <button className="btn text-dark-11 h-45 icon-btn m-2" data-bs-target="#projectCard1" data-bs-toggle="modal">
-                                                                                                    <i className="ti ti-plus f-s-18" /> Top Up
-                                                                                                </button>
-                                                                                            </div>
-                                                                                            <div className="text-end">
-                                                                                                <button className="btn btn-primary h-45 icon-btn m-2" data-bs-target="#projectCard2" data-bs-toggle="modal">
-                                                                                                    <i className="iconoir-gift f-s-18" />  Redeem Gift Code
-                                                                                                </button>
-                                                                                            </div>
+                                                                                    </div>
+                                                                                    <div className="">
+                                                                                        <div className="text-end">
+                                                                                            <button className="btn text-dark-11 h-45 icon-btn m-2" data-bs-target="#projectCard1" data-bs-toggle="modal">
+                                                                                                <i className="ti ti-plus f-s-18" /> Top Up
+                                                                                            </button>
+                                                                                        </div>
+                                                                                        <div className="text-end">
+                                                                                            <button className="btn btn-primary h-45 icon-btn m-2" data-bs-target="#projectCard2" data-bs-toggle="modal">
+                                                                                                <i className="iconoir-gift f-s-18" />  Redeem Gift Code
+                                                                                            </button>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
+                                                                            </div>
+                                                                        </li>
+                                                                    </ul>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -180,6 +215,7 @@ function Finance() {
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -202,54 +238,58 @@ function Finance() {
                                 <button aria-label="Close" className="btn-close" data-bs-dismiss="modal" type="button" />
                             </div>
                             <div className="modal-body">
-                                <form className="app-form">
-                                    <div className="mb-3">
-                                        <div className="input-group">
-                                            <span className="input-group-text" id="inputGroupPrepend2">$</span>
-                                            <input aria-describedby="inputGroupPrepend2" className="form-control" id="validationDefaultUsername" placeholder="0" required="" type="number" />
-                                        </div>
-                                    </div>
-                                </form>
-                                <div className="form-selectgroup">
-                                    <div className="select-item">
-                                        <label className="form-check-label ms-5" htmlFor="inlineRadio1">
-                                            <span className="d-flex align-items-center">
-                                                <img alt="" className="w-30 h-30" src="../assets/images/checkbox-radio/logo1.png" />
-                                                <span className="ms-2">
-                                                    <span className="fs-6 ">Stripe</span>
-                                                </span>
-                                            </span>
-                                        </label>
-                                        <input className="form-check-input" id="inlineRadio1" name="inlineRadioOptions" type="radio" defaultValue="option1" />
-                                    </div>
-                                    <div className="select-item ">
-                                        <input className="form-check-input" id="inlineRadio2" name="inlineRadioOptions" type="radio" defaultValue="option2" />
-                                        <label className="form-check-label ms-5" htmlFor="inlineRadio2">
-                                            <span className="d-flex align-items-center">
-                                                <img alt="" className="w-30 h-30" src="../assets/images/New/wallet.png" />
-                                                <span className="ms-2">
-                                                    <span className="fs-6">Crypto</span>
-                                                </span>
-                                            </span>
-                                        </label>
-                                    </div>
-                                    <div className="select-item" >
-                                        <input className="form-check-input" id="inlineRadio3" name="inlineRadioOptions" type="radio" defaultValue="option3" />
-                                        <label className="form-check-label ms-5" htmlFor="inlineRadio3">
-                                            <span className="d-flex align-items-center">
-                                                <img alt="" className="w-30 h-30" src="../assets/images/checkbox-radio/logo3.png" />
-                                                <span className="ms-2">
-                                                    <span className="fs-6">Paypal</span>
-                                                </span>
-                                            </span>
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="modal-footer">
-                                <button className="btn btn-secondary" data-bs-dismiss="modal" type="button">Cancel</button>
-                                <button className="btn btn-primary" id="addCard" type="button">Make Payment</button>
-                            </div>
+                <form className="app-form">
+                    <div className="mb-3">
+                        <div className="input-group">
+                            <span className="input-group-text" id="inputGroupPrepend2">$</span>
+                            <input
+                                name="amount"
+                                type="number"
+                                className="form-control"
+                                placeholder="0"
+                                required
+                                value={formData.amount}
+                                onChange={handleChange}
+                                aria-describedby="inputGroupPrepend2"
+                            />
+                        </div>
+                    </div>
+                </form>
+
+                <div className="form-selectgroup">
+                    <div className="select-item">
+                        <label className="form-check-label ms-5" htmlFor="inlineRadio1">
+                            <span className="d-flex align-items-center">
+                                <img alt="" className="w-30 h-30" src="../assets/images/checkbox-radio/logo1.png" />
+                                <span className="ms-2">
+                                    <span className="fs-6">Stripe</span>
+                                </span>
+                            </span>
+                        </label>
+                        <input
+                            className="form-check-input"
+                            id="inlineRadio1"
+                            name="inlineRadioOptions"
+                            type="radio"
+                            value="stripe"
+                            // checked={paymentMethod === "stripe"}
+                            onChange={(e) => setPaymentMethod(e.target.value)}
+                        />
+                    </div>
+                </div>
+
+                {error && <p className="text-danger mt-2">{error}</p>}
+                {success && <p className="text-success mt-2">{success}</p>}
+            </div>
+
+            <div className="modal-footer">
+                <button className="btn btn-secondary" data-bs-dismiss="modal" type="button">
+                    Cancel
+                </button>
+                <button className="btn btn-primary" type="button" onClick={handleProject}>
+                    Make Payment
+                </button>
+            </div>
                         </div>
                     </div>
                 </div>
@@ -285,7 +325,7 @@ function Finance() {
                                         </label>
                                         <input className="form-check-input" id="inlineRadio1" name="inlineRadioOptions" type="radio" defaultValue="option1" />
                                     </div>
-                                    <div className="select-item ">
+                                    {/* <div className="select-item ">
                                         <input className="form-check-input" id="inlineRadio2" name="inlineRadioOptions" type="radio" defaultValue="option2" />
                                         <label className="form-check-label ms-5" htmlFor="inlineRadio2">
                                             <span className="d-flex align-items-center">
@@ -306,7 +346,7 @@ function Finance() {
                                                 </span>
                                             </span>
                                         </label>
-                                    </div>
+                                    </div> */}
                                 </div>
                             </div>
                             <div className="modal-footer">

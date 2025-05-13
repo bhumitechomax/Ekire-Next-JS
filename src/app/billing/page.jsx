@@ -229,7 +229,7 @@ function Billing() {
                                             <i className="ph-bold  ph-list-magnifying-glass f-s-18" /> Invoice
                                         </li>
                                         <li className={`tab-link ${activeTab === 2 ? "active" : ""}`} onClick={() => setActiveTab(2)}>
-                                            <i className="ph-fill  ph-money f-s-18" /> Recharge
+                                            <i className="ph-fill  ph-money f-s-18" /> Top Up
                                         </li>
                                         <li className={`tab-link ${activeTab === 3 ? "active" : ""}`} onClick={() => setActiveTab(3)}>
                                             <i className="ph ph-archive-tray f-s-18" /> Payment Details

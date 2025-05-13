@@ -45,6 +45,36 @@ function Manage() {
         return () => clearTimeout(timer);
     }, []);
 
+    // additional disk
+    const [count, setCount] = useState(1);
+    const [price, setPrice] = useState(5); // Default price for 1 GB
+
+    const updatePrice = (value) => {
+        if (value >= 1 && value <= 5) {
+            setPrice(5);
+        } else if (value >= 6 && value <= 10) {
+            setPrice(10);
+        } else if (value > 10 && value <= 50) {
+            setPrice(20);
+        } else {
+            setPrice(30); // Adjust as needed
+        }
+    };
+
+    const increment = () => {
+        const newValue = count + 1;
+        setCount(newValue);
+        updatePrice(newValue);
+    };
+
+    const decrement = () => {
+        if (count > 1) {
+            const newValue = count - 1;
+            setCount(newValue);
+            updatePrice(newValue);
+        }
+    };
+
     return (
         <Fragment>
             <div className="position-relative">
@@ -446,7 +476,46 @@ function Manage() {
                                                         <h5>Additional Disk</h5>
                                                     </div>
                                                     <div className="card-body" >
-
+                                                        <div className="">
+                                                            {/* <div className="modal-header">
+                                                                <h5 className="modal-title">Create Volume</h5>
+                                                            </div> */}
+                                                            <div className="modal-body">
+                                                                <div className="d-flex align-items-center">
+                                                                    <div className="text-center align-self-center">
+                                                                        <img alt="" className="img-fluid b-r-10" src="../assets/images/new/cloud.png" />
+                                                                    </div>
+                                                                    <div className="ps-4">
+                                                                        <div className="d-flex align-items-center gap-3">
+                                                                            <div className="simplespin d-flex align-items-center gap-2">
+                                                                                <a className="circle-btn decrement" role="button" onClick={decrement}>-</a>
+                                                                                <input className="app-small-touchspin count f-s-19" type="text" value={count} readOnly />
+                                                                                <a className="circle-btn increment" role="button" onClick={increment}>+</a>
+                                                                            </div>
+                                                                            <p className="f-s-18 m-0">GB</p>
+                                                                        </div>
+                                                                        <div>
+                                                                            <p className="f-s-18 text-primary fw-bold m-0"> ${price} /mo</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <form className="app-form mt-3">
+                                                                <div className="mb-3">
+                                                                    <div className="input-group">
+                                                                        <input aria-describedby="inputGroupPrepend2" className="form-control" id="validationDefaultUsername" placeholder="Volume Name" required="" type="text" />
+                                                                    </div>
+                                                                </div>
+                                                                <div className="mb-3">
+                                                                    <div className="input-group">
+                                                                        <input aria-describedby="inputGroupPrepend2" className="form-control" id="validationDefaultUsername" placeholder="Add Location" required="" type="text" />
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                            <div className="modal-footer">
+                                                                <button className="btn btn-light-primary" type="button">Save changes</button>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>

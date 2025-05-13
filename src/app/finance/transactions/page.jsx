@@ -2,14 +2,61 @@
 import Link from "next/link";
 import React, { Fragment, useState, useEffect } from "react";
 
+import Cookies from "js-cookie";
 
 
 function Transactions() {
 
     const [activeTab, setActiveTab] = useState(1);
+    const [Transactions , setTransactions] = useState([]);
+    const [Count, setCount] = useState([]);
 
     // auto load
     const [isLoading, setIsLoading] = useState(true);
+
+     useEffect(() => {
+                const token = Cookies.get("accessToken");
+                if (token) {
+                  // console.log("Token found:", token);
+                  const Records = async () => {
+                    console.log(`Bearer ${token}`);
+                    setIsLoading(true);
+                    try {
+                      const response = await fetch(
+                        `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/transactions`,
+                        {
+                          method: "GET",
+                          headers: {
+                            "Content-Type": "application/json",
+                            Authorization: `Bearer ${token}`, // Send the token
+                          },
+                        }
+                      );
+            
+                      const result = await response.json();
+                      const data = result.data;
+                      console.log(data);
+                      setTransactions(data.transactions);
+                      setCount(data.transactions_count);
+        
+                     
+                      setIsLoading(false);
+                      console.log("formData", formData);
+            
+                   
+                    } catch (error) {
+                      console.error("Error fetching cloud vps plan data:", error);
+            
+                    
+                        setIsLoading(false);
+                    }
+                  };
+            
+                  Records();
+                 
+                }
+              }, []);
+
     useEffect(() => {
         // Simulate loading
         const timer = setTimeout(() => {
@@ -80,27 +127,28 @@ function Transactions() {
                                                         <thead>
                                                             <tr>
                                                                 <th width={10}>Sr no.</th>
-                                                                <th>name</th>
-                                                                <th>created at</th>
-                                                                <th>members count</th>
-                                                                <th>servers count</th>
-                                                                <th>action</th>
+                                                                <th>Customer Id</th>
+                                                                <th>Description</th>
+                                                                <th>Amount</th>
+                                                                <th>Remark</th>
                                                             </tr>
                                                         </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <td>1</td>
-                                                                <td>My New Project50</td>
-                                                                <td>Feb 22nd, 2024</td>
-                                                                <td>1</td>
-                                                                <td>0</td>
+                                                        <tbody> 
+                                                            {Transactions.map((Transaction, index) => (
+                                                            <tr key={index}>
+                                                                <td>{index + 1}</td>
+                                                                <td>{Transaction.customer_id}</td>
+                                                                <td>{Transaction.description}</td>
+                                                                <td>{Transaction.amount}</td>
+                                                                <td>{Transaction.remark}</td>
                                                                 <td className="d-flex">
                                                                     <span className="badge bg-success text-white d-flex gap-2">
                                                                         <i className="ph-duotone ph-eye f-s-18" /> View
                                                                     </span>
                                                                 </td>
                                                             </tr>
-                                                            <tr>
+                                                             ))}
+                                                            {/* <tr>
                                                                 <td>2</td>
                                                                 <td>Dr. Burnice Larson</td>
                                                                 <td>Feb 22nd, 2024</td>
@@ -111,7 +159,7 @@ function Transactions() {
                                                                         <i className="ph-duotone ph-eye f-s-18" /> View
                                                                     </span>
                                                                 </td>
-                                                            </tr>
+                                                            </tr> */}
                                                         </tbody>
                                                     </table>
                                                 </div>
@@ -181,7 +229,6 @@ function Transactions() {
                             <div className="modal-header">
                                 <div className="d-flex align-items-center gap-2">
                                     <h1 className="modal-title fs-5" id="projectCardLabel">Top Up Balance </h1>
-                                    {/* <iconify-icon icon="line-md:arrow-right-square" className="f-s-22" style={{ color: "#e5484d" }} /> */}
                                 </div>
 
                                 <button aria-label="Close" className="btn-close" data-bs-dismiss="modal" type="button" />

@@ -2,6 +2,7 @@
 // import { useParams } from "next/navigation";
 import Link from "next/link";
 import React, { Fragment, useState, useEffect, useRef } from "react";
+import Cookies from "js-cookie";
 import Image from "next/image";
 
 
@@ -11,12 +12,124 @@ function Create() {
     const [selectedOS, setSelectedOS] = useState(null);
     const [authMethod, setAuthMethod] = useState('ssh');
     const [showPassword, setShowPassword] = useState(false);
+    const [error, setError] = useState("");
+    const [success, setSuccess] = useState("");
+    const summaryRef = useRef(null);
+    const [os, setOs] = useState([]);
+    const [app, setApp] = useState([]);
+    const [plans, setPlans] = useState([]);
+    const [selectedPlanId, setSelectedPlanId] = useState(null);
+    const [hostServers, setHostServers] = useState([]);
+    const [selectedServerId, setSelectedServerId] = useState(null);
 
-    const handleOSClick = (os) => {
-        setSelectedOS(os);
+
+
+
+    const [formData, setFormData] = useState({
+        server_id: "",
+        project_id: "",
+    });
+
+    // api os system
+    useEffect(() => {
+        const token = Cookies.get("accessToken");
+        if (token) {
+            // console.log("Token found:", token);
+            const FetchProject = async () => {
+                console.log(`Bearer ${token}`);
+                setIsLoading(true);
+                try {
+                    const response = await fetch(
+                        `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/operating-systems-applications`,
+                        {
+                            method: "GET",
+                            headers: {
+                                "Content-Type": "application/json",
+                                Authorization: `Bearer ${token}`, // Send the token
+                            },
+                        }
+                    );
+                    const result = await response.json();
+                    const data = result.data;
+                    console.log(data);
+                    setOs(data.operating_systems);
+                    setApp(data.applications);
+                } catch (error) {
+                    console.error("Error fetching cloud vps plan data:", error);
+                    setIsLoading(false);
+                }
+            };
+            FetchProject();
+        }
+    }, []);
+
+    // api vms plans
+    useEffect(() => {
+        const token = Cookies.get("accessToken");
+        if (token) {
+            // console.log("Token found:", token);
+            const FetchProject = async () => {
+                console.log(`Bearer ${token}`);
+                setIsLoading(true);
+                try {
+                    const response = await fetch(
+                        `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/list-plans`,
+                        {
+                            method: "GET",
+                            headers: {
+                                "Content-Type": "application/json",
+                                Authorization: `Bearer ${token}`, // Send the token
+                            },
+                        }
+                    );
+                    const result = await response.json();
+                    const data = result.data;
+                    console.log(data);
+                    setPlans(result.data.vms);
+                } catch (error) {
+                    console.error("Error fetching cloud vps plan data:", error);
+                    setIsLoading(false);
+                }
+            };
+            FetchProject();
+        }
+    }, []);
+
+    useEffect(() => {
+        const token = Cookies.get("accessToken");
+        if (token) {
+            const fetchHostServers = async () => {
+                try {
+                    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}/host-servers`,
+                        {
+                            method: "GET",
+                            headers: {
+                                "Content-Type": "application/json",
+                                Authorization: `Bearer ${token}`,
+                            },
+                        });
+                    const result = await response.json();
+                    setHostServers(result.data.host_servers); // store array of servers
+                } catch (error) {
+                    console.error("Error fetching host servers:", error);
+                }
+            };
+            fetchHostServers();
+        }
+    }, []);
+
+
+
+    const [selectedOSId, setSelectedOSId] = useState(null);
+    const [selectedAppId, setSelectedAppId] = useState(null);
+
+    const handleOSClick = (id) => {
+        setSelectedOSId(id);
+    };
+    const handleAppClick = (id) => {
+        setSelectedAppId(id);
     };
 
-    const summaryRef = useRef(null);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -48,6 +161,7 @@ function Create() {
             window.removeEventListener('resize', handleScroll);
         };
     }, []);
+
 
     // auto load
     const [isLoading, setIsLoading] = useState(true);
@@ -124,6 +238,13 @@ function Create() {
         }
     };
 
+
+
+
+
+
+
+
     return (
         <Fragment>
             <div className="position-relative">
@@ -177,30 +298,41 @@ function Create() {
                                                     </div>
                                                     <div className="card-body">
                                                         <div className="row">
-                                                            <div className="col-lg-12 col-xxl-4">
+                                                            {hostServers.map((server) => (
+                                                            <div className="col-xxl-4 col-12" key={server.id}>
                                                                 <ul className="active-device-session active-device-list" id="shareMenuLeft">
-                                                                    <li>
-                                                                        <div className="card share-menu-active">
-                                                                            <div className="card-body">
-                                                                                <div className="device-menu-item" draggable="false">
-                                                                                    <span className="device-menu-img">
-                                                                                        <i className="flag-icon flag-icon-usa f-s-25 text-success" />
-                                                                                    </span>
-                                                                                    <div className="device-menu-content">
-                                                                                        <h6 className="mb-0 txt-ellipsis-1">New York</h6>
-                                                                                        <p className="mb-0 txt-ellipsis-1 text-secondary">
-                                                                                            (NY)</p>
-                                                                                    </div>
-                                                                                    <div className="device-menu-icons">
-                                                                                        <i className="ph-fill  ph-check-circle me-1 text-success f-s-19" />
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
+                                                                <li>
+                                                                    <div className={`card cursor-pointer transition-all duration-300 ${
+                                                                        selectedServerId === server.id ? "border-selected" : "border-unselected" }`}
+                                                                        onClick={() => setSelectedServerId(server.id)}
+                                                                    >
+                                                                    <div className="card-body">
+                                                                        <div className="device-menu-item" draggable="false">
+                                                                        <span className="device-menu-img">
+                                                                            <img
+                                                                            src={server.image_url}
+                                                                            alt={server.country}
+                                                                            width={32}
+                                                                            height={20}
+                                                                            className={`transition-all duration-300 ${
+                                                                                selectedServerId === server.id ? "grayscale-0" : "grayscale"
+                                                                            }`}
+                                                                            style={{ objectFit: "cover", borderRadius: "4px" }}
+                                                                            />
+                                                                        </span>
+                                                                        <div className="device-menu-content">
+                                                                            <h6 className="mb-0 txt-ellipsis-1">{server.location}</h6>
+                                                                            <p className="mb-0 txt-ellipsis-1 text-secondary">ID: {server.id}</p>
                                                                         </div>
-                                                                    </li>
+                                                                        </div>
+                                                                    </div>
+                                                                    </div>
+                                                                </li>
                                                                 </ul>
                                                             </div>
-                                                            <div className="col-lg-12 col-xxl-4">
+                                                            ))}
+
+                                                            {/* <div className="col-lg-12 col-xxl-4">
                                                                 <ul className="active-device-session  active-device-list" id="shareMenuRight">
                                                                     <li>
                                                                         <div className="card">
@@ -218,7 +350,7 @@ function Create() {
                                                                         </div>
                                                                     </li>
                                                                 </ul>
-                                                            </div>
+                                                            </div> */}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -257,31 +389,40 @@ function Create() {
                                                         <div className="card">
                                                             <div className="card-body">
                                                                 <div className="row simple-pricing-container app-arrow">
-                                                                    <div className="col-md-6 col-xl-3 p-3">
-                                                                        <div className="simple-pricing-card card" onClick={() => handleOSClick('Ubuntu')} style={{ cursor: 'pointer' }}>
-                                                                            <div className="card-body">
-                                                                                <div className="simple-price-header text-center">
-                                                                                    <h5 className="mb-3">Ubuntu</h5>
-                                                                                </div>
-                                                                                <div className="simple-price-body text-center">
-                                                                                    <Image alt="Ubuntu" className="img-fluid" src="/assets/images/new/Ubuntu.png" width={45} height={45} />
+                                                                    {os?.map((o, index) => (
+                                                                        <div className="col-md-6 col-xl-3 p-3" key={o.id}>
+                                                                            <div className="simple-pricing-card card mb-0" onClick={() => handleOSClick(o.id)} style={{ cursor: 'pointer' }}>
+                                                                                <div className="card-body">
+                                                                                    <div className="simple-price-header text-center">
+                                                                                        <h5 className="mb-3">{o.name}</h5>
+                                                                                    </div>
+                                                                                    <div className="simple-price-body text-center">
+                                                                                        <Image alt={o.name} className="img-fluid" src={o.icon} width={45} height={45} />
+                                                                                    </div>
                                                                                 </div>
                                                                             </div>
-                                                                        </div>
-                                                                        <form className="app-form row g-3 needs-validation" noValidate>
-                                                                            {selectedOS === 'Ubuntu' && (
-                                                                                <div className="Ubuntu">
-                                                                                    <select className="form-select" id="ubuntuVersion" required>
-                                                                                        <option>18.04</option>
-                                                                                        <option>20.04</option>
-                                                                                        <option>22.04</option>
-                                                                                    </select>
-                                                                                    <div className="invalid-feedback">Please select a valid version.</div>
-                                                                                </div>
+                                                                            {selectedOSId === o.id && (
+                                                                                <form className="app-form row g-3 needs-validation mt-0" noValidate>
+                                                                                    <div className={o.name}>
+                                                                                        <select
+                                                                                            className="form-select"
+                                                                                            id={`${o.name}-version`}
+                                                                                            required
+                                                                                        >
+                                                                                            <option value="">Select Version</option>
+                                                                                            {o.versions?.map((version) => (
+                                                                                                <option value={version.id} key={version.id}>
+                                                                                                    {version.name}
+                                                                                                </option>
+                                                                                            ))}
+                                                                                        </select>
+                                                                                        <div className="invalid-feedback">Please select a valid version.</div>
+                                                                                    </div>
+                                                                                </form>
                                                                             )}
-                                                                        </form>
-                                                                    </div>
-                                                                    <div className="col-md-6 col-xl-3 p-3">
+                                                                        </div>
+                                                                    ))}
+                                                                    {/* <div className="col-md-6 col-xl-3 p-3">
                                                                         <div className="simple-pricing-card card" onClick={() => handleOSClick('Windows')} style={{ cursor: 'pointer' }}>
                                                                             <div className="card-body">
                                                                                 <div className="simple-price-header text-center">
@@ -402,7 +543,7 @@ function Create() {
                                                                                 </div>
                                                                             )}
                                                                         </form>
-                                                                    </div>
+                                                                    </div> */}
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -412,7 +553,7 @@ function Create() {
                                                         <div className="card">
                                                             <div className="card-body">
                                                                 <div className="row simple-pricing-container app-arrow">
-                                                                    <div className="col-md-6 col-xl-3 p-3">
+                                                                    {/* <div className="col-md-6 col-xl-3 p-3">
                                                                         <div className="simple-pricing-card card" onClick={() => handleOSClick('Plesk')} style={{ cursor: 'pointer' }}>
                                                                             <div className="card-body">
                                                                                 <div className="simple-price-header text-center">
@@ -436,8 +577,41 @@ function Create() {
                                                                                 </div>
                                                                             )}
                                                                         </form>
-                                                                    </div>
-                                                                    <div className="col-md-6 col-xl-3 p-3">
+                                                                    </div> */}
+                                                                    {app?.map((apps, index) => (
+                                                                        <div className="col-md-6 col-xl-3 p-3" key={apps.id}>
+                                                                            <div className="simple-pricing-card card mb-0" onClick={() => handleAppClick(apps.id)} style={{ cursor: 'pointer' }}>
+                                                                                <div className="card-body">
+                                                                                    <div className="simple-price-header text-center">
+                                                                                        <h5 className="mb-3">{apps.name}</h5>
+                                                                                    </div>
+                                                                                    <div className="simple-price-body text-center">
+                                                                                        <Image alt={apps.name} className="img-fluid" src={apps.icon} width={45} height={45} />
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            {selectedAppId === apps.id && (
+                                                                                <form className="app-form row g-3 needs-validation mt-0" noValidate>
+                                                                                    <div className={apps.name}>
+                                                                                        <select
+                                                                                            className="form-select"
+                                                                                            id={`${apps.name}-version`}
+                                                                                            required
+                                                                                        >
+                                                                                            <option value="">Select Version</option>
+                                                                                            {apps.versions?.map((version) => (
+                                                                                                <option value={version.id} key={version.id}>
+                                                                                                    {version.name}
+                                                                                                </option>
+                                                                                            ))}
+                                                                                        </select>
+                                                                                        <div className="invalid-feedback">Please select a valid version.</div>
+                                                                                    </div>
+                                                                                </form>
+                                                                            )}
+                                                                        </div>
+                                                                    ))}
+                                                                    {/* <div className="col-md-6 col-xl-3 p-3">
                                                                         <div className="simple-pricing-card card" onClick={() => handleOSClick('cPanel')} style={{ cursor: 'pointer' }}>
                                                                             <div className="card-body">
                                                                                 <div className="simple-price-header text-center">
@@ -576,7 +750,7 @@ function Create() {
                                                                                 </div>
                                                                             )}
                                                                         </form>
-                                                                    </div>
+                                                                    </div> */}
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -597,18 +771,18 @@ function Create() {
                                                         <h5>Size</h5>
                                                     </div>
                                                     <div className="card card-inside">
-                                                        <div className="card-header code-header">
+                                                        <div className="card-header code-header tabs-disabled">
                                                             <h5 className="p-0">CPU Type</h5>
                                                         </div>
                                                         <div className="card-body border-btm">
-                                                            <ul className="nav nav-tabs tab-outline-primary row border-0" id="Outline" role="tablist">
+                                                            <ul className="nav nav-tabs tab-outline-primary row border-0 tabs-disabled" id="Outline" role="tablist">
                                                                 <div className="col-lg-2 col-md-2 col-12 merge-tab">
                                                                     <div className="col-12">
                                                                         <p className="text-center title-cpu">Shared CPU</p>
                                                                     </div>
                                                                     <div className="col-12">
                                                                         <li className="nav-item text-center d-flex justify-content-center w-100" role="presentation">
-                                                                            <button className="nav-link active w-100" id="basic-tab" data-bs-toggle="tab" data-bs-target="#basic-tab-pane" type="button" role="tab" aria-controls="basic-tab-pane" aria-selected="true">Basic</button>
+                                                                            <button className="nav-link w-100" id="basic-tab" data-bs-toggle="tab" data-bs-target="#basic-tab-pane" type="button" role="tab" aria-controls="basic-tab-pane" aria-selected="true">Basic</button>
                                                                         </li>
                                                                     </div>
                                                                 </div>
@@ -634,47 +808,57 @@ function Create() {
                                                                 </div>
 
                                                             </ul>
+
                                                             <div className="tab-content" id="OutlineContent">
                                                                 <div className="tab-pane fade show active" id="basic-tab-pane" role="tabpanel" aria-labelledby="basic-tab" tabIndex={0}>
-                                                                    <p>Basic virtual machines with a mix of memory and compute resources. Best for small projects that can handle variable levels of CPU performance, like blogs, web apps and dev/test environments.</p>
-                                                                    <h5 className="mb-2 mt-2">CPU Options</h5>
+                                                                    <p className="tabs-disabled">Basic virtual machines with a mix of memory and compute resources. Best for small projects that can handle variable levels of CPU performance, like blogs, web apps and dev/test environments.</p>
+
+                                                                    <h5 className="mb-2 mt-5">CPU Options</h5>
+
                                                                     <div className="row simple-pricing-container app-arrow">
-                                                                        <div className="col-md-6 col-xl-4 p-3">
-                                                                            <div className="simple-pricing-card card">
-                                                                                <div className="card-body">
-                                                                                    <div className="simple-price-body">
-                                                                                        <div className="simple-price-value text-center b-r-5 bg-light-primary d-block ">
-                                                                                            <span className="f-s-30 f-w-600 text-center">$10/</span>
-                                                                                            <span className=" f-s-12 f-w-600">per month</span>
-                                                                                            <p>$0.015/hour</p>
-                                                                                        </div>
-                                                                                        <div className="simple-price-content">
-                                                                                            <div className="d-flex ">
-                                                                                                <span>
-                                                                                                    <i className="ph-bold  ph-check bg-primary p-1 b-r-100 f-s-12" />
-                                                                                                </span>
-                                                                                                <p className="ms-2 mb-0">1 GB/1 CPU</p>
+                                                                        {plans.map((plan) => (
+                                                                            <div
+                                                                                key={plan.id}
+                                                                                className={`col-md-6 col-xl-4 p-3`}
+                                                                                onClick={() => setSelectedPlanId(plan.id)}
+                                                                                style={{ cursor: "pointer" }}
+                                                                            >
+                                                                                <div
+                                                                                    className={`simple-pricing-card card ${selectedPlanId === plan.id ? "border border-primary shadow-lg" : ""
+                                                                                        }`}
+                                                                                >
+                                                                                    <div className="card-body">
+                                                                                        <div className="simple-price-body">
+                                                                                            <div
+                                                                                                className={`simple-price-value text-center b-r-5 d-block ${selectedPlanId === plan.id ? 'bg-primary text-white' : 'bg-light-dark'
+                                                                                                    }`}
+                                                                                            >
+                                                                                                <span className="f-s-30 f-w-600 text-center">${plan.price}/</span>
+                                                                                                <span className="f-s-12 f-w-600">per month</span>
+                                                                                                <p>${(plan.price / 720).toFixed(3)}/hour</p>
                                                                                             </div>
-                                                                                            <div className="app-divider-v " />
-                                                                                            <div className="d-flex ">
-                                                                                                <span>
-                                                                                                    <i className="ph-bold  ph-check bg-primary p-1 b-r-100 f-s-12" />
-                                                                                                </span>
-                                                                                                <p className="ms-2 mb-0">25 GB NVMe SSDs</p>
-                                                                                            </div>
-                                                                                            <div className="app-divider-v " />
-                                                                                            <div className="d-flex">
-                                                                                                <span>
-                                                                                                    <i className="ph-bold  ph-check bg-primary p-1 b-r-100 f-s-12" />
-                                                                                                </span>
-                                                                                                <p className="ms-2 mb-0">1 TB Transfer </p>
+
+                                                                                            <div className="simple-price-content">
+                                                                                                <div className="d-flex">
+                                                                                                    <span><i className={`ph-bold ph-check bg-primary p-1 b-r-100 f-s-12 ${selectedPlanId === plan.id ? 'bg-primary text-white' : 'bg-light-dark'
+                                                                                                    }`} /></span>
+                                                                                                    <p className="ms-2 mb-0">{plan.ram} GB / {plan.cpu} CPU</p>
+                                                                                                </div>
+                                                                                                <div className="app-divider-v" />
+                                                                                                <div className="d-flex">
+                                                                                                    <span><i className={`ph-bold ph-check bg-primary p-1 b-r-100 f-s-12 ${selectedPlanId === plan.id ? 'bg-primary text-white' : 'bg-light-dark'
+                                                                                                    }`} /></span>
+                                                                                                    <p className="ms-2 mb-0">{plan.disk} GB NVMe SSDs</p>
+                                                                                                </div>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
-                                                                        </div>
-                                                                        <div className="col-md-6 col-xl-4 p-3">
+                                                                        ))}
+
+
+                                                                        {/* <div className="col-md-6 col-xl-4 p-3">
                                                                             <div className="simple-pricing-card card">
                                                                                 <div className="card-body">
                                                                                     <div className="simple-price-body">
@@ -708,10 +892,10 @@ function Create() {
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
-                                                                        </div>
+                                                                        </div> */}
                                                                     </div>
                                                                 </div>
-                                                                <div className="tab-pane fade" id="general-tab-pane" role="tabpanel" aria-labelledby="general-tab" tabIndex={0}>
+                                                                {/* <div className="tab-pane fade" id="general-tab-pane" role="tabpanel" aria-labelledby="general-tab" tabIndex={0}>
                                                                     <p>High performance virtual machines with a good balance of memory and dedicated hyper-threads from best in class Intel processors. A great choice for a wide range of mainstream, production workloads, like web app hosting, e-commerce sites, medium-sized databases, and enterprise applications.</p>
                                                                     <h5 className="mb-2 mt-2">CPU Options</h5>
                                                                     <div className="row simple-pricing-container app-arrow">
@@ -1014,9 +1198,10 @@ function Create() {
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                </div>
+                                                                </div> */}
                                                             </div>
                                                         </div>
+
                                                         <div className="card-body Additional-disk">
                                                             <h5 className="p-0 mb-4">Additional Disk</h5>
                                                             <div className="row checkbox-div">
@@ -1318,7 +1503,7 @@ function Create() {
                                                         </tbody>
                                                     </table>
                                                     <br />
-                                                    <div className="card  scratch-card position-relative ">
+                                                    <div className="card  scratch-card position-relative tabs-disabled">
                                                         <div className="card-body">
                                                             <div className="scratch-code-box">
                                                                 <h6 className="mb-0">WIN190EGHY018</h6>
@@ -1388,6 +1573,7 @@ function Create() {
 
 
                     </div>
+
                     <div aria-hidden="true" aria-labelledby="projectCardLabel" className="ltr dark modal fade" id="projectCard1" tabIndex={-1} >
                         <div className="modal-dialog">
                             <div className="modal-content">
