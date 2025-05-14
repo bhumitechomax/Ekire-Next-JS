@@ -2,6 +2,8 @@
 import Link from "next/link";
 import React, { Fragment, useState, useEffect } from "react";
 import Cookies from "js-cookie";
+import Swal from 'sweetalert2';
+
 
 function SshKeys() {
   const [sshKeys, setSshKeys] = useState(null);
@@ -48,7 +50,7 @@ function SshKeys() {
     }
   }, []);
 
-    const handleChange = (e) => {
+  const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -58,8 +60,8 @@ function SshKeys() {
   const handleSShKey = async (e) => {
     e.preventDefault();
     console.log("Form Data:", formData);
-      setError(null);
-  setSuccess(null);
+    setError(null);
+    setSuccess(null);
 
     // Example POST request (Uncomment if you have a backend to send this to)
     const res = await fetch(
@@ -82,12 +84,49 @@ function SshKeys() {
       formData.key = ""; // Clear the input field after successful submission
       setFormData({ name: "", key: "" }); // Clear the input field after successful submission
       window.location.reload(); // Reload the page to see the new project
-
     } else {
       setError(result.message);
     }
     console.log(result);
   };
+const handleDelete = async (id) => {
+  const result = await Swal.fire({
+    title: 'Are you sure?',
+    text: 'This SSH key will be permanently deleted!',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#d33',
+    cancelButtonColor: '#6c757d',
+    confirmButtonText: 'Yes, delete it!',
+  });
+
+  if (!result.isConfirmed) return;
+
+  try {
+    const token = Cookies.get("accessToken");
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}/sshkey/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    const data = await res.json();
+
+    if (res.ok && data.success) {
+      Swal.fire('Deleted!', data.message || 'SSH key has been deleted.', 'success');
+      setSshKeys(prev => prev.filter((key) => key.id !== id));
+    } else {
+      Swal.fire('Failed!', data.message || 'Could not delete the SSH key.', 'error');
+    }
+  } catch (error) {
+    console.error("Delete failed:", error);
+    Swal.fire('Error!', 'Something went wrong.', 'error');
+  }
+};
+
+  
 
   // auto load
   const [isLoading, setIsLoading] = useState(true);
@@ -98,21 +137,6 @@ function SshKeys() {
     }, 900);
     return () => clearTimeout(timer);
   }, []);
-
-  // to load datatable
-  // useEffect(() => {
-  //     if (typeof window !== "undefined") {
-  //       const tables = $(".datatable").map(function () {
-  //         return $(this).DataTable();
-  //       });
-
-  //       return () => {
-  //         tables.each(function () {
-  //           this.destroy();
-  //         });
-  //       };
-  //     }
-  // }, []);
 
   return (
     <Fragment>
@@ -180,14 +204,28 @@ function SshKeys() {
                               <tr>
                                 <td>{index + 1}</td>
                                 <td>{sshkey.name}</td>
-                                <td>{new Date(sshkey.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false })}</td>
+                                <td>
+                                  {new Date(
+                                    sshkey.created_at
+                                  ).toLocaleTimeString([], {
+                                    hour: "2-digit",
+                                    minute: "2-digit",
+                                    hour12: false,
+                                  })}
+                                </td>
                                 <td className="d-flex">
                                   <Link href={`/sshKeys/${sshkey.id}`}>
-                                    <span className="badge text-white bg-success d-flex gap-2 ">
+                                    <span className="badge text-white bg-success d-flex gap-2 me-2">
                                       <i className="ph-duotone ph-eye f-s-18" />{" "}
-                                      View{" "}
                                     </span>
                                   </Link>
+                                  <button
+                                    className="btn btn-danger-light b-r-22 d-flex align-items-center gap-1"
+                                    type="button"
+                                     onClick={() => handleDelete(sshkey.id)}
+                                  >
+                                    <i className="ph-bold ph-trash-simple" />
+                                  </button>
                                 </td>
                               </tr>
                             ))}
@@ -237,12 +275,15 @@ function SshKeys() {
                 />
               </div>
               <div className="modal-body">
-                <form className="app-form rounded-control  row g-3" onSubmit={handleSShKey}>
-                    {success && (
-                      <div className="alert alert-success mt-2" role="alert">
-                        {success}
-                      </div>
-                    )}
+                <form
+                  className="app-form rounded-control  row g-3"
+                  onSubmit={handleSShKey}
+                >
+                  {success && (
+                    <div className="alert alert-success mt-2" role="alert">
+                      {success}
+                    </div>
+                  )}
                   <div className="col-12">
                     <label className="form-label" htmlFor="validationDefault01">
                       Name
@@ -283,21 +324,24 @@ function SshKeys() {
                       </div>
                     )}
                   </div>
-                     <div className="modal-footer">
-                <button
-                  className="btn btn-secondary"
-                  data-bs-dismiss="modal"
-                  type="button"
-                >
-                  Cancel
-                </button>
-                <button className="btn btn-primary" id="addCard" type="submit">
-                  Submit
-                </button>
-              </div>
+                  <div className="modal-footer">
+                    <button
+                      className="btn btn-secondary"
+                      data-bs-dismiss="modal"
+                      type="button"
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      className="btn btn-primary"
+                      id="addCard"
+                      type="submit"
+                    >
+                      Submit
+                    </button>
+                  </div>
                 </form>
               </div>
-           
             </div>
           </div>
         </div>
