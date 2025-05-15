@@ -3,7 +3,8 @@ import dynamic from "next/dynamic";
 import Head from "next/head";
 import Link from "next/link";
 import React, { Fragment, useState, useEffect, useRef } from "react";
-import Cookies from "js-cookie";
+import Swal from 'sweetalert2';
+import Cookies from 'js-cookie';
 import { useRouter } from "next/navigation";
 
 function Project() {
@@ -84,9 +85,9 @@ function Project() {
 
         if (res.ok && result.success) {
             setSuccess(result.message);
-            formData.name = "";  // Clear the input field after successful submission
-            setFormData({ name: "" }); // Clear the input field after successful submission
-            window.location.reload(); // Reload the page to see the new project
+            formData.name = "";        
+            setFormData({ name: "" }); 
+            window.location.reload();  
         } else {
             setError(result.message);
         }
@@ -111,24 +112,82 @@ function Project() {
         return () => clearTimeout(timer);
     }, []);
 
-    // Initialize DataTable after the projects are fetched
-    // useEffect(() => {
-    //   if (projects.length > 0) {
-    //     $(document).ready(function () {
-    //       $('#example').DataTable();
-    //     });
-    //   }
 
-    //   // Clean up on unmount
-    //   return () => {
-    //     if (typeof window !== "undefined") {
-    //       const dataTable = $('#example').DataTable();
-    //       if (dataTable) {
-    //         dataTable.destroy(true);
-    //       }
-    //     }
-    //   };
-    // }, [projects]);
+    // api for delete project with popup
+    const confirmDelete = (projectId) => {
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: 'btn btn-primary ms-2',
+                cancelButton: 'btn btn-danger'
+            },
+            buttonsStyling: false
+        });
+
+        swalWithBootstrapButtons.fire({
+            title: 'Delete Project?',
+            text: "Are you sure you want to delete this project? This can't be undone!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'No, cancel!',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                handleDelete(projectId, swalWithBootstrapButtons);
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+                swalWithBootstrapButtons.fire(
+                    'Cancelled',
+                    'Your project is safe :)',
+                    'error'
+                );
+            }
+        });
+    };
+
+    const handleDelete = async (projectId, swalInstance) => {
+        if (!projectId) return;
+
+        try {
+            const res = await fetch(
+                `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/project/${projectId}/destroy`,
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${Cookies.get('accessToken')}`
+                    }
+                }
+            );
+
+            const result = await res.json();
+
+            if (res.ok && result.success) {
+                swalInstance.fire(
+                    'Deleted!',
+                    'Your project has been deleted.',
+                    'success'
+                ).then(() => {
+                    window.location.reload();
+                });
+            } else {
+                swalInstance.fire(
+                    'Failed!',
+                    result.message || 'Something went wrong.',
+                    'error'
+                );
+            }
+
+            console.log(result);
+        } catch (err) {
+            swalInstance.fire(
+                'Error!',
+                'An error occurred while deleting the project.',
+                'error'
+            );
+            console.error(err);
+        }
+    };
+    // api for delete project with popup end
 
     return (
         <Fragment>
@@ -225,7 +284,7 @@ function Project() {
                                                                 <th>Project Name</th>
                                                                 <th>Members</th>
                                                                 <th>Servers</th>
-                                                                <th>Status</th>
+                                                                <th>Action</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -235,13 +294,21 @@ function Project() {
                                                                     <td>{project.name}</td>
                                                                     <td>{project.members_count}</td>
                                                                     <td>{project.servers_count}</td>
-                                                                    <td className="d-flex">
-                                                                         <Link href={`/project/${project?.id}`}>
+                                                                    <td className="d-flex gap-3">
+                                                                        <Link href={`/project/${project?.id}`}>
                                                                             <span className="badge text-white bg-success d-flex gap-2">
                                                                                 <i className="ph-duotone ph-eye f-s-18" />{" "}
                                                                                 View
                                                                             </span>
                                                                         </Link>
+                                                                        <button
+                                                                            onClick={() => confirmDelete(project?.id)}
+                                                                            className="badge text-white bg-danger border-0 d-flex gap-2 align-items-center"
+                                                                        >
+                                                                            <i className="ph ph-trash f-s-18" />
+                                                                            Delete
+                                                                        </button>
+
                                                                     </td>
                                                                 </tr>
                                                             ))}
@@ -309,7 +376,7 @@ function Project() {
                                 <h5 className="modal-title">Join a Project</h5>
                                 <iconify-icon icon="line-md:arrow-right-square" className="text-danger f-s-22"></iconify-icon>
                             </div>
-                            
+
                             <button
                                 type="button"
                                 className="btn-close"
@@ -366,6 +433,9 @@ function Project() {
                             <div className="row">
                                 <div className="col-md-12">
                                     <form onSubmit={handleProject}>
+                                        {success && (
+                                            <div className="alert alert-success">{success}</div>
+                                        )}
                                         <div className="mb-3">
                                             <label htmlFor="name" className="form-label">
                                                 Project Name
@@ -379,6 +449,9 @@ function Project() {
                                                 onChange={handleChange}
                                                 required
                                             />
+                                            {error.name && (
+                                                <div className="text-danger small">{error.name[0]}</div>
+                                            )}
                                         </div>
                                         <button type="submit" className="btn btn-primary">
                                             Submit

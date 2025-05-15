@@ -63,6 +63,15 @@ $(function() {
         },
     });
 });
+// $(function() {
+//     $('#example04').DataTable({
+//         createdRow: function (row, data, index) {
+//             if (data[2].replace(/[\$,]/g, '') * 1 > 150000) {
+//                 $('td', row).eq(5).addClass('highlight');
+//             }
+//         },
+//     });
+// });
 
     /* Formatting function for row details - modify as you need */
 function format ( d ) {

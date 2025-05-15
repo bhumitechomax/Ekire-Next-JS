@@ -38,7 +38,7 @@ const ClientScripts = () => {
             <Script rel="preload" src="/assets/js/animated_icon.js" strategy="afterInteractive" />
             <Script rel="preload" src="/assets/vendor/phosphor/phosphor.js" strategy="lazyOnload" />
             
-            <Script rel="preload" src="/assets/vendor/nouislider/nouislider.min.js" strategy="lazyOnload" />
+            <Script rel="preload" src="/assets/vendor/nouislider/nouislider.min.js" strategy="afterInteractive" />
             <Script rel="preload" src="/assets/vendor/nouislider/wNumb.min.js" strategy="lazyOnload" />
 
             {/* ✅ Filepond */}

@@ -46,14 +46,20 @@ function ForgotPwd() {
                                                 </div>
                                                 <div className="col-12">
                                                     <div className="mb-3">
+                                                        <label className="form-label" htmlFor="email">Email</label>
+                                                        <input className="form-control" name="email" id="email" placeholder="Enter Your Email" type="email" />
+                                                    </div>
+                                                </div>
+                                                <div className="col-12">
+                                                    <div className="mb-3">
                                                         <label className="form-label" htmlFor="password">New Password</label>
                                                         <input className="form-control" name="password" id="password" placeholder="Enter New Password" type="password" />
                                                     </div>
                                                 </div>
                                                 <div className="col-12">
                                                     <div className="mb-3">
-                                                        <label className="form-label" htmlFor="new_password">Confirm Password</label>
-                                                        <input className="form-control" name="new_password" id="new_password" placeholder="Enter Your Password" type="password" />
+                                                        <label className="form-label" htmlFor="password_confirmation">Confirm Password</label>
+                                                        <input className="form-control" name="password_confirmation" id="password_confirmation" placeholder="Enter Your Password" type="password" />
                                                     </div>
                                                 </div>
                                                 <div className="col-12">
