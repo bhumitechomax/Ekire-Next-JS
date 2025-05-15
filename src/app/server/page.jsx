@@ -3,8 +3,13 @@
 import { useRouter } from "next/navigation";
 import React, { Fragment, useState, useEffect } from "react";
 import Link from "next/link";
+import Cookies from "js-cookie";
+
+
 
 function Server() {
+    const [servers, setServers] = useState([]);
+
 
     const router = useRouter();
 
@@ -15,6 +20,41 @@ function Server() {
     const handleCreateClick = () => {
         router.push('/server/create');
     };
+
+
+      useEffect(() => {
+        const token = Cookies.get("accessToken");
+        if (token) {
+          // console.log("Token found:", token);
+          const FetchServer = async () => {
+            console.log(`Bearer ${token}`);
+            setIsLoading(true);
+            try {
+              const response = await fetch(
+                `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/customer/server/list`,
+                {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`, // Send the token
+                  },
+                }
+              );
+    
+              const result = await response.json();
+              const data = result.data;
+              console.log(data);
+              setServers(data.servers);
+            } catch (error) {
+              console.error("Error fetching cloud vps plan data:", error);
+              setIsLoading(false);
+            }
+          };
+    
+          FetchServer();
+        }
+      }, []);
+
     // auto load
     const [isLoading, setIsLoading] = useState(true);
     useEffect(() => {
@@ -91,50 +131,45 @@ function Server() {
                                                             <th>server name</th>
                                                             <th>status</th>
                                                             <th>ip address</th>
-                                                            <th>purchase date</th>
-                                                            <th>total paid</th>
-                                                            <th>Action</th>
+                                                            {/* <th>purchase date</th>
+                                                            <th>total paid</th> */}
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr >
+                                                        {servers.map((server, index) => (
+                                                            <tr key={index} role="button" onClick={() => handleRowClick(server.id)}>
+                                                                <td>{index + 1}</td>
+                                                                <td>{server.hostname}</td>
+                                                                <td>
+                                                                    {server.status == "active" ? (
+                                                                    <span className="badge bg-success-subtle text-success text-uppercase">{server.status}</span>)
+                                                                    : (
+                                                                    <span className="badge bg-danger-subtle text-danger text-uppercase">{server.status}</span>
+                                                                    )}
+                                                                </td>
+                                                                <td>{server.ip}</td>
+                                                                {/* <td>{server.purchase_date}</td>
+                                                                <td>${server.total_paid}</td> */}
+                                                            </tr>
+                                                        ))}
+
+                                                        {/* Example static row */}
+                                                        {/* <tr role="button" onClick={() => handleRowClick('server-alpha')}>
                                                             <td >1</td>
                                                             <td>Server Alpha</td>
                                                             <td><span className="badge bg-success-subtle text-success text-uppercase">Running</span></td>
                                                             <td>193.38.248.207</td>
                                                             <td>Feb 22nd, 2024</td>
                                                             <td>$10</td>
-                                                            <td className="d-flex gap-3">
-                                                                <Link href={`server/server-alpha`}>
-                                                                    <span className="badge text-white bg-success d-flex gap-2">
-                                                                        <i className="ph-duotone ph-eye f-s-18" />{" "}
-                                                                        View
-                                                                    </span>
-                                                                </Link>
-                                                                <button
-                                                                    className="badge text-white bg-danger border-0 d-flex gap-2 align-items-center"
-                                                                >
-                                                                    <i className="ph ph-trash f-s-18" />
-                                                                    Delete
-                                                                </button>
-
-                                                            </td>
-
-                                                        </tr>
-                                                        <tr role="button" onClick={() => handleRowClick('server-alpha')}>
+                                                        </tr> */}
+                                                        {/* <tr>
                                                             <td>2</td>
                                                             <td>Server Beta</td>
                                                             <td><span className="badge bg-success-subtle text-success text-uppercase">Running</span></td>
                                                             <td>192.168.0.101</td>
                                                             <td>Feb 22nd, 2024</td>
                                                             <td>$10</td>
-                                                            <td>
-                                                                <button className="badge text-white bg-danger border-0 d-flex gap-2 align-items-center">
-                                                                    <i className="ph ph-trash f-s-18" />
-                                                                    Delete
-                                                                </button>
-                                                            </td>
-                                                        </tr>
+                                                        </tr> */}
                                                     </tbody>
                                                 </table>
                                             </div>

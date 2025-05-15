@@ -8,8 +8,8 @@ import Cookies from "js-cookie";
 
 
 function Manage() {
-
-    const { slug } = useParams();
+    const params = useParams();
+    const id = params.slug;
     const [activeTab, setActiveTab] = useState(1);
     const [activeInnerTab, setActiveInnerTab] = useState(8);
     const [selectedOS, setSelectedOS] = useState(null);
@@ -26,6 +26,40 @@ function Manage() {
     const [showReinstallCard, setShowReinstallCard] = useState(false);
     const [selectedVersionId, setSelectedVersionId] = useState(null);
 
+    const [serverdetails, setServerDetails] = useState(null);
+
+     useEffect(() => {
+            const token = Cookies.get("accessToken");
+            if (token && id) {
+                console.log('fetch token ', token);
+                const FetchSshkey = async () => {
+                    setIsLoading(true);
+                    try {
+                        const response = await fetch(
+                            `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/server/${id}/get`,
+                            {
+                                method: "POST",
+                                headers: {
+                                    "Content-Type": "application/json",
+                                    Authorization: `Bearer ${token}`,
+                                },
+                            }
+                        );
+    
+                        const result = await response.json();
+                        const data = result.data;
+                        setServerDetails(data);
+                        // setFormData({ name: data.name, key: data.key });
+                        setIsLoading(false);
+                    } catch (error) {
+                        console.error("Error fetching Server:", error);
+                        setIsLoading(false);
+                    }
+                };
+    
+                FetchSshkey();
+            }
+        }, [id]);
 
     useEffect(() => {
         const toggleIcons = document.querySelectorAll(".toggle-password");
@@ -423,7 +457,7 @@ function Manage() {
                         {/* Breadcrumb start */}
                         <div className="row m-1">
                             <div className="col-12">
-                                <h4 className="main-title">Manage Server {slug} </h4>
+                                <h4 className="main-title">Manage Server {id} </h4>
                                 <ul className="app-line-breadcrumbs mb-3">
                                     <li>
                                         <a className="f-s-14 f-w-500" href="/server">
@@ -433,7 +467,7 @@ function Manage() {
                                         </a>
                                     </li>
                                     <li className="active">
-                                        <a className="f-s-14 f-w-500" href="#">Manage Server {slug}</a>
+                                        <a className="f-s-14 f-w-500" href="#">Manage Server {id}</a>
                                     </li>
                                 </ul>
 
