@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import React, { Fragment, useState, useEffect } from "react";
-
+import Link from "next/link";
 
 function Server() {
 
@@ -93,24 +93,47 @@ function Server() {
                                                             <th>ip address</th>
                                                             <th>purchase date</th>
                                                             <th>total paid</th>
+                                                            <th>Action</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr role="button" onClick={() => handleRowClick('server-alpha')}>
+                                                        <tr >
                                                             <td >1</td>
                                                             <td>Server Alpha</td>
                                                             <td><span className="badge bg-success-subtle text-success text-uppercase">Running</span></td>
                                                             <td>193.38.248.207</td>
                                                             <td>Feb 22nd, 2024</td>
                                                             <td>$10</td>
+                                                            <td className="d-flex gap-3">
+                                                                <Link href={`server/server-alpha`}>
+                                                                    <span className="badge text-white bg-success d-flex gap-2">
+                                                                        <i className="ph-duotone ph-eye f-s-18" />{" "}
+                                                                        View
+                                                                    </span>
+                                                                </Link>
+                                                                <button
+                                                                    className="badge text-white bg-danger border-0 d-flex gap-2 align-items-center"
+                                                                >
+                                                                    <i className="ph ph-trash f-s-18" />
+                                                                    Delete
+                                                                </button>
+
+                                                            </td>
+
                                                         </tr>
-                                                        <tr>
+                                                        <tr role="button" onClick={() => handleRowClick('server-alpha')}>
                                                             <td>2</td>
                                                             <td>Server Beta</td>
                                                             <td><span className="badge bg-success-subtle text-success text-uppercase">Running</span></td>
                                                             <td>192.168.0.101</td>
                                                             <td>Feb 22nd, 2024</td>
                                                             <td>$10</td>
+                                                            <td>
+                                                                <button className="badge text-white bg-danger border-0 d-flex gap-2 align-items-center">
+                                                                    <i className="ph ph-trash f-s-18" />
+                                                                    Delete
+                                                                </button>
+                                                            </td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
