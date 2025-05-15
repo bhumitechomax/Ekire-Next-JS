@@ -168,12 +168,6 @@ function ViewPage() {
                                                 )}
 
                                                 <div className="col-12 d-flex gap-2">
-                                                    <button
-                                                        className="btn btn-danger-light b-r-22 d-flex align-items-center gap-1"
-                                                        type="button"
-                                                    >
-                                                        <i className="ph-bold ph-trash-simple" /> Delete
-                                                    </button>
                                                     <Link className="btn btn-empty b-r-22" href="/sshKeys">
                                                         Cancel
                                                     </Link>
