@@ -1,12 +1,10 @@
 "use client";
 import dynamic from "next/dynamic";
+import Head from "next/head";
 import Link from "next/link";
 import React, { Fragment, useState, useEffect, useRef } from "react";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
-import Script from "next/script";
-// import 'datatables.net-dt/css/dataTables.dataTables.css';
-// import $ from 'jquery';
 
 function Project() {
     const tableRef = useRef();
@@ -22,7 +20,6 @@ function Project() {
     const [success, setSuccess] = useState(null);
     const router = useRouter();
 
-    const project = 1;
 
     console.log(projects);
 
@@ -93,14 +90,86 @@ function Project() {
         } else {
             setError(result.message);
         }
-        console.log(result);
-    };
+      };
 
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setSuccess("");
-            setError("");
-        }, 5000); // 5000 ms = 5 seconds
+      FetchProject();
+    }
+  }, []);
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleProject = async (e) => {
+    e.preventDefault();
+    console.log("Form Data:", formData);
+
+    // Example POST request (Uncomment if you have a backend to send this to)
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/projects`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${Cookies.get("accessToken")}`, // Send the token
+        },
+        body: JSON.stringify(formData),
+      }
+    );
+
+    const result = await res.json();
+
+    if (res.ok && result.success) {
+      setSuccess(result.message);
+      formData.name = ""; // Clear the input field after successful submission
+      setFormData({ name: "" }); // Clear the input field after successful submission
+      window.location.reload(); // Reload the page to see the new project
+    } else {
+      setError(result.message);
+    }
+    console.log(result);
+  };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setSuccess("");
+      setError("");
+    }, 5000); // 5000 ms = 5 seconds
+
+    return () => clearTimeout(timer); // cleanup on re-render
+  }, [success, error]);
+
+  // auto load
+  useEffect(() => {
+    // Simulate loading
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 900);
+    return () => clearTimeout(timer);
+  }, []);
+
+
+  return (
+    <Fragment>
+     
+      <div className="position-relative">
+        {/* Overlay loader */}
+        {isLoading && (
+          <div
+            className="d-flex justify-content-center align-items-center position-absolute top-0 start-0 w-100 h-100"
+            style={{
+              background: "var(--bodybg-color)",
+              zIndex: 1000,
+            }}
+          >
+            <div className="spinner-border text-primary" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </div>
+          </div>
+        )}
 
         return () => clearTimeout(timer); // cleanup on re-render
     }, [success, error]);
