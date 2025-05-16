@@ -27,6 +27,8 @@ function Manage() {
     const [selectedVersionId, setSelectedVersionId] = useState(null);
 
     const [serverdetails, setServerDetails] = useState(null);
+    const [vmps, setVmps] = useState(null);
+    const [systemusage , setSystemUsage] = useState(null);
 
      useEffect(() => {
             const token = Cookies.get("accessToken");
@@ -47,8 +49,11 @@ function Manage() {
                         );
     
                         const result = await response.json();
-                        const data = result.data;
-                        setServerDetails(data);
+                       
+                        const data = result.data.data;
+                        setServerDetails(data.server);
+                        setVmps(data.vms);
+                        setSystemUsage(data);
                         // setFormData({ name: data.name, key: data.key });
                         setIsLoading(false);
                     } catch (error) {
@@ -60,6 +65,11 @@ function Manage() {
                 FetchSshkey();
             }
         }, [id]);
+
+        console.log(serverdetails);
+        console.log("------------------------------------------");
+        console.log(vmps);
+        console.log("------------------------------------------");
 
     useEffect(() => {
         const toggleIcons = document.querySelectorAll(".toggle-password");
@@ -457,7 +467,7 @@ function Manage() {
                         {/* Breadcrumb start */}
                         <div className="row m-1">
                             <div className="col-12">
-                                <h4 className="main-title">Manage Server {id} </h4>
+                                <h4 className="main-title">Manage Server {serverdetails?.hostname} </h4>
                                 <ul className="app-line-breadcrumbs mb-3">
                                     <li>
                                         <a className="f-s-14 f-w-500" href="/server">
@@ -467,7 +477,7 @@ function Manage() {
                                         </a>
                                     </li>
                                     <li className="active">
-                                        <a className="f-s-14 f-w-500" href="#">Manage Server {id}</a>
+                                        <a className="f-s-14 f-w-500" href="#">Manage Server {serverdetails?.hostname}</a>
                                     </li>
                                 </ul>
 
@@ -595,7 +605,7 @@ function Manage() {
                                                         <div className="col-12 col-lg-6 m-10-0">
                                                             <div className="card-body card-body-style">
                                                                 <div className="d-flex justify-content-between align-items-center">
-                                                                    <h6 className="mb-0">2vCPU</h6>
+                                                                    <h6 className="mb-0">{vmps?.cpu}vCPU</h6>
                                                                     <div className="dropdown bg-xl-light-primary h-40 w-40 d-flex-center b-r-15">
                                                                         <i className="ph-bold ph-command f-s-20 text-primary" />
                                                                     </div>
@@ -605,7 +615,7 @@ function Manage() {
                                                         <div className="col-12 col-lg-6 m-10-0">
                                                             <div className="card-body card-body-style">
                                                                 <div className="d-flex justify-content-between align-items-center">
-                                                                    <h6 className="mb-0">100 GB</h6>
+                                                                    <h6 className="mb-0">{vmps?.disk} GB</h6>
                                                                     <div className="dropdown bg-xl-light-success h-40 w-40 d-flex-center b-r-15">
                                                                         <i className="ph-bold ph-database f-s-20 text-success" />
                                                                     </div>
@@ -615,7 +625,7 @@ function Manage() {
                                                         <div className="col-12 col-lg-6 m-10-0">
                                                             <div className="card-body card-body-style">
                                                                 <div className="d-flex justify-content-between align-items-center">
-                                                                    <h6 className="mb-0">4GB</h6>
+                                                                    <h6 className="mb-0">{vmps?.ramz} GB</h6>
                                                                     <div className="dropdown bg-xl-light-secondary h-40 w-40 d-flex-center b-r-15">
                                                                         <i className="ph-bold ph-floppy-disk f-s-20 text-secondary" />
                                                                     </div>
@@ -625,7 +635,7 @@ function Manage() {
                                                         <div className="col-12 col-lg-6 m-10-0">
                                                             <div className="card-body card-body-style">
                                                                 <div className="d-flex justify-content-between align-items-center">
-                                                                    <h6 className="mb-0">New York</h6>
+                                                                    <h6 className="mb-0">{serverdetails?.location } </h6>
                                                                     <div className="dropdown bg-xl-light-danger h-40 w-40 d-flex-center b-r-15">
                                                                         <i className="ph-bold  ph-map-pin-line f-s-20 text-danger" />
                                                                     </div>
@@ -635,7 +645,7 @@ function Manage() {
                                                         <div className="col-12 col-lg-6 m-10-0">
                                                             <div className="card-body card-body-style">
                                                                 <div className="d-flex justify-content-between align-items-center">
-                                                                    <h6 className="mb-0">AMD Ryzen 7950x</h6>
+                                                                    <h6 className="mb-0">{serverdetails?.cpu }</h6>
                                                                     <div className="dropdown bg-xl-light-info h-40 w-40 d-flex-center b-r-15">
                                                                         <i className="ph-bold ph-cpu text-info f-s-20" />
                                                                     </div>
@@ -645,7 +655,7 @@ function Manage() {
                                                         <div className="col-12 col-lg-6 m-10-0">
                                                             <div className="card-body card-body-style">
                                                                 <div className="d-flex justify-content-between align-items-center">
-                                                                    <h6 className="mb-0">AlmaLinux</h6>
+                                                                    <h6 className="mb-0">{serverdetails?.os_label }</h6>
                                                                     <div className="dropdown bg-xl-light-warning h-40 w-40 d-flex-center b-r-15">
                                                                         <i className="ph-bold  ph-windows-logo f-s-22 text-warning text-warning" />
                                                                     </div>
@@ -669,7 +679,7 @@ function Manage() {
                                                                     <div className="d-flex align-items-center justify-content-between">
                                                                         <div>
                                                                             <p className="f-s-18 f-w-600 text-dark txt-ellipsis-1">CPU Usage</p>
-                                                                            <h2 className="text-secondary-dark mb-0">0%</h2>
+                                                                            <h2 className="text-secondary-dark mb-0">{systemusage?.cpuUsage}%</h2>
                                                                         </div>
                                                                         <div className="dropdown bg-xl-light-danger  h-40 w-40 d-flex-center b-r-15">
                                                                             <i className="ph-bold ph-cpu f-s-20 text-danger" />
@@ -683,7 +693,7 @@ function Manage() {
                                                                 <div className="card-body">
                                                                     <div className="d-flex align-items-center justify-content-between">
                                                                         <div>
-                                                                            <p className="f-s-18 f-w-600 text-dark txt-ellipsis-1">1.45 of unmetered GiB</p>
+                                                                            <p className="f-s-18 f-w-600 text-dark txt-ellipsis-1">{systemusage?.inBandwidth} of unmetered GiB</p>
                                                                             <h5 className="text-secondary-dark" style={{ marginTop: "6%", marginBottom: "6%" }}>Incoming Bandwith</h5>
                                                                         </div>
                                                                         <div className="dropdown bg-light-white h-40 w-40 d-flex-center b-r-15">
@@ -699,7 +709,7 @@ function Manage() {
                                                                     <i className="ph-bold  ph-circle circle-bg-img" />
                                                                     <div className="d-flex align-items-center justify-content-between">
                                                                         <div>
-                                                                            <p className="f-s-18 f-w-600 text-dark txt-ellipsis-1">0.04 of unmetered GiB</p>
+                                                                            <p className="f-s-18 f-w-600 text-dark txt-ellipsis-1">{systemusage?.outBandwidth} of unmetered GiB</p>
                                                                             <h5 className="text-secondary-dark" style={{ marginTop: "6%", marginBottom: "6%" }}>Outgoing Bandwith</h5>
                                                                         </div>
                                                                         <div className="dropdown bg-light-success h-40 w-40 d-flex-center b-r-15">
@@ -714,7 +724,7 @@ function Manage() {
                                                                 <div className="card-body">
                                                                     <div className="d-flex align-items-center justify-content-between">
                                                                         <div>
-                                                                            <p className="f-s-18 f-w-600 text-dark txt-ellipsis-1">3.06 of 100 GiB</p>
+                                                                            <p className="f-s-18 f-w-600 text-dark txt-ellipsis-1">{systemusage?.usedDisk} of {vmps?.disk} GiB</p>
                                                                             <h5 className="text-secondary-dark" style={{ marginTop: "6%", marginBottom: "6%" }}>Disk Usage</h5>
                                                                         </div>
                                                                         <div className="dropdown bg-light-info h-40 w-40 d-flex-center b-r-15">
