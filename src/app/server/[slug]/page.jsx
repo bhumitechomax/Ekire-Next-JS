@@ -66,10 +66,10 @@ function Manage() {
             }
         }, [id]);
 
-        console.log(serverdetails);
-        console.log("------------------------------------------");
-        console.log(vmps);
-        console.log("------------------------------------------");
+        // console.log(serverdetails);
+        // console.log("------------------------------------------");
+        // console.log(vmps);
+        // console.log("------------------------------------------");
 
     useEffect(() => {
         const toggleIcons = document.querySelectorAll(".toggle-password");
@@ -138,8 +138,8 @@ function Manage() {
     };
 
     // api for start server
-    const startServer = async (serverId) => {
-        if (!serverId) return;
+    const startServer = async (id) => {
+        if (!id) return;
 
         const swalWithBootstrapButtons = Swal.mixin({
             customClass: {
@@ -161,7 +161,7 @@ function Manage() {
             if (result.isConfirmed) {
                 try {
                     const res = await fetch(
-                        `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/server/${serverId}/start`,
+                        `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/server/${id}/start`,
                         {
                             method: "POST",
                             headers: {
@@ -174,7 +174,7 @@ function Manage() {
                     const result = await res.json();
                     console.log("Start Server Response:", result);
 
-                    if (res.ok && result.success) {
+                    if (res.ok && result.data.status === 'success') {
                         swalWithBootstrapButtons.fire(
                             'Started!',
                             'The server has been started successfully.',
@@ -206,8 +206,8 @@ function Manage() {
     };
 
     // api for stop server 
-    const stopServer = async (serverId) => {
-        if (!serverId) return;
+    const stopServer = async (id) => {
+        if (!id) return;
 
         const swalWithBootstrapButtons = Swal.mixin({
             customClass: {
@@ -229,7 +229,7 @@ function Manage() {
             if (result.isConfirmed) {
                 try {
                     const res = await fetch(
-                        `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/server/${serverId}/stop`,
+                        `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/server/${id}/stop`,
                         {
                             method: "POST",
                             headers: {
@@ -242,7 +242,7 @@ function Manage() {
                     const result = await res.json();
                     console.log("Stop Server Response:", result);
 
-                    if (res.ok && result.success) {
+                    if (res.ok && result.data.status === 'success') {
                         swalWithBootstrapButtons.fire(
                             'Stopped!',
                             'The server has been stopped successfully.',
@@ -274,8 +274,8 @@ function Manage() {
     };
 
     // api for restart server
-    const restartServer = async (serverId) => {
-        if (!serverId) return;
+    const restartServer = async (id) => {
+        if (!id) return;
 
         const swalWithBootstrapButtons = Swal.mixin({
             customClass: {
@@ -297,7 +297,7 @@ function Manage() {
             if (result.isConfirmed) {
                 try {
                     const res = await fetch(
-                        `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/server/${serverId}/restart`,
+                        `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/server/${id}/restart`,
                         {
                             method: "POST",
                             headers: {
@@ -310,7 +310,7 @@ function Manage() {
                     const result = await res.json();
                     console.log("Restart Server Response:", result);
 
-                    if (res.ok && result.success) {
+                    if (res.ok && result.data.status === 'success') {
                         swalWithBootstrapButtons.fire(
                             'Restarted!',
                             'The server has been restarted successfully.',
@@ -375,8 +375,8 @@ function Manage() {
     }, []);
 
     // api for reinstall server
-    const reinstallServer = async (serverId, payload) => {
-        if (!serverId || !payload?.version_id) return;
+    const reinstallServer = async (id, payload) => {
+        if (!id || !payload?.version_id) return;
 
         const swalWithBootstrapButtons = Swal.mixin({
             customClass: {
@@ -398,7 +398,7 @@ function Manage() {
             if (result.isConfirmed) {
                 try {
                     const res = await fetch(
-                        `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/server/${serverId}/reinstall`,
+                        `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/server/${id}/reinstall`,
                         {
                             method: "POST",
                             headers: {
@@ -412,7 +412,7 @@ function Manage() {
                     const result = await res.json();
                     console.log("Reinstall Server Response:", result);
 
-                    if (res.ok && result.success) {
+                    if (res.ok &&  result.data.status === 'success') {
                         swalWithBootstrapButtons.fire(
                             'Reinstalled!',
                             'The server has been reinstalled successfully.',
@@ -444,7 +444,7 @@ function Manage() {
     };
 
     // api for hostname update
-    const handleUpdateClick = async (serverId) => {
+    const handleUpdateClick = async (id) => {
         if (!hostname) {
             Swal.fire("Missing Info", "Please enter a hostname.", "warning");
             return;
@@ -471,7 +471,7 @@ function Manage() {
             if (result.isConfirmed) {
                 try {
                     const res = await fetch(
-                        `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/server/${serverId}/update`,
+                        `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/server/${id}/update`,
                         {
                             method: "POST",
                             headers: {
@@ -509,9 +509,9 @@ function Manage() {
         });
     };
 
-    // api for update password
-    const handleChangePasswordClick = async (serverId) => {
-        if (!serverId) {
+    // // api for update password
+    const handleChangePasswordClick = async (id) => {
+        if (!id) {
             Swal.fire("Missing Info", "Server ID is required.", "warning");
             return;
         }
@@ -536,7 +536,7 @@ function Manage() {
             if (result.isConfirmed) {
                 try {
                     const res = await fetch(
-                        `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/server/${serverId}/password`,
+                        `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/server/${id}/password`,
                         {
                             method: "POST",
                             headers: {
@@ -677,7 +677,7 @@ function Manage() {
                                                                     <div className="col-lg-12">
                                                                         <div className="input-group mb-3">
                                                                             <span className="input-group-text b-r-left text-bg-primary">IPv4</span>
-                                                                            <input aria-label="Dollar amount (with dot and two decimal places)" className="form-control b-r-right" placeholder="988e473a-335d-5c18-b996-db64c22cc7c0" type="text" />
+                                                                            <input aria-label="Dollar amount (with dot and two decimal places)" className="form-control b-r-right" placeholder="988e473a-335d-5c18-b996-db64c22cc7c0"  type="text" />
                                                                             <span className="input-group-text b-r-0 text-bg-primary"><i className="ph-fill  ph-copy f-s-18"></i></span>
                                                                         </div>
                                                                     </div>
@@ -756,7 +756,7 @@ function Manage() {
                                                         <div className="col-12 col-lg-6 m-10-0">
                                                             <div className="card-body card-body-style">
                                                                 <div className="d-flex justify-content-between align-items-center">
-                                                                    <h6 className="mb-0">{vmps?.ramz} GB</h6>
+                                                                    <h6 className="mb-0">{vmps?.ram} GB</h6>
                                                                     <div className="dropdown bg-xl-light-secondary h-40 w-40 d-flex-center b-r-15">
                                                                         <i className="ph-bold ph-floppy-disk f-s-20 text-secondary" />
                                                                     </div>
@@ -908,21 +908,21 @@ function Manage() {
                                                     <div className="card-body d-flex gap-3" >
                                                         <button
                                                             className="btn btn-primary h-45 icon-btn mb-3"
-                                                            onClick={() => startServer(server?.id)}
+                                                            onClick={() => startServer(serverdetails?.id)}
                                                         >
                                                             <i className="ph-fill ph-play f-s-18" />
                                                             Start Server
                                                         </button>
                                                         <button
                                                             className="btn btn-success h-45 icon-btn mb-3"
-                                                            onClick={() => stopServer(server?.id)}
+                                                            onClick={() => stopServer(serverdetails?.id)}
                                                         >
                                                             <i className="ph-fill ph-pause f-s-18" />
                                                             Stop Server
                                                         </button>
                                                         <button
                                                             className="btn btn-secondary h-45 icon-btn mb-3"
-                                                            onClick={() => restartServer(server?.id)}
+                                                            onClick={() => restartServer(serverdetails?.id)}
                                                         >
                                                             <i className="ph-fill ph-rewind f-s-18" />
                                                             Restart Server
@@ -1010,7 +1010,7 @@ function Manage() {
                                                                                 <button
                                                                                     className="btn btn-primary"
                                                                                     type="button"
-                                                                                    onClick={() => reinstallServer(server?.id, { version_id: selectedVersionId })}
+                                                                                    onClick={() => reinstallServer(serverdetails?.id, { version_id: selectedVersionId })}
                                                                                 >
                                                                                     Save
                                                                                 </button>
@@ -1040,6 +1040,7 @@ function Manage() {
                                                                                                 <form className="app-form row g-3 needs-validation mt-0" noValidate>
                                                                                                     <div className={apps.name}>
                                                                                                         <select
+                                                                                                        name=""
                                                                                                             className="form-select"
                                                                                                             id={`${apps.name}-version`}
                                                                                                             required onChange={(e) => setSelectedVersionId(e.target.value)}
@@ -1099,8 +1100,8 @@ function Manage() {
                                                                     className="form-control"
                                                                     placeholder="New Hostname"
                                                                     required
-                                                                    value={hostname}
-                                                                    onChange={(e) => setHostname(e.target.value)}
+                                                                    // value={hostname}
+                                                                    // onChange={(e) => setHostname(e.target.value)}
                                                                 />
                                                                 <button
                                                                     type="button"
