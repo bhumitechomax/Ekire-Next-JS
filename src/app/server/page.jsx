@@ -154,22 +154,22 @@ function Server() {
                                                         ))}
 
                                                         {/* Example static row */}
-                                                        {/* <tr role="button" onClick={() => handleRowClick('server-alpha')}>
+                                                        <tr role="button" onClick={() => handleRowClick('server-alpha')}>
                                                             <td >1</td>
                                                             <td>Server Alpha</td>
                                                             <td><span className="badge bg-success-subtle text-success text-uppercase">Running</span></td>
                                                             <td>193.38.248.207</td>
-                                                            <td>Feb 22nd, 2024</td>
-                                                            <td>$10</td>
-                                                        </tr> */}
-                                                        {/* <tr>
+                                                            {/* <td>Feb 22nd, 2024</td>
+                                                            <td>$10</td> */}
+                                                        </tr> 
+                                                        <tr>
                                                             <td>2</td>
                                                             <td>Server Beta</td>
                                                             <td><span className="badge bg-success-subtle text-success text-uppercase">Running</span></td>
                                                             <td>192.168.0.101</td>
-                                                            <td>Feb 22nd, 2024</td>
-                                                            <td>$10</td>
-                                                        </tr> */}
+                                                            {/* <td>Feb 22nd, 2024</td>
+                                                            <td>$10</td> */}
+                                                        </tr>
                                                     </tbody>
                                                 </table>
                                             </div>
