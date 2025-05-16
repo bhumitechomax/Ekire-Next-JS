@@ -3,7 +3,7 @@ import { useParams } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import React, { Fragment, useState, useEffect } from "react";
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
 import Cookies from "js-cookie";
 
 
@@ -443,6 +443,137 @@ function Manage() {
         });
     };
 
+    // api for hostname update
+    const handleUpdateClick = async (serverId) => {
+        if (!hostname) {
+            Swal.fire("Missing Info", "Please enter a hostname.", "warning");
+            return;
+        }
+
+
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: 'btn btn-primary ms-2',
+                cancelButton: 'btn btn-secondary'
+            },
+            buttonsStyling: false
+        });
+
+        swalWithBootstrapButtons.fire({
+            title: "Update Hostname?",
+            text: `Are you sure you want to update the hostname to "${hostname}"?`,
+            icon: "question",
+            showCancelButton: true,
+            confirmButtonText: "Yes, update it!",
+            cancelButtonText: "Cancel",
+            reverseButtons: true
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                try {
+                    const res = await fetch(
+                        `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/server/${serverId}/update`,
+                        {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                                Authorization: `Bearer ${Cookies.get("accessToken")}`,
+                            },
+                            body: JSON.stringify({ hostname }),
+                        }
+                    );
+
+                    const data = await res.json();
+                    console.log("Update Response:", data);
+
+                    if (res.ok && data.success) {
+                        swalWithBootstrapButtons.fire(
+                            "Updated!",
+                            "The hostname was updated successfully.",
+                            "success"
+                        );
+                        setHostname(""); // Reset field
+                    } else {
+                        swalWithBootstrapButtons.fire(
+                            "Failed!",
+                            data.message || "Failed to update hostname.",
+                            "error"
+                        );
+                    }
+                } catch (error) {
+                    console.error("Update Error:", error);
+                    swalWithBootstrapButtons.fire("Error", "Something went wrong.", "error");
+                }
+            } else {
+                swalWithBootstrapButtons.fire("Cancelled", "Update was cancelled.", "info");
+            }
+        });
+    };
+
+    // api for update password
+    const handleChangePasswordClick = async (serverId) => {
+        if (!serverId) {
+            Swal.fire("Missing Info", "Server ID is required.", "warning");
+            return;
+        }
+
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: 'btn btn-primary ms-2',
+                cancelButton: 'btn btn-secondary'
+            },
+            buttonsStyling: false
+        });
+
+        swalWithBootstrapButtons.fire({
+            title: "Change Server Password?",
+            text: "Are you sure you want to send a new password to the current user?",
+            icon: "question",
+            showCancelButton: true,
+            confirmButtonText: "Yes, update it!",
+            cancelButtonText: "Cancel",
+            reverseButtons: true
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                try {
+                    const res = await fetch(
+                        `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/server/${serverId}/password`,
+                        {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                                Authorization: `Bearer ${Cookies.get("accessToken")}`,
+                            },
+                            body: JSON.stringify({
+                                send_password_to_current_user: true
+                            }),
+                        }
+                    );
+
+                    const data = await res.json();
+                    console.log("Change Password Response:", data);
+
+                    if (res.ok && data.success) {
+                        swalWithBootstrapButtons.fire(
+                            "Updated!",
+                            "A new password has been sent to the current user.",
+                            "success"
+                        );
+                    } else {
+                        swalWithBootstrapButtons.fire(
+                            "Failed!",
+                            data.message || "Failed to update password.",
+                            "error"
+                        );
+                    }
+                } catch (error) {
+                    console.error("Change Password Error:", error);
+                    swalWithBootstrapButtons.fire("Error", "Something went wrong.", "error");
+                }
+            } else {
+                swalWithBootstrapButtons.fire("Cancelled", "Password update was cancelled.", "info");
+            }
+        });
+    };
 
 
     return (
@@ -957,52 +1088,69 @@ function Manage() {
                                                         <h5>Change Server Settings</h5>
                                                     </div>
                                                     <div className="card-body" >
-                                                        <form className="app-form rounded-control  row g-3" style={{ padding: "5px 15px" }}>
+                                                        <form className="app-form row g-3" style={{ padding: "5px 15px" }} onSubmit={(e) => e.preventDefault()}>
                                                             <div className="col-md-4">
-                                                                <label className="form-label" htmlFor="validationDefault01">Change Hostname</label>
-                                                                <input className="form-control" id="validationDefault01" placeholder="New Hostname" required type="text" />
+                                                                <label className="form-label" htmlFor="hostnameInput">
+                                                                    Update Hostname
+                                                                </label>
+                                                                <input
+                                                                    id="hostnameInput"
+                                                                    type="text"
+                                                                    className="form-control"
+                                                                    placeholder="New Hostname"
+                                                                    required
+                                                                    value={hostname}
+                                                                    onChange={(e) => setHostname(e.target.value)}
+                                                                />
+                                                                <button
+                                                                    type="button"
+                                                                    className="btn btn-primary h-45 icon-btn mb-3 mt-4"
+                                                                    onClick={handleUpdateClick}
+                                                                >
+                                                                    Update
+                                                                </button>
                                                             </div>
                                                         </form>
                                                     </div>
+                                                </div>
+
+                                                <div className="card security-card-content">
+                                                    <div className="card-header">
+                                                        <h5>Change Server Password</h5>
+                                                    </div>
 
                                                     <div className="card-body" >
-                                                        <form className="app-form rounded-control  row g-3" style={{ padding: "5px 15px" }}>
+                                                        <form
+                                                            className="app-form rounded-control row g-3"
+                                                            style={{ padding: "5px 15px" }}
+                                                            onSubmit={(e) => e.preventDefault()} // Prevent default form submit
+                                                        >
                                                             <div className="col-md-4">
                                                                 <label htmlFor="" className="form-label">Change Server Password</label>
-                                                                <div className="input-group mb-3">
-                                                                    <input
-                                                                        id="password2"
-                                                                        className="form-control b-r-right"
-                                                                        placeholder="********"
-                                                                        type="password"
-                                                                        aria-label="Password"
-                                                                        style={{ borderRight: "0" }}
-                                                                    />
-                                                                    <span className="input-group-text b-r-right">
-                                                                        <i
-                                                                            className="ph ph-eye-slash f-s-20 toggle-password"
-                                                                            data-target="password2"
-                                                                            style={{ cursor: "pointer" }}
-                                                                        />
-                                                                    </span>
-                                                                </div>
+                                                                <button
+                                                                    type="button"
+                                                                    className="btn btn-primary h-45 icon-btn mb-3 mt-3"
+                                                                    onClick={handleChangePasswordClick}
+                                                                >
+                                                                    Update
+                                                                </button>
                                                             </div>
                                                         </form>
-                                                    </div>
 
-                                                    <div className="card-body" >
+                                                    </div> 
+
+                                                    {/* <div className="card-body" >
                                                         <form className="app-form rounded-control  row g-3" style={{ padding: "5px 15px" }}>
-
                                                             <div className="col-md-4">
                                                                 <label className="form-label" htmlFor="validationDefaultUsername">Change RDNS</label>
                                                                 <input aria-describedby="inputGroupPrepend2" className="form-control" id="validationDefaultUsername" placeholder="New RDNS" required type="text" />
                                                             </div>
                                                         </form>
-                                                    </div>
+                                                    </div> */}
                                                 </div>
                                             </div>
 
-                                            <div className="col-lg-12">
+                                            {/* <div className="col-lg-12">
                                                 <div className="card security-card-content">
                                                     <div className="card-body">
                                                         <div className="d-flex align-items-center justify-content-between">
@@ -1021,7 +1169,7 @@ function Manage() {
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> */}
                                         </div>
                                     </div>
 

@@ -161,7 +161,7 @@ function Server() {
                                                             <td>193.38.248.207</td>
                                                             <td>Feb 22nd, 2024</td>
                                                             <td>$10</td>
-                                                        </tr> */}
+                                                        </tr>  */}
                                                         {/* <tr>
                                                             <td>2</td>
                                                             <td>Server Beta</td>
