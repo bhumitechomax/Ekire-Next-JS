@@ -2,9 +2,11 @@
 import { useParams } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment, useState, useEffect, useRef } from "react";
 import Swal from "sweetalert2";
 import Cookies from "js-cookie";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
+
 
 
 function Manage() {
@@ -42,6 +44,7 @@ function Manage() {
 
     const [upgradeError, setUpgradeError] = useState({});
     const [upgradeSuccess, setUpgradeSuccess] = useState("");
+    const modalRef = useRef(null);
 
 
 
@@ -632,11 +635,57 @@ function Manage() {
 
     console.log("Snapshots:", snapshots);
 
+    // to close the modal on cross and reload the table 
+    useEffect(() => {
+        const modalElement = modalRef.current;
+        if (!modalElement) return;
+
+        const bootstrap = require("bootstrap/dist/js/bootstrap.bundle.min.js");
+        const modal = bootstrap.Modal.getInstance(modalElement) || new bootstrap.Modal(modalElement);
+
+        let autoCloseTimer = null;
+
+        const handleModalClose = () => {
+            fetchSnapshots(); // Refresh snapshots when modal closes
+            setSnapshotSuccess("");
+            setSnapshotError({});
+            setFormData({ snapshot_name: "" });
+
+            if (autoCloseTimer) {
+                clearTimeout(autoCloseTimer);
+                autoCloseTimer = null;
+            }
+        };
+
+        const handleModalOpen = () => {
+            // Clear messages and reset form immediately when modal opens
+            setSnapshotSuccess("");
+            setSnapshotError({});
+            setFormData({ snapshot_name: "" });
+        };
+
+        modalElement.addEventListener("hidden.bs.modal", handleModalClose);
+        modalElement.addEventListener("shown.bs.modal", handleModalOpen);
+
+        return () => {
+            modalElement.removeEventListener("hidden.bs.modal", handleModalClose);
+            modalElement.removeEventListener("shown.bs.modal", handleModalOpen);
+            if (autoCloseTimer) clearTimeout(autoCloseTimer);
+        };
+    }, []);
+
+
 
     // api for snapshots
-    const handleSubmitSnapshot = async () => {
+    const handleSubmitSnapshot = async (e) => {
+        e.preventDefault();
         setSnapshotSuccess("");
         setSnapshotError({});
+
+        if (!formData.snapshot_name || formData.snapshot_name.trim() === "") {
+            setSnapshotError({ name: ["The snapshot name field is required."] });
+            return;
+        }
 
         if (!serverId) {
             setSnapshotError({ name: ["Server ID is missing."] });
@@ -661,17 +710,28 @@ function Manage() {
             const data = await res.json();
             console.log("Create Snapshot Response:", data);
 
-            if (res.ok && data.success) {
-                setSnapshotSuccess("Snapshot created successfully.");
-                fetchSnapshots(); // 🔄 Refresh list
+            
+
+            if (res.ok && data?.data?.status === "success") {
+                setSnapshotSuccess(data.message || "Snapshot successfully created.");
+                fetchSnapshots();
+                // Optionally clear input:
+                // setFormData(prev => ({ ...prev, snapshot_name: "" }));
+               
             } else {
-                setError({ name: [data.message || "Failed to create snapshot."] });
+                if (data?.data?.message && data?.data?.message.toLowerCase().includes("exists")) {
+                    setSnapshotError({ name: ["A snapshot with this name already exists."] });
+                } else {
+                    setSnapshotError({ name: [data?.data?.message || "Failed to create snapshot."] });
+                }
             }
         } catch (err) {
             console.error("Snapshot Error:", err);
             setSnapshotError({ name: ["Something went wrong while creating snapshot."] });
         }
     };
+
+
 
 
     // Delete snapshot function
@@ -684,7 +744,7 @@ function Manage() {
         const swalWithBootstrapButtons = Swal.mixin({
             customClass: {
                 confirmButton: 'btn btn-danger ms-2',
-                cancelButton: 'btn btn-secondary'
+                cancelButton: 'btn btn-success ms-2'
             },
             buttonsStyling: false
         });
@@ -1641,13 +1701,12 @@ function Manage() {
 
 
                     {/* Project Modal */}
-                    <div className="modal fade" id="projectCard2" aria-hidden="true"
-                    >
+                    <div className="modal fade" id="projectCard2" aria-hidden="true" ref={modalRef}>
                         <div className="modal-dialog ">
                             <div className="modal-content">
                                 <div className="modal-header">
                                     <div className="d-flex align-items-center gap-3">
-                                        <h5 className="modal-title">Create Project </h5>
+                                        <h5 className="modal-title">Create Snapshot </h5>
                                         <iconify-icon icon="line-md:document-add" className="text-success f-s-22"></iconify-icon>
                                     </div>
                                     <button
@@ -1660,7 +1719,7 @@ function Manage() {
 
                                 <form onSubmit={handleSubmitSnapshot}>
                                     <div className="modal-body">
-                                        {snapshotSuccess  && <div className="alert alert-success">{snapshotSuccess}</div>}
+
 
                                         <div className="mb-3">
                                             <label htmlFor="snapshot_name" className="form-label">
@@ -1671,10 +1730,11 @@ function Manage() {
                                                 id="snapshot_name"
                                                 name="snapshot_name"
                                                 className="form-control"
-                                                required
                                                 value={formData.snapshot_name}
                                                 onChange={handleChange}
+                                                required
                                             />
+                                            {snapshotSuccess && <div className="alert alert-success">{snapshotSuccess}</div>}
                                             {snapshotError.name && (
                                                 <div className="text-danger small">{snapshotError.name[0]}</div>
                                             )}

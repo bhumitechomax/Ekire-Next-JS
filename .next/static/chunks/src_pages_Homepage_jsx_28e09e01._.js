@@ -106,6 +106,24 @@ const Homepage = ()=>{
         slidesToScroll: 1,
         arrows: true
     };
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "Homepage.useEffect": ()=>{
+            if ("TURBOPACK compile-time truthy", 1) {
+                const modalEl = document.getElementById('welcomeCard');
+                const bootstrapModal = window.bootstrap?.Modal;
+                const lastShown = localStorage.getItem('welcomeModalLastShown');
+                const now = new Date().getTime();
+                const hours5 = 5 * 60 * 60 * 1000; // 5 hours in ms
+                if (!lastShown || now - parseInt(lastShown) > hours5) {
+                    if (modalEl && bootstrapModal) {
+                        const modal = new bootstrapModal(modalEl);
+                        modal.show();
+                        localStorage.setItem('welcomeModalLastShown', now.toString());
+                    }
+                }
+            }
+        }
+    }["Homepage.useEffect"], []);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("main", {
             children: [
@@ -124,14 +142,14 @@ const Homepage = ()=>{
                                             className: "f-s-20 me-2"
                                         }, void 0, false, {
                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                            lineNumber: 114,
+                                            lineNumber: 134,
                                             columnNumber: 29
                                         }, this),
                                         "Add your payment details to enable automatic payments for invoices and service charges"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                    lineNumber: 113,
+                                    lineNumber: 133,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -141,13 +159,13 @@ const Homepage = ()=>{
                                     type: "button"
                                 }, void 0, false, {
                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                    lineNumber: 117,
+                                    lineNumber: 137,
                                     columnNumber: 25
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/pages/Homepage.jsx",
-                            lineNumber: 112,
+                            lineNumber: 132,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -163,14 +181,14 @@ const Homepage = ()=>{
                                             src: "../assets/images/icons/cookie-.png"
                                         }, void 0, false, {
                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                            lineNumber: 121,
+                                            lineNumber: 141,
                                             columnNumber: 29
                                         }, this),
                                         "We have Cookies! We use it to ensure you get the best experience on our website and service"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                    lineNumber: 120,
+                                    lineNumber: 140,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -180,13 +198,13 @@ const Homepage = ()=>{
                                     type: "button"
                                 }, void 0, false, {
                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                    lineNumber: 124,
+                                    lineNumber: 144,
                                     columnNumber: 25
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/pages/Homepage.jsx",
-                            lineNumber: 119,
+                            lineNumber: 139,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -201,14 +219,14 @@ const Homepage = ()=>{
                                             className: "f-s-20 me-2"
                                         }, void 0, false, {
                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                            lineNumber: 128,
+                                            lineNumber: 148,
                                             columnNumber: 29
                                         }, this),
                                         "Add your payment details to enable automatic payments for invoices and service charges"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                    lineNumber: 127,
+                                    lineNumber: 147,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -218,13 +236,13 @@ const Homepage = ()=>{
                                     type: "button"
                                 }, void 0, false, {
                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                    lineNumber: 131,
+                                    lineNumber: 151,
                                     columnNumber: 25
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/pages/Homepage.jsx",
-                            lineNumber: 126,
+                            lineNumber: 146,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -250,7 +268,7 @@ const Homepage = ()=>{
                                                                         children: "Active Servers"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                                        lineNumber: 142,
+                                                                        lineNumber: 162,
                                                                         columnNumber: 49
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -261,18 +279,18 @@ const Homepage = ()=>{
                                                                             src: "../assets/images/New/Animation.gif"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                                                            lineNumber: 144,
+                                                                            lineNumber: 164,
                                                                             columnNumber: 53
                                                                         }, this)
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                                        lineNumber: 143,
+                                                                        lineNumber: 163,
                                                                         columnNumber: 49
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                lineNumber: 141,
+                                                                lineNumber: 161,
                                                                 columnNumber: 45
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -283,33 +301,33 @@ const Homepage = ()=>{
                                                                         children: "435"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                                        lineNumber: 149,
+                                                                        lineNumber: 169,
                                                                         columnNumber: 53
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                                    lineNumber: 148,
+                                                                    lineNumber: 168,
                                                                     columnNumber: 49
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                lineNumber: 147,
+                                                                lineNumber: 167,
                                                                 columnNumber: 45
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                        lineNumber: 140,
+                                                        lineNumber: 160,
                                                         columnNumber: 41
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                    lineNumber: 139,
+                                                    lineNumber: 159,
                                                     columnNumber: 37
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                lineNumber: 138,
+                                                lineNumber: 158,
                                                 columnNumber: 33
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -326,12 +344,12 @@ const Homepage = ()=>{
                                                                     children: "Available Balance"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                                    lineNumber: 159,
+                                                                    lineNumber: 179,
                                                                     columnNumber: 49
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                lineNumber: 158,
+                                                                lineNumber: 178,
                                                                 columnNumber: 45
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -342,33 +360,33 @@ const Homepage = ()=>{
                                                                         children: "34.62K"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                                        lineNumber: 163,
+                                                                        lineNumber: 183,
                                                                         columnNumber: 53
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                                    lineNumber: 162,
+                                                                    lineNumber: 182,
                                                                     columnNumber: 49
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                lineNumber: 161,
+                                                                lineNumber: 181,
                                                                 columnNumber: 45
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                        lineNumber: 157,
+                                                        lineNumber: 177,
                                                         columnNumber: 41
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                    lineNumber: 156,
+                                                    lineNumber: 176,
                                                     columnNumber: 37
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                lineNumber: 155,
+                                                lineNumber: 175,
                                                 columnNumber: 33
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -385,12 +403,12 @@ const Homepage = ()=>{
                                                                     children: "Open Tickets"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                                    lineNumber: 173,
+                                                                    lineNumber: 193,
                                                                     columnNumber: 49
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                lineNumber: 172,
+                                                                lineNumber: 192,
                                                                 columnNumber: 45
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -400,39 +418,39 @@ const Homepage = ()=>{
                                                                     children: "14"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                                    lineNumber: 176,
+                                                                    lineNumber: 196,
                                                                     columnNumber: 49
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                lineNumber: 175,
+                                                                lineNumber: 195,
                                                                 columnNumber: 45
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                        lineNumber: 171,
+                                                        lineNumber: 191,
                                                         columnNumber: 41
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                    lineNumber: 170,
+                                                    lineNumber: 190,
                                                     columnNumber: 37
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                lineNumber: 169,
+                                                lineNumber: 189,
                                                 columnNumber: 33
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                        lineNumber: 136,
+                                        lineNumber: 156,
                                         columnNumber: 29
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                    lineNumber: 135,
+                                    lineNumber: 155,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -455,14 +473,14 @@ const Homepage = ()=>{
                                                                     src: "../assets/images/new/offer.png"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                                    lineNumber: 189,
+                                                                    lineNumber: 209,
                                                                     columnNumber: 49
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                     className: "gradient-overlay"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                                    lineNumber: 190,
+                                                                    lineNumber: 210,
                                                                     columnNumber: 49
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -473,7 +491,7 @@ const Homepage = ()=>{
                                                                             children: "Special Offer"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                                                            lineNumber: 192,
+                                                                            lineNumber: 212,
                                                                             columnNumber: 53
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -481,19 +499,19 @@ const Homepage = ()=>{
                                                                             children: "🚀 Black Friday 2024 Promotion: Save Big on Cloud Servers! "
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                                                            lineNumber: 193,
+                                                                            lineNumber: 213,
                                                                             columnNumber: 53
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                                    lineNumber: 191,
+                                                                    lineNumber: 211,
                                                                     columnNumber: 49
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                                            lineNumber: 188,
+                                                            lineNumber: 208,
                                                             columnNumber: 45
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -505,14 +523,14 @@ const Homepage = ()=>{
                                                                     src: "../assets/images/new/promo.png"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                                    lineNumber: 198,
+                                                                    lineNumber: 218,
                                                                     columnNumber: 49
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                     className: "gradient-overlay"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                                    lineNumber: 199,
+                                                                    lineNumber: 219,
                                                                     columnNumber: 49
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -523,7 +541,7 @@ const Homepage = ()=>{
                                                                             children: "Promo Code "
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                                                            lineNumber: 201,
+                                                                            lineNumber: 221,
                                                                             columnNumber: 53
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -531,19 +549,19 @@ const Homepage = ()=>{
                                                                             children: "🎉 Don’t Miss Out – Apply Your Magic Code!"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                                                            lineNumber: 202,
+                                                                            lineNumber: 222,
                                                                             columnNumber: 53
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                                    lineNumber: 200,
+                                                                    lineNumber: 220,
                                                                     columnNumber: 49
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                                            lineNumber: 197,
+                                                            lineNumber: 217,
                                                             columnNumber: 45
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -555,14 +573,14 @@ const Homepage = ()=>{
                                                                     src: "../assets/images/new/plan.png"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                                    lineNumber: 207,
+                                                                    lineNumber: 227,
                                                                     columnNumber: 49
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                     className: "gradient-overlay"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                                    lineNumber: 208,
+                                                                    lineNumber: 228,
                                                                     columnNumber: 49
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -573,7 +591,7 @@ const Homepage = ()=>{
                                                                             children: "Plans Link"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                                                            lineNumber: 210,
+                                                                            lineNumber: 230,
                                                                             columnNumber: 53
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -581,45 +599,45 @@ const Homepage = ()=>{
                                                                             children: "💼 No Hidden Fees. Just Smart Choices."
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                                                            lineNumber: 211,
+                                                                            lineNumber: 231,
                                                                             columnNumber: 53
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                                    lineNumber: 209,
+                                                                    lineNumber: 229,
                                                                     columnNumber: 49
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                                            lineNumber: 206,
+                                                            lineNumber: 226,
                                                             columnNumber: 45
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                    lineNumber: 187,
+                                                    lineNumber: 207,
                                                     columnNumber: 41
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                lineNumber: 186,
+                                                lineNumber: 206,
                                                 columnNumber: 37
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                            lineNumber: 185,
+                                            lineNumber: 205,
                                             columnNumber: 33
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                        lineNumber: 184,
+                                        lineNumber: 204,
                                         columnNumber: 29
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                    lineNumber: 183,
+                                    lineNumber: 203,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -636,32 +654,32 @@ const Homepage = ()=>{
                                                         id: "timeseries-chart"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                        lineNumber: 225,
+                                                        lineNumber: 245,
                                                         columnNumber: 45
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                    lineNumber: 223,
+                                                    lineNumber: 243,
                                                     columnNumber: 41
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                lineNumber: 222,
+                                                lineNumber: 242,
                                                 columnNumber: 37
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                            lineNumber: 221,
+                                            lineNumber: 241,
                                             columnNumber: 33
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                        lineNumber: 220,
+                                        lineNumber: 240,
                                         columnNumber: 29
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                    lineNumber: 219,
+                                    lineNumber: 239,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -673,12 +691,12 @@ const Homepage = ()=>{
                                                 children: "Active services"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                lineNumber: 233,
+                                                lineNumber: 253,
                                                 columnNumber: 33
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                            lineNumber: 232,
+                                            lineNumber: 252,
                                             columnNumber: 29
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -698,53 +716,53 @@ const Homepage = ()=>{
                                                                             children: "Sr no"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                                                            lineNumber: 241,
+                                                                            lineNumber: 261,
                                                                             columnNumber: 53
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
                                                                             children: "Date"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                                                            lineNumber: 242,
+                                                                            lineNumber: 262,
                                                                             columnNumber: 53
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
                                                                             children: "IP"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                                                            lineNumber: 243,
+                                                                            lineNumber: 263,
                                                                             columnNumber: 53
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
                                                                             children: "OS"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                                                            lineNumber: 244,
+                                                                            lineNumber: 264,
                                                                             columnNumber: 53
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
                                                                             children: "Country"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                                                            lineNumber: 245,
+                                                                            lineNumber: 265,
                                                                             columnNumber: 53
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
                                                                             children: "Status"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                                                            lineNumber: 246,
+                                                                            lineNumber: 266,
                                                                             columnNumber: 53
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                                    lineNumber: 240,
+                                                                    lineNumber: 260,
                                                                     columnNumber: 49
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                lineNumber: 239,
+                                                                lineNumber: 259,
                                                                 columnNumber: 45
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
@@ -755,35 +773,35 @@ const Homepage = ()=>{
                                                                                 children: "1"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                lineNumber: 251,
+                                                                                lineNumber: 271,
                                                                                 columnNumber: 53
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                                                 children: "Feb 22nd, 2024"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                lineNumber: 252,
+                                                                                lineNumber: 272,
                                                                                 columnNumber: 53
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                                                 children: "192.168.1.1"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                lineNumber: 253,
+                                                                                lineNumber: 273,
                                                                                 columnNumber: 53
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                                                 children: "macOS"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                lineNumber: 254,
+                                                                                lineNumber: 274,
                                                                                 columnNumber: 53
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                                                 children: "Canada"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                lineNumber: 255,
+                                                                                lineNumber: 275,
                                                                                 columnNumber: 53
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -792,18 +810,18 @@ const Homepage = ()=>{
                                                                                     children: "success "
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                    lineNumber: 256,
+                                                                                    lineNumber: 276,
                                                                                     columnNumber: 57
                                                                                 }, this)
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                lineNumber: 256,
+                                                                                lineNumber: 276,
                                                                                 columnNumber: 53
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                                        lineNumber: 250,
+                                                                        lineNumber: 270,
                                                                         columnNumber: 49
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -812,35 +830,35 @@ const Homepage = ()=>{
                                                                                 children: "2"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                lineNumber: 259,
+                                                                                lineNumber: 279,
                                                                                 columnNumber: 53
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                                                 children: "Feb 22nd, 2024"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                lineNumber: 260,
+                                                                                lineNumber: 280,
                                                                                 columnNumber: 53
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                                                 children: "192.168.1.4"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                lineNumber: 261,
+                                                                                lineNumber: 281,
                                                                                 columnNumber: 53
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                                                 children: "Windows 11"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                lineNumber: 262,
+                                                                                lineNumber: 282,
                                                                                 columnNumber: 53
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                                                 children: "UK"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                lineNumber: 263,
+                                                                                lineNumber: 283,
                                                                                 columnNumber: 53
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -849,51 +867,51 @@ const Homepage = ()=>{
                                                                                     children: "failed"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                    lineNumber: 264,
+                                                                                    lineNumber: 284,
                                                                                     columnNumber: 57
                                                                                 }, this)
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                lineNumber: 264,
+                                                                                lineNumber: 284,
                                                                                 columnNumber: 53
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                                        lineNumber: 258,
+                                                                        lineNumber: 278,
                                                                         columnNumber: 49
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                lineNumber: 249,
+                                                                lineNumber: 269,
                                                                 columnNumber: 45
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                        lineNumber: 238,
+                                                        lineNumber: 258,
                                                         columnNumber: 41
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                    lineNumber: 237,
+                                                    lineNumber: 257,
                                                     columnNumber: 37
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                lineNumber: 236,
+                                                lineNumber: 256,
                                                 columnNumber: 33
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                            lineNumber: 235,
+                                            lineNumber: 255,
                                             columnNumber: 29
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                    lineNumber: 231,
+                                    lineNumber: 251,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -905,12 +923,12 @@ const Homepage = ()=>{
                                                 children: "Pending invoices & support tickets"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                lineNumber: 274,
+                                                lineNumber: 294,
                                                 columnNumber: 33
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                            lineNumber: 273,
+                                            lineNumber: 293,
                                             columnNumber: 29
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -929,12 +947,12 @@ const Homepage = ()=>{
                                                                         children: "support tickets"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                                        lineNumber: 281,
+                                                                        lineNumber: 301,
                                                                         columnNumber: 49
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                                    lineNumber: 280,
+                                                                    lineNumber: 300,
                                                                     columnNumber: 45
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -942,13 +960,13 @@ const Homepage = ()=>{
                                                                     children: "0"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                                    lineNumber: 283,
+                                                                    lineNumber: 303,
                                                                     columnNumber: 45
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                                            lineNumber: 279,
+                                                            lineNumber: 299,
                                                             columnNumber: 41
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
@@ -960,12 +978,12 @@ const Homepage = ()=>{
                                                                         children: "Pending invoices"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                                        lineNumber: 289,
+                                                                        lineNumber: 309,
                                                                         columnNumber: 49
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                                    lineNumber: 288,
+                                                                    lineNumber: 308,
                                                                     columnNumber: 45
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -973,35 +991,35 @@ const Homepage = ()=>{
                                                                     children: "0"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                                    lineNumber: 291,
+                                                                    lineNumber: 311,
                                                                     columnNumber: 45
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                                            lineNumber: 287,
+                                                            lineNumber: 307,
                                                             columnNumber: 41
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                    lineNumber: 278,
+                                                    lineNumber: 298,
                                                     columnNumber: 37
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                lineNumber: 277,
+                                                lineNumber: 297,
                                                 columnNumber: 33
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                            lineNumber: 276,
+                                            lineNumber: 296,
                                             columnNumber: 29
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                    lineNumber: 272,
+                                    lineNumber: 292,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1013,12 +1031,12 @@ const Homepage = ()=>{
                                                 children: "News & Updates, Maintenance"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                lineNumber: 302,
+                                                lineNumber: 322,
                                                 columnNumber: 33
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                            lineNumber: 301,
+                                            lineNumber: 321,
                                             columnNumber: 29
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1044,7 +1062,7 @@ const Homepage = ()=>{
                                                                                     children: "Finalize Project Proposal"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                    lineNumber: 312,
+                                                                                    lineNumber: 332,
                                                                                     columnNumber: 61
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
@@ -1058,12 +1076,12 @@ const Homepage = ()=>{
                                                                                                 src: "../assets/images/avtar/4.png"
                                                                                             }, void 0, false, {
                                                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                                lineNumber: 315,
+                                                                                                lineNumber: 335,
                                                                                                 columnNumber: 69
                                                                                             }, this)
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                            lineNumber: 314,
+                                                                                            lineNumber: 334,
                                                                                             columnNumber: 65
                                                                                         }, this),
                                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
@@ -1076,12 +1094,12 @@ const Homepage = ()=>{
                                                                                                 src: "../assets/images/avtar/5.png"
                                                                                             }, void 0, false, {
                                                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                                lineNumber: 318,
+                                                                                                lineNumber: 338,
                                                                                                 columnNumber: 69
                                                                                             }, this)
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                            lineNumber: 317,
+                                                                                            lineNumber: 337,
                                                                                             columnNumber: 65
                                                                                         }, this),
                                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
@@ -1094,18 +1112,18 @@ const Homepage = ()=>{
                                                                                                 src: "../assets/images/avtar/6.png"
                                                                                             }, void 0, false, {
                                                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                                lineNumber: 321,
+                                                                                                lineNumber: 341,
                                                                                                 columnNumber: 69
                                                                                             }, this)
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                            lineNumber: 320,
+                                                                                            lineNumber: 340,
                                                                                             columnNumber: 65
                                                                                         }, this)
                                                                                     ]
                                                                                 }, void 0, true, {
                                                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                    lineNumber: 313,
+                                                                                    lineNumber: 333,
                                                                                     columnNumber: 61
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1124,12 +1142,12 @@ const Homepage = ()=>{
                                                                                                 }
                                                                                             }, void 0, false, {
                                                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                                lineNumber: 326,
+                                                                                                lineNumber: 346,
                                                                                                 columnNumber: 69
                                                                                             }, this)
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                            lineNumber: 325,
+                                                                                            lineNumber: 345,
                                                                                             columnNumber: 65
                                                                                         }, this),
                                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1137,24 +1155,24 @@ const Homepage = ()=>{
                                                                                             children: "+ 68%"
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                            lineNumber: 328,
+                                                                                            lineNumber: 348,
                                                                                             columnNumber: 65
                                                                                         }, this)
                                                                                     ]
                                                                                 }, void 0, true, {
                                                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                    lineNumber: 324,
+                                                                                    lineNumber: 344,
                                                                                     columnNumber: 61
                                                                                 }, this)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                                                            lineNumber: 311,
+                                                                            lineNumber: 331,
                                                                             columnNumber: 57
                                                                         }, this)
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                                        lineNumber: 310,
+                                                                        lineNumber: 330,
                                                                         columnNumber: 53
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1168,12 +1186,12 @@ const Homepage = ()=>{
                                                                                         className: "iconoir-group f-s-18"
                                                                                     }, void 0, false, {
                                                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                        lineNumber: 335,
+                                                                                        lineNumber: 355,
                                                                                         columnNumber: 65
                                                                                     }, this)
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                    lineNumber: 334,
+                                                                                    lineNumber: 354,
                                                                                     columnNumber: 61
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h6", {
@@ -1181,7 +1199,7 @@ const Homepage = ()=>{
                                                                                     children: "Meeting"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                    lineNumber: 337,
+                                                                                    lineNumber: 357,
                                                                                     columnNumber: 61
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1193,12 +1211,12 @@ const Homepage = ()=>{
                                                                                                 className: "iconoir-more-horiz f-s-18"
                                                                                             }, void 0, false, {
                                                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                                lineNumber: 339,
+                                                                                                lineNumber: 359,
                                                                                                 columnNumber: 147
                                                                                             }, this)
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                            lineNumber: 339,
+                                                                                            lineNumber: 359,
                                                                                             columnNumber: 65
                                                                                         }, this),
                                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1207,29 +1225,29 @@ const Homepage = ()=>{
                                                                                                 className: "iconoir-copy f-s-18"
                                                                                             }, void 0, false, {
                                                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                                lineNumber: 341,
+                                                                                                lineNumber: 361,
                                                                                                 columnNumber: 147
                                                                                             }, this)
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                            lineNumber: 341,
+                                                                                            lineNumber: 361,
                                                                                             columnNumber: 65
                                                                                         }, this)
                                                                                     ]
                                                                                 }, void 0, true, {
                                                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                    lineNumber: 338,
+                                                                                    lineNumber: 358,
                                                                                     columnNumber: 61
                                                                                 }, this)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                                                            lineNumber: 333,
+                                                                            lineNumber: 353,
                                                                             columnNumber: 57
                                                                         }, this)
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                                        lineNumber: 332,
+                                                                        lineNumber: 352,
                                                                         columnNumber: 53
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1242,7 +1260,7 @@ const Homepage = ()=>{
                                                                                     children: "Design Homepage Layout"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                    lineNumber: 348,
+                                                                                    lineNumber: 368,
                                                                                     columnNumber: 61
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
@@ -1256,12 +1274,12 @@ const Homepage = ()=>{
                                                                                                 src: "../assets/images/avtar/3.png"
                                                                                             }, void 0, false, {
                                                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                                lineNumber: 351,
+                                                                                                lineNumber: 371,
                                                                                                 columnNumber: 69
                                                                                             }, this)
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                            lineNumber: 350,
+                                                                                            lineNumber: 370,
                                                                                             columnNumber: 65
                                                                                         }, this),
                                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
@@ -1274,12 +1292,12 @@ const Homepage = ()=>{
                                                                                                 src: "../assets/images/avtar/7.png"
                                                                                             }, void 0, false, {
                                                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                                lineNumber: 354,
+                                                                                                lineNumber: 374,
                                                                                                 columnNumber: 69
                                                                                             }, this)
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                            lineNumber: 353,
+                                                                                            lineNumber: 373,
                                                                                             columnNumber: 65
                                                                                         }, this),
                                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
@@ -1292,18 +1310,18 @@ const Homepage = ()=>{
                                                                                                 src: "../assets/images/avtar/8.png"
                                                                                             }, void 0, false, {
                                                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                                lineNumber: 357,
+                                                                                                lineNumber: 377,
                                                                                                 columnNumber: 69
                                                                                             }, this)
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                            lineNumber: 356,
+                                                                                            lineNumber: 376,
                                                                                             columnNumber: 65
                                                                                         }, this)
                                                                                     ]
                                                                                 }, void 0, true, {
                                                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                    lineNumber: 349,
+                                                                                    lineNumber: 369,
                                                                                     columnNumber: 61
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1322,12 +1340,12 @@ const Homepage = ()=>{
                                                                                                 }
                                                                                             }, void 0, false, {
                                                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                                lineNumber: 362,
+                                                                                                lineNumber: 382,
                                                                                                 columnNumber: 69
                                                                                             }, this)
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                            lineNumber: 361,
+                                                                                            lineNumber: 381,
                                                                                             columnNumber: 65
                                                                                         }, this),
                                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1335,24 +1353,24 @@ const Homepage = ()=>{
                                                                                             children: "+ 35%"
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                            lineNumber: 364,
+                                                                                            lineNumber: 384,
                                                                                             columnNumber: 65
                                                                                         }, this)
                                                                                     ]
                                                                                 }, void 0, true, {
                                                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                    lineNumber: 360,
+                                                                                    lineNumber: 380,
                                                                                     columnNumber: 61
                                                                                 }, this)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                                                            lineNumber: 347,
+                                                                            lineNumber: 367,
                                                                             columnNumber: 57
                                                                         }, this)
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                                        lineNumber: 346,
+                                                                        lineNumber: 366,
                                                                         columnNumber: 53
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1366,12 +1384,12 @@ const Homepage = ()=>{
                                                                                         className: "iconoir-group f-s-18"
                                                                                     }, void 0, false, {
                                                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                        lineNumber: 371,
+                                                                                        lineNumber: 391,
                                                                                         columnNumber: 65
                                                                                     }, this)
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                    lineNumber: 370,
+                                                                                    lineNumber: 390,
                                                                                     columnNumber: 61
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h6", {
@@ -1379,7 +1397,7 @@ const Homepage = ()=>{
                                                                                     children: "Meeting"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                    lineNumber: 373,
+                                                                                    lineNumber: 393,
                                                                                     columnNumber: 61
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1391,12 +1409,12 @@ const Homepage = ()=>{
                                                                                                 className: "iconoir-more-horiz f-s-18"
                                                                                             }, void 0, false, {
                                                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                                lineNumber: 375,
+                                                                                                lineNumber: 395,
                                                                                                 columnNumber: 147
                                                                                             }, this)
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                            lineNumber: 375,
+                                                                                            lineNumber: 395,
                                                                                             columnNumber: 65
                                                                                         }, this),
                                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1405,29 +1423,29 @@ const Homepage = ()=>{
                                                                                                 className: "iconoir-copy f-s-18"
                                                                                             }, void 0, false, {
                                                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                                lineNumber: 377,
+                                                                                                lineNumber: 397,
                                                                                                 columnNumber: 147
                                                                                             }, this)
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                            lineNumber: 377,
+                                                                                            lineNumber: 397,
                                                                                             columnNumber: 65
                                                                                         }, this)
                                                                                     ]
                                                                                 }, void 0, true, {
                                                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                    lineNumber: 374,
+                                                                                    lineNumber: 394,
                                                                                     columnNumber: 61
                                                                                 }, this)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                                                            lineNumber: 369,
+                                                                            lineNumber: 389,
                                                                             columnNumber: 57
                                                                         }, this)
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                                        lineNumber: 368,
+                                                                        lineNumber: 388,
                                                                         columnNumber: 53
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1441,12 +1459,12 @@ const Homepage = ()=>{
                                                                                         className: "iconoir-group f-s-18"
                                                                                     }, void 0, false, {
                                                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                        lineNumber: 385,
+                                                                                        lineNumber: 405,
                                                                                         columnNumber: 65
                                                                                     }, this)
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                    lineNumber: 384,
+                                                                                    lineNumber: 404,
                                                                                     columnNumber: 61
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h6", {
@@ -1454,7 +1472,7 @@ const Homepage = ()=>{
                                                                                     children: "Meeting"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                    lineNumber: 387,
+                                                                                    lineNumber: 407,
                                                                                     columnNumber: 61
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1466,12 +1484,12 @@ const Homepage = ()=>{
                                                                                                 className: "iconoir-more-horiz f-s-18"
                                                                                             }, void 0, false, {
                                                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                                lineNumber: 389,
+                                                                                                lineNumber: 409,
                                                                                                 columnNumber: 147
                                                                                             }, this)
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                            lineNumber: 389,
+                                                                                            lineNumber: 409,
                                                                                             columnNumber: 65
                                                                                         }, this),
                                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1480,29 +1498,29 @@ const Homepage = ()=>{
                                                                                                 className: "iconoir-copy f-s-18"
                                                                                             }, void 0, false, {
                                                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                                lineNumber: 391,
+                                                                                                lineNumber: 411,
                                                                                                 columnNumber: 147
                                                                                             }, this)
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                            lineNumber: 391,
+                                                                                            lineNumber: 411,
                                                                                             columnNumber: 65
                                                                                         }, this)
                                                                                     ]
                                                                                 }, void 0, true, {
                                                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                    lineNumber: 388,
+                                                                                    lineNumber: 408,
                                                                                     columnNumber: 61
                                                                                 }, this)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                                                            lineNumber: 383,
+                                                                            lineNumber: 403,
                                                                             columnNumber: 57
                                                                         }, this)
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                                        lineNumber: 382,
+                                                                        lineNumber: 402,
                                                                         columnNumber: 53
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1515,7 +1533,7 @@ const Homepage = ()=>{
                                                                                     children: "Develop API Integration"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                    lineNumber: 398,
+                                                                                    lineNumber: 418,
                                                                                     columnNumber: 61
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
@@ -1529,12 +1547,12 @@ const Homepage = ()=>{
                                                                                                 src: "../assets/images/avtar/4.png"
                                                                                             }, void 0, false, {
                                                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                                lineNumber: 401,
+                                                                                                lineNumber: 421,
                                                                                                 columnNumber: 69
                                                                                             }, this)
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                            lineNumber: 400,
+                                                                                            lineNumber: 420,
                                                                                             columnNumber: 65
                                                                                         }, this),
                                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
@@ -1547,12 +1565,12 @@ const Homepage = ()=>{
                                                                                                 src: "../assets/images/avtar/6.png"
                                                                                             }, void 0, false, {
                                                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                                lineNumber: 404,
+                                                                                                lineNumber: 424,
                                                                                                 columnNumber: 69
                                                                                             }, this)
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                            lineNumber: 403,
+                                                                                            lineNumber: 423,
                                                                                             columnNumber: 65
                                                                                         }, this),
                                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
@@ -1565,18 +1583,18 @@ const Homepage = ()=>{
                                                                                                 src: "../assets/images/avtar/5.png"
                                                                                             }, void 0, false, {
                                                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                                lineNumber: 407,
+                                                                                                lineNumber: 427,
                                                                                                 columnNumber: 69
                                                                                             }, this)
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                            lineNumber: 406,
+                                                                                            lineNumber: 426,
                                                                                             columnNumber: 65
                                                                                         }, this)
                                                                                     ]
                                                                                 }, void 0, true, {
                                                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                    lineNumber: 399,
+                                                                                    lineNumber: 419,
                                                                                     columnNumber: 61
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1595,12 +1613,12 @@ const Homepage = ()=>{
                                                                                                 }
                                                                                             }, void 0, false, {
                                                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                                lineNumber: 412,
+                                                                                                lineNumber: 432,
                                                                                                 columnNumber: 69
                                                                                             }, this)
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                            lineNumber: 411,
+                                                                                            lineNumber: 431,
                                                                                             columnNumber: 65
                                                                                         }, this),
                                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1608,24 +1626,24 @@ const Homepage = ()=>{
                                                                                             children: "+ 60%"
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                            lineNumber: 414,
+                                                                                            lineNumber: 434,
                                                                                             columnNumber: 65
                                                                                         }, this)
                                                                                     ]
                                                                                 }, void 0, true, {
                                                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                    lineNumber: 410,
+                                                                                    lineNumber: 430,
                                                                                     columnNumber: 61
                                                                                 }, this)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                                                            lineNumber: 397,
+                                                                            lineNumber: 417,
                                                                             columnNumber: 57
                                                                         }, this)
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                                        lineNumber: 396,
+                                                                        lineNumber: 416,
                                                                         columnNumber: 53
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1638,7 +1656,7 @@ const Homepage = ()=>{
                                                                                     children: "Test User Feedback"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                    lineNumber: 420,
+                                                                                    lineNumber: 440,
                                                                                     columnNumber: 61
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
@@ -1652,12 +1670,12 @@ const Homepage = ()=>{
                                                                                                 src: "../assets/images/avtar/9.png"
                                                                                             }, void 0, false, {
                                                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                                lineNumber: 423,
+                                                                                                lineNumber: 443,
                                                                                                 columnNumber: 69
                                                                                             }, this)
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                            lineNumber: 422,
+                                                                                            lineNumber: 442,
                                                                                             columnNumber: 65
                                                                                         }, this),
                                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
@@ -1670,12 +1688,12 @@ const Homepage = ()=>{
                                                                                                 src: "../assets/images/avtar/10.png"
                                                                                             }, void 0, false, {
                                                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                                lineNumber: 426,
+                                                                                                lineNumber: 446,
                                                                                                 columnNumber: 69
                                                                                             }, this)
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                            lineNumber: 425,
+                                                                                            lineNumber: 445,
                                                                                             columnNumber: 65
                                                                                         }, this),
                                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
@@ -1688,18 +1706,18 @@ const Homepage = ()=>{
                                                                                                 src: "../assets/images/avtar/11.png"
                                                                                             }, void 0, false, {
                                                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                                lineNumber: 429,
+                                                                                                lineNumber: 449,
                                                                                                 columnNumber: 69
                                                                                             }, this)
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                            lineNumber: 428,
+                                                                                            lineNumber: 448,
                                                                                             columnNumber: 65
                                                                                         }, this)
                                                                                     ]
                                                                                 }, void 0, true, {
                                                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                    lineNumber: 421,
+                                                                                    lineNumber: 441,
                                                                                     columnNumber: 61
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1718,12 +1736,12 @@ const Homepage = ()=>{
                                                                                                 }
                                                                                             }, void 0, false, {
                                                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                                lineNumber: 434,
+                                                                                                lineNumber: 454,
                                                                                                 columnNumber: 69
                                                                                             }, this)
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                            lineNumber: 433,
+                                                                                            lineNumber: 453,
                                                                                             columnNumber: 65
                                                                                         }, this),
                                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1731,180 +1749,68 @@ const Homepage = ()=>{
                                                                                             children: "+ 80%"
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                            lineNumber: 436,
+                                                                                            lineNumber: 456,
                                                                                             columnNumber: 65
                                                                                         }, this)
                                                                                     ]
                                                                                 }, void 0, true, {
                                                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                                                    lineNumber: 432,
+                                                                                    lineNumber: 452,
                                                                                     columnNumber: 61
                                                                                 }, this)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                                                            lineNumber: 419,
+                                                                            lineNumber: 439,
                                                                             columnNumber: 57
                                                                         }, this)
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                                        lineNumber: 418,
+                                                                        lineNumber: 438,
                                                                         columnNumber: 53
                                                                     }, this)
                                                                 ]
                                                             }, i, true, {
                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                lineNumber: 309,
+                                                                lineNumber: 329,
                                                                 columnNumber: 49
                                                             }, this))
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                        lineNumber: 307,
+                                                        lineNumber: 327,
                                                         columnNumber: 41
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                    lineNumber: 306,
+                                                    lineNumber: 326,
                                                     columnNumber: 37
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                lineNumber: 305,
+                                                lineNumber: 325,
                                                 columnNumber: 33
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                            lineNumber: 304,
+                                            lineNumber: 324,
                                             columnNumber: 29
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                    lineNumber: 300,
+                                    lineNumber: 320,
                                     columnNumber: 25
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/pages/Homepage.jsx",
-                            lineNumber: 133,
+                            lineNumber: 153,
                             columnNumber: 21
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/pages/Homepage.jsx",
-                    lineNumber: 111,
-                    columnNumber: 17
-                }, this),
-                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "modal",
-                    "data-bs-backdrop": "static",
-                    id: "welcomeCard",
-                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "modal-dialog modal-dialog-centered",
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "modal-content welcome-card",
-                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "modal-body p-0",
-                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "text-center position-relative welcome-card-content z-1 p-3",
-                                    children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: "text-end position-relative z-1",
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("i", {
-                                                className: "ti ti-x fs-5 text-dark f-w-600",
-                                                "data-bs-dismiss": "modal"
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/pages/Homepage.jsx",
-                                                lineNumber: 459,
-                                                columnNumber: 41
-                                            }, this)
-                                        }, void 0, false, {
-                                            fileName: "[project]/src/pages/Homepage.jsx",
-                                            lineNumber: 458,
-                                            columnNumber: 37
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
-                                            className: "f-w-700 text-primary-dark mb-0",
-                                            children: [
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                    children: "Welcome!"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/src/pages/Homepage.jsx",
-                                                    lineNumber: 462,
-                                                    columnNumber: 41
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                                    alt: "gif",
-                                                    className: "w-45 d-inline align-baseline",
-                                                    src: "../assets/images/dashboard/ecommerce-dashboard/celebration.gif"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/src/pages/Homepage.jsx",
-                                                    lineNumber: 463,
-                                                    columnNumber: 41
-                                                }, this)
-                                            ]
-                                        }, void 0, true, {
-                                            fileName: "[project]/src/pages/Homepage.jsx",
-                                            lineNumber: 461,
-                                            columnNumber: 37
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: "modal-img-box",
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                                alt: "img",
-                                                className: "img-fluid",
-                                                src: "../assets/images/modals/welcome-1.png"
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/pages/Homepage.jsx",
-                                                lineNumber: 466,
-                                                columnNumber: 41
-                                            }, this)
-                                        }, void 0, false, {
-                                            fileName: "[project]/src/pages/Homepage.jsx",
-                                            lineNumber: 465,
-                                            columnNumber: 37
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: "modal-btn mb-4",
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                                className: "btn btn-primary text-white btn-sm rounded",
-                                                "data-bs-dismiss": "modal",
-                                                type: "button",
-                                                children: "Get Started"
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/pages/Homepage.jsx",
-                                                lineNumber: 469,
-                                                columnNumber: 41
-                                            }, this)
-                                        }, void 0, false, {
-                                            fileName: "[project]/src/pages/Homepage.jsx",
-                                            lineNumber: 468,
-                                            columnNumber: 37
-                                        }, this)
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "[project]/src/pages/Homepage.jsx",
-                                    lineNumber: 457,
-                                    columnNumber: 33
-                                }, this)
-                            }, void 0, false, {
-                                fileName: "[project]/src/pages/Homepage.jsx",
-                                lineNumber: 456,
-                                columnNumber: 29
-                            }, this)
-                        }, void 0, false, {
-                            fileName: "[project]/src/pages/Homepage.jsx",
-                            lineNumber: 455,
-                            columnNumber: 25
-                        }, this)
-                    }, void 0, false, {
-                        fileName: "[project]/src/pages/Homepage.jsx",
-                        lineNumber: 454,
-                        columnNumber: 21
-                    }, this)
-                }, void 0, false, {
-                    fileName: "[project]/src/pages/Homepage.jsx",
-                    lineNumber: 453,
+                    lineNumber: 131,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1927,7 +1833,7 @@ const Homepage = ()=>{
                                             children: "Add Ticket"
                                         }, void 0, false, {
                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                            lineNumber: 483,
+                                            lineNumber: 478,
                                             columnNumber: 33
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1937,13 +1843,13 @@ const Homepage = ()=>{
                                             type: "button"
                                         }, void 0, false, {
                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                            lineNumber: 484,
+                                            lineNumber: 479,
                                             columnNumber: 33
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                    lineNumber: 482,
+                                    lineNumber: 477,
                                     columnNumber: 29
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1963,7 +1869,7 @@ const Homepage = ()=>{
                                                                 children: "Title"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                lineNumber: 491,
+                                                                lineNumber: 486,
                                                                 columnNumber: 49
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1973,18 +1879,18 @@ const Homepage = ()=>{
                                                                 type: "text"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                lineNumber: 492,
+                                                                lineNumber: 487,
                                                                 columnNumber: 49
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                        lineNumber: 490,
+                                                        lineNumber: 485,
                                                         columnNumber: 45
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                    lineNumber: 489,
+                                                    lineNumber: 484,
                                                     columnNumber: 41
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1997,7 +1903,7 @@ const Homepage = ()=>{
                                                                 children: "Client"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                lineNumber: 497,
+                                                                lineNumber: 492,
                                                                 columnNumber: 49
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -2007,18 +1913,18 @@ const Homepage = ()=>{
                                                                 type: "text"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                lineNumber: 498,
+                                                                lineNumber: 493,
                                                                 columnNumber: 49
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                        lineNumber: 496,
+                                                        lineNumber: 491,
                                                         columnNumber: 45
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                    lineNumber: 495,
+                                                    lineNumber: 490,
                                                     columnNumber: 41
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2032,7 +1938,7 @@ const Homepage = ()=>{
                                                                 children: "Priority"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                lineNumber: 503,
+                                                                lineNumber: 498,
                                                                 columnNumber: 49
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
@@ -2044,7 +1950,7 @@ const Homepage = ()=>{
                                                                         children: "Select Priority"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                                        lineNumber: 505,
+                                                                        lineNumber: 500,
                                                                         columnNumber: 53
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -2052,7 +1958,7 @@ const Homepage = ()=>{
                                                                         children: "Medium"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                                        lineNumber: 506,
+                                                                        lineNumber: 501,
                                                                         columnNumber: 53
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -2060,7 +1966,7 @@ const Homepage = ()=>{
                                                                         children: "Lower"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                                        lineNumber: 507,
+                                                                        lineNumber: 502,
                                                                         columnNumber: 53
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -2068,24 +1974,24 @@ const Homepage = ()=>{
                                                                         children: "High"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                                        lineNumber: 508,
+                                                                        lineNumber: 503,
                                                                         columnNumber: 53
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                lineNumber: 504,
+                                                                lineNumber: 499,
                                                                 columnNumber: 49
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                        lineNumber: 502,
+                                                        lineNumber: 497,
                                                         columnNumber: 45
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                    lineNumber: 501,
+                                                    lineNumber: 496,
                                                     columnNumber: 41
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2099,7 +2005,7 @@ const Homepage = ()=>{
                                                                 children: "Status"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                lineNumber: 514,
+                                                                lineNumber: 509,
                                                                 columnNumber: 49
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
@@ -2111,7 +2017,7 @@ const Homepage = ()=>{
                                                                         children: "Select Status"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                                        lineNumber: 516,
+                                                                        lineNumber: 511,
                                                                         columnNumber: 53
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -2119,7 +2025,7 @@ const Homepage = ()=>{
                                                                         children: "open"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                                        lineNumber: 517,
+                                                                        lineNumber: 512,
                                                                         columnNumber: 53
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -2127,7 +2033,7 @@ const Homepage = ()=>{
                                                                         children: "inprogress"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                                        lineNumber: 518,
+                                                                        lineNumber: 513,
                                                                         columnNumber: 53
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -2135,24 +2041,24 @@ const Homepage = ()=>{
                                                                         children: "closed"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                                        lineNumber: 519,
+                                                                        lineNumber: 514,
                                                                         columnNumber: 53
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                lineNumber: 515,
+                                                                lineNumber: 510,
                                                                 columnNumber: 49
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                        lineNumber: 513,
+                                                        lineNumber: 508,
                                                         columnNumber: 45
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                    lineNumber: 512,
+                                                    lineNumber: 507,
                                                     columnNumber: 41
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2165,7 +2071,7 @@ const Homepage = ()=>{
                                                                 children: "Date"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                lineNumber: 525,
+                                                                lineNumber: 520,
                                                                 columnNumber: 49
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -2175,18 +2081,18 @@ const Homepage = ()=>{
                                                                 type: "date"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                lineNumber: 526,
+                                                                lineNumber: 521,
                                                                 columnNumber: 49
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                        lineNumber: 524,
+                                                        lineNumber: 519,
                                                         columnNumber: 45
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                    lineNumber: 523,
+                                                    lineNumber: 518,
                                                     columnNumber: 41
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2199,7 +2105,7 @@ const Homepage = ()=>{
                                                                 children: "Due Date"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                lineNumber: 531,
+                                                                lineNumber: 526,
                                                                 columnNumber: 49
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -2208,34 +2114,34 @@ const Homepage = ()=>{
                                                                 type: "date"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/pages/Homepage.jsx",
-                                                                lineNumber: 532,
+                                                                lineNumber: 527,
                                                                 columnNumber: 49
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                                        lineNumber: 530,
+                                                        lineNumber: 525,
                                                         columnNumber: 45
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                                    lineNumber: 529,
+                                                    lineNumber: 524,
                                                     columnNumber: 41
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                            lineNumber: 488,
+                                            lineNumber: 483,
                                             columnNumber: 37
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/pages/Homepage.jsx",
-                                        lineNumber: 487,
+                                        lineNumber: 482,
                                         columnNumber: 33
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                    lineNumber: 486,
+                                    lineNumber: 481,
                                     columnNumber: 29
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2248,7 +2154,7 @@ const Homepage = ()=>{
                                             children: "Close"
                                         }, void 0, false, {
                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                            lineNumber: 539,
+                                            lineNumber: 534,
                                             columnNumber: 33
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2258,44 +2164,158 @@ const Homepage = ()=>{
                                             children: "Save changes"
                                         }, void 0, false, {
                                             fileName: "[project]/src/pages/Homepage.jsx",
-                                            lineNumber: 541,
+                                            lineNumber: 536,
                                             columnNumber: 33
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/pages/Homepage.jsx",
-                                    lineNumber: 538,
+                                    lineNumber: 533,
                                     columnNumber: 29
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/pages/Homepage.jsx",
-                            lineNumber: 481,
+                            lineNumber: 476,
                             columnNumber: 25
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/pages/Homepage.jsx",
-                        lineNumber: 480,
+                        lineNumber: 475,
                         columnNumber: 21
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/pages/Homepage.jsx",
-                    lineNumber: 479,
+                    lineNumber: 474,
+                    columnNumber: 17
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "modal",
+                    "data-bs-backdrop": "static",
+                    id: "welcomeCard",
+                    tabIndex: "-1",
+                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "modal-dialog modal-dialog-centered",
+                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "modal-content welcome-card",
+                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "modal-body p-0",
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "text-center position-relative welcome-card-content z-1 p-3",
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: "text-end position-relative z-1",
+                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("i", {
+                                                className: "ti ti-x fs-5 text-dark f-w-600",
+                                                "data-bs-dismiss": "modal",
+                                                role: "button"
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/pages/Homepage.jsx",
+                                                lineNumber: 550,
+                                                columnNumber: 41
+                                            }, this)
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/pages/Homepage.jsx",
+                                            lineNumber: 549,
+                                            columnNumber: 37
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
+                                            className: "f-w-700 text-primary-dark mb-0",
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                    children: "Welcome!"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/pages/Homepage.jsx",
+                                                    lineNumber: 557,
+                                                    columnNumber: 41
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                                                    alt: "gif",
+                                                    className: "w-45 d-inline align-baseline",
+                                                    src: "../assets/images/dashboard/ecommerce-dashboard/celebration.gif"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/pages/Homepage.jsx",
+                                                    lineNumber: 558,
+                                                    columnNumber: 41
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/src/pages/Homepage.jsx",
+                                            lineNumber: 556,
+                                            columnNumber: 37
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: "modal-img-box",
+                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                                                alt: "img",
+                                                className: "img-fluid",
+                                                src: "../assets/images/modals/welcome-1.png"
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/pages/Homepage.jsx",
+                                                lineNumber: 565,
+                                                columnNumber: 41
+                                            }, this)
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/pages/Homepage.jsx",
+                                            lineNumber: 564,
+                                            columnNumber: 37
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: "modal-btn mb-4",
+                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                className: "btn btn-primary text-white btn-sm rounded",
+                                                "data-bs-dismiss": "modal",
+                                                type: "button",
+                                                children: "Get Started"
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/pages/Homepage.jsx",
+                                                lineNumber: 572,
+                                                columnNumber: 41
+                                            }, this)
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/pages/Homepage.jsx",
+                                            lineNumber: 571,
+                                            columnNumber: 37
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/src/pages/Homepage.jsx",
+                                    lineNumber: 548,
+                                    columnNumber: 33
+                                }, this)
+                            }, void 0, false, {
+                                fileName: "[project]/src/pages/Homepage.jsx",
+                                lineNumber: 547,
+                                columnNumber: 29
+                            }, this)
+                        }, void 0, false, {
+                            fileName: "[project]/src/pages/Homepage.jsx",
+                            lineNumber: 546,
+                            columnNumber: 25
+                        }, this)
+                    }, void 0, false, {
+                        fileName: "[project]/src/pages/Homepage.jsx",
+                        lineNumber: 545,
+                        columnNumber: 21
+                    }, this)
+                }, void 0, false, {
+                    fileName: "[project]/src/pages/Homepage.jsx",
+                    lineNumber: 544,
                     columnNumber: 17
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/src/pages/Homepage.jsx",
-            lineNumber: 107,
+            lineNumber: 127,
             columnNumber: 13
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/pages/Homepage.jsx",
-        lineNumber: 88,
+        lineNumber: 108,
         columnNumber: 9
     }, this);
 };
-_s(Homepage, "O+77VRD+NYOdW0l7f1yIZ01or4w=");
+_s(Homepage, "qGM8Gu4m/wymPO1IAGaOszwH3X0=");
 _c = Homepage;
 const __TURBOPACK__default__export__ = Homepage;
 var _c;

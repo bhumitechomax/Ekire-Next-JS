@@ -320,6 +320,6 @@ closeCollaps.forEach(function (element) {
 
 // >>-- 15  Modal js --<<
 
-$(function () {
-  $('#welcomeCard').modal('show');
-});
+// $(function () {
+//   $('#welcomeCard').modal('show');
+// });

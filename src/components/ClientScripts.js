@@ -3,6 +3,7 @@
 import Script from "next/script";
 import { useEffect } from "react";
 
+
 const ClientScripts = () => {
     useEffect(() => {
         if (typeof window !== "undefined") {
@@ -21,7 +22,7 @@ const ClientScripts = () => {
             {/* ✅ Bootstrap & others */}
             <Script rel="preload" src="/assets/vendor/bootstrap/bootstrap.bundle.min.js" strategy="afterInteractive" />
 
-            <Script rel="preload" src="/assets/js/slick.js" strategy="lazyOnload" />
+            {/* <Script rel="preload" src="/assets/js/slick.js" strategy="lazyOnload" /> */}
             <Script rel="preload" src="/assets/vendor/slick/slick.min.js" strategy="lazyOnload" />
             
             {/* ✅ Vendor Scripts */}
@@ -52,7 +53,7 @@ const ClientScripts = () => {
             <Script rel="preload" src="/assets/js/sweet_alert.js" strategy="lazyOnload" />
 
             {/* ❌ REMOVE this jQuery version */}
-            <Script rel="preload" src="/assets/vendor/datatable/jquery-3.5.1.js" strategy="lazyOnload" />
+            {/* <Script rel="preload" src="/assets/vendor/datatable/jquery-3.5.1.js" strategy="lazyOnload" /> */}
 
             {/* ✅ DataTables */}
             <Script rel="preload" src="/assets/vendor/listJs/list-jquery.min.js" strategy="afterInteractive" />

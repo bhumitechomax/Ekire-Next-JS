@@ -3,6 +3,7 @@ import React, { Fragment, useEffect, useState, useRef } from "react";
 // import Image from "next/image";
 import Slider from 'react-slick';
 
+
 import $ from "jquery";
 // import "datatables.net";
 
@@ -83,6 +84,25 @@ const Homepage = () => {
         slidesToScroll: 1,
         arrows: true,
     };
+
+    useEffect(() => {
+    if (typeof window !== 'undefined') {
+        const modalEl = document.getElementById('welcomeCard');
+        const bootstrapModal = window.bootstrap?.Modal;
+        const lastShown = localStorage.getItem('welcomeModalLastShown');
+
+        const now = new Date().getTime();
+        const hours5 = 5 * 60 * 60 * 1000; // 5 hours in ms
+
+        if (!lastShown || now - parseInt(lastShown) > hours5) {
+            if (modalEl && bootstrapModal) {
+            const modal = new bootstrapModal(modalEl);
+            modal.show();
+            localStorage.setItem('welcomeModalLastShown', now.toString());
+            }
+        }
+        }
+    }, []);
 
     return (
         <Fragment>
@@ -215,7 +235,7 @@ const Homepage = () => {
                                     </div>
                                 </div>
                             </div>
-                        </div>  
+                        </div>
                         <div className="col-md-12 col-xxl-4">
                             <div className="row">
                                 <div className="col-12">
@@ -449,32 +469,7 @@ const Homepage = () => {
                 </div>
 
 
-                {/* welcome modal */}
-                <div className="modal" data-bs-backdrop="static" id="welcomeCard">
-                    <div className="modal-dialog modal-dialog-centered">
-                        <div className="modal-content welcome-card">
-                            <div className="modal-body p-0">
-                                <div className="text-center position-relative welcome-card-content z-1 p-3">
-                                    <div className="text-end position-relative z-1">
-                                        <i className="ti ti-x fs-5 text-dark f-w-600" data-bs-dismiss="modal" />
-                                    </div>
-                                    <h2 className="f-w-700 text-primary-dark mb-0">
-                                        <span>Welcome!</span>
-                                        <img alt="gif" className="w-45 d-inline align-baseline" src="../assets/images/dashboard/ecommerce-dashboard/celebration.gif" />
-                                    </h2>
-                                    <div className="modal-img-box">
-                                        <img alt="img" className="img-fluid" src="../assets/images/modals/welcome-1.png" />
-                                    </div>
-                                    <div className="modal-btn mb-4">
-                                        <button className="btn btn-primary text-white btn-sm rounded" data-bs-dismiss="modal" type="button" >
-                                            Get Started
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
 
                 <div aria-hidden="true" aria-labelledby="ticketModalLabel" className="modal fade" id="ticketModal" tabIndex={-1}>
                     <div className="modal-dialog modal-dialog-centered">
@@ -540,6 +535,49 @@ const Homepage = () => {
                                 </button>
                                 <button className="btn btn-primary" id="ticketkey" type="button">Save changes
                                 </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* welcome modal */}
+                <div className="modal" data-bs-backdrop="static" id="welcomeCard" tabIndex="-1">
+                    <div className="modal-dialog modal-dialog-centered">
+                        <div className="modal-content welcome-card">
+                            <div className="modal-body p-0">
+                                <div className="text-center position-relative welcome-card-content z-1 p-3">
+                                    <div className="text-end position-relative z-1">
+                                        <i
+                                            className="ti ti-x fs-5 text-dark f-w-600"
+                                            data-bs-dismiss="modal"
+                                            role="button"
+                                        />
+                                    </div>
+                                    <h2 className="f-w-700 text-primary-dark mb-0">
+                                        <span>Welcome!</span>
+                                        <img
+                                            alt="gif"
+                                            className="w-45 d-inline align-baseline"
+                                            src="../assets/images/dashboard/ecommerce-dashboard/celebration.gif"
+                                        />
+                                    </h2>
+                                    <div className="modal-img-box">
+                                        <img
+                                            alt="img"
+                                            className="img-fluid"
+                                            src="../assets/images/modals/welcome-1.png"
+                                        />
+                                    </div>
+                                    <div className="modal-btn mb-4">
+                                        <button
+                                            className="btn btn-primary text-white btn-sm rounded"
+                                            data-bs-dismiss="modal"
+                                            type="button"
+                                        >
+                                            Get Started
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
