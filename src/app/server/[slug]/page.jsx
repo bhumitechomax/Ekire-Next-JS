@@ -17,59 +17,79 @@ function Manage() {
     const [app, setApp] = useState([]);
     const [selectedOSId, setSelectedOSId] = useState(null);
     const [selectedAppId, setSelectedAppId] = useState(null);
-    const handleOSClick = (id) => {
-        setSelectedOSId(id);
+    const handleOSClick = (osid) => {
+        setSelectedOSId(osid);
     };
-    const handleAppClick = (id) => {
-        setSelectedAppId(id);
+    const handleAppClick = (appid) => {
+        setSelectedAppId(appid);
     };
     const [showReinstallCard, setShowReinstallCard] = useState(false);
     const [selectedVersionId, setSelectedVersionId] = useState(null);
 
     const [serverdetails, setServerDetails] = useState(null);
     const [vmps, setVmps] = useState(null);
-    const [systemusage , setSystemUsage] = useState(null);
+    const [systemusage, setSystemUsage] = useState(null);
+    const [hostname, setHostname] = useState("");
+    const [success, setSuccess] = useState("");
+    const [error, setError] = useState({});
+    // const [snapshots, setSnapshots] = useState([]);
+    const [serverId, setServerId] = useState(id);
+    const [formData, setFormData] = useState({ snapshot_name: "" });
+    const [snapshots, setSnapshots] = useState([]);
 
-     useEffect(() => {
-            const token = Cookies.get("accessToken");
-            if (token && id) {
-                console.log('fetch token ', token);
-                const FetchSshkey = async () => {
-                    setIsLoading(true);
-                    try {
-                        const response = await fetch(
-                            `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/server/${id}/get`,
-                            {
-                                method: "POST",
-                                headers: {
-                                    "Content-Type": "application/json",
-                                    Authorization: `Bearer ${token}`,
-                                },
-                            }
-                        );
-    
-                        const result = await response.json();
-                       
-                        const data = result.data.data;
-                        setServerDetails(data.server);
-                        setVmps(data.vms);
-                        setSystemUsage(data);
-                        // setFormData({ name: data.name, key: data.key });
-                        setIsLoading(false);
-                    } catch (error) {
-                        console.error("Error fetching Server:", error);
-                        setIsLoading(false);
-                    }
-                };
-    
-                FetchSshkey();
-            }
-        }, [id]);
+    const [reinstallPayload, setReinstallPayload] = useState({
+        os_version_id: null,
+    });
+    const [changehostnamePayload, setChangeHostnamePayload] = useState({
+        hostname: ""
+    });
+
+
+// Fetch Server Details and VMPS
+    useEffect(() => {
+        const token = Cookies.get("accessToken");
+        if (token && id) {
+            console.log('fetch token ', token);
+            const FetchSshkey = async () => {
+                setIsLoading(true);
+                try {
+                    const response = await fetch(
+                        `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/server/${id}/get`,
+                        {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                                Authorization: `Bearer ${token}`,
+                            },
+                        }
+                    );
+
+                    const result = await response.json();
+
+                    const data = result.data.data;
+                    setServerDetails(data.server);
+                    setVmps(data.vms);
+                    setSystemUsage(data);
+                    // setFormData({ name: data.name, key: data.key });
+                    setIsLoading(false);
+                } catch (error) {
+                    console.error("Error fetching Server:", error);
+                    setIsLoading(false);
+                }
+            };
+
+            FetchSshkey();
+        }
+    }, [id]);
 
         // console.log(serverdetails);
         // console.log("------------------------------------------");
         // console.log(vmps);
         // console.log("------------------------------------------");
+    // console.log(serverdetails);
+    // console.log("------------------------------------------");
+    // console.log(vmps);
+    // console.log("------------------------------------------");
 
     useEffect(() => {
         const toggleIcons = document.querySelectorAll(".toggle-password");
@@ -97,7 +117,7 @@ function Manage() {
         });
     }, []);
 
-    // auto load
+    // auto loadl
     const [isLoading, setIsLoading] = useState(true);
     useEffect(() => {
         // Simulate loading
@@ -375,9 +395,8 @@ function Manage() {
     }, []);
 
     // api for reinstall server
-    const reinstallServer = async (id, payload) => {
-        if (!id || !payload?.version_id) return;
-
+    const reinstallServer = async (id, reinstallPayload) => {
+       if (!id || !reinstallPayload?.os_version_id) return;
         const swalWithBootstrapButtons = Swal.mixin({
             customClass: {
                 confirmButton: 'btn btn-secondary ms-2',
@@ -405,7 +424,7 @@ function Manage() {
                                 "Content-Type": "application/json",
                                 Authorization: `Bearer ${Cookies.get("accessToken")}`,
                             },
-                            body: JSON.stringify(payload),
+                            body: JSON.stringify(reinstallPayload),
                         }
                     );
 
@@ -418,12 +437,15 @@ function Manage() {
                             'The server has been reinstalled successfully.',
                             'success'
                         );
+
+                        window.location.reload(); // Reload the page to reflect changes
                     } else {
                         swalWithBootstrapButtons.fire(
                             'Failed!',
                             result.message || 'Failed to reinstall the server.',
                             'error'
                         );
+
                     }
                 } catch (error) {
                     console.error("Error:", error);
@@ -442,10 +464,15 @@ function Manage() {
             }
         });
     };
-
+    const handleHostnameChange = (e) => {
+        setChangeHostnamePayload({
+            ...changehostnamePayload,
+            [e.target.name]: e.target.value,
+        });
+    };
     // api for hostname update
-    const handleUpdateClick = async (id) => {
-        if (!hostname) {
+    const handleUpdateClick = async () => {
+        if (!changehostnamePayload?.hostname) {
             Swal.fire("Missing Info", "Please enter a hostname.", "warning");
             return;
         }
@@ -461,7 +488,7 @@ function Manage() {
 
         swalWithBootstrapButtons.fire({
             title: "Update Hostname?",
-            text: `Are you sure you want to update the hostname to "${hostname}"?`,
+            text: `Are you sure you want to update the hostname to "${changehostnamePayload?.hostname}"?`,
             icon: "question",
             showCancelButton: true,
             confirmButtonText: "Yes, update it!",
@@ -478,20 +505,20 @@ function Manage() {
                                 "Content-Type": "application/json",
                                 Authorization: `Bearer ${Cookies.get("accessToken")}`,
                             },
-                            body: JSON.stringify({ hostname }),
+                            body: JSON.stringify({ hostname: changehostnamePayload?.hostname }),
                         }
                     );
 
                     const data = await res.json();
                     console.log("Update Response:", data);
 
-                    if (res.ok && data.success) {
+                    if (res.ok && data?.data?.status === "success") {
                         swalWithBootstrapButtons.fire(
                             "Updated!",
                             "The hostname was updated successfully.",
                             "success"
                         );
-                        setHostname(""); // Reset field
+                        setChangeHostnamePayload({ hostname: "" }); // Reset field
                     } else {
                         swalWithBootstrapButtons.fire(
                             "Failed!",
@@ -510,7 +537,8 @@ function Manage() {
     };
 
     // // api for update password
-    const handleChangePasswordClick = async (id) => {
+    const handleChangePasswordClick = async () => {
+        console.log("ID: ", id)
         if (!id) {
             Swal.fire("Missing Info", "Server ID is required.", "warning");
             return;
@@ -550,9 +578,9 @@ function Manage() {
                     );
 
                     const data = await res.json();
-                    console.log("Change Password Response:", data);
+                    // console.log("Change Password Response:", data);
 
-                    if (res.ok && data.success) {
+                    if (res.ok && data?.data?.status === "success") {
                         swalWithBootstrapButtons.fire(
                             "Updated!",
                             "A new password has been sent to the current user.",
@@ -574,6 +602,240 @@ function Manage() {
             }
         });
     };
+
+    const handleChange = (e) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value,
+        });
+    };
+
+
+    useEffect(() => {
+        if (id) fetchSnapshots();
+    }, [id]);
+
+    // api for list snapshots
+    const fetchSnapshots = async () => {
+        
+
+        try {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}/server/${id}/list-snapshots`, {
+                method: "POST",
+                headers: {
+                    Authorization: `Bearer ${Cookies.get("accessToken")}`,
+                },
+            });
+
+            const data = await res.json();
+            console.log("Snapshots:", data);
+
+            if (res.ok && data?.data?.snapshots) {
+                setSnapshots(data.data.snapshots);
+                console.log("Fetched snapshots:", data.data.snapshots);
+            } else {
+                console.error("Failed to fetch snapshots:", data?.data?.error || "Unknown error");
+            }
+        } catch (err) {
+            console.error("Error fetching snapshots:", err);
+        }
+    };
+
+    console.log("Snapshots:", snapshots);
+
+
+    // api for snapshots
+
+
+    const handleSubmitSnapshot = async () => {
+        setSuccess("");
+        setError({});
+
+        if (!serverId) {
+            setError({ name: ["Server ID is missing."] });
+            return;
+        }
+
+        try {
+            const res = await fetch(
+                `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/server/${id}/create-snapshot`,
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${Cookies.get("accessToken")}`,
+                    },
+                    body: JSON.stringify({
+                        snapshot_name: formData.snapshot_name,
+                    }),
+                }
+            );
+
+            const data = await res.json();
+            console.log("Create Snapshot Response:", data);
+
+            if (res.ok && data.success) {
+                setSuccess("Snapshot created successfully.");
+                fetchSnapshots(); // 🔄 Refresh list
+            } else {
+                setError({ name: [data.message || "Failed to create snapshot."] });
+            }
+        } catch (err) {
+            console.error("Snapshot Error:", err);
+            setError({ name: ["Something went wrong while creating snapshot."] });
+        }
+    };
+
+
+    // Delete snapshot function
+    const handleDeleteSnapshot = async (snapshotId) => {
+        if (!snapshotId) {
+            Swal.fire("Missing Info", "Snapshot ID is required.", "warning");
+            return;
+        }
+
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: 'btn btn-danger ms-2',
+                cancelButton: 'btn btn-secondary'
+            },
+            buttonsStyling: false
+        });
+
+        swalWithBootstrapButtons.fire({
+            title: "Delete Snapshot?",
+            text: "Are you sure you want to delete this snapshot? This action cannot be undone.",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes, delete it!",
+            cancelButtonText: "Cancel",
+            reverseButtons: true
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                try {
+                    const res = await fetch(
+                        `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/snapshots/${snapshotId}/delete`,
+                        {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                                Authorization: `Bearer ${Cookies.get("accessToken")}`,
+                            },
+                        }
+                    );
+
+                    let data;
+                    try {
+                        data = await res.json();
+                    } catch (err) {
+                        console.error("Failed to parse JSON:", err);
+                        swalWithBootstrapButtons.fire("Error", "Invalid server response.", "error");
+                        return;
+                    }
+
+                    console.log("Delete Snapshot Response:", data);
+
+                    if (res.ok && data?.data?.status === "success") {
+                        swalWithBootstrapButtons.fire(
+                            "Deleted!",
+                            data?.data?.message || "The snapshot has been deleted.",
+                            "success"
+                        ).then(() => {
+                            fetchSnapshots(); // ✅ Now this works!
+                        });
+                    } else {
+                        swalWithBootstrapButtons.fire(
+                            "Failed!",
+                            data?.message || "Failed to delete snapshot.",
+                            "error"
+                        );
+                    }
+
+                } catch (error) {
+                    console.error("Delete Snapshot Error:", error);
+                    swalWithBootstrapButtons.fire("Error", "Something went wrong.", "error");
+                }
+            } else {
+                swalWithBootstrapButtons.fire("Cancelled", "Snapshot deletion was cancelled.", "info");
+            }
+        });
+    };
+
+    // api for restore snapshot
+    const handleRevertSnapshot = async (snapshotId) => {
+        if (!snapshotId) {
+            Swal.fire("Missing Info", "Snapshot ID is required.", "warning");
+            return;
+        }
+
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: 'btn btn-success ms-2',
+                cancelButton: 'btn btn-secondary'
+            },
+            buttonsStyling: false
+        });
+
+        swalWithBootstrapButtons.fire({
+            title: "Revert Snapshot?",
+            text: "Are you sure you want to revert to this snapshot?",
+            icon: "question",
+            showCancelButton: true,
+            confirmButtonText: "Yes, revert it!",
+            cancelButtonText: "Cancel",
+            reverseButtons: true
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                try {
+                    const res = await fetch(
+                        `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/snapshots/${snapshotId}/revert`,
+                        {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                                Authorization: `Bearer ${Cookies.get("accessToken")}`,
+                            },
+                        }
+                    );
+
+                    let data;
+                    try {
+                        data = await res.json();
+                    } catch (err) {
+                        console.error("Failed to parse JSON:", err);
+                        swalWithBootstrapButtons.fire("Error", "Invalid server response.", "error");
+                        return;
+                    }
+
+                    console.log("Revert Snapshot Response:", data);
+
+                    if (res.ok && data?.data?.status === "success") {
+                        swalWithBootstrapButtons.fire(
+                            "Reverted!",
+                            data?.data?.message || "Snapshot reverted successfully.",
+                            "success"
+                        ).then(() => {
+                            fetchSnapshots(); // refresh the list after revert
+                        });
+                    } else {
+                        swalWithBootstrapButtons.fire(
+                            "Failed!",
+                            data?.message || "Failed to revert snapshot.",
+                            "error"
+                        );
+                    }
+
+                } catch (error) {
+                    console.error("Revert Snapshot Error:", error);
+                    swalWithBootstrapButtons.fire("Error", "Something went wrong.", "error");
+                }
+            } else {
+                swalWithBootstrapButtons.fire("Cancelled", "Snapshot revert was cancelled.", "info");
+            }
+        });
+    };
+
+
 
 
     return (
@@ -766,7 +1028,7 @@ function Manage() {
                                                         <div className="col-12 col-lg-6 m-10-0">
                                                             <div className="card-body card-body-style">
                                                                 <div className="d-flex justify-content-between align-items-center">
-                                                                    <h6 className="mb-0">{serverdetails?.location } </h6>
+                                                                    <h6 className="mb-0">{serverdetails?.location} </h6>
                                                                     <div className="dropdown bg-xl-light-danger h-40 w-40 d-flex-center b-r-15">
                                                                         <i className="ph-bold  ph-map-pin-line f-s-20 text-danger" />
                                                                     </div>
@@ -776,7 +1038,7 @@ function Manage() {
                                                         <div className="col-12 col-lg-6 m-10-0">
                                                             <div className="card-body card-body-style">
                                                                 <div className="d-flex justify-content-between align-items-center">
-                                                                    <h6 className="mb-0">{serverdetails?.cpu }</h6>
+                                                                    <h6 className="mb-0">{serverdetails?.cpu}</h6>
                                                                     <div className="dropdown bg-xl-light-info h-40 w-40 d-flex-center b-r-15">
                                                                         <i className="ph-bold ph-cpu text-info f-s-20" />
                                                                     </div>
@@ -786,7 +1048,7 @@ function Manage() {
                                                         <div className="col-12 col-lg-6 m-10-0">
                                                             <div className="card-body card-body-style">
                                                                 <div className="d-flex justify-content-between align-items-center">
-                                                                    <h6 className="mb-0">{serverdetails?.os_label }</h6>
+                                                                    <h6 className="mb-0">{serverdetails?.os_label}</h6>
                                                                     <div className="dropdown bg-xl-light-warning h-40 w-40 d-flex-center b-r-15">
                                                                         <i className="ph-bold  ph-windows-logo f-s-22 text-warning text-warning" />
                                                                     </div>
@@ -1010,7 +1272,9 @@ function Manage() {
                                                                                 <button
                                                                                     className="btn btn-primary"
                                                                                     type="button"
-                                                                                    onClick={() => reinstallServer(serverdetails?.id, { version_id: selectedVersionId })}
+                                                                                    onClick={() => reinstallServer(serverdetails?.id, {
+                                                                                    os_version_id: selectedVersionId,
+                                                                                    })}
                                                                                 >
                                                                                     Save
                                                                                 </button>
@@ -1063,7 +1327,9 @@ function Manage() {
                                                                                 <button
                                                                                     className="btn btn-primary"
                                                                                     type="button"
-                                                                                    onClick={() => reinstallServer(server?.id, { version_id: selectedVersionId })}
+                                                                                   onClick={() => reinstallServer(serverdetails?.id, {
+                                                                                    os_version_id: selectedVersionId,
+                                                                                    })}
                                                                                 >
                                                                                     Save
                                                                                 </button>
@@ -1090,28 +1356,29 @@ function Manage() {
                                                     </div>
                                                     <div className="card-body" >
                                                         <form className="app-form row g-3" style={{ padding: "5px 15px" }} onSubmit={(e) => e.preventDefault()}>
-                                                            <div className="col-md-4">
-                                                                <label className="form-label" htmlFor="hostnameInput">
-                                                                    Update Hostname
-                                                                </label>
-                                                                <input
-                                                                    id="hostnameInput"
-                                                                    type="text"
-                                                                    className="form-control"
-                                                                    placeholder="New Hostname"
-                                                                    required
-                                                                    // value={hostname}
-                                                                    // onChange={(e) => setHostname(e.target.value)}
-                                                                />
-                                                                <button
-                                                                    type="button"
-                                                                    className="btn btn-primary h-45 icon-btn mb-3 mt-4"
-                                                                    onClick={handleUpdateClick}
-                                                                >
-                                                                    Update
-                                                                </button>
-                                                            </div>
-                                                        </form>
+                                                        <div className="col-md-4">
+                                                            <label className="form-label" htmlFor="hostnameInput">
+                                                                Update Hostname
+                                                            </label>
+                                                            <input
+                                                                id="hostnameInput"
+                                                                type="text"
+                                                                className="form-control"
+                                                                placeholder="New Hostname"
+                                                                name="hotname"
+                                                                required
+                                                                value={changehostnamePayload.hostname}
+                                                                onChange={(e) => setChangeHostnamePayload({ ...changehostnamePayload, hostname: e.target.value })}
+                                                            />
+                                                            <button
+                                                                type="button"
+                                                                className="btn btn-primary h-45 icon-btn mb-3 mt-4"
+                                                                onClick={handleUpdateClick}
+                                                            >
+                                                                Update
+                                                            </button>
+                                                        </div>
+                                                    </form>
                                                     </div>
                                                 </div>
 
@@ -1138,7 +1405,7 @@ function Manage() {
                                                             </div>
                                                         </form>
 
-                                                    </div> 
+                                                    </div>
 
                                                     {/* <div className="card-body" >
                                                         <form className="app-form rounded-control  row g-3" style={{ padding: "5px 15px" }}>
@@ -1256,14 +1523,70 @@ function Manage() {
                                             <div className="col-lg-12">
                                                 <div className="card security-card-content">
                                                     <div className="card-header">
-                                                        <h5>Snap shots</h5>
+                                                        <h5>Snapshots</h5>
                                                     </div>
                                                     <div className="card-body" >
-                                                        <button className="btn btn-primary h-45 icon-btn mb-3" >
-                                                            <i className="ph-bold  ph-plus f-s-18" />  Create Snapshots
+                                                        <button
+                                                            className="btn btn-primary h-45 icon-btn m-2"
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target="#projectCard2"
+                                                        >
+                                                            <i className="ph-bold ph-plus f-s-18" /> Create Snapshots
                                                         </button>
                                                     </div>
                                                 </div>
+
+                                                <div className="card p-l-r-30">
+                                                    <div className="card-body p-0">
+                                                        <div className="app-datatable-default overflow-auto">
+                                                            <table
+                                                                className="datatable display app-data-table default-data-table"
+
+                                                                id="example"
+                                                            >
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th width={10}>Sr no.</th>
+                                                                        <th>Snapshot Name</th>
+                                                                        <th>Size</th>
+                                                                        {/* <th>Expiration Date</th> */}
+                                                                        <th>Action</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    {snapshots.length > 0 &&
+                                                                        snapshots.map((snapshot, index) => (
+                                                                            <tr key={snapshot.id || index}>
+                                                                                <td>{index + 1}</td>
+                                                                                <td>{snapshot?.name}</td>
+                                                                                <td>{snapshot?.size} GB</td>
+                                                                                {/* <td>{snapshot?.expiration_date}</td> */}
+                                                                                <td className="d-flex gap-3">
+                                                                                    <button
+                                                                                        className="badge text-white bg-success border-0 d-flex gap-2 align-items-center"
+                                                                                        onClick={() => handleRevertSnapshot(snapshot.id)}
+                                                                                    >
+                                                                                        Revert
+                                                                                    </button>
+
+                                                                                    <button
+                                                                                        className="badge text-white bg-danger border-0 d-flex gap-2 align-items-center"
+                                                                                        onClick={() => handleDeleteSnapshot(snapshot.id)}
+                                                                                    >
+                                                                                        <i className="ph ph-trash f-s-18" />
+                                                                                        Delete
+                                                                                    </button>
+
+                                                                                </td>
+                                                                            </tr>
+                                                                        ))}
+                                                                </tbody>
+
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
                                             </div>
                                         </div>
                                     </div>
@@ -1273,7 +1596,62 @@ function Manage() {
                         {/* Projects end */}
 
 
+
+
                     </div>
+
+
+                    {/* Project Modal */}
+                    <div className="modal fade" id="projectCard2" aria-hidden="true"
+                    >
+                        <div className="modal-dialog ">
+                            <div className="modal-content">
+                                <div className="modal-header">
+                                    <div className="d-flex align-items-center gap-3">
+                                        <h5 className="modal-title">Create Project </h5>
+                                        <iconify-icon icon="line-md:document-add" className="text-success f-s-22"></iconify-icon>
+                                    </div>
+                                    <button
+                                        type="button"
+                                        className="btn-close"
+                                        data-bs-dismiss="modal"
+                                        aria-label="Close"
+                                    />
+                                </div>
+
+                                <form onSubmit={handleSubmitSnapshot}>
+                                    <div className="modal-body">
+                                        {success && <div className="alert alert-success">{success}</div>}
+
+                                        <div className="mb-3">
+                                            <label htmlFor="snapshot_name" className="form-label">
+                                                Snapshot Name
+                                            </label>
+                                            <input
+                                                type="text"
+                                                id="snapshot_name"
+                                                name="snapshot_name"
+                                                className="form-control"
+                                                required
+                                                value={formData.snapshot_name}
+                                                onChange={handleChange}
+                                            />
+                                            {error.name && (
+                                                <div className="text-danger small">{error.name[0]}</div>
+                                            )}
+                                        </div>
+                                    </div>
+
+                                    <div className="modal-footer">
+                                        <button type="submit" className="btn btn-primary">
+                                            Submit
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
 
                 </main>
             </div>
