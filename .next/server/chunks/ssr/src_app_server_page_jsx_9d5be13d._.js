@@ -192,6 +192,13 @@ function Server() {
                                                                             fileName: "[project]/src/app/server/page.jsx",
                                                                             lineNumber: 133,
                                                                             columnNumber: 61
+                                                                        }, this),
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                                                            children: "Action"
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/src/app/server/page.jsx",
+                                                                            lineNumber: 134,
+                                                                            columnNumber: 61
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
@@ -249,6 +256,29 @@ function Server() {
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/app/server/page.jsx",
                                                                                 lineNumber: 150,
+                                                                                columnNumber: 65
+                                                                            }, this),
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                                                    className: "badge text-white bg-danger border-0 d-flex gap-2 align-items-center",
+                                                                                    children: [
+                                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("i", {
+                                                                                            className: "ph ph-trash f-s-18"
+                                                                                        }, void 0, false, {
+                                                                                            fileName: "[project]/src/app/server/page.jsx",
+                                                                                            lineNumber: 163,
+                                                                                            columnNumber: 89
+                                                                                        }, this),
+                                                                                        "Delete"
+                                                                                    ]
+                                                                                }, void 0, true, {
+                                                                                    fileName: "[project]/src/app/server/page.jsx",
+                                                                                    lineNumber: 159,
+                                                                                    columnNumber: 85
+                                                                                }, this)
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/src/app/server/page.jsx",
+                                                                                lineNumber: 151,
                                                                                 columnNumber: 65
                                                                             }, this)
                                                                         ]
@@ -332,7 +362,7 @@ function Server() {
                                                     children: "Add SSH Key "
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/server/page.jsx",
-                                                    lineNumber: 193,
+                                                    lineNumber: 209,
                                                     columnNumber: 37
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("iconify-icon", {
@@ -340,13 +370,13 @@ function Server() {
                                                     className: "animeted-plus-circle f-s-22"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/server/page.jsx",
-                                                    lineNumber: 194,
+                                                    lineNumber: 210,
                                                     columnNumber: 37
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/server/page.jsx",
-                                            lineNumber: 192,
+                                            lineNumber: 208,
                                             columnNumber: 33
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -356,13 +386,13 @@ function Server() {
                                             type: "button"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/server/page.jsx",
-                                            lineNumber: 197,
+                                            lineNumber: 213,
                                             columnNumber: 33
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/server/page.jsx",
-                                    lineNumber: 191,
+                                    lineNumber: 207,
                                     columnNumber: 29
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -379,7 +409,7 @@ function Server() {
                                                         children: "Name"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/server/page.jsx",
-                                                        lineNumber: 202,
+                                                        lineNumber: 218,
                                                         columnNumber: 41
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -390,13 +420,13 @@ function Server() {
                                                         required: true
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/server/page.jsx",
-                                                        lineNumber: 203,
+                                                        lineNumber: 219,
                                                         columnNumber: 41
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/server/page.jsx",
-                                                lineNumber: 201,
+                                                lineNumber: 217,
                                                 columnNumber: 37
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -408,7 +438,7 @@ function Server() {
                                                         children: "SSH Key"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/server/page.jsx",
-                                                        lineNumber: 206,
+                                                        lineNumber: 222,
                                                         columnNumber: 41
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("textarea", {
@@ -419,24 +449,24 @@ function Server() {
                                                         required: true
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/server/page.jsx",
-                                                        lineNumber: 207,
+                                                        lineNumber: 223,
                                                         columnNumber: 41
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/server/page.jsx",
-                                                lineNumber: 205,
+                                                lineNumber: 221,
                                                 columnNumber: 37
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/server/page.jsx",
-                                        lineNumber: 200,
+                                        lineNumber: 216,
                                         columnNumber: 33
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/server/page.jsx",
-                                    lineNumber: 199,
+                                    lineNumber: 215,
                                     columnNumber: 29
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -449,7 +479,7 @@ function Server() {
                                             children: "Cancel"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/server/page.jsx",
-                                            lineNumber: 212,
+                                            lineNumber: 228,
                                             columnNumber: 33
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -459,29 +489,29 @@ function Server() {
                                             children: "Submit"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/server/page.jsx",
-                                            lineNumber: 213,
+                                            lineNumber: 229,
                                             columnNumber: 33
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/server/page.jsx",
-                                    lineNumber: 211,
+                                    lineNumber: 227,
                                     columnNumber: 29
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/server/page.jsx",
-                            lineNumber: 190,
+                            lineNumber: 206,
                             columnNumber: 25
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/app/server/page.jsx",
-                        lineNumber: 189,
+                        lineNumber: 205,
                         columnNumber: 21
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/app/server/page.jsx",
-                    lineNumber: 188,
+                    lineNumber: 204,
                     columnNumber: 17
                 }, this)
             ]

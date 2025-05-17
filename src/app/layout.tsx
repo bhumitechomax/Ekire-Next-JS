@@ -42,10 +42,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <PageWrapper>
                     {children}
                     <ClientScripts />
+                    
                     <Script rel="preload" src="/assets/js/script.js" strategy="lazyOnload" />
                     <Script src="../assets/vendor/listJs/list-jquery.min.js"/>
                     <Script src="../assets/vendor/listJs/list.min.js"/>
                     <Script src="../assets/js/list_js.js" />
+                    
                 </PageWrapper>
             </SessionProvider>
             </body>

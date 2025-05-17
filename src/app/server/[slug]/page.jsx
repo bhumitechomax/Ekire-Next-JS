@@ -17,12 +17,12 @@ function Manage() {
     const [app, setApp] = useState([]);
     const [selectedOSId, setSelectedOSId] = useState(null);
     const [selectedAppId, setSelectedAppId] = useState(null);
-    // const handleOSClick = (id) => {
-    //     setSelectedOSId(id);
-    // };
-    // const handleAppClick = (id) => {
-    //     setSelectedAppId(id);
-    // };
+    const handleOSClick = (id) => {
+        setSelectedOSId(id);
+    };
+    const handleAppClick = (id) => {
+        setSelectedAppId(id);
+    };
     const [showReinstallCard, setShowReinstallCard] = useState(false);
     const [selectedVersionId, setSelectedVersionId] = useState(null);
 
@@ -36,6 +36,13 @@ function Manage() {
     const [serverId, setServerId] = useState(id);
     const [formData, setFormData] = useState({ snapshot_name: "" });
     const [snapshots, setSnapshots] = useState([]);
+    // Top of your component:
+    const [snapshotError, setSnapshotError] = useState({});
+    const [snapshotSuccess, setSnapshotSuccess] = useState("");
+
+    const [upgradeError, setUpgradeError] = useState({});
+    const [upgradeSuccess, setUpgradeSuccess] = useState("");
+
 
 
 
@@ -627,14 +634,12 @@ function Manage() {
 
 
     // api for snapshots
-
-
     const handleSubmitSnapshot = async () => {
-        setSuccess("");
-        setError({});
+        setSnapshotSuccess("");
+        setSnapshotError({});
 
         if (!serverId) {
-            setError({ name: ["Server ID is missing."] });
+            setSnapshotError({ name: ["Server ID is missing."] });
             return;
         }
 
@@ -657,14 +662,14 @@ function Manage() {
             console.log("Create Snapshot Response:", data);
 
             if (res.ok && data.success) {
-                setSuccess("Snapshot created successfully.");
+                setSnapshotSuccess("Snapshot created successfully.");
                 fetchSnapshots(); // 🔄 Refresh list
             } else {
                 setError({ name: [data.message || "Failed to create snapshot."] });
             }
         } catch (err) {
             console.error("Snapshot Error:", err);
-            setError({ name: ["Something went wrong while creating snapshot."] });
+            setSnapshotError({ name: ["Something went wrong while creating snapshot."] });
         }
     };
 
@@ -816,6 +821,54 @@ function Manage() {
             }
         });
     };
+
+    // api for plan upgrade
+    const handleUpgradePlan = async (serverId, payload) => {
+        setUpgradeSuccess("");
+        setUpgradeError({});
+
+        if (!serverId) {
+            setUpgradeError({ name: ["Server ID is required."] });
+            return;
+        }
+
+        if (!payload || !payload.vms_id || typeof payload.preserve_disk === "undefined") {
+            setUpgradeError({ name: ["Invalid payload. VMS ID and Preserve Disk are required."] });
+            return;
+        }
+
+        try {
+            const res = await fetch(
+                `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/server/${serverId}/upgrade`,
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${Cookies.get("accessToken")}`,
+                    },
+                    body: JSON.stringify(payload),
+                }
+            );
+
+            const data = await res.json();
+            console.log("Upgrade Plan Response:", data);
+
+            if (res.ok && data?.data?.status === "success") {
+                setUpgradeSuccess(data?.data?.message || "Plan upgraded successfully.");
+            } else if (data?.message && Array.isArray(data.message)) {
+                setUpgradeError({ name: data.message });
+            } else {
+                setUpgradeError({ name: [data?.data?.message || "Failed to upgrade plan."] });
+            }
+
+        } catch (err) {
+            console.error("Upgrade Plan Error:", err);
+            setUpgradeError({ name: ["Something went wrong while upgrading plan."] });
+        }
+    };
+
+
+
 
 
 
@@ -1122,9 +1175,19 @@ function Manage() {
                                                         <div className="row d-flex align-items-center justify-content-between">
                                                             <div className="col-lg-6" style={{ padding: "5px 15px" }}>
                                                                 <p className="f-s-17 text-dark ">Your Current Size is 2 vCPU - 4 GB Memory - 100 SSD Storage.</p>
-                                                                <button className="btn btn-primary h-45 icon-btn mb-3" >
-                                                                    <i className="ph-bold  ph-arrow-down f-s-18" />  Upgrade
+                                                                {upgradeSuccess && (
+                                                                    <div className="alert alert-success">{upgradeSuccess}</div>
+                                                                )}
+                                                                <button
+                                                                    className="btn btn-primary h-45 icon-btn mb-3"
+                                                                    onClick={() => handleUpgradePlan(serverId)}
+                                                                >
+                                                                    <i className="ph-bold ph-arrow-up f-s-18" /> Upgrade
                                                                 </button>
+                                                                {upgradeError.name && (
+                                                                    <div className="text-danger small">{upgradeError.name[0]}</div>
+                                                                )}
+
                                                                 <h5 className="text-secondary-dark mb-0">Renews Automatically on 18-12-2024</h5>
                                                                 <p className="f-s-17 text-dark ">We will send you a notification upon subscription expiration</p>
                                                                 <h5 className="text-secondary-dark mb-0">$10 Per Month</h5>
@@ -1597,7 +1660,7 @@ function Manage() {
 
                                 <form onSubmit={handleSubmitSnapshot}>
                                     <div className="modal-body">
-                                        {success && <div className="alert alert-success">{success}</div>}
+                                        {snapshotSuccess  && <div className="alert alert-success">{snapshotSuccess}</div>}
 
                                         <div className="mb-3">
                                             <label htmlFor="snapshot_name" className="form-label">
@@ -1612,8 +1675,8 @@ function Manage() {
                                                 value={formData.snapshot_name}
                                                 onChange={handleChange}
                                             />
-                                            {error.name && (
-                                                <div className="text-danger small">{error.name[0]}</div>
+                                            {snapshotError.name && (
+                                                <div className="text-danger small">{snapshotError.name[0]}</div>
                                             )}
                                         </div>
                                     </div>
