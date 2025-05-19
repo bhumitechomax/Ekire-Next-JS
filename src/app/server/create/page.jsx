@@ -30,9 +30,9 @@ function Create() {
         processor: "",
         location: '',
         os_version_id: '',
-        hostname:'',
-        auto_backups:'',
-        bandwidth:'',
+        hostname: '',
+        auto_backups: '',
+        bandwidth: '',
         billingCycle: ''
     });
     const handleChange = (e) => {
@@ -46,7 +46,7 @@ function Create() {
         });
     };
 
-     console.log("Form Data:", formData);
+    console.log("Form Data:", formData);
     // api os system
     useEffect(() => {
         const token = Cookies.get("accessToken");
@@ -229,76 +229,76 @@ function Create() {
     };
 
     const handleDeployServer = async () => {
-    // 1. Validate required selections
-    if (!selectedServerId || !selectedPlanId) {
-        alert("Please select server (region) and plan before deploying.");
-        return;
-    }
-
-    // 2. Determine the selected OS or Application version
-    let selectedVersionId = null;
-
-    if (activeTab === 1) {
-        // OS tab active
-        const selectedOS = os.find((o) => o.id === selectedOSId);
-        if (selectedOS) {
-            const versionSelect = document.getElementById(`${selectedOS.name}-version`);
-            selectedVersionId = versionSelect?.value;
+        // 1. Validate required selections
+        if (!selectedServerId || !selectedPlanId) {
+            alert("Please select server (region) and plan before deploying.");
+            return;
         }
-    } else if (activeTab === 2) {
-        // Application tab active
-        const selectedApp = app.find((a) => a.id === selectedAppId);
-        if (selectedApp) {
-            const versionSelect = document.getElementById(`${selectedApp.name}-version`);
-            selectedVersionId = versionSelect?.value;
+
+        // 2. Determine the selected OS or Application version
+        let selectedVersionId = null;
+
+        if (activeTab === 1) {
+            // OS tab active
+            const selectedOS = os.find((o) => o.id === selectedOSId);
+            if (selectedOS) {
+                const versionSelect = document.getElementById(`${selectedOS.name}-version`);
+                selectedVersionId = versionSelect?.value;
+            }
+        } else if (activeTab === 2) {
+            // Application tab active
+            const selectedApp = app.find((a) => a.id === selectedAppId);
+            if (selectedApp) {
+                const versionSelect = document.getElementById(`${selectedApp.name}-version`);
+                selectedVersionId = versionSelect?.value;
+            }
         }
-    }
 
-    if (!selectedVersionId) {
-        alert(`Please select a version for the selected ${activeTab === 1 ? "OS" : "application"}.`);
-        return;
-    }
+        if (!selectedVersionId) {
+            alert(`Please select a version for the selected ${activeTab === 1 ? "OS" : "application"}.`);
+            return;
+        }
 
-    // 3. Find selected server details (to include processor, location)
-    const selectedServer = hostServers.find(s => s.id === selectedServerId);
+        // 3. Find selected server details (to include processor, location)
+        const selectedServer = hostServers.find(s => s.id === selectedServerId);
 
-    // 4. Prepare payload for API
-    const payload = {
-        vms_id: selectedPlanId,
-        processor: selectedServer?.processor || "Default Processor",
-        location: selectedServer?.location || "Default Location",
-        os_version_id: Number(selectedVersionId),
-        hostname: "test", // You can replace with dynamic input if needed
-        auto_backups: false,
-        bandwidth: "unlimited",
-        billingCycle: "hourlyBilling", // Or "monthlyBilling"
-        server_id: selectedServerId, // Include selected server id
+        // 4. Prepare payload for API
+        const payload = {
+            vms_id: selectedPlanId,
+            processor: selectedServer?.processor || "Default Processor",
+            location: selectedServer?.location || "Default Location",
+            os_version_id: Number(selectedVersionId),
+            hostname: "test", // You can replace with dynamic input if needed
+            auto_backups: false,
+            bandwidth: "unlimited",
+            billingCycle: "hourlyBilling", // Or "monthlyBilling"
+            server_id: selectedServerId, // Include selected server id
+        };
+
+        // 5. Call the deploy API
+        try {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}/server/deploy`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    // Add Authorization header if needed
+                },
+                body: JSON.stringify(payload),
+            });
+
+            const result = await response.json();
+
+            if (result.data.status === "success") {
+                alert("Server deployed successfully!");
+                console.log("Deployed:", result.data.data);
+            } else {
+                alert(result.data.message || "Deployment failed.");
+            }
+        } catch (error) {
+            console.error("Deploy error:", error);
+            alert("Something went wrong during deployment.");
+        }
     };
-
-    // 5. Call the deploy API
-    try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}/server/deploy`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                // Add Authorization header if needed
-            },
-            body: JSON.stringify(payload),
-        });
-
-        const result = await response.json();
-
-        if (result.data.status === "success") {
-            alert("Server deployed successfully!");
-            console.log("Deployed:", result.data.data);
-        } else {
-            alert(result.data.message || "Deployment failed.");
-        }
-    } catch (error) {
-        console.error("Deploy error:", error);
-        alert("Something went wrong during deployment.");
-    }
-};
 
 
 
@@ -864,11 +864,57 @@ function Create() {
                                                 </div>
                                                 <div className="card-body">
 
+                                                    <form className="app-form row g-3" >
+                                                        <div className="col-12">
+                                                            <label className="form-label" htmlFor="hostnameInput">
+                                                                Update Hostname
+                                                            </label>
+                                                            <input
+                                                                id="hostnameInput"
+                                                                type="text"
+                                                                className="form-control"
+                                                                placeholder="New Hostname"
+                                                                required
+                                                            />
+
+                                                        </div>
+
+                                                        <div className="col-12">
+                                                            <label className="form-label" htmlFor="bandwidth">bandwidth</label>
+                                                            <select name="bandwidth" className="form-select" required>
+                                                                <option value="bandwidth">Select bandwidth</option>
+                                                                <option value="" >limited</option>
+                                                                <option value="" >unlimited</option>
+                                                            </select>
+                                                            <div className="invalid-feedback">Please select a valid version.</div>
+                                                        </div>
+
+                                                        <div className="col-12">
+                                                            <label className="form-label" htmlFor="billingCycle">billingCycle</label>
+                                                            <select name="billingCycle" className="form-select" required>
+                                                                <option value="billingCycle">Select billingCycle</option>
+                                                                <option value="">hourlyBilling</option>
+                                                                <option value="" >monthly</option>
+                                                                <option value="" >yearly</option>
+                                                            </select>
+                                                            <div className="invalid-feedback">Please select a valid version.</div>
+                                                        </div>
+                                                        <div className="col-4">
+                                                            <button type="button" className="btn btn-primary mt-2">
+                                                                Save
+                                                            </button>
+                                                        </div>
+
+                                                    </form>
+
+
+                                                    <hr />
+
                                                     <div className="table-responsive ps-3">
                                                         <div className="cart-gift text-end mt-4">
                                                             <button
                                                                 className="btn btn-primary rounded"
-                                                                onClick={handleDeployServer} 
+                                                                onClick={handleDeployServer}
                                                             >
                                                                 Deploy Server
                                                             </button>
