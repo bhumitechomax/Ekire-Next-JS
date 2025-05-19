@@ -28,9 +28,12 @@ export default function PageWrapper({ children }: { children: React.ReactNode })
     //     $(this).remove();  
     //   });
     // });
+
+
     
   }, [pathname]);
 
+  
   const noLayoutRoutes = ["/login", "/signup", "/forgot_pwd"];
 
   const hideLayout = pathname ? noLayoutRoutes.includes(pathname) : false;
@@ -38,6 +41,8 @@ export default function PageWrapper({ children }: { children: React.ReactNode })
   if (hideLayout) {
     return <>{children}</>;
   }
+
+  
 
   return (
     <div className="app-wrapper">
@@ -58,6 +63,8 @@ export default function PageWrapper({ children }: { children: React.ReactNode })
         {children}
       </div>
       <Footer />
+      {/* <Script rel="preload" src="/assets/js/slick.js" strategy="lazyOnload" /> */}
+      
     </div>
   );
 }

@@ -131,8 +131,8 @@ function Server() {
                                                             <th>server name</th>
                                                             <th>status</th>
                                                             <th>ip address</th>
-                                                            {/* <th>purchase date</th>
-                                                            <th>total paid</th> */}
+                                                            <th>Action</th>
+                                                             {/*<th>total paid</th> */}
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -148,6 +148,22 @@ function Server() {
                                                                     )}
                                                                 </td>
                                                                 <td>{server.ip}</td>
+                                                                <td>
+                                                                   {/* <button
+                                                                                        className="badge text-white bg-success border-0 d-flex gap-2 align-items-center"
+                                                                                        
+                                                                                    >
+                                                                                        Revert
+                                                                                    </button> */}
+
+                                                                                    <button
+                                                                                        className="badge text-white bg-danger border-0 d-flex gap-2 align-items-center"
+                                                                                       
+                                                                                    >
+                                                                                        <i className="ph ph-trash f-s-18" />
+                                                                                        Delete
+                                                                                    </button> 
+                                                                </td>
                                                                 {/* <td>{server.purchase_date}</td>
                                                                 <td>${server.total_paid}</td> */}
                                                             </tr>
