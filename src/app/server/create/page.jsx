@@ -358,6 +358,7 @@ function Create() {
                                                         <div className="card-header">
                                                             <h5>Region</h5>
                                                         </div>
+
                                                         <div className="card-body">
                                                             <div className="row">
                                                                 {hostServers.map((server) => (
@@ -365,7 +366,14 @@ function Create() {
                                                                         <ul className="active-device-session active-device-list" id="shareMenuLeft">
                                                                             <li>
                                                                                 <div className={`card cursor-pointer transition-all duration-300 ${selectedServerId === server.id ? "border-selected" : "border-unselected"}`}
-                                                                                    onClick={() => setSelectedServerId(server.id)}
+                                                                                    onClick={() => {
+                                                                                        setSelectedServerId(server.id);
+                                                                                        setFormData((prevData) => ({
+                                                                                            ...prevData,
+                                                                                            location: server.location,
+                                                                                            processor: server.processor,
+                                                                                        }));
+                                                                                    }}
                                                                                 >
                                                                                     <div className="card-body">
                                                                                         <div className="device-menu-item" draggable="false">
@@ -383,8 +391,7 @@ function Create() {
                                                                                             <div className="device-menu-content">
                                                                                                 <h6 className="mb-0 txt-ellipsis-1">{server.location}</h6>
                                                                                                 <p className="mb-0 txt-ellipsis-1 text-secondary">Processor : {server.processor}</p>
-                                                                                                <input type="hidden" name="processor" value={formData.processor} onChange={handleChange} />
-                                                                                                <input type="hidden" name="location" value={formData.location} onChange={handleChange} />
+
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -451,6 +458,11 @@ function Create() {
                                                                                                 className="form-select"
                                                                                                 id={`${o.name}-version`}
                                                                                                 required
+                                                                                                onChange={(e) =>
+                                                                                                    setFormData((prev) => ({
+                                                                                                        ...prev,
+                                                                                                        os_version_id: e.target.value,
+                                                                                                    }))}
                                                                                             >
                                                                                                 <option value="">Select Version</option>
                                                                                                 {o.versions?.map((version) => (
@@ -494,6 +506,11 @@ function Create() {
                                                                                                 className="form-select"
                                                                                                 id={`${apps.name}-version`}
                                                                                                 required
+                                                                                                onChange={(e) =>
+                                                                                                    setFormData((prev) => ({
+                                                                                                        ...prev,
+                                                                                                        os_version_id: e.target.value,
+                                                                                                    }))}
                                                                                             >
                                                                                                 <option value="">Select Version</option>
                                                                                                 {apps.versions?.map((version) => (
@@ -577,7 +594,13 @@ function Create() {
                                                                                 <div
                                                                                     key={plan.id}
                                                                                     className={`col-md-6 col-xl-4 p-3`}
-                                                                                    onClick={() => setSelectedPlanId(plan.id)}
+                                                                                    onClick={() => {
+                                                                                        setSelectedPlanId(plan.id);
+                                                                                        setFormData((prev) => ({
+                                                                                            ...prev,
+                                                                                            vms_id: plan.id,
+                                                                                        }));
+                                                                                    }}
                                                                                     style={{ cursor: "pointer" }}
                                                                                 >
                                                                                     <div
@@ -619,7 +642,7 @@ function Create() {
                                                                 </div>
                                                             </div>
 
-                                                            <div className="card-body Additional-disk">
+                                                            {/* <div className="card-body Additional-disk">
                                                                 <h5 className="p-0 mb-4">Additional Disk</h5>
                                                                 <div className="row checkbox-div">
                                                                     <div className="col-12">
@@ -643,7 +666,6 @@ function Create() {
                                                                                     </p>
                                                                                 </div>
                                                                             </div>
-                                                                            {/* MODAL */}
                                                                             <div aria-hidden="true" aria-labelledby="projectCardLabel" className="modal fade" id="projectCard2" tabIndex={-1}>
                                                                                 <div className="modal-dialog modal-fullscreen-lg-down modal-dialog-centered">
                                                                                     <div className="modal-content">
@@ -676,7 +698,7 @@ function Create() {
                                                                         </>
                                                                     </div>
                                                                 </div>
-                                                            </div>
+                                                            </div> */}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -698,7 +720,18 @@ function Create() {
                                                                 <div className="col-12">
                                                                     <div className="form-check d-flex align-items-center gap-3">
                                                                         <div>
-                                                                            <input className="form-check-input" id="invalidCheck2" required type="checkbox" defaultValue />
+                                                                            <input
+                                                                                className="form-check-input"
+                                                                                id="invalidCheck2"
+                                                                                type="checkbox"
+                                                                                checked={formData.auto_backups}
+                                                                                onChange={(e) =>
+                                                                                    setFormData((prev) => ({
+                                                                                        ...prev,
+                                                                                        auto_backups: e.target.checked,
+                                                                                    }))
+                                                                                }
+                                                                            />
                                                                         </div>
                                                                         <div>
                                                                             <label className="form-check-label f-s-18" htmlFor="invalidCheck2">
@@ -715,9 +748,9 @@ function Create() {
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> 
 
-                                    <div className="card">
+                                   {/* <div className="card">
                                         <div className="card-body p-0">
                                             <div className="row">
                                                 <div className="col-lg-12">
@@ -761,7 +794,6 @@ function Create() {
                                                                     </ul>
                                                                 </div>
 
-                                                                {/* === Password Radio Option === */}
                                                                 <div className="col-lg-12 col-xxl-4">
                                                                     <ul className="active-device-session active-device-list" id="shareMenuRight">
                                                                         <li>
@@ -852,7 +884,7 @@ function Create() {
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div>  */}
                                 </div>
 
                                 <div className="col-xl-4 col-lg-12 col-md-12" >
@@ -875,35 +907,47 @@ function Create() {
                                                                 className="form-control"
                                                                 placeholder="New Hostname"
                                                                 required
+                                                                checked={formData.hostname}
+                                                                onChange={(e) =>
+                                                                    setFormData((prev) => ({
+                                                                        ...prev,
+                                                                        hostname: e.target.value,
+                                                                    }))}
                                                             />
 
                                                         </div>
 
                                                         <div className="col-12">
                                                             <label className="form-label" htmlFor="bandwidth">bandwidth</label>
-                                                            <select name="bandwidth" className="form-select" required>
-                                                                <option value="bandwidth">Select bandwidth</option>
-                                                                <option value="" >limited</option>
-                                                                <option value="" >unlimited</option>
+                                                            <select name="bandwidth" className="form-select" required onChange={(e) =>
+                                                                setFormData((prev) => ({
+                                                                    ...prev,
+                                                                    bandwidth: e.target.value,
+                                                                }))}>
+                                                                <option value="bandwidth">Select Bandwidth</option>
+                                                                <option selected value="Unlimited">Unlimited</option>
                                                             </select>
                                                             <div className="invalid-feedback">Please select a valid version.</div>
                                                         </div>
 
                                                         <div className="col-12">
                                                             <label className="form-label" htmlFor="billingCycle">billingCycle</label>
-                                                            <select name="billingCycle" className="form-select" required>
+                                                            <select name="billingCycle" className="form-select" required onChange={(e) =>
+                                                                setFormData((prev) => ({
+                                                                    ...prev,
+                                                                    billingCycle: e.target.value,
+                                                                }))}>
                                                                 <option value="billingCycle">Select billingCycle</option>
-                                                                <option value="">hourlyBilling</option>
-                                                                <option value="" >monthly</option>
-                                                                <option value="" >yearly</option>
+                                                                <option value="hourly">hourly</option>
+                                                                <option value="monthly" >monthly</option>
                                                             </select>
                                                             <div className="invalid-feedback">Please select a valid version.</div>
                                                         </div>
-                                                        <div className="col-4">
+                                                        {/* <div className="col-4">
                                                             <button type="button" className="btn btn-primary mt-2">
                                                                 Save
                                                             </button>
-                                                        </div>
+                                                        </div> */}
 
                                                     </form>
 

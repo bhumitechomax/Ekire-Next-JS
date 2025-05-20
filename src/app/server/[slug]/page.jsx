@@ -19,12 +19,13 @@ function Manage() {
     const [app, setApp] = useState([]);
     const [selectedOSId, setSelectedOSId] = useState(null);
     const [selectedAppId, setSelectedAppId] = useState(null);
-    const handleOSClick = (id) => {
-        setSelectedOSId(id);
+    const handleOSClick = (osid) => {
+        setSelectedOSId(osid);
     };
-    const handleAppClick = (id) => {
-        setSelectedAppId(id);
+    const handleAppClick = (appid) => {
+        setSelectedAppId(appid);
     };
+   
     const [showReinstallCard, setShowReinstallCard] = useState(false);
     const [selectedVersionId, setSelectedVersionId] = useState(null);
 
@@ -35,7 +36,7 @@ function Manage() {
     const [success, setSuccess] = useState("");
     const [error, setError] = useState({});
     // const [snapshots, setSnapshots] = useState([]);
-    const [serverId, setServerId] = useState(id);
+    // const serverId= id ;
     const [formData, setFormData] = useState({ snapshot_name: "" });
     const [snapshots, setSnapshots] = useState([]);
     // Top of your component:
@@ -47,9 +48,15 @@ function Manage() {
     const modalRef = useRef(null);
 
 
+    const [reinstallPayload, setReinstallPayload] = useState({
+        os_version_id: null,
+    });
+    const [changehostnamePayload, setChangeHostnamePayload] = useState({
+        hostname: ""
+    });
 
 
-
+// Fetch Server Details and VMPS
     useEffect(() => {
         const token = Cookies.get("accessToken");
         if (token && id) {
@@ -86,6 +93,10 @@ function Manage() {
         }
     }, [id]);
 
+        // console.log(serverdetails);
+        // console.log("------------------------------------------");
+        // console.log(vmps);
+        // console.log("------------------------------------------");
     // console.log(serverdetails);
     // console.log("------------------------------------------");
     // console.log(vmps);
@@ -158,8 +169,8 @@ function Manage() {
     };
 
     // api for start server
-    const startServer = async (serverId) => {
-        if (!serverId) return;
+    const startServer = async (id) => {
+        if (!id) return;
 
         const swalWithBootstrapButtons = Swal.mixin({
             customClass: {
@@ -181,7 +192,7 @@ function Manage() {
             if (result.isConfirmed) {
                 try {
                     const res = await fetch(
-                        `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/server/${serverId}/start`,
+                        `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/server/${id}/start`,
                         {
                             method: "POST",
                             headers: {
@@ -194,7 +205,7 @@ function Manage() {
                     const result = await res.json();
                     console.log("Start Server Response:", result);
 
-                    if (res.ok && result.success) {
+                    if (res.ok && result.data.status === 'success') {
                         swalWithBootstrapButtons.fire(
                             'Started!',
                             'The server has been started successfully.',
@@ -226,8 +237,8 @@ function Manage() {
     };
 
     // api for stop server 
-    const stopServer = async (serverId) => {
-        if (!serverId) return;
+    const stopServer = async (id) => {
+        if (!id) return;
 
         const swalWithBootstrapButtons = Swal.mixin({
             customClass: {
@@ -249,7 +260,7 @@ function Manage() {
             if (result.isConfirmed) {
                 try {
                     const res = await fetch(
-                        `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/server/${serverId}/stop`,
+                        `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/server/${id}/stop`,
                         {
                             method: "POST",
                             headers: {
@@ -262,7 +273,7 @@ function Manage() {
                     const result = await res.json();
                     console.log("Stop Server Response:", result);
 
-                    if (res.ok && result.success) {
+                    if (res.ok && result.data.status === 'success') {
                         swalWithBootstrapButtons.fire(
                             'Stopped!',
                             'The server has been stopped successfully.',
@@ -294,8 +305,8 @@ function Manage() {
     };
 
     // api for restart server
-    const restartServer = async (serverId) => {
-        if (!serverId) return;
+    const restartServer = async (id) => {
+        if (!id) return;
 
         const swalWithBootstrapButtons = Swal.mixin({
             customClass: {
@@ -317,7 +328,7 @@ function Manage() {
             if (result.isConfirmed) {
                 try {
                     const res = await fetch(
-                        `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/server/${serverId}/restart`,
+                        `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/server/${id}/restart`,
                         {
                             method: "POST",
                             headers: {
@@ -330,7 +341,7 @@ function Manage() {
                     const result = await res.json();
                     console.log("Restart Server Response:", result);
 
-                    if (res.ok && result.success) {
+                    if (res.ok && result.data.status === 'success') {
                         swalWithBootstrapButtons.fire(
                             'Restarted!',
                             'The server has been restarted successfully.',
@@ -395,9 +406,8 @@ function Manage() {
     }, []);
 
     // api for reinstall server
-    const reinstallServer = async (serverId, payload) => {
-        if (!serverId || !payload?.version_id) return;
-
+    const reinstallServer = async (id, reinstallPayload) => {
+       if (!id || !reinstallPayload?.os_version_id) return;
         const swalWithBootstrapButtons = Swal.mixin({
             customClass: {
                 confirmButton: 'btn btn-secondary ms-2',
@@ -418,32 +428,35 @@ function Manage() {
             if (result.isConfirmed) {
                 try {
                     const res = await fetch(
-                        `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/server/${serverId}/reinstall`,
+                        `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/server/${id}/reinstall`,
                         {
                             method: "POST",
                             headers: {
                                 "Content-Type": "application/json",
                                 Authorization: `Bearer ${Cookies.get("accessToken")}`,
                             },
-                            body: JSON.stringify(payload),
+                            body: JSON.stringify(reinstallPayload),
                         }
                     );
 
                     const result = await res.json();
                     console.log("Reinstall Server Response:", result);
 
-                    if (res.ok && result.success) {
+                    if (res.ok &&  result.data.status === 'success') {
                         swalWithBootstrapButtons.fire(
                             'Reinstalled!',
                             'The server has been reinstalled successfully.',
                             'success'
                         );
+
+                        window.location.reload(); // Reload the page to reflect changes
                     } else {
                         swalWithBootstrapButtons.fire(
                             'Failed!',
                             result.message || 'Failed to reinstall the server.',
                             'error'
                         );
+
                     }
                 } catch (error) {
                     console.error("Error:", error);
@@ -462,10 +475,15 @@ function Manage() {
             }
         });
     };
-
+    const handleHostnameChange = (e) => {
+        setChangeHostnamePayload({
+            ...changehostnamePayload,
+            [e.target.name]: e.target.value,
+        });
+    };
     // api for hostname update
-    const handleUpdateClick = async (serverId) => {
-        if (!hostname) {
+    const handleUpdateClick = async () => {
+        if (!changehostnamePayload?.hostname) {
             Swal.fire("Missing Info", "Please enter a hostname.", "warning");
             return;
         }
@@ -481,7 +499,7 @@ function Manage() {
 
         swalWithBootstrapButtons.fire({
             title: "Update Hostname?",
-            text: `Are you sure you want to update the hostname to "${hostname}"?`,
+            text: `Are you sure you want to update the hostname to "${changehostnamePayload?.hostname}"?`,
             icon: "question",
             showCancelButton: true,
             confirmButtonText: "Yes, update it!",
@@ -491,27 +509,27 @@ function Manage() {
             if (result.isConfirmed) {
                 try {
                     const res = await fetch(
-                        `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/server/${serverId}/update`,
+                        `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/server/${id}/update`,
                         {
                             method: "POST",
                             headers: {
                                 "Content-Type": "application/json",
                                 Authorization: `Bearer ${Cookies.get("accessToken")}`,
                             },
-                            body: JSON.stringify({ hostname }),
+                            body: JSON.stringify({ hostname: changehostnamePayload?.hostname }),
                         }
                     );
 
                     const data = await res.json();
                     console.log("Update Response:", data);
 
-                    if (res.ok && data.success) {
+                    if (res.ok && data?.data?.status === "success") {
                         swalWithBootstrapButtons.fire(
                             "Updated!",
                             "The hostname was updated successfully.",
                             "success"
                         );
-                        setHostname(""); // Reset field
+                        setChangeHostnamePayload({ hostname: "" }); // Reset field
                     } else {
                         swalWithBootstrapButtons.fire(
                             "Failed!",
@@ -529,9 +547,10 @@ function Manage() {
         });
     };
 
-    // api for update password
-    const handleChangePasswordClick = async (serverId) => {
-        if (!serverId) {
+    // // api for update password
+    const handleChangePasswordClick = async () => {
+        console.log("ID: ", id)
+        if (!id) {
             Swal.fire("Missing Info", "Server ID is required.", "warning");
             return;
         }
@@ -556,7 +575,7 @@ function Manage() {
             if (result.isConfirmed) {
                 try {
                     const res = await fetch(
-                        `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/server/${serverId}/password`,
+                        `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/server/${id}/password`,
                         {
                             method: "POST",
                             headers: {
@@ -570,9 +589,9 @@ function Manage() {
                     );
 
                     const data = await res.json();
-                    console.log("Change Password Response:", data);
+                    // console.log("Change Password Response:", data);
 
-                    if (res.ok && data.success) {
+                    if (res.ok && data?.data?.status === "success") {
                         swalWithBootstrapButtons.fire(
                             "Updated!",
                             "A new password has been sent to the current user.",
@@ -604,13 +623,14 @@ function Manage() {
 
 
     useEffect(() => {
-        if (id) fetchSnapshots();
+   
+
+        if (id) fetchSnapshots(id);
     }, [id]);
 
     // api for list snapshots
-    const fetchSnapshots = async () => {
-        console.log("Effect triggered with id:", id);
-
+    const fetchSnapshots = async (id) => {
+    console.log("Fetching snapshots for server ID:", id);
         try {
             const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}/server/${id}/list-snapshots`, {
                 method: "POST",
@@ -677,15 +697,9 @@ function Manage() {
 
 
     // api for snapshots
-    const handleSubmitSnapshot = async (e) => {
-        e.preventDefault();
+    const handleSubmitSnapshot = async () => {
         setSnapshotSuccess("");
         setSnapshotError({});
-
-        if (!formData.snapshot_name || formData.snapshot_name.trim() === "") {
-            setSnapshotError({ name: ["The snapshot name field is required."] });
-            return;
-        }
 
         if (!serverId) {
             setSnapshotError({ name: ["Server ID is missing."] });
@@ -1034,7 +1048,7 @@ function Manage() {
                                                                     <div className="col-lg-12">
                                                                         <div className="input-group mb-3">
                                                                             <span className="input-group-text b-r-left text-bg-primary">IPv4</span>
-                                                                            <input aria-label="Dollar amount (with dot and two decimal places)" className="form-control b-r-right" placeholder="988e473a-335d-5c18-b996-db64c22cc7c0" type="text" />
+                                                                            <input aria-label="Dollar amount (with dot and two decimal places)" className="form-control b-r-right" placeholder="988e473a-335d-5c18-b996-db64c22cc7c0"  type="text" />
                                                                             <span className="input-group-text b-r-0 text-bg-primary"><i className="ph-fill  ph-copy f-s-18"></i></span>
                                                                         </div>
                                                                     </div>
@@ -1113,7 +1127,7 @@ function Manage() {
                                                         <div className="col-12 col-lg-6 m-10-0">
                                                             <div className="card-body card-body-style">
                                                                 <div className="d-flex justify-content-between align-items-center">
-                                                                    <h6 className="mb-0">{vmps?.ramz} GB</h6>
+                                                                    <h6 className="mb-0">{vmps?.ram} GB</h6>
                                                                     <div className="dropdown bg-xl-light-secondary h-40 w-40 d-flex-center b-r-15">
                                                                         <i className="ph-bold ph-floppy-disk f-s-20 text-secondary" />
                                                                     </div>
@@ -1275,21 +1289,21 @@ function Manage() {
                                                     <div className="card-body d-flex gap-3" >
                                                         <button
                                                             className="btn btn-primary h-45 icon-btn mb-3"
-                                                            onClick={() => startServer(server?.id)}
+                                                            onClick={() => startServer(serverdetails?.id)}
                                                         >
                                                             <i className="ph-fill ph-play f-s-18" />
                                                             Start Server
                                                         </button>
                                                         <button
                                                             className="btn btn-success h-45 icon-btn mb-3"
-                                                            onClick={() => stopServer(server?.id)}
+                                                            onClick={() => stopServer(serverdetails?.id)}
                                                         >
                                                             <i className="ph-fill ph-pause f-s-18" />
                                                             Stop Server
                                                         </button>
                                                         <button
                                                             className="btn btn-secondary h-45 icon-btn mb-3"
-                                                            onClick={() => restartServer(server?.id)}
+                                                            onClick={() => restartServer(serverdetails?.id)}
                                                         >
                                                             <i className="ph-fill ph-rewind f-s-18" />
                                                             Restart Server
@@ -1377,7 +1391,9 @@ function Manage() {
                                                                                 <button
                                                                                     className="btn btn-primary"
                                                                                     type="button"
-                                                                                    onClick={() => reinstallServer(server?.id, { version_id: selectedVersionId })}
+                                                                                    onClick={() => reinstallServer(serverdetails?.id, {
+                                                                                    os_version_id: selectedVersionId,
+                                                                                    })}
                                                                                 >
                                                                                     Save
                                                                                 </button>
@@ -1407,6 +1423,7 @@ function Manage() {
                                                                                                 <form className="app-form row g-3 needs-validation mt-0" noValidate>
                                                                                                     <div className={apps.name}>
                                                                                                         <select
+                                                                                                        name=""
                                                                                                             className="form-select"
                                                                                                             id={`${apps.name}-version`}
                                                                                                             required onChange={(e) => setSelectedVersionId(e.target.value)}
@@ -1429,7 +1446,9 @@ function Manage() {
                                                                                 <button
                                                                                     className="btn btn-primary"
                                                                                     type="button"
-                                                                                    onClick={() => reinstallServer(server?.id, { version_id: selectedVersionId })}
+                                                                                   onClick={() => reinstallServer(serverdetails?.id, {
+                                                                                    os_version_id: selectedVersionId,
+                                                                                    })}
                                                                                 >
                                                                                     Save
                                                                                 </button>
@@ -1456,28 +1475,29 @@ function Manage() {
                                                     </div>
                                                     <div className="card-body" >
                                                         <form className="app-form row g-3" style={{ padding: "5px 15px" }} onSubmit={(e) => e.preventDefault()}>
-                                                            <div className="col-md-4">
-                                                                <label className="form-label" htmlFor="hostnameInput">
-                                                                    Update Hostname
-                                                                </label>
-                                                                <input
-                                                                    id="hostnameInput"
-                                                                    type="text"
-                                                                    className="form-control"
-                                                                    placeholder="New Hostname"
-                                                                    required
-                                                                    value={hostname}
-                                                                    onChange={(e) => setHostname(e.target.value)}
-                                                                />
-                                                                <button
-                                                                    type="button"
-                                                                    className="btn btn-primary h-45 icon-btn mb-3 mt-4"
-                                                                    onClick={handleUpdateClick}
-                                                                >
-                                                                    Update
-                                                                </button>
-                                                            </div>
-                                                        </form>
+                                                        <div className="col-md-4">
+                                                            <label className="form-label" htmlFor="hostnameInput">
+                                                                Update Hostname
+                                                            </label>
+                                                            <input
+                                                                id="hostnameInput"
+                                                                type="text"
+                                                                className="form-control"
+                                                                placeholder="New Hostname"
+                                                                name="hotname"
+                                                                required
+                                                                value={changehostnamePayload.hostname}
+                                                                onChange={(e) => setChangeHostnamePayload({ ...changehostnamePayload, hostname: e.target.value })}
+                                                            />
+                                                            <button
+                                                                type="button"
+                                                                className="btn btn-primary h-45 icon-btn mb-3 mt-4"
+                                                                onClick={handleUpdateClick}
+                                                            >
+                                                                Update
+                                                            </button>
+                                                        </div>
+                                                    </form>
                                                     </div>
                                                 </div>
 
