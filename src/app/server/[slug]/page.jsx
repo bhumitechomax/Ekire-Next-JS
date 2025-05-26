@@ -43,8 +43,7 @@ function Manage() {
     const [snapshotError, setSnapshotError] = useState({});
     const [snapshotSuccess, setSnapshotSuccess] = useState("");
 
-    const [upgradeError, setUpgradeError] = useState({});
-    const [upgradeSuccess, setUpgradeSuccess] = useState("");
+    
     const modalRef = useRef(null);
 
 
@@ -942,7 +941,7 @@ function Manage() {
     };
 
 
-
+    // api for extend server
     const extendServer = async (serverId) => {
     if (!serverId) return;
 
@@ -1318,18 +1317,9 @@ function Manage() {
                                                         <div className="row d-flex align-items-center justify-content-between">
                                                             <div className="col-lg-6" style={{ padding: "5px 15px" }}>
                                                                 <p className="f-s-17 text-dark ">Your Current Size is 2 vCPU - 4 GB Memory - 100 SSD Storage.</p>
-                                                                {upgradeSuccess && (
-                                                                    <div className="alert alert-success">{upgradeSuccess}</div>
-                                                                )}
-                                                                <button
-                                                                    className="btn btn-primary h-45 icon-btn mb-3"
-                                                                    onClick={() => handleUpgradePlan(serverId)}
-                                                                >
+                                                                <Link href={"/server/upgrade_plan"} className="btn btn-primary h-45 icon-btn mb-3" style={{ width: "fit-content" }}>
                                                                     <i className="ph-bold ph-arrow-up f-s-18" /> Upgrade
-                                                                </button>
-                                                                {upgradeError.name && (
-                                                                    <div className="text-danger small">{upgradeError.name[0]}</div>
-                                                                )}
+                                                                </Link>
 
                                                                 <h5 className="text-secondary-dark mb-0">Renews Automatically on 18-12-2024</h5>
                                                                 <p className="f-s-17 text-dark ">We will send you a notification upon subscription expiration</p>
