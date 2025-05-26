@@ -700,11 +700,6 @@ function Manage() {
         setSnapshotSuccess("");
         setSnapshotError({});
 
-        if (!serverId) {
-            setSnapshotError({ name: ["Server ID is missing."] });
-            return;
-        }
-
         try {
             const res = await fetch(
                 `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/server/${serverId}/create-snapshot`,
@@ -802,6 +797,8 @@ function Manage() {
                             "success"
                         ).then(() => {
                             fetchSnapshots(); // ✅ Now this works!
+
+                            window.location.reload(); // Reload the page to reflect changes
                         });
                     } else {
                         swalWithBootstrapButtons.fire(
@@ -1185,7 +1182,7 @@ function Manage() {
                                                         <div className="col-12 col-lg-6 m-10-0">
                                                             <div className="card-body card-body-style">
                                                                 <div className="d-flex justify-content-between align-items-center">
-                                                                    <h6 className="mb-0">{vmps?.disk} GB</h6>
+                                                                    <h6 className="mb-0">{systemusage?.diskPlan}</h6>
                                                                     <div className="dropdown bg-xl-light-success h-40 w-40 d-flex-center b-r-15">
                                                                         <i className="ph-bold ph-database f-s-20 text-success" />
                                                                     </div>
@@ -1802,7 +1799,7 @@ function Manage() {
                                     />
                                 </div>
 
-                                <form onSubmit={handleSubmitSnapshot}>
+                                <form onSubmit={handleSubmitSnapshot} method="POST">
                                     <div className="modal-body">
 
 
