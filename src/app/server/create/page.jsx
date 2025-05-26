@@ -32,7 +32,7 @@ function Create() {
         os_version_id: '',
         hostname: '',
         auto_backups: '',
-        bandwidth: '',
+        bandwidth: 'unlimited',
         billingCycle: ''
     });
     const handleChange = (e) => {
@@ -84,7 +84,7 @@ function Create() {
     useEffect(() => {
         const token = Cookies.get("accessToken");
         if (token) {
-            // console.log("Token found:", token);
+            console.log("Token found:", token);
             const FetchProject = async () => {
                 console.log(`Bearer ${token}`);
                 setIsLoading(true);
@@ -229,71 +229,27 @@ function Create() {
     };
 
     const handleDeployServer = async () => {
-        // 1. Validate required selections
-        if (!selectedServerId || !selectedPlanId) {
-            alert("Please select server (region) and plan before deploying.");
-            return;
-        }
-
-        // 2. Determine the selected OS or Application version
-        let selectedVersionId = null;
-
-        if (activeTab === 1) {
-            // OS tab active
-            const selectedOS = os.find((o) => o.id === selectedOSId);
-            if (selectedOS) {
-                const versionSelect = document.getElementById(`${selectedOS.name}-version`);
-                selectedVersionId = versionSelect?.value;
-            }
-        } else if (activeTab === 2) {
-            // Application tab active
-            const selectedApp = app.find((a) => a.id === selectedAppId);
-            if (selectedApp) {
-                const versionSelect = document.getElementById(`${selectedApp.name}-version`);
-                selectedVersionId = versionSelect?.value;
-            }
-        }
-
-        if (!selectedVersionId) {
-            alert(`Please select a version for the selected ${activeTab === 1 ? "OS" : "application"}.`);
-            return;
-        }
-
-        // 3. Find selected server details (to include processor, location)
-        const selectedServer = hostServers.find(s => s.id === selectedServerId);
-
-        // 4. Prepare payload for API
-        const payload = {
-            vms_id: selectedPlanId,
-            processor: selectedServer?.processor || "Default Processor",
-            location: selectedServer?.location || "Default Location",
-            os_version_id: Number(selectedVersionId),
-            hostname: "test", // You can replace with dynamic input if needed
-            auto_backups: false,
-            bandwidth: "unlimited",
-            billingCycle: "hourlyBilling", // Or "monthlyBilling"
-            server_id: selectedServerId, // Include selected server id
-        };
-
-        // 5. Call the deploy API
         try {
             const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}/server/deploy`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    // Add Authorization header if needed
+                    Authorization: `Bearer ${Cookies.get("accessToken")}`,
+                    
                 },
-                body: JSON.stringify(payload),
+                body: JSON.stringify(formData),
             });
 
             const result = await response.json();
+            console.log("Deploy result:", result);
+            alert(result?.data?.message || "Server deployed successfully!");
 
-            if (result.data.status === "success") {
-                alert("Server deployed successfully!");
-                console.log("Deployed:", result.data.data);
-            } else {
-                alert(result.data.message || "Deployment failed.");
-            }
+            // if (result.data.status === "success") {
+            //     alert("Server deployed successfully!");
+            //     console.log("Deployed:", result.data.data);
+            // } else {
+            //     alert(result.data.message || "Deployment failed.");
+            // }
         } catch (error) {
             console.error("Deploy error:", error);
             alert("Something went wrong during deployment.");
@@ -343,7 +299,7 @@ function Create() {
                         {/* Breadcrumb end */}
 
                         {/* Projects start */}
-                        <form >
+                        <form method="POST">
                             <div className="row cart-table">
 
                                 <div className="col-xl-8 col-lg-12 col-md-12">
@@ -924,8 +880,8 @@ function Create() {
                                                                     ...prev,
                                                                     bandwidth: e.target.value,
                                                                 }))}>
-                                                                <option value="bandwidth">Select Bandwidth</option>
-                                                                <option selected value="Unlimited">Unlimited</option>
+                                                                <option>Select Bandwidth</option>
+                                                                <option selected value="unlimited">Unlimited</option>
                                                             </select>
                                                             <div className="invalid-feedback">Please select a valid version.</div>
                                                         </div>
@@ -937,9 +893,9 @@ function Create() {
                                                                     ...prev,
                                                                     billingCycle: e.target.value,
                                                                 }))}>
-                                                                <option value="billingCycle">Select billingCycle</option>
-                                                                <option value="hourly">hourly</option>
-                                                                <option value="monthly" >monthly</option>
+                                                                <option value="">Select billingCycle</option>
+                                                                <option value="hourlyBilling">Hourly Billing</option>
+                                                                <option value="monthlyBilling" >Monthly Billing</option>
                                                             </select>
                                                             <div className="invalid-feedback">Please select a valid version.</div>
                                                         </div>
@@ -957,6 +913,7 @@ function Create() {
                                                     <div className="table-responsive ps-3">
                                                         <div className="cart-gift text-end mt-4">
                                                             <button
+                                                              type="button"
                                                                 className="btn btn-primary rounded"
                                                                 onClick={handleDeployServer}
                                                             >
