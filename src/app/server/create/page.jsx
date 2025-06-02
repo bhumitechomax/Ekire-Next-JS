@@ -228,32 +228,100 @@ function Create() {
         }
     };
 
+    // const handleDeployServer = async () => {
+    //     try {
+    //         const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}/server/deploy`, {
+    //             method: "POST",
+    //             headers: {
+    //                 "Content-Type": "application/json",
+    //                 Authorization: `Bearer ${Cookies.get("accessToken")}`,
+
+    //             },
+    //             body: JSON.stringify(formData),
+    //         });
+
+    //         const result = await response.json();
+    //         console.log("Deploy result:", result);
+    //         alert(result?.data?.message || "Server deployed successfully!");
+
+
+    //     } catch (error) {
+    //         console.error("Deploy error:", error);
+    //         alert("Something went wrong during deployment.");
+    //     }
+    // };
+
     const handleDeployServer = async () => {
-        try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}/server/deploy`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${Cookies.get("accessToken")}`,
-                    
-                },
-                body: JSON.stringify(formData),
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: "btn btn-secondary ms-2",
+                cancelButton: "btn btn-danger",
+            },
+            buttonsStyling: false,
+        });
+
+        swalWithBootstrapButtons
+            .fire({
+                title: "Deploy Server?",
+                text: "Are you sure you want to deploy this server?",
+                icon: "question",
+                showCancelButton: true,
+                confirmButtonText: "Yes, deploy it!",
+                cancelButtonText: "Cancel",
+                reverseButtons: true,
+            })
+            .then(async (result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        title: "Deploying...",
+                        text: "Please wait while your server is being deployed.",
+                        allowOutsideClick: false,
+                        didOpen: () => {
+                            Swal.showLoading();
+                        },
+                    });
+
+                    try {
+                        const response = await fetch(
+                            `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/server/deploy`,
+                            {
+                                method: "POST",
+                                headers: {
+                                    "Content-Type": "application/json",
+                                    Authorization: `Bearer ${Cookies.get("accessToken")}`,
+                                },
+                                body: JSON.stringify(formData),
+                            }
+                        );
+
+                        const result = await response.json();
+                        console.log("Deploy result:", result);
+
+                        if (response.ok && result?.data?.status === "success") {
+                            Swal.fire(
+                                "Deployed!",
+                                result?.data?.message || "Server deployed successfully.",
+                                "success"
+                            );
+                        } else {
+                            Swal.fire(
+                                "Failed!",
+                                result.message || "Server deployment failed.",
+                                "error"
+                            );
+                        }
+                    } catch (error) {
+                        console.error("Deploy error:", error);
+                        Swal.fire("Error!", "Something went wrong during deployment.", "error");
+                    }
+                } else {
+                    swalWithBootstrapButtons.fire(
+                        "Cancelled",
+                        "Server deployment cancelled.",
+                        "info"
+                    );
+                }
             });
-
-            const result = await response.json();
-            console.log("Deploy result:", result);
-            alert(result?.data?.message || "Server deployed successfully!");
-
-            // if (result.data.status === "success") {
-            //     alert("Server deployed successfully!");
-            //     console.log("Deployed:", result.data.data);
-            // } else {
-            //     alert(result.data.message || "Deployment failed.");
-            // }
-        } catch (error) {
-            console.error("Deploy error:", error);
-            alert("Something went wrong during deployment.");
-        }
     };
 
 
@@ -646,7 +714,7 @@ function Create() {
                                                 </div>
                                             </div>
                                         </div>
-                                    </div> 
+                                    </div>
                                 </div>
 
                                 <div className="col-xl-4 col-lg-12 col-md-12" >
@@ -713,13 +781,16 @@ function Create() {
 
                                                     <div className="table-responsive ps-3">
                                                         <div className="cart-gift text-end mt-4">
+
                                                             <button
-                                                              type="button"
+                                                                type="button"
                                                                 className="btn btn-primary rounded"
                                                                 onClick={handleDeployServer}
                                                             >
                                                                 Deploy Server
                                                             </button>
+
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -728,7 +799,7 @@ function Create() {
                                     </div>
                                 </div>
 
-                                
+
 
                             </div>
                         </form>
