@@ -1,6 +1,8 @@
 "use client";
 import Link from "next/link";
 import React, { Fragment, useState, useEffect } from "react";
+// import 'datatables.net-dt/css/jquery.dataTables.css';
+// import 'datatables.net';
 
 import Cookies from "js-cookie";
 
@@ -127,10 +129,10 @@ function Transactions() {
                                                         <thead>
                                                             <tr>
                                                                 <th width={10}>Sr no.</th>
-                                                                <th>Customer Id</th>
+                                                                <th  width={10}>Customer Id</th>
                                                                 <th>Description</th>
-                                                                <th>Amount</th>
-                                                                <th>Remark</th>
+                                                                <th className="text-center">Amount</th>
+                                                                <th>Action</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody> 
@@ -139,8 +141,7 @@ function Transactions() {
                                                                 <td>{index + 1}</td>
                                                                 <td>{Transaction.customer_id}</td>
                                                                 <td>{Transaction.description}</td>
-                                                                <td>{Transaction.amount}</td>
-                                                                <td>{Transaction.remark}</td>
+                                                                <td className="text-center">{Transaction.amount}</td>
                                                                 <td className="d-flex">
                                                                     <span className="badge bg-success text-white d-flex gap-2">
                                                                         <i className="ph-duotone ph-eye f-s-18" /> View
@@ -148,18 +149,6 @@ function Transactions() {
                                                                 </td>
                                                             </tr>
                                                              ))}
-                                                            {/* <tr>
-                                                                <td>2</td>
-                                                                <td>Dr. Burnice Larson</td>
-                                                                <td>Feb 22nd, 2024</td>
-                                                                <td>5</td>
-                                                                <td>0</td>
-                                                                <td className="d-flex">
-                                                                    <span className="badge bg-success text-white d-flex gap-2">
-                                                                        <i className="ph-duotone ph-eye f-s-18" /> View
-                                                                    </span>
-                                                                </td>
-                                                            </tr> */}
                                                         </tbody>
                                                     </table>
                                                 </div>

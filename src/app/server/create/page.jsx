@@ -30,9 +30,9 @@ function Create() {
         processor: "",
         location: '',
         os_version_id: '',
-        hostname:'',
-        auto_backups:'',
-        bandwidth:'',
+        hostname: '',
+        auto_backups: '',
+        bandwidth: 'unlimited',
         billingCycle: ''
     });
     const handleChange = (e) => {
@@ -46,7 +46,7 @@ function Create() {
         });
     };
 
-     console.log("Form Data:", formData);
+    console.log("Form Data:", formData);
     // api os system
     useEffect(() => {
         const token = Cookies.get("accessToken");
@@ -84,7 +84,7 @@ function Create() {
     useEffect(() => {
         const token = Cookies.get("accessToken");
         if (token) {
-            // console.log("Token found:", token);
+            console.log("Token found:", token);
             const FetchProject = async () => {
                 console.log(`Bearer ${token}`);
                 setIsLoading(true);
@@ -229,76 +229,32 @@ function Create() {
     };
 
     const handleDeployServer = async () => {
-    // 1. Validate required selections
-    if (!selectedServerId || !selectedPlanId) {
-        alert("Please select server (region) and plan before deploying.");
-        return;
-    }
+        try {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}/server/deploy`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${Cookies.get("accessToken")}`,
+                    
+                },
+                body: JSON.stringify(formData),
+            });
 
-    // 2. Determine the selected OS or Application version
-    let selectedVersionId = null;
+            const result = await response.json();
+            console.log("Deploy result:", result);
+            alert(result?.data?.message || "Server deployed successfully!");
 
-    if (activeTab === 1) {
-        // OS tab active
-        const selectedOS = os.find((o) => o.id === selectedOSId);
-        if (selectedOS) {
-            const versionSelect = document.getElementById(`${selectedOS.name}-version`);
-            selectedVersionId = versionSelect?.value;
+            // if (result.data.status === "success") {
+            //     alert("Server deployed successfully!");
+            //     console.log("Deployed:", result.data.data);
+            // } else {
+            //     alert(result.data.message || "Deployment failed.");
+            // }
+        } catch (error) {
+            console.error("Deploy error:", error);
+            alert("Something went wrong during deployment.");
         }
-    } else if (activeTab === 2) {
-        // Application tab active
-        const selectedApp = app.find((a) => a.id === selectedAppId);
-        if (selectedApp) {
-            const versionSelect = document.getElementById(`${selectedApp.name}-version`);
-            selectedVersionId = versionSelect?.value;
-        }
-    }
-
-    if (!selectedVersionId) {
-        alert(`Please select a version for the selected ${activeTab === 1 ? "OS" : "application"}.`);
-        return;
-    }
-
-    // 3. Find selected server details (to include processor, location)
-    const selectedServer = hostServers.find(s => s.id === selectedServerId);
-
-    // 4. Prepare payload for API
-    const payload = {
-        vms_id: selectedPlanId,
-        processor: selectedServer?.processor || "Default Processor",
-        location: selectedServer?.location || "Default Location",
-        os_version_id: Number(selectedVersionId),
-        hostname: "test", // You can replace with dynamic input if needed
-        auto_backups: false,
-        bandwidth: "unlimited",
-        billingCycle: "hourlyBilling", // Or "monthlyBilling"
-        server_id: selectedServerId, // Include selected server id
     };
-
-    // 5. Call the deploy API
-    try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}/server/deploy`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                // Add Authorization header if needed
-            },
-            body: JSON.stringify(payload),
-        });
-
-        const result = await response.json();
-
-        if (result.data.status === "success") {
-            alert("Server deployed successfully!");
-            console.log("Deployed:", result.data.data);
-        } else {
-            alert(result.data.message || "Deployment failed.");
-        }
-    } catch (error) {
-        console.error("Deploy error:", error);
-        alert("Something went wrong during deployment.");
-    }
-};
 
 
 
@@ -343,7 +299,7 @@ function Create() {
                         {/* Breadcrumb end */}
 
                         {/* Projects start */}
-                        <form >
+                        <form method="POST">
                             <div className="row cart-table">
 
                                 <div className="col-xl-8 col-lg-12 col-md-12">
@@ -358,6 +314,7 @@ function Create() {
                                                         <div className="card-header">
                                                             <h5>Region</h5>
                                                         </div>
+
                                                         <div className="card-body">
                                                             <div className="row">
                                                                 {hostServers.map((server) => (
@@ -365,7 +322,14 @@ function Create() {
                                                                         <ul className="active-device-session active-device-list" id="shareMenuLeft">
                                                                             <li>
                                                                                 <div className={`card cursor-pointer transition-all duration-300 ${selectedServerId === server.id ? "border-selected" : "border-unselected"}`}
-                                                                                    onClick={() => setSelectedServerId(server.id)}
+                                                                                    onClick={() => {
+                                                                                        setSelectedServerId(server.id);
+                                                                                        setFormData((prevData) => ({
+                                                                                            ...prevData,
+                                                                                            location: server.location,
+                                                                                            processor: server.processor,
+                                                                                        }));
+                                                                                    }}
                                                                                 >
                                                                                     <div className="card-body">
                                                                                         <div className="device-menu-item" draggable="false">
@@ -383,8 +347,7 @@ function Create() {
                                                                                             <div className="device-menu-content">
                                                                                                 <h6 className="mb-0 txt-ellipsis-1">{server.location}</h6>
                                                                                                 <p className="mb-0 txt-ellipsis-1 text-secondary">Processor : {server.processor}</p>
-                                                                                                <input type="hidden" name="processor" value={formData.processor} onChange={handleChange} />
-                                                                                                <input type="hidden" name="location" value={formData.location} onChange={handleChange} />
+
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -451,6 +414,11 @@ function Create() {
                                                                                                 className="form-select"
                                                                                                 id={`${o.name}-version`}
                                                                                                 required
+                                                                                                onChange={(e) =>
+                                                                                                    setFormData((prev) => ({
+                                                                                                        ...prev,
+                                                                                                        os_version_id: e.target.value,
+                                                                                                    }))}
                                                                                             >
                                                                                                 <option value="">Select Version</option>
                                                                                                 {o.versions?.map((version) => (
@@ -494,6 +462,11 @@ function Create() {
                                                                                                 className="form-select"
                                                                                                 id={`${apps.name}-version`}
                                                                                                 required
+                                                                                                onChange={(e) =>
+                                                                                                    setFormData((prev) => ({
+                                                                                                        ...prev,
+                                                                                                        os_version_id: e.target.value,
+                                                                                                    }))}
                                                                                             >
                                                                                                 <option value="">Select Version</option>
                                                                                                 {apps.versions?.map((version) => (
@@ -577,7 +550,13 @@ function Create() {
                                                                                 <div
                                                                                     key={plan.id}
                                                                                     className={`col-md-6 col-xl-4 p-3`}
-                                                                                    onClick={() => setSelectedPlanId(plan.id)}
+                                                                                    onClick={() => {
+                                                                                        setSelectedPlanId(plan.id);
+                                                                                        setFormData((prev) => ({
+                                                                                            ...prev,
+                                                                                            vms_id: plan.id,
+                                                                                        }));
+                                                                                    }}
                                                                                     style={{ cursor: "pointer" }}
                                                                                 >
                                                                                     <div
@@ -619,7 +598,7 @@ function Create() {
                                                                 </div>
                                                             </div>
 
-                                                            <div className="card-body Additional-disk">
+                                                            {/* <div className="card-body Additional-disk">
                                                                 <h5 className="p-0 mb-4">Additional Disk</h5>
                                                                 <div className="row checkbox-div">
                                                                     <div className="col-12">
@@ -643,7 +622,6 @@ function Create() {
                                                                                     </p>
                                                                                 </div>
                                                                             </div>
-                                                                            {/* MODAL */}
                                                                             <div aria-hidden="true" aria-labelledby="projectCardLabel" className="modal fade" id="projectCard2" tabIndex={-1}>
                                                                                 <div className="modal-dialog modal-fullscreen-lg-down modal-dialog-centered">
                                                                                     <div className="modal-content">
@@ -676,7 +654,7 @@ function Create() {
                                                                         </>
                                                                     </div>
                                                                 </div>
-                                                            </div>
+                                                            </div> */}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -698,7 +676,18 @@ function Create() {
                                                                 <div className="col-12">
                                                                     <div className="form-check d-flex align-items-center gap-3">
                                                                         <div>
-                                                                            <input className="form-check-input" id="invalidCheck2" required type="checkbox" defaultValue />
+                                                                            <input
+                                                                                className="form-check-input"
+                                                                                id="invalidCheck2"
+                                                                                type="checkbox"
+                                                                                checked={formData.auto_backups}
+                                                                                onChange={(e) =>
+                                                                                    setFormData((prev) => ({
+                                                                                        ...prev,
+                                                                                        auto_backups: e.target.checked,
+                                                                                    }))
+                                                                                }
+                                                                            />
                                                                         </div>
                                                                         <div>
                                                                             <label className="form-check-label f-s-18" htmlFor="invalidCheck2">
@@ -715,9 +704,9 @@ function Create() {
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> 
 
-                                    <div className="card">
+                                   {/* <div className="card">
                                         <div className="card-body p-0">
                                             <div className="row">
                                                 <div className="col-lg-12">
@@ -761,7 +750,6 @@ function Create() {
                                                                     </ul>
                                                                 </div>
 
-                                                                {/* === Password Radio Option === */}
                                                                 <div className="col-lg-12 col-xxl-4">
                                                                     <ul className="active-device-session active-device-list" id="shareMenuRight">
                                                                         <li>
@@ -852,7 +840,7 @@ function Create() {
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div>  */}
                                 </div>
 
                                 <div className="col-xl-4 col-lg-12 col-md-12" >
@@ -864,11 +852,70 @@ function Create() {
                                                 </div>
                                                 <div className="card-body">
 
+                                                    <form className="app-form row g-3" >
+                                                        <div className="col-12">
+                                                            <label className="form-label" htmlFor="hostnameInput">
+                                                                Update Hostname
+                                                            </label>
+                                                            <input
+                                                                id="hostnameInput"
+                                                                type="text"
+                                                                className="form-control"
+                                                                placeholder="New Hostname"
+                                                                required
+                                                                checked={formData.hostname}
+                                                                onChange={(e) =>
+                                                                    setFormData((prev) => ({
+                                                                        ...prev,
+                                                                        hostname: e.target.value,
+                                                                    }))}
+                                                            />
+
+                                                        </div>
+
+                                                        <div className="col-12">
+                                                            <label className="form-label" htmlFor="bandwidth">bandwidth</label>
+                                                            <select name="bandwidth" className="form-select" required onChange={(e) =>
+                                                                setFormData((prev) => ({
+                                                                    ...prev,
+                                                                    bandwidth: e.target.value,
+                                                                }))}>
+                                                                <option>Select Bandwidth</option>
+                                                                <option selected value="unlimited">Unlimited</option>
+                                                            </select>
+                                                            <div className="invalid-feedback">Please select a valid version.</div>
+                                                        </div>
+
+                                                        <div className="col-12">
+                                                            <label className="form-label" htmlFor="billingCycle">billingCycle</label>
+                                                            <select name="billingCycle" className="form-select" required onChange={(e) =>
+                                                                setFormData((prev) => ({
+                                                                    ...prev,
+                                                                    billingCycle: e.target.value,
+                                                                }))}>
+                                                                <option value="">Select billingCycle</option>
+                                                                <option value="hourlyBilling">Hourly Billing</option>
+                                                                <option value="monthlyBilling" >Monthly Billing</option>
+                                                            </select>
+                                                            <div className="invalid-feedback">Please select a valid version.</div>
+                                                        </div>
+                                                        {/* <div className="col-4">
+                                                            <button type="button" className="btn btn-primary mt-2">
+                                                                Save
+                                                            </button>
+                                                        </div> */}
+
+                                                    </form>
+
+
+                                                    <hr />
+
                                                     <div className="table-responsive ps-3">
                                                         <div className="cart-gift text-end mt-4">
                                                             <button
+                                                              type="button"
                                                                 className="btn btn-primary rounded"
-                                                                onClick={handleDeployServer} 
+                                                                onClick={handleDeployServer}
                                                             >
                                                                 Deploy Server
                                                             </button>

@@ -22,38 +22,38 @@ function Server() {
     };
 
 
-      useEffect(() => {
+    useEffect(() => {
         const token = Cookies.get("accessToken");
         if (token) {
-          // console.log("Token found:", token);
-          const FetchServer = async () => {
-            console.log(`Bearer ${token}`);
-            setIsLoading(true);
-            try {
-              const response = await fetch(
-                `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/customer/server/list`,
-                {
-                  method: "POST",
-                  headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${token}`, // Send the token
-                  },
+            // console.log("Token found:", token);
+            const FetchServer = async () => {
+                console.log(`Bearer ${token}`);
+                setIsLoading(true);
+                try {
+                    const response = await fetch(
+                        `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/customer/server/list`,
+                        {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                                Authorization: `Bearer ${token}`, // Send the token
+                            },
+                        }
+                    );
+
+                    const result = await response.json();
+                    const data = result.data;
+                    console.log(data);
+                    setServers(data.servers);
+                } catch (error) {
+                    console.error("Error fetching cloud vps plan data:", error);
+                    setIsLoading(false);
                 }
-              );
-    
-              const result = await response.json();
-              const data = result.data;
-              console.log(data);
-              setServers(data.servers);
-            } catch (error) {
-              console.error("Error fetching cloud vps plan data:", error);
-              setIsLoading(false);
-            }
-          };
-    
-          FetchServer();
+            };
+
+            FetchServer();
         }
-      }, []);
+    }, []);
 
     // auto load
     const [isLoading, setIsLoading] = useState(true);
@@ -131,8 +131,8 @@ function Server() {
                                                             <th>server name</th>
                                                             <th>status</th>
                                                             <th>ip address</th>
-                                                            {/* <th>purchase date</th>
-                                                            <th>total paid</th> */}
+                                                            <th>Action</th>
+                                                            {/*<th>total paid</th> */}
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -142,12 +142,28 @@ function Server() {
                                                                 <td>{server.hostname}</td>
                                                                 <td>
                                                                     {server.status == "active" ? (
-                                                                    <span className="badge bg-success-subtle text-success text-uppercase">{server.status}</span>)
-                                                                    : (
-                                                                    <span className="badge bg-danger-subtle text-danger text-uppercase">{server.status}</span>
-                                                                    )}
+                                                                        <span className="badge bg-success-subtle text-success text-uppercase">{server.status}</span>)
+                                                                        : (
+                                                                            <span className="badge bg-danger-subtle text-danger text-uppercase">{server.status}</span>
+                                                                        )}
                                                                 </td>
                                                                 <td>{server.ip}</td>
+                                                                <td>
+                                                                    {/* <button
+                                                                                        className="badge text-white bg-success border-0 d-flex gap-2 align-items-center"
+                                                                                        
+                                                                                    >
+                                                                                        Revert
+                                                                                    </button> */}
+
+                                                                    <button
+                                                                        className="badge text-white bg-danger border-0 d-flex gap-2 align-items-center"
+
+                                                                    >
+                                                                        <i className="ph ph-trash f-s-18" />
+                                                                        Delete
+                                                                    </button>
+                                                                </td>
                                                                 {/* <td>{server.purchase_date}</td>
                                                                 <td>${server.total_paid}</td> */}
                                                             </tr>
