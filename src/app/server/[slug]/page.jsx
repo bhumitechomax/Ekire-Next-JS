@@ -1194,44 +1194,82 @@ const openBackupModal = () => {
 };
 
 
-const handleCreateBackup = async (e) => {
-  e.preventDefault();
-  setBackupSuccess("");
-  setBackupError("");
+const handleCreateBackup = async (e, id) => {
+    e.preventDefault();
+    setBackupSuccess("");
+    setBackupError("");
 
-  try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/server/${serverId}/create-backup`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${Cookies.get("accessToken")}`,
-        },
-        body: JSON.stringify({
-          snapshot_name: formData.snapshot_name,
-        }),
-      }
-    );
+    // 1) Show SweetAlert2 confirmation dialog
+    const result = await Swal.fire({
+      title: 'Are you sure?',
+      text: 'Do you want to create a new backup now?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, create it!',
+      cancelButtonText: 'No, cancel',
+      reverseButtons: true,
+    });
 
-    const data = await res.json();
-
-    if (res.ok && data?.data?.status === "success") {
-      setBackupSuccess(data.message || "Backup created successfully.");
-      setFormData((prev) => ({ ...prev, snapshot_name: "" }));
-
-      setTimeout(() => {
-        const modal = Modal.getInstance(modalRef.current);
-        modal?.hide();
-      }, 1500);
-    } else {
-      setBackupError(data?.message || "Failed to create backup.");
+    // 2) If user clicks “Cancel”, just return early
+    if (!result.isConfirmed) {
+      return;
     }
-  } catch (err) {
-    console.error("Backup Error:", err);
-    setBackupError("Something went wrong while creating the backup.");
-  }
-};
+
+    // 3) Otherwise, proceed with your fetch call
+    try {
+      if (id) {
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/server/${id}/create-backup`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${Cookies.get("accessToken")}`,
+            },
+          }
+        );
+
+        const data = await res.json();
+
+        if (res.ok && data?.data?.status === "success") {
+          setBackupSuccess(data.message || "Backup created successfully.");
+          setFormData((prev) => ({ ...prev, snapshot_name: "" }));
+
+          // Hide the modal after a short delay
+          setTimeout(() => {
+            const modal = Modal.getInstance(modalRef.current);
+            modal?.hide();
+          }, 1500);
+
+          // Optionally show a success alert
+          Swal.fire({
+            title: "Backup Created!",
+            text: data.message || "Your backup was created successfully.",
+            icon: "success",
+            timer: 2000,
+            showConfirmButton: false,
+          });
+        } else {
+          setBackupError(data?.message || "Failed to create backup.");
+
+          // Optionally show an error alert
+          Swal.fire({
+            title: "Error",
+            text: data?.message || "Failed to create backup.",
+            icon: "error",
+          });
+        }
+      }
+    } catch (err) {
+      console.error("Backup Error:", err);
+      setBackupError("Something went wrong while creating the backup.");
+      Swal.fire({
+        title: "Something went wrong",
+        text: "An unexpected error occurred while creating the backup.",
+        icon: "error",
+      });
+    }
+  };
 
 
     return (
@@ -2322,9 +2360,14 @@ const handleCreateBackup = async (e) => {
                                                     </div>
                                                     <div className="card-body d-flex gap-3">
                                                         
-                                                        <button className="btn btn-primary h-45 icon-btn mb-3" onClick={openBackupModal}>
-  <i className="ph-bold ph-plus f-s-18" /> Create Backup
-</button>
+                                                        {/* <button className="btn btn-primary h-45 icon-btn mb-3" onClick={openBackupModal}>
+  <i className="ph-bold ph-plus f-s-18" /> Create Backup</button> */}
+                                                        <button
+                                                        className="btn btn-primary h-45 icon-btn mb-3"
+                                                        onClick={(e) => handleCreateBackup(e, serverdetails?.id)} // Replace with actual `serverId`
+                                                        >
+                                                        <i className="ph-bold ph-plus f-s-18" /> Create Backup
+                                                        </button>
                                                         <button className="btn btn-success h-45 icon-btn mb-3">
                                                             <i className="ph ph-arrow-fat-lines-up f-s-18" />{" "}
                                                             Update Backup
@@ -2533,34 +2576,7 @@ const handleCreateBackup = async (e) => {
         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" />
       </div>
 
-      <form onSubmit={handleCreateBackup}>
-        <div className="modal-body">
-          <div className="mb-3">
-            <label htmlFor="snapshot_name" className="form-label">Backup Name</label>
-            <input
-              type="text"
-              id="snapshot_name"
-              name="snapshot_name"
-              className="form-control"
-              value={formData.snapshot_name}
-              onChange={(e) => setFormData({ ...formData, snapshot_name: e.target.value })}
-              required
-            />
-
-            {backupSuccess && (
-              <div className="alert alert-success mt-2">{backupSuccess}</div>
-            )}
-
-            {backupError && (
-              <div className="text-danger small mt-2">{backupError}</div>
-            )}
-          </div>
-        </div>
-
-        <div className="modal-footer">
-          <button type="submit" className="btn btn-primary">Submit</button>
-        </div>
-      </form>
+     
     </div>
   </div>
 </div>
