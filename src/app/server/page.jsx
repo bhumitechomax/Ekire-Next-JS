@@ -9,6 +9,7 @@ import Cookies from "js-cookie";
 
 function Server() {
     const [servers, setServers] = useState([]);
+    const [serverId, setserverId] = useState(null);
 
 
     const router = useRouter();
@@ -54,6 +55,82 @@ function Server() {
             FetchServer();
         }
     }, []);
+
+    // api for delete server with popup
+        const confirmDelete = (serverId) => {
+            const swalWithBootstrapButtons = Swal.mixin({
+                customClass: {
+                    confirmButton: 'btn btn-primary ms-2',
+                    cancelButton: 'btn btn-danger'
+                },
+                buttonsStyling: false
+            });
+    
+            swalWithBootstrapButtons.fire({
+                title: 'Delete server?',
+                text: "Are you sure you want to delete this server? This can't be undone!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, delete it!',
+                cancelButtonText: 'No, cancel!',
+                reverseButtons: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    handleDelete(serverId, swalWithBootstrapButtons);
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
+                    swalWithBootstrapButtons.fire(
+                        'Cancelled',
+                        'Your Server is safe :)',
+                        'error'
+                    );
+                }
+            });
+        };
+
+        const handleDelete = async (serverId, swalInstance) => {
+                if (!serverId) return;
+        
+                try {
+                    const res = await fetch(
+                        `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/server/${serverId}/destroy`,
+                        {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                Authorization: `Bearer ${Cookies.get('accessToken')}`
+                            }
+                        }
+                    );
+        
+                    const result = await res.json();
+        
+                    if (res.ok && result?.data?.status === 'success') {
+                        swalInstance.fire(
+                            'Deleted!',
+                            'Your server has been deleted.',
+                            'success'
+                        ).then(() => {
+                            window.location.reload();
+                        });
+                    } else {
+                        swalInstance.fire(
+                            'Failed!',
+                            result.message || 'Something went wrong.',
+                            'error'
+                        );
+                    }
+        
+                    console.log(result);
+                } catch (err) {
+                    swalInstance.fire(
+                        'Error!',
+                        'An error occurred while deleting the server.',
+                        'error'
+                    );
+                    console.error(err);
+                }
+            };
+            // api for delete project with popup end
 
     // auto load
     const [isLoading, setIsLoading] = useState(true);
@@ -136,8 +213,8 @@ function Server() {
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        {servers.map((server, index) => (
-                                                            <tr key={index} role="button" onClick={() => handleRowClick(server.id)}>
+                                                        {Array.isArray(servers) && servers.map((server, index) => (
+                                                            <tr  >
                                                                 <td>{index + 1}</td>
                                                                 <td>{server.hostname}</td>
                                                                 <td>
@@ -148,18 +225,13 @@ function Server() {
                                                                         )}
                                                                 </td>
                                                                 <td>{server.ip}</td>
-                                                                <td>
-                                                                    {/* <button
-                                                                                        className="badge text-white bg-success border-0 d-flex gap-2 align-items-center"
-                                                                                        
-                                                                                    >
-                                                                                        Revert
-                                                                                    </button> */}
+                                                                <td className="d-flex gap-2">
+                                                                    <button role="button"  onClick={() => handleRowClick(server.id)} className="badge text-white bg-success border-0 d-flex gap-2 align-items-center">
+                                                                        <i className="ph ph-eye f-s-18" />
+                                                                        View
+                                                                    </button>
 
-                                                                    <button
-                                                                        className="badge text-white bg-danger border-0 d-flex gap-2 align-items-center"
-
-                                                                    >
+                                                                    <button onClick={() => confirmDelete(server?.id)} className="badge text-white bg-danger border-0 d-flex gap-2 align-items-center">
                                                                         <i className="ph ph-trash f-s-18" />
                                                                         Delete
                                                                     </button>

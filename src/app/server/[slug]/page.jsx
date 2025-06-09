@@ -25,7 +25,7 @@ function Manage() {
     const handleAppClick = (appid) => {
         setSelectedAppId(appid);
     };
-   
+
     const [showReinstallCard, setShowReinstallCard] = useState(false);
     const [selectedVersionId, setSelectedVersionId] = useState(null);
 
@@ -43,8 +43,7 @@ function Manage() {
     const [snapshotError, setSnapshotError] = useState({});
     const [snapshotSuccess, setSnapshotSuccess] = useState("");
 
-    const [upgradeError, setUpgradeError] = useState({});
-    const [upgradeSuccess, setUpgradeSuccess] = useState("");
+    
     const modalRef = useRef(null);
 
 
@@ -56,7 +55,7 @@ function Manage() {
     });
 
 
-// Fetch Server Details and VMPS
+    // Fetch Server Details and VMPS
     useEffect(() => {
         const token = Cookies.get("accessToken");
         if (token && id) {
@@ -93,10 +92,10 @@ function Manage() {
         }
     }, [id]);
 
-        // console.log(serverdetails);
-        // console.log("------------------------------------------");
-        // console.log(vmps);
-        // console.log("------------------------------------------");
+    // console.log(serverdetails);
+    // console.log("------------------------------------------");
+    // console.log(vmps);
+    // console.log("------------------------------------------");
     // console.log(serverdetails);
     // console.log("------------------------------------------");
     // console.log(vmps);
@@ -407,7 +406,7 @@ function Manage() {
 
     // api for reinstall server
     const reinstallServer = async (id, reinstallPayload) => {
-       if (!id || !reinstallPayload?.os_version_id) return;
+        if (!id || !reinstallPayload?.os_version_id) return;
         const swalWithBootstrapButtons = Swal.mixin({
             customClass: {
                 confirmButton: 'btn btn-secondary ms-2',
@@ -442,7 +441,7 @@ function Manage() {
                     const result = await res.json();
                     console.log("Reinstall Server Response:", result);
 
-                    if (res.ok &&  result.data.status === 'success') {
+                    if (res.ok && result.data.status === 'success') {
                         swalWithBootstrapButtons.fire(
                             'Reinstalled!',
                             'The server has been reinstalled successfully.',
@@ -623,14 +622,14 @@ function Manage() {
 
 
     useEffect(() => {
-   
+
 
         if (id) fetchSnapshots(id);
     }, [id]);
 
     // api for list snapshots
     const fetchSnapshots = async (id) => {
-    console.log("Fetching snapshots for server ID:", id);
+        console.log("Fetching snapshots for server ID:", id);
         try {
             const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}/server/${id}/list-snapshots`, {
                 method: "POST",
@@ -703,7 +702,7 @@ function Manage() {
 
         try {
             const res = await fetch(
-                `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/server/${id}/create-snapshot`,
+                `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/server/${serverId}/create-snapshot`,
                 {
                     method: "POST",
                     headers: {
@@ -719,14 +718,14 @@ function Manage() {
             const data = await res.json();
             console.log("Create Snapshot Response:", data);
 
-            
+
 
             if (res.ok && data?.data?.status === "success") {
                 setSnapshotSuccess(data.message || "Snapshot successfully created.");
                 fetchSnapshots();
                 // Optionally clear input:
                 // setFormData(prev => ({ ...prev, snapshot_name: "" }));
-               
+
             } else {
                 if (data?.data?.message && data?.data?.message.toLowerCase().includes("exists")) {
                     setSnapshotError({ name: ["A snapshot with this name already exists."] });
@@ -939,6 +938,75 @@ function Manage() {
     };
 
 
+    // api for extend server
+    const extendServer = async (serverId) => {
+    if (!serverId) return;
+
+    const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+            confirmButton: 'btn btn-secondary ms-2',
+            cancelButton: 'btn btn-danger'
+        },
+        buttonsStyling: false
+    });
+
+    swalWithBootstrapButtons.fire({
+        title: 'Extend Server?',
+        text: "Do you want to extend this server's duration?",
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, extend!',
+        cancelButtonText: 'Cancel',
+        reverseButtons: true
+    }).then(async (result) => {
+        if (result.isConfirmed) {
+            try {
+                const res = await fetch(
+                    `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/server/${serverId}/extend`,
+                    {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                            Authorization: `Bearer ${Cookies.get("accessToken")}`,
+                        }
+                    }
+                );
+
+                const result = await res.json();
+                console.log("Extend Server Response:", result);
+
+                if (res.ok && result.data?.status === 'success') {
+                    swalWithBootstrapButtons.fire(
+                        'Extended!',
+                        'The server has been extended successfully.',
+                        'success'
+                    ).then(() => {
+                        window.location.reload(); // ✅ Reload only after user clicks OK
+                    });
+                } else {
+                    swalWithBootstrapButtons.fire(
+                        'Failed!',
+                        result.message || 'Failed to extend the server.',
+                        'error'
+                    );
+                }
+            } catch (error) {
+                console.error("Error:", error);
+                swalWithBootstrapButtons.fire(
+                    'Error!',
+                    'Something went wrong while extending the server.',
+                    'error'
+                );
+            }
+        } else {
+            swalWithBootstrapButtons.fire(
+                'Cancelled',
+                'Server extension cancelled.',
+                'info'
+            );
+        }
+    });
+};
 
 
 
@@ -1045,7 +1113,7 @@ function Manage() {
                                                                     <div className="col-lg-12">
                                                                         <div className="input-group mb-3">
                                                                             <span className="input-group-text b-r-left text-bg-primary">IPv4</span>
-                                                                            <input aria-label="Dollar amount (with dot and two decimal places)" className="form-control b-r-right" placeholder="988e473a-335d-5c18-b996-db64c22cc7c0"  type="text" />
+                                                                            <input aria-label="Dollar amount (with dot and two decimal places)" className="form-control b-r-right" placeholder="988e473a-335d-5c18-b996-db64c22cc7c0" type="text" />
                                                                             <span className="input-group-text b-r-0 text-bg-primary"><i className="ph-fill  ph-copy f-s-18"></i></span>
                                                                         </div>
                                                                     </div>
@@ -1246,18 +1314,9 @@ function Manage() {
                                                         <div className="row d-flex align-items-center justify-content-between">
                                                             <div className="col-lg-6" style={{ padding: "5px 15px" }}>
                                                                 <p className="f-s-17 text-dark ">Your Current Size is 2 vCPU - 4 GB Memory - 100 SSD Storage.</p>
-                                                                {upgradeSuccess && (
-                                                                    <div className="alert alert-success">{upgradeSuccess}</div>
-                                                                )}
-                                                                <button
-                                                                    className="btn btn-primary h-45 icon-btn mb-3"
-                                                                    onClick={() => handleUpgradePlan(serverId)}
-                                                                >
+                                                                <Link href={"/server/upgrade_plan"} className="btn btn-primary h-45 icon-btn mb-3" style={{ width: "fit-content" }}>
                                                                     <i className="ph-bold ph-arrow-up f-s-18" /> Upgrade
-                                                                </button>
-                                                                {upgradeError.name && (
-                                                                    <div className="text-danger small">{upgradeError.name[0]}</div>
-                                                                )}
+                                                                </Link>
 
                                                                 <h5 className="text-secondary-dark mb-0">Renews Automatically on 18-12-2024</h5>
                                                                 <p className="f-s-17 text-dark ">We will send you a notification upon subscription expiration</p>
@@ -1311,6 +1370,12 @@ function Manage() {
                                                             onClick={() => setShowReinstallCard(!showReinstallCard)}
                                                         >
                                                             <i className="ph-fill ph-arrow-line-down f-s-18" /> Reinstall Server
+                                                        </button>
+
+                                                        <button className="btn btn-danger h-45 icon-btn mb-3"
+                                                            onClick={() => extendServer(serverdetails?.id)}
+                                                        >
+                                                             Extend Server
                                                         </button>
 
                                                     </div>
@@ -1389,7 +1454,7 @@ function Manage() {
                                                                                     className="btn btn-primary"
                                                                                     type="button"
                                                                                     onClick={() => reinstallServer(serverdetails?.id, {
-                                                                                    os_version_id: selectedVersionId,
+                                                                                        os_version_id: selectedVersionId,
                                                                                     })}
                                                                                 >
                                                                                     Save
@@ -1420,7 +1485,7 @@ function Manage() {
                                                                                                 <form className="app-form row g-3 needs-validation mt-0" noValidate>
                                                                                                     <div className={apps.name}>
                                                                                                         <select
-                                                                                                        name=""
+                                                                                                            name=""
                                                                                                             className="form-select"
                                                                                                             id={`${apps.name}-version`}
                                                                                                             required onChange={(e) => setSelectedVersionId(e.target.value)}
@@ -1443,8 +1508,8 @@ function Manage() {
                                                                                 <button
                                                                                     className="btn btn-primary"
                                                                                     type="button"
-                                                                                   onClick={() => reinstallServer(serverdetails?.id, {
-                                                                                    os_version_id: selectedVersionId,
+                                                                                    onClick={() => reinstallServer(serverdetails?.id, {
+                                                                                        os_version_id: selectedVersionId,
                                                                                     })}
                                                                                 >
                                                                                     Save
@@ -1472,29 +1537,29 @@ function Manage() {
                                                     </div>
                                                     <div className="card-body" >
                                                         <form className="app-form row g-3" style={{ padding: "5px 15px" }} onSubmit={(e) => e.preventDefault()}>
-                                                        <div className="col-md-4">
-                                                            <label className="form-label" htmlFor="hostnameInput">
-                                                                Update Hostname
-                                                            </label>
-                                                            <input
-                                                                id="hostnameInput"
-                                                                type="text"
-                                                                className="form-control"
-                                                                placeholder="New Hostname"
-                                                                name="hotname"
-                                                                required
-                                                                value={changehostnamePayload.hostname}
-                                                                onChange={(e) => setChangeHostnamePayload({ ...changehostnamePayload, hostname: e.target.value })}
-                                                            />
-                                                            <button
-                                                                type="button"
-                                                                className="btn btn-primary h-45 icon-btn mb-3 mt-4"
-                                                                onClick={handleUpdateClick}
-                                                            >
-                                                                Update
-                                                            </button>
-                                                        </div>
-                                                    </form>
+                                                            <div className="col-md-4">
+                                                                <label className="form-label" htmlFor="hostnameInput">
+                                                                    Update Hostname
+                                                                </label>
+                                                                <input
+                                                                    id="hostnameInput"
+                                                                    type="text"
+                                                                    className="form-control"
+                                                                    placeholder="New Hostname"
+                                                                    name="hotname"
+                                                                    required
+                                                                    value={changehostnamePayload.hostname}
+                                                                    onChange={(e) => setChangeHostnamePayload({ ...changehostnamePayload, hostname: e.target.value })}
+                                                                />
+                                                                <button
+                                                                    type="button"
+                                                                    className="btn btn-primary h-45 icon-btn mb-3 mt-4"
+                                                                    onClick={handleUpdateClick}
+                                                                >
+                                                                    Update
+                                                                </button>
+                                                            </div>
+                                                        </form>
                                                     </div>
                                                 </div>
 
