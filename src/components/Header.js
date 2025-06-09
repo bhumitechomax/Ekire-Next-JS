@@ -1,7 +1,7 @@
 "use client";
 import React, { Fragment, useEffect, useState } from "react";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import Link from "next/link";
 import Cookies from "js-cookie";
 // import { useSession } from 'next-auth/react'
@@ -28,7 +28,13 @@ const Header = () => {
     // console.log("authenticated")
 
   // }
-  
+   useEffect(() => {
+    const token = Cookies.get('accessToken');
+    if (!token) {
+      redirect('/login'); // Redirect to login if no token found
+    }
+  }, []);
+
 
 
 
